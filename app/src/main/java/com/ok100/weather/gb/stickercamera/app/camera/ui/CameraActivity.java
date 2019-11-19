@@ -9,9 +9,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapRegionDecoder;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.PixelFormat;
 import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.hardware.Camera;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -25,9 +27,10 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -65,11 +68,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
 import io.reactivex.functions.Consumer;
-
-
-import static android.content.ComponentCallbacks2.TRIM_MEMORY_BACKGROUND;
 
 /**
  * 相机界面
@@ -117,6 +116,9 @@ public class CameraActivity extends CameraBaseActivity {
     LinearLayout root_view_layout;
     @BindView(R.id.sub_img)
     ImageView sub_img;
+    @BindView(R.id.animal_img)
+    ImageView animal_img;
+
     private final static int COMPLETED = 0x11;
 
 
@@ -445,7 +447,6 @@ public class CameraActivity extends CameraBaseActivity {
             if (msg.what == COMPLETED) {
                 Bitmap bit = (Bitmap) msg.obj;
                 if (bit != null) {
-                    Log.e("bst==", "---------------------------------333333333333333333");
                     root_view_layout.setVisibility(View.GONE);
                     surfaceView.setVisibility(View.GONE);
                     sub_img.setVisibility(View.VISIBLE);
@@ -456,6 +457,14 @@ public class CameraActivity extends CameraBaseActivity {
             }
         }
     };
+
+    public Bitmap rotateImage(Bitmap bitmap, float degree) {
+        //create new matrix
+        Matrix matrix = new Matrix();
+        matrix.postRotate(degree);
+        Bitmap bmp = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+        return bmp;
+    }
 
     private final class MyPictureCallback implements Camera.PictureCallback {
 
@@ -471,27 +480,37 @@ public class CameraActivity extends CameraBaseActivity {
                 public void run() {
                     takePitmap = getBitmap(data);
                     viewBitmap = getViewBitmap(root_view_layout);
-                    combineBitmap = combineBitmap(takePitmap, viewBitmap);
+//                    Bitmap newViewBit = getNewBitmap(viewBitmap, root_view_layout.getWidth(), root_view_layout.getHeight());
+                    Bitmap viewRoateBit = rotateImage(viewBitmap, 0);//水印图
+                    Bitmap takeRoateBit = rotateImage(takePitmap, 90);//背景图
+                    combineBitmap = combineBitmap(takeRoateBit, viewRoateBit);
                     Message msg = new Message();
                     msg.what = COMPLETED;
                     msg.obj = combineBitmap;
                     handler1.sendMessage(msg);
                 }
             }).start();
+            camera.startPreview();
 
-
-//                    Bitmap samllPitmap= getBitmapFromView(root_view_layout);
-//                    Log.e("bast==","-----------samllPitmap-------------"+samllPitmap.getHeight());
-//                    Log.e("bast==","-----------takePitmap-------------"+takePitmap.getHeight());
 //            new SavePicTask(data).execute();  //保存在本地的方法
 //            camera.startPreview(); // 拍完照后，重新开始预览
+
         }
     }
+
 
     /**
      * 更具view生成bitmap
      */
 
+    //todo 方法1
+    private Bitmap createBitmap(View view) {
+        view.buildDrawingCache();
+        Bitmap bitmap = view.getDrawingCache();
+        return bitmap;
+    }
+
+    //todo 方法2
     private Bitmap getViewBitmap(View v) {
         v.clearFocus();
         v.setPressed(false);
@@ -512,6 +531,22 @@ public class CameraActivity extends CameraBaseActivity {
         v.setWillNotCacheDrawing(willNotCache);
         v.setDrawingCacheBackgroundColor(color);
         return bitmap;
+    }
+
+    //todo 方法3
+    public static Bitmap getBitmapFromView(View v) {
+        Bitmap b = Bitmap.createBitmap(v.getWidth(), v.getHeight(), Bitmap.Config.RGB_565);
+        Canvas c = new Canvas(b);
+        v.layout(v.getLeft(), v.getTop(), v.getRight(), v.getBottom());
+        // Draw background
+        Drawable bgDrawable = v.getBackground();
+        if (bgDrawable != null)
+            bgDrawable.draw(c);
+        else
+            c.drawColor(Color.WHITE);
+        // Draw view to canvas
+        v.draw(c);
+        return b;
     }
 
     public static Bitmap combineBitmap(Bitmap background, Bitmap foreground) {
@@ -851,7 +886,6 @@ public class CameraActivity extends CameraBaseActivity {
         return defaultPictureResolution;
     }
 
-
     //控制图像的正确显示方向
     private void setDispaly(Camera.Parameters parameters, Camera camera) {
         if (Build.VERSION.SDK_INT >= 8) {
@@ -874,7 +908,6 @@ public class CameraActivity extends CameraBaseActivity {
             Log.e("Came_e", "图像出错");
         }
     }
-
 
     /**
      * 将拍下来的照片存放在SD卡中
@@ -975,7 +1008,6 @@ public class CameraActivity extends CameraBaseActivity {
         }
     }
 
-
     //切换前后置摄像头
     private void switchCamera() {
         mCurrentCameraId = (mCurrentCameraId + 1) % mCameraHelper.getNumberOfCameras();
@@ -1026,5 +1058,101 @@ public class CameraActivity extends CameraBaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+    }
+
+    /**
+     * 设置缩放动画 startScaleAnimation
+     * animal_img
+     */
+
+    public static Bitmap create(String path){
+        Bitmap bitmap = BitmapFactory.decodeFile( path);
+        return bitmap;
+    }
+
+
+    private void setScaleAnimal(){
+        animal_img.setImageBitmap(create("/storage/emulated/0/Download/2008315204223450_2..jpg"));
+        ScaleAnimation scaleAnimation2 = new ScaleAnimation(1f, 5f, 1f, 5f, ScaleAnimation.START_ON_FIRST_FRAME, animal_img.getWidth() / 1f, ScaleAnimation.START_ON_FIRST_FRAME, animal_img.getHeight() / 1f);
+        //设置动画持续时长
+        scaleAnimation2.setDuration(4000);
+        //设置动画结束之后的状态是否是动画的最终状态，true，表示是保持动画结束时的最终状态
+        scaleAnimation2.setFillAfter(true);
+        //设置动画结束之后的状态是否是动画开始时的状态，true，表示是保持动画开始时的状态
+        scaleAnimation2.setFillBefore(true);
+        //设置动画的重复模式：反转REVERSE和重新开始RESTART
+        scaleAnimation2.setRepeatMode(ScaleAnimation.REVERSE);
+        scaleAnimation2.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+                root_view_layout.setVisibility(View.GONE);
+                surfaceView.setVisibility(View.GONE);
+                sub_img.setVisibility(View.GONE);
+                animal_img.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                animal_img.setVisibility(View.GONE);
+                root_view_layout.setVisibility(View.VISIBLE);
+                surfaceView.setVisibility(View.VISIBLE);
+                sub_img.setVisibility(View.VISIBLE);
+//                animal_img.clearAnimation();
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+//                animal_img.setVisibility(View.GONE);
+//                root_view_layout.setVisibility(View.VISIBLE);
+//                surfaceView.setVisibility(View.VISIBLE);
+//                sub_img.setVisibility(View.VISIBLE);
+//                animal_img.clearAnimation();
+            }
+        });
+        //开始动画
+        animal_img.startAnimation(scaleAnimation2);
+        //清除动画
+//        scaleAnimation2.cancel();
+    }
+
+    /**
+     * 动画属性
+     */
+    private void animatorStyleOne() {
+        animal_img.setImageBitmap(create("/storage/emulated/0/Download/2008315204223450_2..jpg"));
+        //图片渐变模糊度始终
+        AlphaAnimation aa = new AlphaAnimation(0.1f,1.0f);
+        //渐变时间
+        aa.setDuration(4000);
+        //展示图片渐变动画
+        animal_img.startAnimation(aa);
+
+        //渐变过程监听
+        aa.setAnimationListener(new Animation.AnimationListener() {
+
+            /**
+             * 动画开始时
+             */
+            @Override
+            public void onAnimationStart(Animation animation) {
+                System.out.println("动画开始...");
+            }
+
+            /**
+             * 重复动画时
+             */
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+                System.out.println("动画重复...");
+            }
+
+            /**
+             * 动画结束时
+             */
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                System.out.println("动画结束...");
+            }
+        });
     }
 }

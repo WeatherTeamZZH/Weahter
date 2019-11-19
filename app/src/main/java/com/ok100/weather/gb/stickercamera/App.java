@@ -1,6 +1,5 @@
 package com.ok100.weather.gb.stickercamera;
 
-import android.app.Application;
 import android.util.DisplayMetrics;
 
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiskCache;
@@ -13,16 +12,24 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.utils.StorageUtils;
 import com.ok100.weather.base.BaseApplication;
+import com.umeng.commonsdk.UMConfigure;
+import com.umeng.socialize.PlatformConfig;
 
 /**
  * Created by sky on 2015/7/6.
  */
 public class App extends BaseApplication {
 
-    protected static App       mInstance;
-    private DisplayMetrics     displayMetrics = null;
+    protected static App mInstance;
+    private DisplayMetrics displayMetrics = null;
 
-    public App(){
+    static {
+        PlatformConfig.setWeixin("wxdc1e388c3822c80b", "3baf1193c85774b3fd9d18447d76cab0");
+        PlatformConfig.setSinaWeibo("3921700954", "04b48b094faeb16683c32669824ebdad", "http://sns.whalecloud.com");
+        PlatformConfig.setQQZone("100424468", "c7394704798a158208a74ab60104f0ba");
+    }
+
+    public App() {
         mInstance = this;
     }
 
@@ -41,6 +48,9 @@ public class App extends BaseApplication {
         super.onCreate();
         initImageLoader();
         mInstance = this;
+        UMConfigure.init(this, "5a12384aa40fa3551f0001d1"
+                , "umeng", UMConfigure.DEVICE_TYPE_PHONE, "");
+        UMConfigure.setLogEnabled(true);
     }
 
 
@@ -90,9 +100,8 @@ public class App extends BaseApplication {
         this.displayMetrics = DisplayMetrics;
     }
 
-    public int dp2px(float f)
-    {
-        return (int)(0.5F + f * getScreenDensity());
+    public int dp2px(float f) {
+        return (int) (0.5F + f * getScreenDensity());
     }
 
     public int px2dp(float pxValue) {
@@ -108,7 +117,6 @@ public class App extends BaseApplication {
     public String getCacheDirPath() {
         return getCacheDir().getAbsolutePath();
     }
-
 
 
 }

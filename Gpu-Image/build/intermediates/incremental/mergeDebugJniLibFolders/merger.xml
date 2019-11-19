@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="G:\OKWeather\Gpu-Image\src\main\jniLibs"/></dataSet><dataSet config="debug" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="G:\OKWeather\Gpu-Image\src\debug\jniLibs"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="E:\wai\wt\Weahter\Gpu-Image\src\main\jniLibs"/></dataSet><dataSet config="debug"><source path="E:\wai\wt\Weahter\Gpu-Image\src\debug\jniLibs"/></dataSet></merger>
