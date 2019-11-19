@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.ok100.weather">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -12,6 +13,10 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
 
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!--如果需要使用QQ纯图分享或避免其它平台纯图分享的时候图片不被压缩，可以增加以下权限：-->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-sdk tools:overrideLibrary="com.google.android.ads.mediationtestsuite"/>
     <application
         android:name=".gb.stickercamera.App"
         android:allowBackup="true"
@@ -20,7 +25,10 @@
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme.StatusBarWhite.NoActionBar">
+        android:theme="@style/AppTheme.StatusBarWhite.NoActionBar"
+        tools:replace="android:icon, android:label, android:theme"
+       >
+
         <activity android:name=".activity.ZhutiImgeActivity"></activity>
         <activity android:name=".activity.ShareMainActivity" />
         <activity android:name=".activity.NoticeCenterActivity" />
@@ -71,7 +79,9 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".gb.view.HomeActivity"></activity> <!-- 中间是国斌引入 -->
+        <activity android:name=".gb.view.HomeActivity" /> <!-- 中间是国斌引入 -->
+
+
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.ok100.weather"
@@ -81,6 +91,64 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+
+        <!--=====================================分享第三方===============================================-->
+
+        <!--新浪-->
+        <activity
+            android:name="com.umeng.socialize.media.WBShareCallBackActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <activity
+            android:name="com.sina.weibo.sdk.web.WeiboSdkWebActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name="com.sina.weibo.sdk.share.WbShareTransActivity"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
+            <intent-filter>
+                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!--qq-->
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true">
+            <intent-filter>
+
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="tencent100424468" />
+
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+
+        </activity>
+
+        <!--微信-->
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!--=====================================分享第三方结束===============================================-->
+
     </application>
 
 </manifest>
