@@ -174,12 +174,17 @@ public class NoticeMainFragment1 extends BaseFragment implements BaseQuickAdapte
                 Log.e("totalDy",totalDy+"");
                 if(totalDy<0){
                     if(isXiaoyulin){
+                        recyclerView.stopScroll();
                         bootomVisibleListener.setBootomVisible(true);
+                        taybarVisibleListener.setTaybarVisible(false);
                         isXiaoyulin = false;
                     }
-//                    taybarVisibleListener.setTaybarVisible(false);
+
                 }else {
+                    recyclerView.stopScroll();
                     isXiaoyulin = true;
+//                    bootomVisibleListener.setBootomVisible(false);
+//                    taybarVisibleListener.setTaybarVisible(true);
                     //滑到顶部
 //                    mRecyclerView.stopScroll();
                 }

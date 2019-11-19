@@ -597,6 +597,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
                     setBottomVisible(visible);
                     MainActivity activity = (MainActivity) getActivity();
                     activity.hitiTitle(visible);
+//                    mAppBarLayout.setVisibility(View.GONE);
 
                 }
             });
@@ -604,13 +605,8 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
 
                 @Override
                 public void setTaybarVisible(boolean visible) {
-                    if(visible){
-
-                    }else {
-
-//                        mAppBarLayout.setVisibility(View.GONE);
-
-                    }
+                    finalFragment.mRecyclerView.stopScroll();
+                    setAllGoneViewVisible(visible);
 
                 }
             });
