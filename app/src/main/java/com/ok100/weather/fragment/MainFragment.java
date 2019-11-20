@@ -786,6 +786,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
         switch (responseCode){
             case "getTotalWeather":
                 WeatherTotalBean weatherTotalBean = (WeatherTotalBean)o;
+                Log.e("weatherTotalBean",weatherTotalBean.toString());
                 setWeatherData(weatherTotalBean);
                 break;
             case "getTotalWeather15":

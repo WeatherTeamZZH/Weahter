@@ -59,11 +59,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     ViewPager mviewpager;
     @BindView(R.id.rceycleview_spot)
     RecyclerView mRceycleviewSpot;
-
-    MianSpotAdapter mianSpotAdapter;
-    List<MainSpotClickBean> mainSpotClickBeanList = new ArrayList<>();
-
-    public List<CityGreenDaoBean> cityGreenDaoBeanList = new ArrayList<>();
     @BindView(R.id.ll_all_bg)
     LinearLayout mLlAllBg;
     @BindView(R.id.iv_title_big_image)
@@ -82,6 +77,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     RelativeLayout mRlTitleAll;
     @BindView(R.id.rl_title_defult)
     RelativeLayout mRlTitleDefult;
+
+    MianSpotAdapter mianSpotAdapter;
+    List<MainSpotClickBean> mainSpotClickBeanList = new ArrayList<>();
+    public List<CityGreenDaoBean> cityGreenDaoBeanList = new ArrayList<>();
 
     @Override
     public int getLayoutID() {
@@ -301,16 +300,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 //        dataSave.setDataList("javaBean", weatherBeanList);
         //插入城市
         addGreenDAO(cityName);
+        initWeatherData();
         MainSpotClickBean mainSpotClickBean = new MainSpotClickBean();
         mainSpotClickBean.setClick(false);
         mainSpotClickBeanList.add(mainSpotClickBean);
         mianSpotAdapter.notifyDataSetChanged();
-
-
 //        int ceil = (int)Math.ceil(mTestFragments.size() / 2);
 //        mviewpager.setOffscreenPageLimit(ceil);
 
-        mTestFragments.put(key++, MainFragment.newInstance("上海",cityName,"上海"));
+        mTestFragments.put(key++, MainFragment.newInstance(cityGreenDaoBeanList.get(cityGreenDaoBeanList.size()-1).getProv(),cityName,""));
         mPagerAdapter.notifyDataSetChanged();
 
 
@@ -319,6 +317,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     private void addGreenDAO(String city) {
         CityGreenDaoBean cityGreenDaoBean = new CityGreenDaoBean();
         cityGreenDaoBean.setCity(city);
+        if(city.equals("北京")){
+            cityGreenDaoBean.setProv("北京");
+        }
+        if(city.equals("上海")){
+            cityGreenDaoBean.setProv("上海");
+        }
         cityGreenDaoBeanDao.insert(cityGreenDaoBean);
 
     }
