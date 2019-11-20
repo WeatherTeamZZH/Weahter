@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="E:\wai\wt\Weahter\Gpu-Image\assets"/><source path="E:\wai\wt\Weahter\Gpu-Image\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="E:\wai\wt\Weahter\Gpu-Image\src\debug\assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="G:\OKWeather\Gpu-Image\assets"/><source path="G:\OKWeather\Gpu-Image\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="G:\OKWeather\Gpu-Image\src\debug\assets"/></dataSet></merger>

@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
+import com.ok100.greendao.gen.CityGreenDaoBeanDao;
 import com.ok100.weather.MainActivity;
 import com.ok100.weather.R;
 import com.ok100.weather.receiver.NetReceiver;
@@ -58,11 +59,15 @@ public abstract class BaseActivity extends AppCompatActivity implements NetRecei
 
     private String title;
 
+    public CityGreenDaoBeanDao cityGreenDaoBeanDao;;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 //        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
 //        StatusBarCompat.compat(this, ContextCompat.getColor(this, R.color.themecolor));
+        BaseApplication application = (BaseApplication)getApplication();
+        cityGreenDaoBeanDao = application.getDaoSession().getCityGreenDaoBeanDao();
 
         if (mActivities == null) {
             mActivities = new Stack<BaseActivity>();

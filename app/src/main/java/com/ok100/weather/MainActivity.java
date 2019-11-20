@@ -1,5 +1,6 @@
 package com.ok100.weather;
 
+import android.app.Person;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,12 +15,16 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.ok100.greendao.gen.CityGreenDaoBeanDao;
 import com.ok100.weather.activity.MyCityActivity;
 import com.ok100.weather.activity.UserInofActivity;
 import com.ok100.weather.activity.ZhutiImgeActivity;
 import com.ok100.weather.adapter.MianSpotAdapter;
 import com.ok100.weather.base.BaseActivity;
+import com.ok100.weather.base.BaseApplication;
+import com.ok100.weather.bean.CityGreenDaoBean;
 import com.ok100.weather.bean.DepartmentListBean;
 import com.ok100.weather.bean.MainSpotClickBean;
 import com.ok100.weather.bean.WeatherBean;
@@ -58,7 +63,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     MianSpotAdapter mianSpotAdapter;
     List<MainSpotClickBean> mainSpotClickBeanList = new ArrayList<>();
 
-    public static List<WeatherBean> weatherBeanList = new ArrayList<>();
+    public List<CityGreenDaoBean> cityGreenDaoBeanList = new ArrayList<>();
     @BindView(R.id.ll_all_bg)
     LinearLayout mLlAllBg;
     @BindView(R.id.iv_title_big_image)
@@ -88,13 +93,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     private int key;
     private TextPagerAdapter mPagerAdapter;
 
+
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void InitView() {
 //        setTitle("首页", true, TITLE_TYPE_IMG, R.mipmap.back_left, false, 0, "地址管理");
         initWeatherData();
-        getDefultWeather();
-
         mTestFragments = new SparseArray<>();
         initViewpagerAdapter();
         initSpotAdapter();
@@ -166,22 +170,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     }
 
 
-    ListDataSave dataSave;
-
-    private void getDefultWeather() {
-        weatherBeanList = dataSave.getDataList("javaBean");
-    }
+//    ListDataSave dataSave;
 
     private void initWeatherData() {
-        weatherBeanList.clear();
-        dataSave = new ListDataSave(MainActivity.this, "weather");
-        dataSave.setDataList("javaBean", DataUtils.getDefultWeather());
-
+        cityGreenDaoBeanList.clear();
+        cityGreenDaoBeanList = searchGreenDao();
     }
 
     private void initViewpagerAdapter() {
-        for (int i = 0; i < weatherBeanList.size(); i++) {
-            mTestFragments.put(key++, MainFragment.newInstance("第" + i));
+        for (int i = 0; i < cityGreenDaoBeanList.size(); i++) {
+            mTestFragments.put(key++, MainFragment.newInstance(cityGreenDaoBeanList.get(i).getProv(),cityGreenDaoBeanList.get(i).getCity(),cityGreenDaoBeanList.get(i).getArea()));
         }
 
         mPagerAdapter = new TextPagerAdapter(getSupportFragmentManager(), mTestFragments);
@@ -218,7 +216,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             }
         }
         mianSpotAdapter.notifyDataSetChanged();
-        mTvCity.setText(weatherBeanList.get(location).getName());
+        mTvCity.setText(cityGreenDaoBeanList.get(location).getCity());
     }
 
 
@@ -299,9 +297,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     public void addCity(String cityName) {
 
-        weatherBeanList.add(new WeatherBean(cityName));
-        dataSave.setDataList("javaBean", weatherBeanList);
-
+//        weatherBeanList.add(new WeatherBean(cityName));
+//        dataSave.setDataList("javaBean", weatherBeanList);
+        //插入城市
+        addGreenDAO(cityName);
         MainSpotClickBean mainSpotClickBean = new MainSpotClickBean();
         mainSpotClickBean.setClick(false);
         mainSpotClickBeanList.add(mainSpotClickBean);
@@ -311,9 +310,38 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 //        int ceil = (int)Math.ceil(mTestFragments.size() / 2);
 //        mviewpager.setOffscreenPageLimit(ceil);
 
-        mTestFragments.put(key++, MainFragment.newInstance("第" + key));
+        mTestFragments.put(key++, MainFragment.newInstance("上海",cityName,"上海"));
         mPagerAdapter.notifyDataSetChanged();
 
+
+    }
+
+    private void addGreenDAO(String city) {
+        CityGreenDaoBean cityGreenDaoBean = new CityGreenDaoBean();
+        cityGreenDaoBean.setCity(city);
+        cityGreenDaoBeanDao.insert(cityGreenDaoBean);
+
+    }
+
+    private List<CityGreenDaoBean> searchGreenDao(){
+        List<CityGreenDaoBean> cityGreenDaoBeans = cityGreenDaoBeanDao.loadAll();
+        return cityGreenDaoBeans;
+//        if(cityBean != null) {
+//            cityBean.setCity("CD");
+//            // update为更新
+//            cityGreenDaoBeanDao.update(cityBean);
+//            Toast.makeText(MainActivity.this,"修改成功", Toast.LENGTH_SHORT).show();
+//        } else {
+//            Toast.makeText(MainActivity.this, "城市不存在", Toast.LENGTH_SHORT).show();
+//        }
+    }
+
+    private void deleteGreenDao(String cityName){
+        CityGreenDaoBean cityDao = cityGreenDaoBeanDao.queryBuilder().where(CityGreenDaoBeanDao.Properties.City.eq(cityName)).build().unique();
+        if(cityDao != null){
+            //通过Key来删除，这里的Key就是user字段中的ID号
+            cityGreenDaoBeanDao.deleteByKey(cityDao.getId());
+}
     }
 
     public void deleteCity(int position) {
@@ -323,20 +351,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         mainSpotClickBeanList.remove(position);
         mianSpotAdapter.notifyDataSetChanged();
 
-        dataSave.setDataList("javaBean", weatherBeanList);
+//        dataSave.setDataList("javaBean", weatherBeanList);
+        //删除城市
+        deleteGreenDao(cityGreenDaoBeanList.get(position).getCity());
         mTestFragments.removeAt(position);
         mPagerAdapter.notifyDataSetChanged();
-
-        Log.e("weatherBeanList", weatherBeanList.size() + "");
-
-
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
     }
 
     public interface SetZhutiBgListener {

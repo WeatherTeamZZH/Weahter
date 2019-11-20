@@ -21,11 +21,13 @@ import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.google.gson.JsonElement;
+import com.ok100.greendao.gen.CityGreenDaoBeanDao;
 import com.ok100.weather.MainActivity;
 import com.ok100.weather.R;
 import com.ok100.weather.adapter.MyCityAdapter1;
 import com.ok100.weather.adapter.MyCityAdapter2;
 import com.ok100.weather.base.BaseActivity;
+import com.ok100.weather.bean.CityGreenDaoBean;
 import com.ok100.weather.bean.DataBean;
 import com.ok100.weather.bean.DefultGridViewBean;
 import com.ok100.weather.bean.MyCityListBean;
@@ -69,6 +71,8 @@ public class MyCityActivity extends BaseActivity implements BaseQuickAdapter.OnI
     @BindView(R.id.iv_choose_city)
     ImageView mIvChooseCity;
 
+    public List<CityGreenDaoBean> cityGreenDaoBeanList = new ArrayList<>();
+
     @Override
     public int getLayoutID() {
         return R.layout.activity_my_city;
@@ -76,11 +80,13 @@ public class MyCityActivity extends BaseActivity implements BaseQuickAdapter.OnI
 
     @Override
     public void InitView() {
-        getDefultWeather();
+        initWeatherData();
+        //数据
+        cityDataList = searchGreenDao();
         myCityAdapter1 = new MyCityAdapter1();
         myCityAdapter1.setOnItemChildClickListener(this);
         mRecycleview1.setAdapter(myCityAdapter1);
-        myCityAdapter1.setNewData(generateData());
+        myCityAdapter1.setNewData(cityGreenDaoBeanList);
         mRecycleview1.setLayoutManager(new LinearLayoutManager(MyCityActivity.this));
 //        myCityAdapter1.setNestedScrollingEnabled(false);//禁止滑动
 
@@ -254,12 +260,9 @@ public class MyCityActivity extends BaseActivity implements BaseQuickAdapter.OnI
         switch (view.getId()) {
             case R.id.iv_delete:
                 //删除
+                deleteGreenDao(cityGreenDaoBeanList.get(position).getCity());
                 adapter.getData().remove(position);
                 adapter.notifyDataSetChanged();
-                MainActivity.weatherBeanList.remove(position);
-//                dataSave.setDataList("javaBean", MainActivity.weatherBeanList);
-                Log.e("weatherBeanList",MainActivity.weatherBeanList.size()+"AAAAAA");
-
                 delectCityListener.setdelectCity(position);
                 break;
         }
@@ -275,32 +278,12 @@ public class MyCityActivity extends BaseActivity implements BaseQuickAdapter.OnI
         finish();
     }
 
-//    List<WeatherBean> weatherBeanList = new ArrayList<>();
-
-    ListDataSave dataSave;
-    private void getDefultWeather() {
-        dataSave = new ListDataSave(MyCityActivity.this, "weather");
-        MainActivity.weatherBeanList = dataSave.getDataList("javaBean");
-
+    private void initWeatherData() {
+        cityGreenDaoBeanList.clear();
+        cityGreenDaoBeanList = searchGreenDao();
     }
 
-    private List<MyCityListBean> generateData() {
-        ArrayList<MyCityListBean> myCityAdapter1s = new ArrayList<>();
-        for(int i=0;i<MainActivity.weatherBeanList.size();i++){
 
-            String name = MainActivity.weatherBeanList.get(i).getName();
-            MyCityListBean myCityListBean = new MyCityListBean(name);
-            myCityAdapter1s.add(myCityListBean);
-        }
-        return myCityAdapter1s;
-
-    }
-
-    public void deleteCity(int position){
-        MainActivity.weatherBeanList.remove(position);
-        dataSave.setDataList("javaBean", MainActivity.weatherBeanList);
-
-    }
 
     public interface delectCityListener{
         void setdelectCity(int cityPosition);
@@ -310,5 +293,34 @@ public class MyCityActivity extends BaseActivity implements BaseQuickAdapter.OnI
 
     public static void setDelectCityListener(MyCityActivity.delectCityListener delectCityListener){
         MyCityActivity.delectCityListener = delectCityListener;
+    }
+
+    private void addGreenDAO(String city) {
+        CityGreenDaoBean cityGreenDaoBean = new CityGreenDaoBean();
+        cityGreenDaoBean.setCity(city);
+        cityGreenDaoBeanDao.insert(cityGreenDaoBean);
+    }
+
+    public List<CityGreenDaoBean>  cityDataList =new  ArrayList<CityGreenDaoBean>();
+
+    private List<CityGreenDaoBean> searchGreenDao(){
+        List<CityGreenDaoBean> cityGreenDaoBeans = cityGreenDaoBeanDao.loadAll();
+        return cityGreenDaoBeans;
+//        if(cityBean != null) {
+//            cityBean.setCity("CD");
+//            // update为更新
+//            cityGreenDaoBeanDao.update(cityBean);
+//            Toast.makeText(MainActivity.this,"修改成功", Toast.LENGTH_SHORT).show();
+//        } else {
+//            Toast.makeText(MainActivity.this, "城市不存在", Toast.LENGTH_SHORT).show();
+//        }
+    }
+
+    private void deleteGreenDao(String cityName){
+        CityGreenDaoBean cityDao = cityGreenDaoBeanDao.queryBuilder().where(CityGreenDaoBeanDao.Properties.City.eq(cityName)).build().unique();
+        if(cityDao != null){
+            //通过Key来删除，这里的Key就是user字段中的ID号
+            cityGreenDaoBeanDao.deleteByKey(cityDao.getId());
+        }
     }
 }

@@ -4,13 +4,11 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
@@ -18,11 +16,9 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Display;
-import android.view.GestureDetector;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -46,6 +42,8 @@ import com.ok100.weather.base.BaseFragment;
 import com.ok100.weather.bean.DataBean;
 import com.ok100.weather.bean.DepartmentListBean;
 import com.ok100.weather.bean.NoticeMainChooseBean;
+import com.ok100.weather.bean.WeatherTotal15Bean;
+import com.ok100.weather.bean.WeatherTotal24Bean;
 import com.ok100.weather.bean.WeatherTotalBean;
 import com.ok100.weather.gh.AirDialogFragment;
 import com.ok100.weather.gh.GH_DefaultDialogFragment;
@@ -64,7 +62,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import me.zhouzhuo.zzweatherview.WeatherItemView;
 import me.zhouzhuo.zzweatherview.WeatherModel;
@@ -159,21 +156,31 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     List<DepartmentListBean> departmentListBeans = new ArrayList<>();
     ArrayList<String> departmentListBeansString = new ArrayList<>();
 
-    public int selectposition = 0;
-    private String mSessionName;
 
-    private static final String KEY_ARGS_NAME = "key_args_name";
+    private String city;
+    private String prov;
+    private String area;
+
+    public static final String CITY = "city";
+    public static final String PROV = "prov";
+    public static final String AREA = "area";
+
+
     @Override
     protected int getLayoutID() {
-        mSessionName = getArguments().getString(KEY_ARGS_NAME);
+        city = getArguments().getString(CITY);
+        prov = getArguments().getString(PROV);
+        area = getArguments().getString(AREA);
         return R.layout.fragment_main;
     }
 
 
-    public static MainFragment newInstance(String sessionName) {
+    public static MainFragment newInstance(String prov,String city,String area) {
 
         Bundle args = new Bundle();
-        args.putString(KEY_ARGS_NAME, sessionName);
+        args.putString(PROV, prov);
+        args.putString(CITY, city);
+        args.putString(AREA, area);
         MainFragment fragment = new MainFragment();
         fragment.setArguments(args);
         return fragment;
@@ -541,7 +548,6 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
             @Override
             public void onPageSelected(int position) {
                 Log.e("position",position+"");
-                selectposition = position;
                 NoticeMainFragment1 getFragment = (NoticeMainFragment1) viewPagerDataSourceList.get(position).getFragment();;
 //                mSwipeRefreshLayoutVanlianNew.setRecycleview(getFragment.getRecyclerView());
             }
@@ -777,17 +783,44 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
 
     @Override
     public void returnData(String responseCode, Object o) {
-        WeatherTotalBean weatherTotalBean = (WeatherTotalBean)o;
-        Log.e("weatherTotalBean",weatherTotalBean.toString());
+        switch (responseCode){
+            case "getTotalWeather":
+                WeatherTotalBean weatherTotalBean = (WeatherTotalBean)o;
+                setWeatherData(weatherTotalBean);
+                break;
+            case "getTotalWeather15":
+                WeatherTotal15Bean getTotalWeather15 = (WeatherTotal15Bean)o;
+                break;
+            case "getTotalWeather24":
+                WeatherTotal24Bean getTotalWeather24 = (WeatherTotal24Bean)o;
+
+                break;
+        }
+
     }
 
     private void http() {
         NoticeMainListPresenterImpl noticeMainListPresenter = new NoticeMainListPresenterImpl(this);
         HashMap<String, String> hashMap = new HashMap<>();
 //        hashMap.put("area", "西湖");
-        hashMap.put("city", "杭州");
+        if(!TextUtils.isEmpty(prov)){
+            hashMap.put("prov", prov);
+        }
+
+        hashMap.put("city", city);
         hashMap.put("needday", "1");
-        hashMap.put("prov", "浙江");
         noticeMainListPresenter.getTotalWeather(getActivity(),hashMap);
+        hashMap.put("needday", "15");
+        noticeMainListPresenter.getTotalWeather15(getActivity(),hashMap);
+        hashMap.put("needday", "24");
+        noticeMainListPresenter.getTotalWeather24(getActivity(),hashMap);
     }
+
+
+    public void setWeatherData(WeatherTotalBean weatherTotalBean){
+        mTvWeatherTemp.setText(weatherTotalBean.getData().getNow().getDetail().getTemperature()+"°");
+
+    }
+
+
 }

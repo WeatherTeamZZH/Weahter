@@ -6,10 +6,11 @@ import android.widget.TextView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.ok100.weather.R;
+import com.ok100.weather.bean.CityGreenDaoBean;
 import com.ok100.weather.bean.MainSpotClickBean;
 import com.ok100.weather.bean.MyCityListBean;
 
-public class MyCityAdapter1 extends BaseQuickAdapter<MyCityListBean, BaseViewHolder> {
+public class MyCityAdapter1 extends BaseQuickAdapter<CityGreenDaoBean, BaseViewHolder> {
 
     private boolean isHide = true;
 
@@ -27,7 +28,7 @@ public class MyCityAdapter1 extends BaseQuickAdapter<MyCityListBean, BaseViewHol
 
 
     @Override
-    protected void convert(BaseViewHolder helper, MyCityListBean item) {
+    protected void convert(BaseViewHolder helper, CityGreenDaoBean item) {
         if(isHide){
             helper.getView(R.id.iv_delete).setVisibility(View.GONE);
             helper.getView(R.id.iv_end).setVisibility(View.GONE);
@@ -35,7 +36,7 @@ public class MyCityAdapter1 extends BaseQuickAdapter<MyCityListBean, BaseViewHol
             helper.getView(R.id.iv_delete).setVisibility(View.VISIBLE);
             helper.getView(R.id.iv_end).setVisibility(View.VISIBLE);
         }
-        helper.setText(R.id.tv_home,item.getTitleame());
+        helper.setText(R.id.tv_home,item.getCity());
         helper.addOnClickListener(R.id.iv_delete);
 //        TextView textView = helper.getView(R.id.tv_name);
 //        if(item.isClick()){

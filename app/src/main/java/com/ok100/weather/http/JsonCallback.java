@@ -1,6 +1,7 @@
 package com.ok100.weather.http;
 
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.lzy.okhttputils.callback.AbsCallback;
@@ -14,6 +15,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.lang.reflect.Type;
+import java.net.URLDecoder;
 
 import okhttp3.Response;
 
@@ -61,7 +63,7 @@ public abstract class JsonCallback<T> extends AbsCallback<T> {
 //        request.headers("token", "HeaderValue1");//
 //                .params("params1", "ParamsValue1")//
 //                .params("token", "3215sdf13ad1f65asd4f3ads1f");
-        request.headers("token", (String) SharePreferencesUtil.get(BaseApplication.getApplication(), ConstantCode.TOKEN, ""));    //header不支持中文
+//        request.headers("token", (String) SharePreferencesUtil.get(BaseApplication.getApplication(), ConstantCode.TOKEN, ""));    //header不支持中文
     }
 
     /**
@@ -80,6 +82,7 @@ public abstract class JsonCallback<T> extends AbsCallback<T> {
          */
 //        String decode = URLDecoder.decode(responseData, "UTF-8");
         JSONObject jsonObject = new JSONObject(responseData);
+        Log.e("jsonObject",jsonObject.toString());
 //        final String msg = jsonObject.optString("msg", "");
 //        final int code = jsonObject.optInt("err", 0);
 
