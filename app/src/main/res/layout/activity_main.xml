@@ -41,10 +41,10 @@
                 android:textSize="20dp"
                 />
             <TextView
-                android:id="@+id/tv_data"
+                android:id="@+id/tv_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="11月2日周六 农历十月初六"
+                android:text="----"
                 android:textSize="10dp"
                 android:layout_below="@+id/tv_city"
                 android:textColor="@color/white"

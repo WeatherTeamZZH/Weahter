@@ -35,6 +35,12 @@ import com.ok100.weather.myviewpager.TextPagerAdapter;
 import com.ok100.weather.utils.DataUtils;
 import com.ok100.weather.utils.ListDataSave;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,8 +55,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     ImageView mIvAddWeather;
     @BindView(R.id.tv_city)
     TextView mTvCity;
-    @BindView(R.id.tv_data)
-    TextView mTvData;
+    @BindView(R.id.tv_date)
+    TextView mTvDate;
     @BindView(R.id.iv_weather_share)
     ImageView mIvWeatherShare;
     @BindView(R.id.iv_weather_user)
@@ -98,6 +104,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     public void InitView() {
 //        setTitle("首页", true, TITLE_TYPE_IMG, R.mipmap.back_left, false, 0, "地址管理");
         initWeatherData();
+        initCity();
         mTestFragments = new SparseArray<>();
         initViewpagerAdapter();
         initSpotAdapter();
@@ -114,6 +121,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 Log.d("sort:", "onPageSelected: " + position);
                 mviewpager.setCurrentItem(position);
                 setSelect(position);
+                MainFragment mainfragment = mTestFragments.get(position);
+                mainfragment.setTitleDateListener(new TitleDateListener() {
+                    @Override
+                    public void setTitleDate(String string) {
+                        setTitleDate(string);
+                    }
+                });
+//                mainfragment.setTitleData();
 //                switch (position) {
 //                    case 0:
 //                        setSelect(0);
@@ -178,7 +193,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     private void initViewpagerAdapter() {
         for (int i = 0; i < cityGreenDaoBeanList.size(); i++) {
-            mTestFragments.put(key++, MainFragment.newInstance(cityGreenDaoBeanList.get(i).getProv(),cityGreenDaoBeanList.get(i).getCity(),cityGreenDaoBeanList.get(i).getArea()));
+            mTestFragments.put(key++, MainFragment.newInstance(cityGreenDaoBeanList.get(i).getProv(), cityGreenDaoBeanList.get(i).getCity(), cityGreenDaoBeanList.get(i).getArea()));
         }
 
         mPagerAdapter = new TextPagerAdapter(getSupportFragmentManager(), mTestFragments);
@@ -308,7 +323,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 //        int ceil = (int)Math.ceil(mTestFragments.size() / 2);
 //        mviewpager.setOffscreenPageLimit(ceil);
 
-        mTestFragments.put(key++, MainFragment.newInstance(cityGreenDaoBeanList.get(cityGreenDaoBeanList.size()-1).getProv(),cityName,""));
+        mTestFragments.put(key++, MainFragment.newInstance(cityGreenDaoBeanList.get(cityGreenDaoBeanList.size() - 1).getProv(), cityName, ""));
         mPagerAdapter.notifyDataSetChanged();
 
 
@@ -317,17 +332,17 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     private void addGreenDAO(String city) {
         CityGreenDaoBean cityGreenDaoBean = new CityGreenDaoBean();
         cityGreenDaoBean.setCity(city);
-        if(city.equals("北京")){
+        if (city.equals("北京")) {
             cityGreenDaoBean.setProv("北京");
         }
-        if(city.equals("上海")){
+        if (city.equals("上海")) {
             cityGreenDaoBean.setProv("上海");
         }
         cityGreenDaoBeanDao.insert(cityGreenDaoBean);
 
     }
 
-    private List<CityGreenDaoBean> searchGreenDao(){
+    private List<CityGreenDaoBean> searchGreenDao() {
         List<CityGreenDaoBean> cityGreenDaoBeans = cityGreenDaoBeanDao.loadAll();
         return cityGreenDaoBeans;
 //        if(cityBean != null) {
@@ -340,12 +355,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 //        }
     }
 
-    private void deleteGreenDao(String cityName){
+    private void deleteGreenDao(String cityName) {
         CityGreenDaoBean cityDao = cityGreenDaoBeanDao.queryBuilder().where(CityGreenDaoBeanDao.Properties.City.eq(cityName)).build().unique();
-        if(cityDao != null){
+        if (cityDao != null) {
             //通过Key来删除，这里的Key就是user字段中的ID号
             cityGreenDaoBeanDao.deleteByKey(cityDao.getId());
-}
+        }
+
     }
 
     public void deleteCity(int position) {
@@ -358,6 +374,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 //        dataSave.setDataList("javaBean", weatherBeanList);
         //删除城市
         deleteGreenDao(cityGreenDaoBeanList.get(position).getCity());
+        initWeatherData();
         mTestFragments.removeAt(position);
         mPagerAdapter.notifyDataSetChanged();
     }
@@ -370,15 +387,64 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         if (!visitle) {
             mRlTitleAll.setVisibility(View.GONE);
             mRlTitleDefult.setVisibility(View.VISIBLE);
-            Log.e("visible","mRlTitleAll隐藏");
-            Log.e("visible","RlTitleDefult显示");
+            Log.e("visible", "mRlTitleAll隐藏");
+            Log.e("visible", "RlTitleDefult显示");
         } else {
             mRlTitleAll.setVisibility(View.VISIBLE);
             mRlTitleDefult.setVisibility(View.GONE);
-            Log.e("visible","mRlTitleAll显示");
-            Log.e("visible","RlTitleDefult隐藏");
+            Log.e("visible", "mRlTitleAll显示");
+            Log.e("visible", "RlTitleDefult隐藏");
         }
 
     }
 
+    public void setTitleDate(String string) {
+        mTvDate.setText(string);
+    }
+
+    public interface TitleDateListener {
+        void setTitleDate(String string);
+    }
+
+    private void initCity() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        }).start();
+    }
+
+    public ArrayList<String> newList;
+
+    public String ReadTxtFile(String strFilePath) {
+        String path = strFilePath;
+        newList = new ArrayList<String>();
+        //打开文件
+        File file = new File(path);
+        //如果path是传递过来的参数，可以做一个非目录的判断
+        if (file.isDirectory()) {
+            Log.d("TestFile", "The File doesn't not exist.");
+        } else {
+            try {
+                InputStream instream = new FileInputStream(file);
+                if (instream != null) {
+                    InputStreamReader inputreader = new InputStreamReader(instream);
+                    BufferedReader buffreader = new BufferedReader(inputreader);
+                    String line;
+                    //分行读取
+                    while ((line = buffreader.readLine()) != null) {
+                        newList.add(line + "\n");
+                    }
+                    instream.close();
+                }
+            } catch (java.io.FileNotFoundException e) {
+                Log.d("TestFile", "The File doesn't not exist.");
+            } catch (IOException e) {
+                Log.d("TestFile", e.getMessage());
+            }
+        }
+        return strFilePath;
+
+    }
 }

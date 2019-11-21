@@ -19,6 +19,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Display;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -44,6 +45,7 @@ import com.ok100.weather.bean.DepartmentListBean;
 import com.ok100.weather.bean.NoticeMainChooseBean;
 import com.ok100.weather.bean.WeatherTotal15Bean;
 import com.ok100.weather.bean.WeatherTotal24Bean;
+import com.ok100.weather.bean.WeatherTotal7Bean;
 import com.ok100.weather.bean.WeatherTotalBean;
 import com.ok100.weather.gh.AirDialogFragment;
 import com.ok100.weather.gh.GH_DefaultDialogFragment;
@@ -55,18 +57,17 @@ import com.ok100.weather.presenter.NoticeMainListPresenterImpl;
 import com.ok100.weather.utils.DPUtils;
 import com.ok100.weather.view.MySwipeRefreshLayout;
 import com.ok100.weather.view.MyViewPager;
-import com.ok100.weather.view.MyViewPager1;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import me.zhouzhuo.zzweatherview.WeatherItemView;
 import me.zhouzhuo.zzweatherview.WeatherModel;
 import me.zhouzhuo.zzweatherview.ZzWeatherView;
-
 
 
 public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnItemClickListener, BaseQuickAdapter.OnItemLongClickListener, ReturnDataView<Object>, View.OnClickListener, BaseQuickAdapter.OnItemChildClickListener, SwipeRefreshLayout.OnRefreshListener, BaseQuickAdapter.RequestLoadMoreListener {
@@ -104,7 +105,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     @BindView(R.id.rl_title_bar)
     RelativeLayout mRlTitleBar;
     @BindView(R.id.viewPager)
-    MyViewPager  viewPager;
+    MyViewPager viewPager;
 
     Unbinder unbinder;
     @BindView(R.id.today24HourView)
@@ -130,16 +131,32 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     ImageView mIvUpdataList;
     @BindView(R.id.iv_shipin_list)
     ImageView mIvShipinList;
-    @BindView(R.id.tv_wendu_xiajiang)
-    TextView mTvWenduXiajiang;
-    @BindView(R.id.tv_wendu_shangsheng)
-    TextView mTvWenduShangsheng;
+
 
     @BindView(R.id.recyclerview_today_fuwu)
     RecyclerView mRecyclerviewTodayFuwu;
     Unbinder unbinder1;
     @BindView(R.id.ll_weather_view)
     LinearLayout mLlWeatherView;
+    @BindView(R.id.tv_kongqizhiliang)
+    TextView mTvKongqizhiliang;
+    @BindView(R.id.tv_bottom_today_wendu)
+    TextView mTvBottomTodayWendu;
+    @BindView(R.id.tv_bottom_today_weather)
+    TextView mTvBottomTodayWeather;
+    @BindView(R.id.tv_bottom_today_feng)
+    TextView mTvBottomTodayFeng;
+    @BindView(R.id.tv_bottom_tomorrow_wendu)
+    TextView mTvBottomTomorrowWendu;
+    @BindView(R.id.tv_bottom_tomorrow_weather)
+    TextView mTvBottomTomorrowWeather;
+    @BindView(R.id.tv_bottom_tomorrow_feng)
+    TextView mTvBottomTomorrowFeng;
+    Unbinder unbinder2;
+    @BindView(R.id.tv_richu_time)
+    TextView mTvRichuTime;
+    @BindView(R.id.tv_riluo_time)
+    TextView mTvRiluoTime;
 
     private IndexHorizontalScrollView indexHorizontalScrollView;
     private Today24HourView today24HourView;
@@ -147,8 +164,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
 
     private LinearLayout ll_notice_main_more_item;
     private List<ViewPagerDataSource> viewPagerDataSourceList = new ArrayList<>();
-    private float xxx = 0;
-    private float yyy = 0;
+
     private ArrayList<NoticeMainChooseBean> noticeMainChooseBeanList = new ArrayList<NoticeMainChooseBean>();
     private FragmentPagerAdapter fragmentPagerAdapter;
     private NoticeMainFragmentItemAdapter noticeMainFragmentItemAdapter;
@@ -175,7 +191,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     }
 
 
-    public static MainFragment newInstance(String prov,String city,String area) {
+    public static MainFragment newInstance(String prov, String city, String area) {
 
         Bundle args = new Bundle();
         args.putString(PROV, prov);
@@ -246,12 +262,18 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
         }
     }
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // TODO: inflate a fragment view
+        View rootView = super.onCreateView(inflater, container, savedInstanceState);
+        unbinder2 = ButterKnife.bind(this, rootView);
+        return rootView;
+    }
 
 
     public interface setItemTabListener {
         void setItemPosition(int position);
     }
-
 
 
     @Override
@@ -339,8 +361,6 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     }
 
 
-
-
     public void setOnClickItem(int pisition) {
         mTabLayout.getTabAt(pisition).select();
     }
@@ -360,7 +380,6 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     }
 
     private int mianTabHeight = 0;
-
 
 
     //状态栏高度
@@ -444,10 +463,9 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     }
 
 
-
     @RequiresApi(api = Build.VERSION_CODES.M)
     private void setNewArraylist(List<DepartmentListBean> departmentListBean) {
-        initItemAdapter();
+//        initItemAdapter();
         getTitleListData(departmentListBean);
         initFragment();
         initViewPager();
@@ -462,69 +480,50 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
         });
 
 
-
         mAppBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
                 Log.e("verticalOffset", verticalOffset + "");
-                float mTabLayoutX= mTabLayout.getX();
+                float mTabLayoutX = mTabLayout.getX();
                 Log.e("mTabLayoutX", mTabLayoutX + "");
 
                 int totalScrollRange = mAppBarLayout.getTotalScrollRange();
-                if(Math.abs(verticalOffset)>=totalScrollRange){
-                    Log.e("totalScrollRange","totalScrollRange---true");
+                if (Math.abs(verticalOffset) >= totalScrollRange) {
+                    Log.e("totalScrollRange", "totalScrollRange---true");
 
-                }else {
-                    Log.e("","");
-                    Log.e("totalScrollRange","totalScrollRange---fslse");
+                } else {
+                    Log.e("", "");
+                    Log.e("totalScrollRange", "totalScrollRange---fslse");
 
                 }
 
 
-                if(Math.abs(verticalOffset)>=totalScrollRange-100){
+                if (Math.abs(verticalOffset) >= totalScrollRange - 100) {
 //                    scrollToTop(false);
 
                 }
 
             }
         });
-
-
-
-
-
     }
 
 
-
-    public static Boolean  xxxxx = false;
-
-
-
-    public  void  scrollToTop( boolean flag){
+    public void scrollToTop(boolean flag) {
         CoordinatorLayout.Behavior behavior =
                 ((CoordinatorLayout.LayoutParams) mAppBarLayout.getLayoutParams()).getBehavior();
         if (behavior instanceof AppBarLayout.Behavior) {
             AppBarLayout.Behavior appBarLayoutBehavior = (AppBarLayout.Behavior) behavior;
-            if(flag){
+            if (flag) {
                 appBarLayoutBehavior.setTopAndBottomOffset(0); //快熟滑动到顶部
-            }else {
-                int hight= mAppBarLayout.getHeight();
+            } else {
+                int hight = mAppBarLayout.getHeight();
                 appBarLayoutBehavior.setTopAndBottomOffset(hight);//快速滑动实现吸顶效果
             }
         }
     }
 
 
-    private void changeItemData(int position) {
-        for (int i = 0; i < noticeMainChooseBeanList.size(); i++) {
-            if (i == position) {
-                noticeMainChooseBeanList.get(i).setState(true);
-            } else {
-                noticeMainChooseBeanList.get(i).setState(false);
-            }
-        }
-    }
+
 
     private void initViewPager() {
         viewPager.setOffscreenPageLimit(0);
@@ -547,8 +546,9 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
 
             @Override
             public void onPageSelected(int position) {
-                Log.e("position",position+"");
-                NoticeMainFragment1 getFragment = (NoticeMainFragment1) viewPagerDataSourceList.get(position).getFragment();;
+                Log.e("position", position + "");
+                NoticeMainFragment1 getFragment = (NoticeMainFragment1) viewPagerDataSourceList.get(position).getFragment();
+                ;
 //                mSwipeRefreshLayoutVanlianNew.setRecycleview(getFragment.getRecyclerView());
             }
 
@@ -559,9 +559,6 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
         });
     }
 
-    private void message(MyViewPager1 myViewPager1) {
-
-    }
 
     private void initFragment() {
 
@@ -636,29 +633,6 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
         }
     }
 
-    private void initItemAdapter() {
-        noticeMainFragmentItemAdapter = new NoticeMainFragmentItemAdapter();
-        NoticeMainChooseBean noticeMainChooseBean = new NoticeMainChooseBean("111", false);
-        noticeMainChooseBeanList.add(noticeMainChooseBean);
-        noticeMainChooseBeanList.add(noticeMainChooseBean);
-        noticeMainChooseBeanList.add(noticeMainChooseBean);
-        noticeMainChooseBeanList.add(noticeMainChooseBean);
-        noticeMainChooseBeanList.add(noticeMainChooseBean);
-        noticeMainChooseBeanList.add(noticeMainChooseBean);
-        noticeMainChooseBeanList.add(noticeMainChooseBean);
-        noticeMainChooseBeanList.add(noticeMainChooseBean);
-        noticeMainChooseBeanList.add(noticeMainChooseBean);
-        noticeMainChooseBeanList.add(noticeMainChooseBean);
-        noticeMainFragmentItemAdapter.setNewData(noticeMainChooseBeanList);
-        noticeMainFragmentItemAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                viewPager.setCurrentItem(position);
-                changeItemData(position);
-
-            }
-        });
-    }
 
     @Override
     public void onResume() {
@@ -705,6 +679,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     public void onDestroyView() {
         super.onDestroyView();
 //        unbinder.unbind();
+        unbinder2.unbind();
     }
 
     private class ViewPagerDataSource {
@@ -737,28 +712,27 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     public void setBottomVisible(boolean visible) {
         if (visible) {
             mRlMainBottom.setVisibility(View.VISIBLE);
-            Log.e("visible","RlMainBottom显示");
+            Log.e("visible", "RlMainBottom显示");
         } else {
             mRlMainBottom.setVisibility(View.GONE);
-            Log.e("visible","RlMainBottom隐藏");
+            Log.e("visible", "RlMainBottom隐藏");
         }
 
     }
 
 
-
-    public interface BootomVisibleListener{
+    public interface BootomVisibleListener {
         void setBootomVisible(boolean visible);
     }
 
-    public interface TaybarVisibleListener{
+    public interface TaybarVisibleListener {
         void setTaybarVisible(boolean visible);
     }
 
 
     public void setAllGoneViewVisible(boolean visible) {
         if (visible) {
-            Log.e("visible","mAppBarLayout显示");
+            Log.e("visible", "mAppBarLayout显示");
             mAppBarLayout.setVisibility(View.VISIBLE);
             CoordinatorLayout.Behavior behavior =
                     ((CoordinatorLayout.LayoutParams) mAppBarLayout.getLayoutParams()).getBehavior();
@@ -769,31 +743,37 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
                     appBarLayoutBehavior.setTopAndBottomOffset(0);
                 }
             }
-            for(int i = 0;i<viewPagerDataSourceList.size();i++){
-                NoticeMainFragment1 getFragment = (NoticeMainFragment1) viewPagerDataSourceList.get(i).getFragment();;
+            for (int i = 0; i < viewPagerDataSourceList.size(); i++) {
+                NoticeMainFragment1 getFragment = (NoticeMainFragment1) viewPagerDataSourceList.get(i).getFragment();
+                ;
                 getFragment.resateRecycle();
             }
 
         } else {
             mAppBarLayout.setVisibility(View.GONE);
-            Log.e("visible","mAppBarLayout隐藏");
+            Log.e("visible", "mAppBarLayout隐藏");
         }
 
     }
-
+    WeatherTotalBean weatherTotalBean ;
     @Override
     public void returnData(String responseCode, Object o) {
-        switch (responseCode){
+        switch (responseCode) {
             case "getTotalWeather":
-                WeatherTotalBean weatherTotalBean = (WeatherTotalBean)o;
-                Log.e("weatherTotalBean",weatherTotalBean.toString());
+                weatherTotalBean = (WeatherTotalBean) o;
+                Log.e("weatherTotalBean", weatherTotalBean.toString());
                 setWeatherData(weatherTotalBean);
                 break;
             case "getTotalWeather15":
-                WeatherTotal15Bean getTotalWeather15 = (WeatherTotal15Bean)o;
+                WeatherTotal15Bean getTotalWeather15 = (WeatherTotal15Bean) o;
+
+                break;
+            case "getTotalWeather7":
+                WeatherTotal7Bean weatherTotal7Bean = (WeatherTotal7Bean) o;
+                setTomorrowData(weatherTotal7Bean);
                 break;
             case "getTotalWeather24":
-                WeatherTotal24Bean getTotalWeather24 = (WeatherTotal24Bean)o;
+                WeatherTotal24Bean getTotalWeather24 = (WeatherTotal24Bean) o;
 
                 break;
         }
@@ -804,24 +784,50 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
         NoticeMainListPresenterImpl noticeMainListPresenter = new NoticeMainListPresenterImpl(this);
         HashMap<String, String> hashMap = new HashMap<>();
 //        hashMap.put("area", "西湖");
-        if(!TextUtils.isEmpty(prov)){
+        if (!TextUtils.isEmpty(prov)) {
             hashMap.put("prov", prov);
         }
 
         hashMap.put("city", city);
         hashMap.put("needday", "1");
-        noticeMainListPresenter.getTotalWeather(getActivity(),hashMap);
+        noticeMainListPresenter.getTotalWeather(getActivity(), hashMap);
+        hashMap.put("needday", "7");
+        noticeMainListPresenter.getTotalWeather7(getActivity(), hashMap);
         hashMap.put("needday", "15");
-        noticeMainListPresenter.getTotalWeather15(getActivity(),hashMap);
+        noticeMainListPresenter.getTotalWeather15(getActivity(), hashMap);
         hashMap.put("needday", "24");
-        noticeMainListPresenter.getTotalWeather24(getActivity(),hashMap);
+        noticeMainListPresenter.getTotalWeather24(getActivity(), hashMap);
     }
 
 
-    public void setWeatherData(WeatherTotalBean weatherTotalBean){
-        mTvWeatherTemp.setText(weatherTotalBean.getData().getNow().getDetail().getTemperature()+"°");
+    public void setWeatherData(WeatherTotalBean weatherTotalBean) {
+        mTvWeatherTemp.setText(weatherTotalBean.getData().getNow().getDetail().getTemperature() + "°");
+        mTvKongqizhiliang.setText(weatherTotalBean.getData().getNow().getDetail().getAqi() + " " + weatherTotalBean.getData().getNow().getDetail().getQuality());
+        mTvWeaterXiao.setText(weatherTotalBean.getData().getNow().getDetail().getWeather());
+        mTvShiduXiao.setText("湿度" + weatherTotalBean.getData().getNow().getDetail().getHumidity() + ">");
 
+        mTvRichuTime.setText("日出 "+weatherTotalBean.getData().getNow().getDetail().getSun_begin());
+        mTvRiluoTime.setText("日落 "+weatherTotalBean.getData().getNow().getDetail().getSun_end());
+
+        mTvBottomTodayWendu.setText(weatherTotalBean.getData().getNow().getCity().getNight_air_temperature() + "°/" + weatherTotalBean.getData().getNow().getCity().getDay_air_temperature() + "°");
+        mTvBottomTodayWeather.setText(weatherTotalBean.getData().getNow().getDetail().getWeather());
+        mTvBottomTodayFeng.setText(weatherTotalBean.getData().getNow().getDetail().getWind_power());
     }
 
+    public void setTomorrowData(WeatherTotal7Bean weatherTotal7Bean) {
+        mTvBottomTomorrowFeng.setText(weatherTotal7Bean.getData().getDay7().get(1).getDay_wind_power());
+        mTvBottomTomorrowWendu.setText(weatherTotal7Bean.getData().getDay7().get(1).getNight_air_temperature() + "°/" + weatherTotal7Bean.getData().getDay7().get(1).getDay_air_temperature() + "°");
+        mTvBottomTomorrowWeather.setText(weatherTotal7Bean.getData().getDay7().get(1).getDay_air_weather());
+    }
 
+    public MainActivity.TitleDateListener setTitleDateListener;
+    public void setTitleDateListener(MainActivity.TitleDateListener setTitleDateListener){
+        this.setTitleDateListener= setTitleDateListener;
+    };
+
+    public void setTitleData(){
+        if(weatherTotalBean!=null){
+            setTitleDateListener.setTitleDate(weatherTotalBean.getData().getNow().getDetail().getDate()+weatherTotalBean.getData().getNow().getDetail().getWeek()+" 农历"+weatherTotalBean.getData().getNow().getDetail().getNongli());
+        }
+    }
 }

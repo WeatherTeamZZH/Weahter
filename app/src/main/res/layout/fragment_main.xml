@@ -61,10 +61,11 @@
                                     android:textSize="150dp" />
 
                                 <RelativeLayout
-                                    android:layout_width="150dp"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_below="@+id/tv_weather_temp"
-                                    android:layout_marginLeft="@dimen/x30">
+                                    android:layout_marginLeft="@dimen/x30"
+                                    >
 
                                     <TextView
                                         android:id="@+id/tv_weater_xiao"
@@ -72,89 +73,71 @@
                                         android:layout_height="wrap_content"
                                         android:text="晴"
                                         android:textColor="@color/white"
-                                        android:textSize="16dp" />
+                                        android:textSize="16dp"
+                                        android:layout_centerVertical="true"/>
 
                                     <TextView
                                         android:id="@+id/tv_shidu_xiao"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
+                                       android:layout_toRightOf="@+id/tv_weater_xiao"
+                                        android:text="湿度  >"
+                                        android:layout_marginLeft="@dimen/x50"
+                                        android:textColor="@color/white"
+                                        android:textSize="16dp"
+                                        android:layout_centerVertical="true"/>
+
+                                    <TextView
+                                        android:id="@+id/tv_kongqizhiliang"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
                                         android:layout_alignParentRight="true"
-                                        android:text="体感11°>"
+                                        android:layout_marginRight="@dimen/x30"
+                                        android:background="@drawable/shape_white_4_bantou"
+                                        android:paddingLeft="@dimen/x30"
+                                        android:paddingTop="@dimen/x10"
+                                        android:paddingRight="@dimen/x30"
+                                        android:paddingBottom="@dimen/x10"
+                                        android:text=""
                                         android:textColor="@color/white"
                                         android:textSize="16dp" />
                                 </RelativeLayout>
 
                             </RelativeLayout>
 
-                            <RelativeLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
 
-                                <TextView
-                                    android:id="@+id/tv_wendu_xiajiang"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="@dimen/x30"
-                                    android:text="↓ 5°"
-                                    android:textColor="@color/white"
-                                    android:layout_centerVertical="true"
-                                    android:textSize="16dp" />
-
-                                <TextView
-                                    android:id="@+id/tv_wendu_shangsheng"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="@dimen/x30"
-                                    android:text="↑ 17°"
-                                    android:layout_centerVertical="true"
-                                    android:layout_toRightOf="@+id/tv_wendu_xiajiang"
-                                    android:textColor="@color/white"
-                                    android:textSize="16dp" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignParentRight="true"
-                                    android:layout_marginRight="@dimen/x30"
-                                    android:background="@drawable/shape_white_4_bantou"
-                                    android:paddingLeft="@dimen/x30"
-                                    android:paddingTop="@dimen/x10"
-                                    android:paddingRight="@dimen/x30"
-                                    android:paddingBottom="@dimen/x10"
-                                    android:text="59 良"
-                                    android:textColor="@color/white"
-                                    android:textSize="16dp" />
-                            </RelativeLayout>
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:paddingTop="@dimen/x20"
+                                android:paddingBottom="@dimen/x20"
+                                android:layout_marginTop="@dimen/x30"
+                                android:background="@drawable/shape_white_bantou33"
                                 android:orientation="horizontal">
                                 <LinearLayout
                                     android:layout_width="0dp"
                                     android:layout_weight="1"
                                     android:layout_height="wrap_content"
                                     android:orientation="horizontal">
-                                    <ImageView
-                                        android:layout_width="30dp"
-                                        android:layout_height="30dp"
-                                        android:background="@mipmap/ic_launcher"
-                                        android:layout_gravity="center_vertical"
-                                        />
+
                                     <LinearLayout
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
+                                        android:layout_marginLeft="@dimen/x30"
                                         android:orientation="vertical">
 
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:text="能见度"
+                                            android:text="今天"
                                             android:textColor="@color/white"
                                             />
                                         <TextView
+                                            android:id="@+id/tv_bottom_today_wendu"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:text="17.6km"
+                                            android:text="--"
+                                            android:layout_marginTop="@dimen/x10"
                                             android:textColor="@color/white"
                                             />
                                     </LinearLayout>
@@ -165,12 +148,45 @@
                                     android:layout_weight="1"
                                     android:layout_height="wrap_content"
                                     android:orientation="horizontal">
-                                    <ImageView
-                                        android:layout_width="30dp"
-                                        android:layout_height="30dp"
-                                        android:background="@mipmap/ic_launcher"
-                                        android:layout_gravity="center_vertical"
-                                        />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="right"
+                                        android:layout_marginRight="@dimen/x30"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:id="@+id/tv_bottom_today_weather"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text=""
+                                            android:textColor="@color/white"
+                                            />
+                                        <TextView
+                                            android:id="@+id/tv_bottom_today_feng"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="级"
+                                            android:layout_marginTop="@dimen/x10"
+                                            android:textColor="@color/white"
+                                            />
+                                    </LinearLayout>
+                                </LinearLayout>
+                                <View
+                                    android:layout_width="1px"
+                                    android:layout_marginTop="@dimen/x10"
+                                    android:layout_marginBottom="@dimen/x10"
+                                    android:background="@color/white"
+                                    android:layout_height="match_parent"/>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/x30"
+                                    android:orientation="horizontal">
+
                                     <LinearLayout
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -179,13 +195,15 @@
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:text="西风"
+                                            android:text="明天"
                                             android:textColor="@color/white"
                                             />
                                         <TextView
+                                            android:id="@+id/tv_bottom_tomorrow_wendu"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:text="2级"
+                                            android:text="--"
+                                            android:layout_marginTop="@dimen/x10"
                                             android:textColor="@color/white"
                                             />
                                     </LinearLayout>
@@ -196,58 +214,27 @@
                                     android:layout_weight="1"
                                     android:layout_height="wrap_content"
                                     android:orientation="horizontal">
-                                    <ImageView
-                                        android:layout_width="30dp"
-                                        android:layout_height="30dp"
-                                        android:background="@mipmap/ic_launcher"
-                                        android:layout_gravity="center_vertical"
-                                        />
+
                                     <LinearLayout
-                                        android:layout_width="wrap_content"
+                                        android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
+                                        android:gravity="right"
+                                        android:layout_marginRight="@dimen/x30"
                                         android:orientation="vertical">
 
                                         <TextView
+                                            android:id="@+id/tv_bottom_tomorrow_weather"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:text="温度"
+                                            android:text=""
                                             android:textColor="@color/white"
                                             />
                                         <TextView
+                                            android:id="@+id/tv_bottom_tomorrow_feng"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:text="45%"
-                                            android:textColor="@color/white"
-                                            />
-                                    </LinearLayout>
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="0dp"
-                                    android:layout_weight="1"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="horizontal">
-                                    <ImageView
-                                        android:layout_width="30dp"
-                                        android:layout_height="30dp"
-                                        android:background="@mipmap/ic_launcher"
-                                        android:layout_gravity="center_vertical"
-                                        />
-                                    <LinearLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:orientation="vertical">
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="气压"
-                                            android:textColor="@color/white"
-                                            />
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="1008hpa"
+                                            android:text="级"
+                                            android:layout_marginTop="@dimen/x10"
                                             android:textColor="@color/white"
                                             />
                                     </LinearLayout>
@@ -255,46 +242,67 @@
                             </LinearLayout>
                         </LinearLayout>
                     </RelativeLayout>
-
                 </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="@dimen/x30"
+                    android:background="@drawable/shape_white_bantou33">
+
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/x20"
                     >
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
                         android:text="24小时预报"
+                        android:layout_marginLeft="@dimen/x30"
+                        android:layout_marginTop="@dimen/x10"
+                        android:layout_marginBottom="@dimen/x10"
                         />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                        android:layout_alignParentRight="true"
                         android:layout_marginRight="@dimen/x30"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:layout_marginTop="@dimen/x10"
+                        android:layout_marginBottom="@dimen/x10"
+                        >
                         <TextView
+                            android:id="@+id/tv_richu_time"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/white"
-                            android:text="日出06:52"
+                            android:text="日出"
                             />
 
                         <TextView
+                            android:id="@+id/tv_riluo_time"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/white"
-                            android:text="日落17:06"
+                            android:text="日落"
                             android:layout_marginLeft="@dimen/x30"
                             />
                     </LinearLayout>
                 </RelativeLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/white"
+                    android:layout_marginTop="@dimen/x5"/>
                 <com.ok100.weather.hours24.IndexHorizontalScrollView
                     android:id="@+id/indexHorizontalScrollView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/shape_white_bantou33"
                     android:fadeScrollbars="false">
 
                     <com.ok100.weather.hours24.Today24HourView
@@ -303,13 +311,14 @@
                         android:layout_height="match_parent" />
 
                 </com.ok100.weather.hours24.IndexHorizontalScrollView>
-
+                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/ll_guanggao1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/x30"
+                    android:background="@drawable/shape_white_bantou33"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -365,16 +374,27 @@
                     </RelativeLayout>
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="@dimen/x30"
+                    android:background="@drawable/shape_white_bantou33">
+
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/x30"
+
                     >
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="15天预报"
+                        android:layout_marginLeft="@dimen/x30"
+                        android:layout_marginTop="@dimen/x10"
+                        android:layout_marginBottom="@dimen/x10"
                         android:textColor="@color/white"
                         android:textSize="15dp" />
 
@@ -382,7 +402,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:layout_marginRight="@dimen/x10"
+                        android:layout_marginRight="@dimen/x30"
+                        android:layout_marginTop="@dimen/x10"
+                        android:layout_marginBottom="@dimen/x10"
                         android:orientation="horizontal">
 
                         <TextView
@@ -415,8 +437,8 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="@dimen/x30"
+                    android:layout_height="1px"
+                    android:layout_marginTop="@dimen/x5"
                     android:background="@color/white" />
 
                 <LinearLayout
@@ -434,10 +456,10 @@
 
                         ></me.zhouzhuo.zzweatherview.ZzWeatherView>
 
-                    <include
-                        android:id="@+id/include"
-                        layout="@layout/main_tianqi_list_include"
-                        />
+                    <!--<include-->
+                        <!--android:id="@+id/include"-->
+                        <!--layout="@layout/main_tianqi_list_include"-->
+                        <!--/>-->
                 </LinearLayout>
 
 
@@ -448,17 +470,26 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:visibility="gone"></android.support.v7.widget.RecyclerView>
-
+                </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    >
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="@drawable/shape_white_bantou33"
+                        android:layout_marginTop="@dimen/x30">
+                        
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/x30"
                         android:text="这里是广告的标题"
+                        android:layout_marginTop="@dimen/x10"
                         android:textColor="@color/white"
                         android:textSize="16dp" />
 
@@ -471,7 +502,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="@dimen/x10">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -480,6 +512,7 @@
                             android:padding="@dimen/x10"
                             android:text="广告"
                             android:textSize="10dp"
+                            android:layout_marginLeft="@dimen/x30"
                             android:textColor="@color/white" />
 
                         <TextView
@@ -503,38 +536,58 @@
                             android:layout_marginRight="@dimen/x30"
                             android:textColor="@color/white" />
                     </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="@dimen/x30"
+                        android:background="@drawable/shape_white_bantou33">
+
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/x30"
                         android:text="品质服务"
+                        android:layout_marginTop="@dimen/x10"
                         android:textColor="@color/white" />
 
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/recyclerview_today_fuwu"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/x10"
                         android:background="#44ffffff"></android.support.v7.widget.RecyclerView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="@dimen/x30"
+                        android:layout_marginBottom="@dimen/x15"
+                        android:background="@drawable/shape_white_bantou33">
+
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/x30"
                         android:text="今日建议"
+                        android:layout_marginTop="@dimen/x10"
                         android:textColor="@color/white" />
 
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/recyclerview_today_suggest"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/x10"
                         android:background="#44ffffff"></android.support.v7.widget.RecyclerView>
                 </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
-
-
-
-
         </android.support.design.widget.AppBarLayout>
 
         <LinearLayout
@@ -547,7 +600,6 @@
                 android:id="@+id/rl_title_bar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-
                 >
 
                 <android.support.design.widget.TabLayout
@@ -594,13 +646,12 @@
                         android:src="@mipmap/notice_main_all_itme" />
                 </LinearLayout>
             </RelativeLayout>
+
             <com.ok100.weather.view.MySwipeRefreshLayout
                 android:id="@+id/swipeRefreshLayout_vanlian_new"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-
                 >
-
                 <com.ok100.weather.view.MyViewPager
                     android:id="@+id/viewPager"
                     android:layout_width="match_parent"
@@ -610,9 +661,7 @@
                     />
             </com.ok100.weather.view.MySwipeRefreshLayout>
         </LinearLayout>
-
-
-
+        
     </android.support.design.widget.CoordinatorLayout>
 
     <RelativeLayout
