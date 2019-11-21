@@ -4,14 +4,17 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -20,20 +23,18 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.google.gson.JsonElement;
+import com.ok100.greendao.gen.AllCityGreenBeanDao;
 import com.ok100.greendao.gen.CityGreenDaoBeanDao;
-import com.ok100.weather.MainActivity;
 import com.ok100.weather.R;
 import com.ok100.weather.adapter.MyCityAdapter1;
 import com.ok100.weather.adapter.MyCityAdapter2;
+import com.ok100.weather.adapter.MyCityAdapter4;
 import com.ok100.weather.base.BaseActivity;
+import com.ok100.weather.base.BaseApplication;
+import com.ok100.weather.bean.AllCityGreenBean;
 import com.ok100.weather.bean.CityGreenDaoBean;
 import com.ok100.weather.bean.DataBean;
 import com.ok100.weather.bean.DefultGridViewBean;
-import com.ok100.weather.bean.MyCityListBean;
-import com.ok100.weather.bean.WeatherBean;
-import com.ok100.weather.utils.ListDataSave;
-import com.ok100.weather.utils.SharePreferencesUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,6 +73,12 @@ public class MyCityActivity extends BaseActivity implements BaseQuickAdapter.OnI
     ImageView mIvChooseCity;
 
     public List<CityGreenDaoBean> cityGreenDaoBeanList = new ArrayList<>();
+    @BindView(R.id.recycleview4)
+    RecyclerView mRecycleview4;
+
+    MyCityAdapter4 myPindaoAdapter4;
+    @BindView(R.id.nestedscrollview)
+    NestedScrollView mNestedscrollview;
 
     @Override
     public int getLayoutID() {
@@ -89,6 +96,12 @@ public class MyCityActivity extends BaseActivity implements BaseQuickAdapter.OnI
         myCityAdapter1.setNewData(cityGreenDaoBeanList);
         mRecycleview1.setLayoutManager(new LinearLayoutManager(MyCityActivity.this));
 //        myCityAdapter1.setNestedScrollingEnabled(false);//禁止滑动
+        myCityAdapter1.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+
+            }
+        });
 
         mRecycleview2.setLayoutManager(new GridLayoutManager(MyCityActivity.this, 3));
         MyCityAdapter2 myPindaoAdapter2 = new MyCityAdapter2();
@@ -106,7 +119,8 @@ public class MyCityActivity extends BaseActivity implements BaseQuickAdapter.OnI
 
         mRecycleview3.setLayoutManager(new GridLayoutManager(MyCityActivity.this, 3));
         MyCityAdapter2 myPindaoAdapter3 = new MyCityAdapter2();
-        myPindaoAdapter3.setNewData(getAdapterData2());
+        //热门景区的东西
+//        myPindaoAdapter3.setNewData(getAdapterData2());
         mRecycleview3.setAdapter(myPindaoAdapter3);
         mRecycleview3.setNestedScrollingEnabled(false);//禁止滑动
         myPindaoAdapter3.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
@@ -116,7 +130,44 @@ public class MyCityActivity extends BaseActivity implements BaseQuickAdapter.OnI
                 stataActivity(cityName.getName());
             }
         });
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String textEidt = editText.getText().toString();
+                if (TextUtils.isEmpty(textEidt)) {
+                    mLlRecycle1.setVisibility(View.VISIBLE);
+                    mRecycleview4.setVisibility(View.GONE);
+                } else {
+                    mLlRecycle1.setVisibility(View.GONE);
+                    mRecycleview4.setVisibility(View.VISIBLE);
+
+                }
+                BaseApplication application = (BaseApplication) getApplication();
+                AllCityGreenBeanDao allCityGreenBeanDao = application.getDaoSession().getAllCityGreenBeanDao();
+                ArrayList<AllCityGreenBean> allCityGreenBeans = new ArrayList<>();
+                List<AllCityGreenBean> list1 = allCityGreenBeanDao.queryBuilder().where(AllCityGreenBeanDao.Properties.NAMECN.like("%" + textEidt + "%")).list();
+                List<AllCityGreenBean> list2 = allCityGreenBeanDao.queryBuilder().where(AllCityGreenBeanDao.Properties.DISTRICTCN.like("%" + textEidt + "%")).list();
+                for (int i = 0; i < list1.size(); i++) {
+                    Log.e("list1", list1.get(i).toString());
+                }
+                for (int i = 0; i < list2.size(); i++) {
+                    Log.e("list2", list2.get(i).toString());
+                }
+                allCityGreenBeans.addAll(list1);
+                allCityGreenBeans.addAll(list2);
+                myPindaoAdapter4.setNewData(allCityGreenBeans);
+            }
+        });
 
         editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -129,7 +180,7 @@ public class MyCityActivity extends BaseActivity implements BaseQuickAdapter.OnI
                     mLlRecycle1.setVisibility(View.VISIBLE);
                     //热门景区
 //                    mLlRecycle2.setVisibility(View.VISIBLE);
-                    editText.setGravity(Gravity.LEFT|Gravity.CENTER_VERTICAL);
+                    editText.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
                 } else {
                     mRlTitle.setVisibility(View.VISIBLE);
                     mTvMyCity.setVisibility(View.VISIBLE);
@@ -144,24 +195,29 @@ public class MyCityActivity extends BaseActivity implements BaseQuickAdapter.OnI
         });
 
         mRecycleview1.setNestedScrollingEnabled(false);
-    }
 
+
+        mRecycleview4.setLayoutManager(new LinearLayoutManager(MyCityActivity.this));
+        myPindaoAdapter4 = new MyCityAdapter4();
+        mRecycleview4.setAdapter(myPindaoAdapter4);
+        myPindaoAdapter4.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                AllCityGreenBean bean = (AllCityGreenBean) adapter.getData().get(position);
+                stataActivity(bean.getNAMECN());
+            }
+        });
+//        mRecycleview4.setNestedScrollingEnabled(false);//禁止滑动
+
+    }
 
 
     private List<DefultGridViewBean> getAdapterData2() {
-
         ArrayList<DefultGridViewBean> defultGridViewBeans = new ArrayList<>();
-        DefultGridViewBean defultGridViewBean = new DefultGridViewBean("天津");
-        defultGridViewBeans.add(defultGridViewBean);
-        defultGridViewBeans.add(defultGridViewBean);
-        defultGridViewBeans.add(defultGridViewBean);
-        defultGridViewBeans.add(defultGridViewBean);
-        defultGridViewBeans.add(defultGridViewBean);
-        defultGridViewBeans.add(defultGridViewBean);
+        DefultGridViewBean defultGridViewBean = new DefultGridViewBean("西双版纳");
         defultGridViewBeans.add(defultGridViewBean);
         return defultGridViewBeans;
     }
-
 
 
     @Override
@@ -189,6 +245,13 @@ public class MyCityActivity extends BaseActivity implements BaseQuickAdapter.OnI
                 break;
             case R.id.textview_quxiao:
                 fangjiaodian(v);
+                mRlTitle.setVisibility(View.VISIBLE);
+                mTvMyCity.setVisibility(View.VISIBLE);
+                mRecycleview1.setVisibility(View.VISIBLE);
+                mTextviewQuxiao.setVisibility(View.GONE);
+                mLlRecycle1.setVisibility(View.GONE);
+                mLlRecycle2.setVisibility(View.GONE);
+                mRecycleview4.setVisibility(View.GONE);
                 break;
             case R.id.iv_choose_city:
                 mRlTitle.setVisibility(View.GONE);
@@ -196,7 +259,7 @@ public class MyCityActivity extends BaseActivity implements BaseQuickAdapter.OnI
                 mRecycleview1.setVisibility(View.GONE);
                 mTextviewQuxiao.setVisibility(View.VISIBLE);
                 mLlRecycle1.setVisibility(View.VISIBLE);
-                mLlRecycle2.setVisibility(View.VISIBLE);
+                mLlRecycle2.setVisibility(View.GONE);
                 break;
         }
     }
@@ -268,7 +331,8 @@ public class MyCityActivity extends BaseActivity implements BaseQuickAdapter.OnI
         }
     }
 
-    public static int MyCityResult =10001;
+    public static int MyCityResult = 10001;
+
     public void stataActivity(String cityName) {
         Intent intent = new Intent();
         intent.putExtra("cityName", cityName); //将计算的值回传回去
@@ -283,15 +347,21 @@ public class MyCityActivity extends BaseActivity implements BaseQuickAdapter.OnI
         cityGreenDaoBeanList = searchGreenDao();
     }
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
+    }
 
 
-    public interface delectCityListener{
+    public interface delectCityListener {
         void setdelectCity(int cityPosition);
     }
 
     public static MyCityActivity.delectCityListener delectCityListener;
 
-    public static void setDelectCityListener(MyCityActivity.delectCityListener delectCityListener){
+    public static void setDelectCityListener(MyCityActivity.delectCityListener delectCityListener) {
         MyCityActivity.delectCityListener = delectCityListener;
     }
 
@@ -301,9 +371,9 @@ public class MyCityActivity extends BaseActivity implements BaseQuickAdapter.OnI
         cityGreenDaoBeanDao.insert(cityGreenDaoBean);
     }
 
-    public List<CityGreenDaoBean>  cityDataList =new  ArrayList<CityGreenDaoBean>();
+    public List<CityGreenDaoBean> cityDataList = new ArrayList<CityGreenDaoBean>();
 
-    private List<CityGreenDaoBean> searchGreenDao(){
+    private List<CityGreenDaoBean> searchGreenDao() {
         List<CityGreenDaoBean> cityGreenDaoBeans = cityGreenDaoBeanDao.loadAll();
         return cityGreenDaoBeans;
 //        if(cityBean != null) {
@@ -316,9 +386,9 @@ public class MyCityActivity extends BaseActivity implements BaseQuickAdapter.OnI
 //        }
     }
 
-    private void deleteGreenDao(String cityName){
+    private void deleteGreenDao(String cityName) {
         CityGreenDaoBean cityDao = cityGreenDaoBeanDao.queryBuilder().where(CityGreenDaoBeanDao.Properties.City.eq(cityName)).build().unique();
-        if(cityDao != null){
+        if (cityDao != null) {
             //通过Key来删除，这里的Key就是user字段中的ID号
             cityGreenDaoBeanDao.deleteByKey(cityDao.getId());
         }

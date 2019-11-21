@@ -17,6 +17,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ok100.greendao.gen.AllCityGreenBeanDao;
 import com.ok100.greendao.gen.CityGreenDaoBeanDao;
 import com.ok100.weather.activity.MyCityActivity;
 import com.ok100.weather.activity.UserInofActivity;
@@ -24,6 +25,7 @@ import com.ok100.weather.activity.ZhutiImgeActivity;
 import com.ok100.weather.adapter.MianSpotAdapter;
 import com.ok100.weather.base.BaseActivity;
 import com.ok100.weather.base.BaseApplication;
+import com.ok100.weather.bean.AllCityGreenBean;
 import com.ok100.weather.bean.CityGreenDaoBean;
 import com.ok100.weather.bean.DepartmentListBean;
 import com.ok100.weather.bean.MainSpotClickBean;
@@ -35,6 +37,8 @@ import com.ok100.weather.myviewpager.TextPagerAdapter;
 import com.ok100.weather.utils.DataUtils;
 import com.ok100.weather.utils.ListDataSave;
 
+import org.greenrobot.greendao.query.QueryBuilder;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -42,6 +46,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
@@ -88,15 +93,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     List<MainSpotClickBean> mainSpotClickBeanList = new ArrayList<>();
     public List<CityGreenDaoBean> cityGreenDaoBeanList = new ArrayList<>();
 
-    @Override
-    public int getLayoutID() {
-        return R.layout.activity_main;
-    }
-
     private List<String> tagList;
     private SparseArray<MainFragment> mTestFragments;
     private int key;
     private TextPagerAdapter mPagerAdapter;
+
+
+    @Override
+    public int getLayoutID() {
+        return R.layout.activity_main;
+    }
 
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -108,6 +114,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         mTestFragments = new SparseArray<>();
         initViewpagerAdapter();
         initSpotAdapter();
+
+        List<CityGreenDaoBean> cityGreenDaoBeans = cityGreenDaoBeanDao.loadAll();
+        if(cityGreenDaoBeans!=null&&cityGreenDaoBeans.size()>0){
+            mTvCity.setText(cityGreenDaoBeans.get(0).getArea());
+        }
 
         mviewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -230,7 +241,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             }
         }
         mianSpotAdapter.notifyDataSetChanged();
-        mTvCity.setText(cityGreenDaoBeanList.get(location).getCity());
+        mTvCity.setText(cityGreenDaoBeanList.get(location).getArea());
     }
 
 
@@ -322,8 +333,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         mianSpotAdapter.notifyDataSetChanged();
 //        int ceil = (int)Math.ceil(mTestFragments.size() / 2);
 //        mviewpager.setOffscreenPageLimit(ceil);
-
-        mTestFragments.put(key++, MainFragment.newInstance(cityGreenDaoBeanList.get(cityGreenDaoBeanList.size() - 1).getProv(), cityName, ""));
+        CityGreenDaoBean cityGreenDaoBean = cityGreenDaoBeanList.get(cityGreenDaoBeanList.size() - 1);
+        mTestFragments.put(key++, MainFragment.newInstance(cityGreenDaoBean.getProv(), cityGreenDaoBean.getCity(), cityGreenDaoBean.getArea()));
         mPagerAdapter.notifyDataSetChanged();
 
 
@@ -331,15 +342,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     private void addGreenDAO(String city) {
         CityGreenDaoBean cityGreenDaoBean = new CityGreenDaoBean();
-        cityGreenDaoBean.setCity(city);
-        if (city.equals("北京")) {
-            cityGreenDaoBean.setProv("北京");
-        }
-        if (city.equals("上海")) {
-            cityGreenDaoBean.setProv("上海");
+        List<AllCityGreenBean> list = allCityGreenBeanDao.queryBuilder().where(AllCityGreenBeanDao.Properties.NAMECN.like("%" + city + "%")).list();
+        if(list!=null&&list.size()>0){
+            cityGreenDaoBean.setCity(list.get(0).getDISTRICTCN());
+            cityGreenDaoBean.setProv(list.get(0).getPROVCN());
+            cityGreenDaoBean.setArea(list.get(0).getNAMECN());
+
         }
         cityGreenDaoBeanDao.insert(cityGreenDaoBean);
-
     }
 
     private List<CityGreenDaoBean> searchGreenDao() {
@@ -410,41 +420,73 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         new Thread(new Runnable() {
             @Override
             public void run() {
-
+                String readTxtFile = ReadTxtFile();
+                Log.e("readTxtFile",readTxtFile);
+                List<String> stringList = stringToList(readTxtFile,"\\|");
+                Log.e("stringList",stringList.size()+"");
+                addAllCityDb(stringList);
             }
         }).start();
     }
 
-    public ArrayList<String> newList;
+    AllCityGreenBeanDao allCityGreenBeanDao ;
+    public void addAllCityDb(List<String> stringList){
+//        try{
+        BaseApplication application = (BaseApplication)getApplication();
+        allCityGreenBeanDao = application.getDaoSession().getAllCityGreenBeanDao();
+        AllCityGreenBean allCityGreenBean ;
+        for(int i = 0;i<stringList.size();i++){
+            String string = stringList.get(i);
+            List<String> strings = stringToList(string, ",");
+         int size =  allCityGreenBeanDao.queryBuilder().where(AllCityGreenBeanDao.Properties.NAMECN.eq(strings.get(2))).list().size();
+            if(size == 0){
+                allCityGreenBean = new AllCityGreenBean();
+                allCityGreenBean.setAREAID(strings.get(0));
+                allCityGreenBean.setNAMECN(strings.get(2));
+                allCityGreenBean.setDISTRICTCN(strings.get(4));
+                allCityGreenBean.setPROVCN(strings.get(6));
+                allCityGreenBean.setNATIONCN(strings.get(8));
+                allCityGreenBeanDao.insert(allCityGreenBean);
+            }
+        }
+        Log.e("init","数据库初始化完成");
+//        }catch (Exception e){
+//            Log.e("init","数据库初始化失败");
+//        }
 
-    public String ReadTxtFile(String strFilePath) {
-        String path = strFilePath;
-        newList = new ArrayList<String>();
-        //打开文件
-        File file = new File(path);
-        //如果path是传递过来的参数，可以做一个非目录的判断
-        if (file.isDirectory()) {
-            Log.d("TestFile", "The File doesn't not exist.");
-        } else {
-            try {
-                InputStream instream = new FileInputStream(file);
-                if (instream != null) {
-                    InputStreamReader inputreader = new InputStreamReader(instream);
+    }
+
+
+    private List<String> stringToList(String strs,String split) {
+        String str[] = strs.split(split);
+        return Arrays.asList(str);
+    }
+
+        public ArrayList<String> newList;
+
+    public String ReadTxtFile() {
+
+        StringBuffer stringBuffer = new StringBuffer();
+        try {
+//                InputStream inputStream = new FileInputStream(file);
+                InputStream inputStream = getResources().openRawResource(R.raw.city);
+                if (inputStream != null) {
+                    InputStreamReader inputreader = new InputStreamReader(inputStream);
                     BufferedReader buffreader = new BufferedReader(inputreader);
                     String line;
                     //分行读取
                     while ((line = buffreader.readLine()) != null) {
-                        newList.add(line + "\n");
+//                        newList.add(line + "\n");
+                        stringBuffer.append(line);
                     }
-                    instream.close();
+                    inputStream.close();
                 }
             } catch (java.io.FileNotFoundException e) {
                 Log.d("TestFile", "The File doesn't not exist.");
             } catch (IOException e) {
                 Log.d("TestFile", e.getMessage());
             }
-        }
-        return strFilePath;
+        return stringBuffer.toString();
 
     }
 }

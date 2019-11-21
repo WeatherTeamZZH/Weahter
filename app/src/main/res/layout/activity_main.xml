@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@mipmap/main_bg4"
+    android:background="@mipmap/main_bg8"
     android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
@@ -16,7 +16,7 @@
     <RelativeLayout
         android:id="@+id/rl_title_defult"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         >
         <ImageView
             android:layout_width="20dp"
@@ -29,7 +29,7 @@
 
         <RelativeLayout
             android:layout_toRightOf="@+id/iv_add_weather"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_marginLeft="@dimen/x30"
             android:layout_height="wrap_content">
             <TextView
@@ -44,7 +44,7 @@
                 android:id="@+id/tv_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="----"
+                android:text=""
                 android:textSize="10dp"
                 android:layout_below="@+id/tv_city"
                 android:textColor="@color/white"
@@ -55,7 +55,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/x10"
-                android:layout_below="@+id/tv_data"></android.support.v7.widget.RecyclerView>
+                android:layout_below="@+id/tv_date"
+                android:layout_marginBottom="@dimen/x10"
+                ></android.support.v7.widget.RecyclerView>
         </RelativeLayout>
 
         <ImageView
