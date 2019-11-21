@@ -36,7 +36,7 @@ public class MyCityAdapter1 extends BaseQuickAdapter<CityGreenDaoBean, BaseViewH
             helper.getView(R.id.iv_delete).setVisibility(View.VISIBLE);
             helper.getView(R.id.iv_end).setVisibility(View.VISIBLE);
         }
-        helper.setText(R.id.tv_home,item.getCity());
+        helper.setText(R.id.tv_home,item.getArea());
         helper.addOnClickListener(R.id.iv_delete);
 //        TextView textView = helper.getView(R.id.tv_name);
 //        if(item.isClick()){

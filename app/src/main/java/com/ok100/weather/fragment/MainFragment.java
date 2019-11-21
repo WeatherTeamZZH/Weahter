@@ -287,6 +287,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     protected void init(Bundle savedInstanceState, View contentView) {
         findView();
         setMianRelativeHeight();
+        mCoordinatorLayout.getBackground().setAlpha(0);
         mSwipeRefreshLayoutVanlianNew.setOnRefreshListener(this);
         Weather15MianAdapter weather15MianAdapter = new Weather15MianAdapter();
         mRecyclerview15weather.setAdapter(weather15MianAdapter);
@@ -484,9 +485,11 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
                 Log.e("verticalOffset", verticalOffset + "");
-                float mTabLayoutX = mTabLayout.getX();
-                Log.e("mTabLayoutX", mTabLayoutX + "");
 
+                int jvli = (int) -verticalOffset/2;
+                if(jvli<180){
+                    mCoordinatorLayout.getBackground().setAlpha(jvli);
+                }
                 int totalScrollRange = mAppBarLayout.getTotalScrollRange();
                 if (Math.abs(verticalOffset) >= totalScrollRange) {
                     Log.e("totalScrollRange", "totalScrollRange---true");
@@ -788,7 +791,15 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
             hashMap.put("prov", prov);
         }
 
-        hashMap.put("city", city);
+        if (!TextUtils.isEmpty(city)) {
+            hashMap.put("city", city);
+        }
+
+        if (!TextUtils.isEmpty(area)) {
+            hashMap.put("area", area);
+        }
+
+
         hashMap.put("needday", "1");
         noticeMainListPresenter.getTotalWeather(getActivity(), hashMap);
         hashMap.put("needday", "7");
@@ -812,6 +823,11 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
         mTvBottomTodayWendu.setText(weatherTotalBean.getData().getNow().getCity().getNight_air_temperature() + "°/" + weatherTotalBean.getData().getNow().getCity().getDay_air_temperature() + "°");
         mTvBottomTodayWeather.setText(weatherTotalBean.getData().getNow().getDetail().getWeather());
         mTvBottomTodayFeng.setText(weatherTotalBean.getData().getNow().getDetail().getWind_power());
+
+        if(weatherTotalBean!=null&&this.isVisible){
+            MainActivity activity = (MainActivity) getActivity();
+            activity.setTitleDate(weatherTotalBean.getData().getNow().getDetail().getDate()+" 周"+weatherTotalBean.getData().getNow().getDetail().getWeek()+" 农历"+weatherTotalBean.getData().getNow().getDetail().getNongli());
+        }
     }
 
     public void setTomorrowData(WeatherTotal7Bean weatherTotal7Bean) {
@@ -830,4 +846,20 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
             setTitleDateListener.setTitleDate(weatherTotalBean.getData().getNow().getDetail().getDate()+weatherTotalBean.getData().getNow().getDetail().getWeek()+" 农历"+weatherTotalBean.getData().getNow().getDetail().getNongli());
         }
     }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if(isVisibleToUser){
+            Log.e("isVisibleToUser","true"+area);
+            if(weatherTotalBean!=null){
+                MainActivity activity = (MainActivity) getActivity();
+                activity.setTitleDate(weatherTotalBean.getData().getNow().getDetail().getDate()+" 周"+weatherTotalBean.getData().getNow().getDetail().getWeek()+" 农历"+weatherTotalBean.getData().getNow().getDetail().getNongli());
+            }
+
+        } else {
+            Log.e("isVisibleToUser","false"+area);
+        }
+    }
+
 }
