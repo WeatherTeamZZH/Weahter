@@ -11,6 +11,7 @@ import android.graphics.Path;
 import android.graphics.PathMeasure;
 import android.graphics.RectF;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
@@ -307,13 +308,13 @@ public class NewCreditSesameView extends View {
         canvas.drawText("AQI指数", radius, radius - 130, mTextPaint);
 
         //绘制信用分数
-        mTextPaint.setTextSize(200);
+        mTextPaint.setTextSize(150);
 //    mTextPaint.setStyle(Paint.Style.STROKE);
         canvas.drawText(String.valueOf(mMinNum), radius, radius + 70, mTextPaint);
 
         //绘制信用级别
         mTextPaint.setTextSize(40);
-        canvas.drawText(sesameLevel, radius, radius + 160 + 50, mTextPaint);
+        canvas.drawText(sesameLevel, radius, radius + 160, mTextPaint);
 
         //绘制评估时间
         mTextPaint.setTextSize(30);
@@ -395,49 +396,54 @@ public class NewCreditSesameView extends View {
     }
 
 
-    public void setSesameValues(int values) {
+    public void setSesameValues(int mMaxNum,int mTotalAngle,String sesameLevel) {
         mCurrentAngle = 0f;
         mMinNum = 0;
 
-        if (values <= 350) {
-            mMaxNum = values;
-            mTotalAngle = 0f;
-            sesameLevel = "较差";
-//            evaluationTime = "评估时间:" + getCurrentTime();
-        } else if (values <= 550) {
-            mMaxNum = values;
-            mTotalAngle = (values - 350) * 80 / 400f + 2;
-            sesameLevel = "较差";
-//            evaluationTime = "评估时间:" + getCurrentTime();
-        } else if (values <= 700) {
-            mMaxNum = values;
-            if (values > 550 && values <= 600) {
-                sesameLevel = "中等";
-                mTotalAngle = (values - 550) * 120 / 150f + 43;
-            } else if (values > 600 && values <= 650) {
-                sesameLevel = "良好";
-                mTotalAngle = (values - 550) * 120 / 150f + 45;
-            } else {
-                sesameLevel = "优秀";
-                mTotalAngle = (values - 550) * 120 / 150f + 48;
-            }
-//            evaluationTime = "评估时间:" + getCurrentTime();
-        } else if (values <= 950) {
-            mMaxNum = values;
-            mTotalAngle = (values - 700) * 40 / 250f + 170;
-            sesameLevel = "极好";
-//            evaluationTime = "评估时间:" + getCurrentTime();
-        } else {
-            mTotalAngle = 240f;
-        }
+        this.mMaxNum = mTotalAngle;
+        this.mTotalAngle = mTotalAngle;
+        this.sesameLevel = sesameLevel;
+
+
+//        if (values <= 350) {
+//            mMaxNum = values;
+//            mTotalAngle = 0f;
+//            sesameLevel = "较差";
+////            evaluationTime = "评估时间:" + getCurrentTime();
+//        } else if (values <= 550) {
+//            mMaxNum = values;
+//            mTotalAngle = (values - 350) * 80 / 400f + 2;
+//            sesameLevel = "较差";
+////            evaluationTime = "评估时间:" + getCurrentTime();
+//        } else if (values <= 700) {
+//            mMaxNum = values;
+//            if (values > 550 && values <= 600) {
+//                sesameLevel = "中等";
+//                mTotalAngle = (values - 550) * 120 / 150f + 43;
+//            } else if (values > 600 && values <= 650) {
+//                sesameLevel = "良好";
+//                mTotalAngle = (values - 550) * 120 / 150f + 45;
+//            } else {
+//                sesameLevel = "优秀";
+//                mTotalAngle = (values - 550) * 120 / 150f + 48;
+//            }
+////            evaluationTime = "评估时间:" + getCurrentTime();
+//        } else if (values <= 950) {
+//            mMaxNum = values;
+//            mTotalAngle = (values - 700) * 40 / 250f + 170;
+//            sesameLevel = "极好";
+////            evaluationTime = "评估时间:" + getCurrentTime();
+//        } else {
+//            mTotalAngle = 240f;
+//        }
 
         startAnim();
     }
 
 
     public void startAnim() {
-
-        ValueAnimator mAngleAnim = ValueAnimator.ofFloat(mCurrentAngle, mTotalAngle);
+        Log.d("mTotalAngle", mTotalAngle + "");
+        ValueAnimator mAngleAnim = ValueAnimator.ofFloat(0, mTotalAngle);
         mAngleAnim.setInterpolator(new AccelerateDecelerateInterpolator());
         mAngleAnim.setDuration(3000);
         mAngleAnim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -447,6 +453,8 @@ public class NewCreditSesameView extends View {
 
                 mCurrentAngle = (float) valueAnimator.getAnimatedValue();
                 postInvalidate();
+
+                Log.d("______gh", mCurrentAngle + "");
             }
         });
         mAngleAnim.start();

@@ -5,6 +5,7 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/tv_week"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -14,6 +15,7 @@
         android:textSize="11sp" />
 
     <TextView
+        android:id="@+id/tv_date"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"

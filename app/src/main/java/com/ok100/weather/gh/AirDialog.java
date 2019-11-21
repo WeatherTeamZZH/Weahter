@@ -94,10 +94,10 @@ public class AirDialog extends Dialog {
 //            Bundle args = new Bundle();
 //            args.putString("departmentId", i + "");
 //            fragment.setArguments(args);
-            fragmentList.add(AirItemFragment.getInstance("", ""));
-            fragmentList.add(AirItemFragment.getInstance("", ""));
-            fragmentList.add(AirItemFragment.getInstance("", ""));
-            fragmentList.add(AirItemFragment.getInstance("", ""));
+//            fragmentList.add(AirItemFragment.getInstance("", ""));
+//            fragmentList.add(AirItemFragment.getInstance("", ""));
+//            fragmentList.add(AirItemFragment.getInstance("", ""));
+//            fragmentList.add(AirItemFragment.getInstance("", ""));
             mTabEntities.add(new TabEntity(titlelist[i]));
         }
 

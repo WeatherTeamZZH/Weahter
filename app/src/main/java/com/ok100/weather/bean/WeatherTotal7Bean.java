@@ -1,8 +1,9 @@
 package com.ok100.weather.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class WeatherTotal7Bean {
+public class WeatherTotal7Bean implements Serializable {
 
 
     /**
@@ -200,7 +201,7 @@ public class WeatherTotal7Bean {
             }
         }
 
-        public static class Day7Bean {
+        public static class Day7Bean implements Serializable{
             /**
              * date : 20191119
              * week : 二

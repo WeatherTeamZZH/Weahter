@@ -16,8 +16,10 @@ import android.widget.TextView;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.ok100.weather.R;
 import com.ok100.weather.base.BaseFragment;
+import com.ok100.weather.bean.WeatherTotal7Bean;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -50,11 +52,12 @@ public class AirFragment extends BaseFragment {
     private String[] titlelist = new String[]{"周一\n11-8", "周二", "周三", "周四", "周五"};
     private ArrayList<Fragment> fragmentList;
 
-    public static AirFragment getInstance(String type, String cityId) {
+    private WeatherTotal7Bean data;
+
+    public static AirFragment getInstance( WeatherTotal7Bean weatherTotal7Bean) {
         AirFragment fragment = new AirFragment();
         Bundle bundle = new Bundle();
-        bundle.putString("TYPE", type);
-        bundle.putString("cityId", cityId);
+        bundle.putSerializable("data", weatherTotal7Bean);
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -66,13 +69,32 @@ public class AirFragment extends BaseFragment {
 
     @Override
     protected void init(Bundle savedInstanceState, View view) {
+        initBundle();
+        initView(view);
+        initData();
+    }
+
+    private void initBundle() {
+        Bundle args = getArguments();
+        if (args != null) {
+            data = (WeatherTotal7Bean) args.getSerializable("data");
+        }
+    }
+
+    private void initView(View view) {
         tablayout = view.findViewById(R.id.tablayout);
         viewPager = view.findViewById(R.id.viewPager);
+    }
+
+    private void initData() {
+        if (data == null || data.getData() == null || data.getData().getDay7() == null || data.getData().getDay7().size()<5)return;
+
+        List<WeatherTotal7Bean.DataBean.Day7Bean> list = data.getData().getDay7();
 
         fragmentList = new ArrayList<>();
 
         for (int i = 0; i < 5; i++) {
-            fragmentList.add(AirItemFragment.getInstance("", ""));
+            fragmentList.add(AirItemFragment.getInstance(list.get(i)));
             mTabEntities.add(new TabEntity(titlelist[i]));
         }
 
@@ -97,23 +119,23 @@ public class AirFragment extends BaseFragment {
         tablayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         tablayout.setTabMode(TabLayout.MODE_FIXED);
         tablayout.setupWithViewPager(viewPager, false);
-        tablayout.getTabAt(0).setCustomView(R.layout.tablayou_view_housepk_left);
-        tablayout.getTabAt(1).setCustomView(R.layout.tablayou_view_housepk_left);
-        tablayout.getTabAt(2).setCustomView(R.layout.tablayou_view_housepk_left);
-        tablayout.getTabAt(3).setCustomView(R.layout.tablayou_view_housepk_left);
-        tablayout.getTabAt(4).setCustomView(R.layout.tablayou_view_housepk_left);
+        for (int i = 0; i < 5; i++) {
+            tablayout.getTabAt(i).setCustomView(R.layout.tablayou_view_housepk_left);
+            ((TextView) (tablayout.getTabAt(i).getCustomView().findViewById(R.id.tv_week))).setText("周"+list.get(i).getWeek());
+            ((TextView) (tablayout.getTabAt(i).getCustomView().findViewById(R.id.tv_date))).setText(list.get(i).getDate());
+        }
         tablayout.getTabAt(0).select();
 
         rvList.setLayoutManager(new LinearLayoutManager(getActivity()) );
         AirAdapter airAdapter = new AirAdapter();
         rvList.setAdapter(airAdapter);
 
-        ArrayList<String> list = new ArrayList<>();
+        ArrayList<String> lista = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
-            list.add("");
+            lista.add("");
         }
 
-        airAdapter.setNewData(list);
+        airAdapter.setNewData(lista);
     }
 
     @Override

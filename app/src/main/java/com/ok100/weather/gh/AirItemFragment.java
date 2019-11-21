@@ -4,9 +4,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.ok100.weather.R;
 import com.ok100.weather.base.BaseFragment;
+import com.ok100.weather.bean.WeatherTotal7Bean;
 
 import java.util.Random;
 
@@ -24,6 +26,18 @@ public class AirItemFragment extends BaseFragment {
 
     @BindView(R.id.sesame_view)
     NewCreditSesameView sesameView;
+    @BindView(R.id.tv_co2)
+    TextView tvCo2;
+    @BindView(R.id.tv_o3)
+    TextView tvO3;
+    @BindView(R.id.tv_so2)
+    TextView tvSo2;
+    @BindView(R.id.tv_co)
+    TextView tvCo;
+    @BindView(R.id.tv_pm25)
+    TextView tvPm25;
+    @BindView(R.id.tv_pm10)
+    TextView tvPm10;
     Unbinder unbinder;
 
     private String type;
@@ -31,11 +45,12 @@ public class AirItemFragment extends BaseFragment {
 
     private Random random = new Random();
 
-    public static AirItemFragment getInstance(String type, String cityId) {
+    private WeatherTotal7Bean.DataBean.Day7Bean data;
+
+    public static AirItemFragment getInstance(WeatherTotal7Bean.DataBean.Day7Bean data) {
         AirItemFragment fragment = new AirItemFragment();
         Bundle bundle = new Bundle();
-        bundle.putString("TYPE", type);
-        bundle.putString("cityId", cityId);
+        bundle.putSerializable("data", data);
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -55,8 +70,7 @@ public class AirItemFragment extends BaseFragment {
     private void initBundle() {
         Bundle args = getArguments();
         if (args != null) {
-            type = args.getString("TYPE");
-            cityId = args.getString("cityId");
+            data = (WeatherTotal7Bean.DataBean.Day7Bean) args.getSerializable("data");
         }
     }
 
@@ -65,14 +79,21 @@ public class AirItemFragment extends BaseFragment {
     }
 
     private void initData() {
-
+//        sesameView.setSesameValues(200, Integer.valueOf(data.getAqi()), data.getQuality());
+        tvCo2.setText("--");
+        tvO3.setText("--");
+        tvSo2.setText("--");
+        tvCo.setText("--");
+        tvPm25.setText("--");
+        tvPm10.setText("--");
     }
 
     @Override
     protected void lazyLoad() {
         setRefresh(true);
-        int i = random.nextInt(950-351);
-        sesameView.setSesameValues(i+351);
+//        int i = random.nextInt(950 - 351);
+//        sesameView.setSesameValues(i + 351);
+        sesameView.setSesameValues(200,Integer.valueOf(data.getAqi()),  data.getQuality());
     }
 
     @Override

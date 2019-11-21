@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.ok100.weather.R;
+import com.ok100.weather.bean.WeatherTotal7Bean;
 
 import java.util.ArrayList;
 
@@ -38,8 +39,13 @@ public class AirDialogFragment extends DialogFragment {
     private String[] titlelist = new String[]{"周一\n11-8", "周二", "周三", "周四", "周五"};
     private ArrayList<Fragment> fragmentList;
 
-    public static void access(FragmentManager fragmentManager) {
+    private WeatherTotal7Bean data;
+
+    public static void access(FragmentManager fragmentManager, WeatherTotal7Bean weatherTotal7Bean) {
         AirDialogFragment dialog = new AirDialogFragment();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("data", weatherTotal7Bean);
+        dialog.setArguments(bundle);
         dialog.show(fragmentManager,"tag");
 
     }
@@ -68,30 +74,31 @@ public class AirDialogFragment extends DialogFragment {
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-        Dialog dialog = getDialog();
-        if (dialog != null) {
-            DisplayMetrics dm = new DisplayMetrics();
-            getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
-            WindowManager.LayoutParams attributes = dialog.getWindow().getAttributes();
-            attributes.gravity = Gravity.CENTER;//对齐方式
-            dialog.getWindow().setAttributes(attributes);
-            dialog.getWindow().setLayout((int) (dm.widthPixels * 0.8), (int) (dm.heightPixels * 0.8));
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        initBundle();
+        initView();
+        initData();
+    }
+
+    private void initBundle() {
+        Bundle args = getArguments();
+        if (args != null) {
+            data = (WeatherTotal7Bean) args.getSerializable("data");
         }
     }
 
-    private void init(View view) {
-        tablayout = view.findViewById(R.id.tablayout);
-        viewPager = view.findViewById(R.id.viewPager);
+    private void initView() {
 
+    }
 
+    private void initData() {
         fragmentList = new ArrayList<>();
 
-            fragmentList.add(AirFragment.getInstance("", ""));
-            mTabEntities.add(new TabEntity(titlelist[0]));
-            fragmentList.add(RankFragment.getInstance("", ""));
-            mTabEntities.add(new TabEntity(titlelist[1]));
+        fragmentList.add(AirFragment.getInstance(data));
+        mTabEntities.add(new TabEntity(titlelist[0]));
+        fragmentList.add(RankFragment.getInstance("", ""));
+        mTabEntities.add(new TabEntity(titlelist[1]));
 
         FragmentPagerAdapter pagerAdapter = new FragmentPagerAdapter(getChildFragmentManager()) {
             @Override
@@ -119,6 +126,25 @@ public class AirDialogFragment extends DialogFragment {
         ((TextView) (tablayout.getTabAt(0).getCustomView())).setText("详细数据");
         ((TextView) (tablayout.getTabAt(1).getCustomView())).setText("实时监测点");
         tablayout.getTabAt(0).select();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Dialog dialog = getDialog();
+        if (dialog != null) {
+            DisplayMetrics dm = new DisplayMetrics();
+            getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
+            WindowManager.LayoutParams attributes = dialog.getWindow().getAttributes();
+            attributes.gravity = Gravity.CENTER;//对齐方式
+            dialog.getWindow().setAttributes(attributes);
+            dialog.getWindow().setLayout((int) (dm.widthPixels * 0.8), (int) (dm.heightPixels * 0.8));
+        }
+    }
+
+    private void init(View view) {
+        tablayout = view.findViewById(R.id.tablayout);
+        viewPager = view.findViewById(R.id.viewPager);
     }
 
 }
