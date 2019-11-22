@@ -25,9 +25,12 @@ import com.ok100.weather.R;
 import com.ok100.weather.activity.NoticeDetatilActivity;
 import com.ok100.weather.adapter.NoticeMainFragmentAdapter;
 import com.ok100.weather.base.BaseFragment;
+import com.ok100.weather.bean.NewsListBean;
 import com.ok100.weather.bean.NoticeMainListBean;
 import com.ok100.weather.http.ReturnDataView;
+import com.ok100.weather.presenter.NewsListPresenterImpl;
 import com.ok100.weather.presenter.NoticeMainListPresenterImpl;
+import com.ok100.weather.utils.ChooseTypeUtils;
 import com.ok100.weather.view.CustomLoadMoreViewNews;
 import com.ok100.weather.view.FullyLinearLayoutManager;
 import com.ok100.weather.view.MyLinearLayoutManager;
@@ -58,8 +61,12 @@ public class NoticeMainFragment1 extends BaseFragment implements BaseQuickAdapte
     private int page = 1;
     private int pageNubmer = 10;
     private String departmentId = "100";
+    private String type = "";
     private NoticeMainListPresenterImpl noticeMainListPresenterImpl;
     private ArrayList<NoticeMainListBean> listBeenData = new ArrayList<>();
+
+    NewsListBean newsListBean ;
+    NewsListPresenterImpl newsListPresenterImpl ;
 
     @Override
     public void onClick(View v) {
@@ -79,17 +86,24 @@ public class NoticeMainFragment1 extends BaseFragment implements BaseQuickAdapte
 
     @Override
     public void returnData(String responseCode, Object o) {
-        NoticeMainListBean noticeMainListBean = (NoticeMainListBean) o;
-        if (page == 1) {
-            listBeenData.clear();
+        switch (responseCode){
+            case "getNewsList":
+                newsListBean = (NewsListBean) o;
+                newsListBean.getResult().getData();
+                if (page == 1) {
+                    noticeMainFragmentAdapter.setNewData(newsListBean.getResult().getData());
 //            listBeenData.addAll(noticeMainListBean.getList());
 //            noticeMainFragmentAdapter.setNewData(listBeenData);
 //            mSwipeRefreshLayout.setRefreshing(false);
-        } else {
+                } else {
 //            listBeenData.addAll(noticeMainListBean.getList());
 //            noticeMainFragmentAdapter.setNewData(listBeenData);
-            noticeMainFragmentAdapter.loadMoreComplete();
+                    noticeMainFragmentAdapter.addData(newsListBean.getResult().getData());
+                    noticeMainFragmentAdapter.loadMoreComplete();
+                }
+                break;
         }
+
 
 //        if (noticeMainListBean.getList().size() < pageNubmer) {
 //            noticeMainFragmentAdapter.loadMoreEnd();
@@ -115,31 +129,14 @@ public class NoticeMainFragment1 extends BaseFragment implements BaseQuickAdapte
         recyvleViewScrollLister();
         noticeMainListPresenterImpl = new NoticeMainListPresenterImpl(this);
 
-
-//        mGestureDetector = new GestureDetector(new gestureListener()); //使用派生自OnGestureListener
-//
-//        mRecyclerView.setOnTouchListener(this);
-//        mRecyclerView.setFocusable(true);
-//        mRecyclerView.setClickable(true);
-//        mRecyclerView.setLongClickable(true);
-
-
     }
 
 
     private void http() {
-
+        newsListPresenterImpl =  new NewsListPresenterImpl(this);
         HashMap<String, String> stringStringHashMap = new HashMap<>();
-        stringStringHashMap.put("departmentId", departmentId);
-//        stringStringHashMap.put("departmentId" ,"");
-        stringStringHashMap.put("pageNum", page + "");
-        stringStringHashMap.put("pageSize", pageNubmer + "");
-        //TODO   这里不判断null会有问题，还需要检查
-//        if (getActivity() != null) {
-//            Log.e("11111" ,"11111");
-//            noticeMainListPresenterImpl.getNoticeList(getActivity(), stringStringHashMap);
-//        }
-
+        stringStringHashMap.put("type", ChooseTypeUtils.getNewType(type));
+        newsListPresenterImpl.getNewsList(getActivity(),stringStringHashMap);
     }
 
 
@@ -221,28 +218,13 @@ public class NoticeMainFragment1 extends BaseFragment implements BaseQuickAdapte
             }
         });
 
-
-        mRecyclerView.setOnFlingListener(new RecyclerView.OnFlingListener() {
-            @Override
-            public boolean onFling(int velocityX, int velocityY) {
-                Log.e("velocityY",velocityY+"");
-                Log.e("velocityX",velocityX+"");
-                return false;
-            }
-        });
-
-//        mRecyclerView.fling()
-
-
     }
     MyLinearLayoutManager1 linearLayoutManager ;
     private void initAdapter() {
         linearLayoutManager = new MyLinearLayoutManager1(getActivity());
         mRecyclerView.setLayoutManager(linearLayoutManager);
         noticeMainFragmentAdapter = new NoticeMainFragmentAdapter(getActivity());
-        noticeMainFragmentAdapter.setNewData(getArrayListData());
 //        mRecyclerView.setNestedScrollingEnabled(false);//禁止滑动
-
         mRecyclerView.setAdapter(noticeMainFragmentAdapter);
 
 
@@ -262,31 +244,21 @@ public class NoticeMainFragment1 extends BaseFragment implements BaseQuickAdapte
 //        LinearLayout layout = (LinearLayout) LayoutInflater.from(getActivity()).inflate(R.layout.item_news_main_footview, null);
 //        noticeMainFragmentAdapter.setFooterView(layout);
 
+        noticeMainFragmentAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                NewsListBean.ResultBean.DataBean newsListBean = (NewsListBean.ResultBean.DataBean) adapter.getData().get(position);
+                String url = newsListBean.getUrl();
+                Intent intent = new Intent(getActivity(), NoticeDetatilActivity.class);
+                intent.putExtra("url",url);
+                getActivity().startActivity(intent);
+
+            }
+        });
+
     }
 
-    private List<NoticeMainListBean> getArrayListData() {
-        ArrayList<NoticeMainListBean> noticeMainListBeans = new ArrayList<NoticeMainListBean>();
-        NoticeMainListBean noticeMainListBean1 = new NoticeMainListBean(1);
-        NoticeMainListBean noticeMainListBean2 = new NoticeMainListBean(2);
-        NoticeMainListBean noticeMainListBean3 = new NoticeMainListBean(3);
-        noticeMainListBeans.add(noticeMainListBean1);
-        noticeMainListBeans.add(noticeMainListBean2);
-        noticeMainListBeans.add(noticeMainListBean3);
-        noticeMainListBeans.add(noticeMainListBean1);
-        noticeMainListBeans.add(noticeMainListBean2);
-        noticeMainListBeans.add(noticeMainListBean1);
-        noticeMainListBeans.add(noticeMainListBean3);
-        noticeMainListBeans.add(noticeMainListBean2);
-        noticeMainListBeans.add(noticeMainListBean1);
-        noticeMainListBeans.add(noticeMainListBean3);
-        noticeMainListBeans.add(noticeMainListBean2);
-        noticeMainListBeans.add(noticeMainListBean1);
-        noticeMainListBeans.add(noticeMainListBean3);
-        noticeMainListBeans.add(noticeMainListBean2);
-        noticeMainListBeans.add(noticeMainListBean1);
-        noticeMainListBeans.add(noticeMainListBean3);
-        return noticeMainListBeans;
-    }
+
 
     private void findView() {
         mRecyclerView = (MyRecyclerView) findViewById(R.id.recycle);
@@ -295,6 +267,7 @@ public class NoticeMainFragment1 extends BaseFragment implements BaseQuickAdapte
 
         if (getArguments() != null) {
             departmentId = getArguments().getString("departmentId");
+            type = getArguments().getString("type");
         }
     }
 

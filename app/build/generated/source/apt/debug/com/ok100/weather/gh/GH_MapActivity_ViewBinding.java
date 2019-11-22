@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import butterknife.Unbinder;
 import butterknife.internal.Utils;
 import com.ok100.weather.R;
@@ -41,6 +42,18 @@ public class GH_MapActivity_ViewBinding implements Unbinder {
     target.ivUpdataList = Utils.findRequiredViewAsType(source, R.id.iv_updata_list, "field 'ivUpdataList'", ImageView.class);
     target.ivShipinList = Utils.findRequiredViewAsType(source, R.id.iv_shipin_list, "field 'ivShipinList'", ImageView.class);
     target.rlMainBottom = Utils.findRequiredViewAsType(source, R.id.rl_main_bottom, "field 'rlMainBottom'", RelativeLayout.class);
+    target.tvTemp = Utils.findRequiredViewAsType(source, R.id.tv_temp, "field 'tvTemp'", TextView.class);
+    target.tvWeather = Utils.findRequiredViewAsType(source, R.id.tv_weather, "field 'tvWeather'", TextView.class);
+    target.tvTime = Utils.findRequiredViewAsType(source, R.id.tv_time, "field 'tvTime'", TextView.class);
+    target.tvTigan = Utils.findRequiredViewAsType(source, R.id.tv_tigan, "field 'tvTigan'", TextView.class);
+    target.tvNengjiandu = Utils.findRequiredViewAsType(source, R.id.tv_nengjiandu, "field 'tvNengjiandu'", TextView.class);
+    target.tvShidu = Utils.findRequiredViewAsType(source, R.id.tv_shidu, "field 'tvShidu'", TextView.class);
+    target.tvQiya = Utils.findRequiredViewAsType(source, R.id.tv_qiya, "field 'tvQiya'", TextView.class);
+    target.tvFeng = Utils.findRequiredViewAsType(source, R.id.tv_feng, "field 'tvFeng'", TextView.class);
+    target.tvAqi = Utils.findRequiredViewAsType(source, R.id.tv_aqi, "field 'tvAqi'", TextView.class);
+    target.map = Utils.findRequiredViewAsType(source, R.id.map, "field 'map'", GH_MapView.class);
+    target.tvFenglevel = Utils.findRequiredViewAsType(source, R.id.tv_fenglevel, "field 'tvFenglevel'", TextView.class);
+    target.tvTitle = Utils.findRequiredViewAsType(source, R.id.tv_title, "field 'tvTitle'", TextView.class);
   }
 
   @Override
@@ -61,5 +74,17 @@ public class GH_MapActivity_ViewBinding implements Unbinder {
     target.ivUpdataList = null;
     target.ivShipinList = null;
     target.rlMainBottom = null;
+    target.tvTemp = null;
+    target.tvWeather = null;
+    target.tvTime = null;
+    target.tvTigan = null;
+    target.tvNengjiandu = null;
+    target.tvShidu = null;
+    target.tvQiya = null;
+    target.tvFeng = null;
+    target.tvAqi = null;
+    target.map = null;
+    target.tvFenglevel = null;
+    target.tvTitle = null;
   }
 }

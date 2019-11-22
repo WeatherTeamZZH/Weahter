@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
-            android:id="@+id/tv_notice_main_list_title"
+            android:id="@+id/tv_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/x30"
@@ -32,23 +32,24 @@
         android:layout_marginTop="@dimen/x30"
         android:orientation="horizontal">
         <ImageView
+            android:id="@+id/imageview1"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:background="@mipmap/ic_launcher"
+            android:layout_height="@dimen/x200"
             />
         <ImageView
+            android:id="@+id/imageview2"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:background="@mipmap/ic_launcher"
+            android:layout_height="@dimen/x200"
             android:layout_marginLeft="@dimen/x10"
             />
         <ImageView
+            android:id="@+id/imageview3"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:background="@mipmap/ic_launcher"
+            android:layout_height="@dimen/x200"
+
             android:layout_marginLeft="@dimen/x10"
             />
     </LinearLayout>

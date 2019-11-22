@@ -1,3 +1,0 @@
-# Referenced at G:\OKWeather\app\build\intermediates\manifests\full\debug\AndroidManifest.xml:37
--keep class com.ok100.weather.gb.stickercamera.App { <init>(...); }
-

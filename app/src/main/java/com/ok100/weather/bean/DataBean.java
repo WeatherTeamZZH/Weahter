@@ -237,4 +237,21 @@ public class DataBean {
 
         return defultGridViewBeans;
     }
+
+    public static List<String> getNewTitleList(){
+        ArrayList<String> strings = new ArrayList<>();
+        strings.add("头条");
+        strings.add("社会");
+        strings.add("国内");
+        strings.add("国际");
+        strings.add("娱乐");
+        strings.add("体育");
+        strings.add("军事");
+        strings.add("科技");
+        strings.add("财经");
+        strings.add("时尚");
+        return strings;
+    }
+
+
 }

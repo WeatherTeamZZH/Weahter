@@ -1664,6 +1664,10 @@
         "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\play-services-base-8.4.0.aar\\853e754b8f8b70942bd41027979afe2f\\res\\drawable-xhdpi\\common_plus_signin_btn_icon_dark_normal.9.png"
     },
     {
+        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\layout_ll_bitmap.xml.flat",
+        "source": "G:\\OKWeather\\app\\src\\main\\res\\layout\\ll_bitmap.xml"
+    },
+    {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_image_process.xml.flat",
         "source": "G:\\OKWeather\\app\\src\\main\\res\\layout\\activity_image_process.xml"
     },

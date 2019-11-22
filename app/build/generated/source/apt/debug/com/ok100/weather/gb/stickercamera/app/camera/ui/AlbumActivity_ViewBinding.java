@@ -7,8 +7,8 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import butterknife.Unbinder;
 import butterknife.internal.Utils;
-import com.astuetz.PagerSlidingTabStrip;
 import com.ok100.weather.R;
+import com.ok100.weather.gb.customview.PagerSlidingTabStrip;
 import java.lang.IllegalStateException;
 import java.lang.Override;
 

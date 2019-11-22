@@ -25,7 +25,7 @@
                 android:layout_weight="1"
                 >
                 <TextView
-                    android:id="@+id/tv_notice_main_list_title"
+                    android:id="@+id/tv_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/x30"
@@ -44,9 +44,11 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <TextView
+                    android:id="@+id/tv_updata"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="20000人浏览"
+                    android:text=""
+                    android:layout_marginLeft="@dimen/x30"
                     />
 
                 <TextView
@@ -56,6 +58,7 @@
                     android:background="@drawable/bg_gray_radius8"
                     android:padding="@dimen/x10"
                     android:layout_marginLeft="@dimen/x30"
+                    android:visibility="gone"
                     />
             </LinearLayout>
 
@@ -63,13 +66,13 @@
 
         </LinearLayout>
         <ImageView
-            android:id="@+id/iv_notice_main_list_pic"
+            android:id="@+id/imageview1"
             android:layout_width="0dp"
             android:layout_weight="100"
             android:layout_height="@dimen/y150"
             android:layout_marginTop="@dimen/y40"
             android:layout_marginRight="@dimen/x40"
-            android:background="@mipmap/ic_launcher" />
+            />
     </LinearLayout>
 
     <View

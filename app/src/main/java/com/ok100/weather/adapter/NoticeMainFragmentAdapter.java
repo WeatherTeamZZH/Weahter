@@ -15,35 +15,25 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.util.MultiTypeDelegate;
 import com.ok100.weather.R;
+import com.ok100.weather.bean.NewsListBean;
 import com.ok100.weather.bean.NoticeMainListBean;
 
 
-public class NoticeMainFragmentAdapter extends BaseQuickAdapter<NoticeMainListBean, BaseViewHolder> {
+public class NoticeMainFragmentAdapter extends BaseQuickAdapter<NewsListBean.ResultBean.DataBean, BaseViewHolder> {
 
-    private String keyWord;
     private Context context;
-
-    public void setKeyWord(String keyWord) {
-        this.keyWord = keyWord;
-    }
 
     public NoticeMainFragmentAdapter(Context context) {
         super(null);
         this.context = context;
-        setMultiTypeDelegate(new MultiTypeDelegate<NoticeMainListBean>() {
+        setMultiTypeDelegate(new MultiTypeDelegate<NewsListBean.ResultBean.DataBean>() {
             @Override
-            protected int getItemType(NoticeMainListBean itemBean) {
-                int plateType = itemBean.getType();
-                if (plateType == 1) {
+            protected int getItemType(NewsListBean.ResultBean.DataBean itemBean) {
+                int plateType = 1;
+                if ( !TextUtils.isEmpty(itemBean.getThumbnail_pic_s03())) {
                     plateType = 1;
-                } else if (plateType == 2) {
+                } else {
                     plateType = 2;
-                } else if (plateType == 3) {
-                    plateType = 3;
-                }else if (plateType == 4) {
-                    plateType = 4;
-                }else if (plateType == 5) {
-                    plateType = 5;
                 }
                 return plateType;
             }
@@ -59,36 +49,47 @@ public class NoticeMainFragmentAdapter extends BaseQuickAdapter<NoticeMainListBe
     }
 
     @Override
-    protected void convert(final BaseViewHolder helper, final NoticeMainListBean item) {
+    protected void convert(final BaseViewHolder helper, final NewsListBean.ResultBean.DataBean item) {
 
         switch (helper.getItemViewType()) {
             case 1:
-//                setData(helper, item);
-//                ImageView imageview1 = helper.getView(R.id.iv_notice_main_list_pic);
-//                Glide.with(context)
-////                        .load("http://192.168.23.1:8081/sp/client/86f2f332095d4fd7b67a55c84bf1fd7c/2fa657ee9ed947ceb9d4cac2520d1c0a.jpg")
-//                        .load(item.getImageUrl())
-//                        .centerCrop()
-//                        .crossFade()
-//                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-//                        .into(imageview1);
-//                if(item.getStick()==0){
-//                    helper.setVisible(R.id.tv_notice_main_list_top ,false);
-//                }else {
-//                    helper.setVisible(R.id.tv_notice_main_list_top ,true);
-//                }
+                helper.setText(R.id.tv_title,item.getTitle());
+                ImageView imageview1 = helper.getView(R.id.imageview1);
+                ImageView imageview2 = helper.getView(R.id.imageview2);
+                ImageView imageview3 = helper.getView(R.id.imageview3);
+                Glide.with(context)
+                        .load(item.getThumbnail_pic_s())
+                        .centerCrop()
+                        .crossFade()
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .into(imageview1);
+                Glide.with(context)
+                        .load(item.getThumbnail_pic_s02())
+                        .centerCrop()
+                        .crossFade()
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .into(imageview2);
+                Glide.with(context)
+                        .load(item.getThumbnail_pic_s03())
+                        .centerCrop()
+                        .crossFade()
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .into(imageview3);
 
                 break;
             case 2:
-//                setData(helper, item);
-//                ImageView imageview2 = helper.getView(R.id.iv_notice_main_list_pic);
-//                Glide.with(context)
-////                        .load("http://192.168.23.1:8081/sp/client/86f2f332095d4fd7b67a55c84bf1fd7c/2fa657ee9ed947ceb9d4cac2520d1c0a.jpg")
-//                        .load(item.getImageUrl())
-//                        .centerCrop()
-//                        .crossFade()
-//                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-//                        .into(imageview2);
+                if(!TextUtils.isEmpty(item.getTitle())){
+                    helper.setText(R.id.tv_title,item.getTitle());
+                    helper.setText(R.id.tv_updata,item.getDate());
+                }
+
+                ImageView imageview = helper.getView(R.id.imageview1);
+                Glide.with(context)
+                        .load(item.getThumbnail_pic_s())
+                        .centerCrop()
+                        .crossFade()
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .into(imageview);
                 break;
             case 3:
 //                setData(helper, item);
@@ -102,27 +103,4 @@ public class NoticeMainFragmentAdapter extends BaseQuickAdapter<NoticeMainListBe
                 break;
         }
     }
-
-
-
-    private SpannableStringBuilder changeColor(String result) {
-        int sTextLength = keyWord.length();
-        int start = result.indexOf(keyWord);
-        SpannableStringBuilder styledText = new SpannableStringBuilder(result);
-        if (!result.contains(keyWord)) {
-            return styledText;
-        }
-        styledText.setSpan(
-                new ForegroundColorSpan(Color.parseColor("#5788ff")),
-                start,
-                start + sTextLength,
-                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        return styledText;
-    }
-
-    private String isNoString(String string) {
-        String s = TextUtils.isEmpty(string) ? "暂无" : string;
-        return s;
-    }
-
 }

@@ -64,20 +64,20 @@ public final class R {
         public static final int content_container = 0x7f080065;
         public static final int day = 0x7f08006d;
         public static final int hour = 0x7f0800a1;
-        public static final int left = 0x7f0800d4;
-        public static final int min = 0x7f080107;
-        public static final int month = 0x7f080109;
-        public static final int options1 = 0x7f080119;
-        public static final int options2 = 0x7f08011a;
-        public static final int options3 = 0x7f08011b;
-        public static final int optionspicker = 0x7f08011c;
-        public static final int outmost_container = 0x7f08011d;
-        public static final int right = 0x7f080140;
-        public static final int rv_topbar = 0x7f08014f;
-        public static final int second = 0x7f080164;
-        public static final int timepicker = 0x7f080198;
-        public static final int tvTitle = 0x7f0801b1;
-        public static final int year = 0x7f08022e;
+        public static final int left = 0x7f0800d7;
+        public static final int min = 0x7f08010a;
+        public static final int month = 0x7f08010c;
+        public static final int options1 = 0x7f08011c;
+        public static final int options2 = 0x7f08011d;
+        public static final int options3 = 0x7f08011e;
+        public static final int optionspicker = 0x7f08011f;
+        public static final int outmost_container = 0x7f080120;
+        public static final int right = 0x7f080143;
+        public static final int rv_topbar = 0x7f080152;
+        public static final int second = 0x7f080167;
+        public static final int timepicker = 0x7f08019c;
+        public static final int tvTitle = 0x7f0801b5;
+        public static final int year = 0x7f080238;
     }
     public static final class integer {
         private integer() {}
@@ -89,8 +89,8 @@ public final class R {
 
         public static final int include_pickerview_topbar = 0x7f0a004d;
         public static final int layout_basepickerview = 0x7f0a005c;
-        public static final int pickerview_options = 0x7f0a007d;
-        public static final int pickerview_time = 0x7f0a007e;
+        public static final int pickerview_options = 0x7f0a007e;
+        public static final int pickerview_time = 0x7f0a007f;
     }
     public static final class string {
         private string() {}

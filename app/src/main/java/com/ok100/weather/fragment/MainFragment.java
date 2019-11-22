@@ -42,6 +42,7 @@ import com.ok100.weather.adapter.Weather15MianAdapter;
 import com.ok100.weather.base.BaseFragment;
 import com.ok100.weather.bean.DataBean;
 import com.ok100.weather.bean.DepartmentListBean;
+import com.ok100.weather.bean.NewsListBean;
 import com.ok100.weather.bean.NoticeMainChooseBean;
 import com.ok100.weather.bean.WeatherTotal15Bean;
 import com.ok100.weather.bean.WeatherTotal24Bean;
@@ -53,7 +54,9 @@ import com.ok100.weather.gh.GH_MapActivity;
 import com.ok100.weather.hours24.IndexHorizontalScrollView;
 import com.ok100.weather.hours24.Today24HourView;
 import com.ok100.weather.http.ReturnDataView;
+import com.ok100.weather.presenter.NewsListPresenterImpl;
 import com.ok100.weather.presenter.NoticeMainListPresenterImpl;
+import com.ok100.weather.utils.ChooseTypeUtils;
 import com.ok100.weather.utils.DPUtils;
 import com.ok100.weather.view.MySwipeRefreshLayout;
 import com.ok100.weather.view.MyViewPager;
@@ -182,6 +185,8 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     public static final String PROV = "prov";
     public static final String AREA = "area";
 
+    NewsListPresenterImpl newsListPresenterImpl ;
+    WeatherTotalBean weatherTotalBean ;
 
     @Override
     protected int getLayoutID() {
@@ -390,8 +395,8 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
 //        onRefresh();
 
         initData();
-        for (int i = 0; i < 10; i++) {
-            DepartmentListBean departmentListBean = new DepartmentListBean("标题" + i);
+        for (int i = 0; i < DataBean.getNewTitleList().size(); i++) {
+            DepartmentListBean departmentListBean = new DepartmentListBean(DataBean.getNewTitleList().get(i));
             departmentListBeans.add(departmentListBean);
         }
         setNewArraylist(departmentListBeans);
@@ -469,19 +474,13 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
         mAppBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                Log.e("verticalOffset", verticalOffset + "");
-
                 int jvli = (int) -verticalOffset/2;
                 if(jvli<180){
                     mCoordinatorLayout.getBackground().setAlpha(jvli);
                 }
                 int totalScrollRange = mAppBarLayout.getTotalScrollRange();
                 if (Math.abs(verticalOffset) >= totalScrollRange) {
-                    Log.e("totalScrollRange", "totalScrollRange---true");
-
                 } else {
-                    Log.e("", "");
-                    Log.e("totalScrollRange", "totalScrollRange---fslse");
 
                 }
 
@@ -577,8 +576,9 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
             fragment = new NoticeMainFragment1();
             Bundle args = new Bundle();
             args.putString("departmentId", i + "");
+            args.putString("type", DataBean.getNewTitleList().get(i));
             fragment.setArguments(args);
-            titleListData = new TitleListData("标题" + i);
+            titleListData = new TitleListData(DataBean.getNewTitleList().get(i));
             viewPagerDataSourceList.add(new ViewPagerDataSource(fragment, titleListData));
             NoticeMainFragment1 finalFragment = fragment;
             ((NoticeMainFragment1) fragment).setBootomVisibleListener(new BootomVisibleListener() {
@@ -743,7 +743,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
         }
 
     }
-    WeatherTotalBean weatherTotalBean ;
+
     @Override
     public void returnData(String responseCode, Object o) {
         switch (responseCode) {
@@ -764,6 +764,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
                 setTomorrowData(weatherTotal7Bean);
                 setAirDialogFragment(weatherTotal7Bean);
                 break;
+
             case "getTotalWeather24":
                 WeatherTotal24Bean getTotalWeather24 = (WeatherTotal24Bean) o;
                 ArrayList<Integer> tempList = new ArrayList<Integer>();
@@ -824,16 +825,12 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
         if (!TextUtils.isEmpty(prov)) {
             hashMap.put("prov", prov);
         }
-
         if (!TextUtils.isEmpty(city)) {
             hashMap.put("city", city);
         }
-
         if (!TextUtils.isEmpty(area)) {
             hashMap.put("area", area);
         }
-
-
         hashMap.put("needday", "1");
         noticeMainListPresenter.getTotalWeather(getActivity(), hashMap);
         hashMap.put("needday", "7");
@@ -842,6 +839,11 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
         noticeMainListPresenter.getTotalWeather15(getActivity(), hashMap);
         hashMap.put("needday", "24");
         noticeMainListPresenter.getTotalWeather24(getActivity(), hashMap);
+
+        newsListPresenterImpl = new NewsListPresenterImpl(this);
+        HashMap<String, String> hashMapNew = new HashMap<>();
+        hashMapNew.put("type","top");
+
     }
 
 
@@ -913,8 +915,8 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
             model.setWindOrientation(day15list.get(i).getDay_wind_direction());
             model.setWindLevel(day15list.get(i).getDay_wind_power()); //风级
             model.setAirLevel(AirLevel.EXCELLENT); //空气质量
-            model.setDayPic(R.mipmap.ic_launcher);
-            model.setNightPic(R.mipmap.ic_launcher_round);
+            model.setDayPic(ChooseTypeUtils.getWeatherImgge(day15list.get(i).getDay_air_weather()));
+            model.setNightPic(ChooseTypeUtils.getWeatherImgge(day15list.get(i).getNight_air_weather()));
             weatherModels.add(model);
         }
         return weatherModels;

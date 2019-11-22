@@ -98,12 +98,12 @@ public final class R {
         public static final int auto = 0x7f080034;
         public static final int dark = 0x7f08006c;
         public static final int icon_only = 0x7f0800a4;
-        public static final int light = 0x7f0800d5;
-        public static final int none = 0x7f08010f;
-        public static final int normal = 0x7f080110;
-        public static final int standard = 0x7f08017c;
-        public static final int wide = 0x7f080227;
-        public static final int wrap_content = 0x7f08022a;
+        public static final int light = 0x7f0800d8;
+        public static final int none = 0x7f080112;
+        public static final int normal = 0x7f080113;
+        public static final int standard = 0x7f08017f;
+        public static final int wide = 0x7f080231;
+        public static final int wrap_content = 0x7f080234;
     }
     public static final class integer {
         private integer() {}

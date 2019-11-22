@@ -6,6 +6,8 @@ package com.ok100.weather.http;
 
 public class Urls {
 
+    public static String NewAppkey = "3d257c1f272086cf35fdbf818cfe2c44";
+    public static String NewUrl = "http://v.juhe.cn/toutiao/index?"+"key="+NewAppkey;
     public static final String httpWeather  = "http://iweather.market.alicloudapi.com/address";
     public static final String httpWeathers  = "https://iweather.market.alicloudapi.com/address";
 

@@ -42,8 +42,8 @@ public final class R {
     public static final class id {
         private id() {}
 
-        public static final int mini = 0x7f080108;
-        public static final int normal = 0x7f080110;
+        public static final int mini = 0x7f08010b;
+        public static final int normal = 0x7f080113;
     }
     public static final class string {
         private string() {}

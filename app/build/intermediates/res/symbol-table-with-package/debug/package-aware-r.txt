@@ -3607,6 +3607,9 @@ id id_viewpager
 id ifRoom
 id image
 id image_center
+id imageview1
+id imageview2
+id imageview3
 id indexHorizontalScrollView
 id indicator
 id info
@@ -3825,6 +3828,7 @@ id sticker_btn
 id sub_img
 id submenuarrow
 id submit_area
+id surepicture
 id surfaceView
 id swipeRefreshLayout_vanlian_new
 id switchView
@@ -3895,6 +3899,7 @@ id tv_desc
 id tv_dir
 id tv_edit
 id tv_feng
+id tv_fenglevel
 id tv_folder_name
 id tv_goin_pindao
 id tv_goin_pindao2
@@ -3940,7 +3945,9 @@ id tv_so2
 id tv_switch_1
 id tv_switch_2
 id tv_tab_title
+id tv_temp
 id tv_tigan
+id tv_time
 id tv_title
 id tv_title_city
 id tv_title_left
@@ -3948,6 +3955,7 @@ id tv_title_position
 id tv_title_right
 id tv_tongzhilan
 id tv_tuisong
+id tv_updata
 id tv_weater_xiao
 id tv_weather
 id tv_weather_temp
@@ -3983,11 +3991,13 @@ id useLogo
 id viewPager
 id view_line
 id view_offset_helper
+id view_preview_img
 id viewpager
 id visible
 id wb_img
 id weather_view
 id webView
+id webview
 id white
 id wide
 id withText
@@ -4108,6 +4118,7 @@ layout layout_tab_left
 layout layout_tab_right
 layout layout_tab_segment
 layout layout_tab_top
+layout ll_bitmap
 layout main_spot_list
 layout main_tianqi_list_include
 layout main_today_fuwu_list

@@ -68,10 +68,10 @@ public final class R {
         public static final int SELECT = 0x7f08000f;
         public static final int TOP = 0x7f080012;
         public static final int TRIANGLE = 0x7f080013;
-        public static final int iv_tab_icon = 0x7f0800c2;
-        public static final int ll_tap = 0x7f0800ef;
-        public static final int rtv_msg_tip = 0x7f08014d;
-        public static final int tv_tab_title = 0x7f0801f5;
+        public static final int iv_tab_icon = 0x7f0800c5;
+        public static final int ll_tap = 0x7f0800f2;
+        public static final int rtv_msg_tip = 0x7f080150;
+        public static final int tv_tab_title = 0x7f0801fa;
     }
     public static final class layout {
         private layout() {}
