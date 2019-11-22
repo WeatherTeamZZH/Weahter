@@ -47,11 +47,12 @@ import com.ok100.weather.adapter.NoticeMainFragmentItemAdapter;
 import com.ok100.weather.base.BaseActivity;
 import com.ok100.weather.bean.DepartmentListBean;
 import com.ok100.weather.bean.NoticeMainChooseBean;
+import com.ok100.weather.bean.WeatherTotalBean;
 import com.ok100.weather.fragment.MainFragment;
 import com.ok100.weather.fragment.NoticeMainFragment1;
 import com.ok100.weather.utils.DPUtils;
-import com.ok100.weather.view.MySwipeRefreshLayout;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -86,6 +87,30 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
     RelativeLayout rlMainBottom;
 
     GH_MapView mapView;
+    @BindView(R.id.tv_temp)
+    TextView tvTemp;
+    @BindView(R.id.tv_weather)
+    TextView tvWeather;
+    @BindView(R.id.tv_time)
+    TextView tvTime;
+    @BindView(R.id.tv_tigan)
+    TextView tvTigan;
+    @BindView(R.id.tv_nengjiandu)
+    TextView tvNengjiandu;
+    @BindView(R.id.tv_shidu)
+    TextView tvShidu;
+    @BindView(R.id.tv_qiya)
+    TextView tvQiya;
+    @BindView(R.id.tv_feng)
+    TextView tvFeng;
+    @BindView(R.id.tv_aqi)
+    TextView tvAqi;
+    @BindView(R.id.map)
+    GH_MapView map;
+    @BindView(R.id.tv_fenglevel)
+    TextView tvFenglevel;
+    @BindView(R.id.tv_title)
+    TextView tvTitle;
     private AMap aMap;
     private boolean isItemClickAction;
     private boolean isInputKeySearch;
@@ -99,7 +124,6 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
     private AMapLocationClientOption mLocationOption;
 
 
-
     List<DepartmentListBean> departmentListBeans = new ArrayList<>();
     ArrayList<String> departmentListBeansString = new ArrayList<>();
     private FragmentPagerAdapter fragmentPagerAdapter;
@@ -108,10 +132,13 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
     private NoticeMainFragmentItemAdapter noticeMainFragmentItemAdapter;
     private ArrayList<NoticeMainChooseBean> noticeMainChooseBeanList = new ArrayList<NoticeMainChooseBean>();
 
+    private WeatherTotalBean data;
 
 
-    public static void access(Context context) {
+    public static void access(Context context, ArrayList<String> departmentListBeansString, WeatherTotalBean weatherTotalBean) {
         Intent intent = new Intent(context, GH_MapActivity.class);
+        intent.putExtra("data", weatherTotalBean);
+        intent.putStringArrayListExtra("listdata", departmentListBeansString);
         context.startActivity(intent);
     }
 
@@ -122,6 +149,10 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
 
     @Override
     public void InitView() {
+        data = (WeatherTotalBean) getIntent().getSerializableExtra("data");
+        departmentListBeansString = (ArrayList<String>) getIntent().getSerializableExtra("listdata");
+
+
         for (int i = 0; i < 10; i++) {
             DepartmentListBean departmentListBean = new DepartmentListBean("标题" + i);
             departmentListBeans.add(departmentListBean);
@@ -130,6 +161,22 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
         tabLayout.setSelectedTabIndicatorColor(Color.BLUE);
 
         llNoticeMainMoreItem.setOnClickListener(this);
+
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy年 MM月 dd日 HH时 mm分 ss秒");
+        //上方天气数据接口对接
+        tvTitle.setText(data.getData().getCityinfo().getCity());
+        tvTemp.setText(data.getData().getNow().getCity().getDay_air_temperature());
+        tvWeather.setText(data.getData().getNow().getCity().getWeather());
+        tvTime.setText(dateFormat.format(data.getData().getNow().getUpdate_time()));
+
+        tvTigan.setText(data.getData().getNow().getCity().getDay_air_temperature());
+        tvNengjiandu.setText(data.getData().getNow().getDetail().getNjd());
+        tvShidu.setText(data.getData().getNow().getDetail().getHumidity());
+        tvQiya.setText(data.getData().getNow().getDetail().getQy());
+        tvFeng.setText(data.getData().getNow().getDetail().getWind_direction());
+        tvFenglevel.setText(data.getData().getNow().getDetail().getWind_power());
+        tvAqi.setText(data.getData().getNow().getDetail().getAqi());
     }
 
     @Override
@@ -139,16 +186,16 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
 
     @Override
     public void initData(Bundle savedInstanceState, View contentView) {
-        mapView =  findViewById(R.id.map);
-            mapView.setOnTouchListener(new View.OnTouchListener() {
+        mapView = findViewById(R.id.map);
+        mapView.setOnTouchListener(new View.OnTouchListener() {
 
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if(event.getAction() == MotionEvent.ACTION_UP){
+                if (event.getAction() == MotionEvent.ACTION_UP) {
                     coordinatorLayout.requestDisallowInterceptTouchEvent(false);
                     appBarLayout.requestDisallowInterceptTouchEvent(false);
                     llAllGoneView.requestDisallowInterceptTouchEvent(false);
-                }else{
+                } else {
                     coordinatorLayout.requestDisallowInterceptTouchEvent(true);
                     appBarLayout.requestDisallowInterceptTouchEvent(true);
                     llAllGoneView.requestDisallowInterceptTouchEvent(true);
@@ -194,6 +241,7 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
             }
         });
     }
+
     private void setUpMap() {
         aMap.getUiSettings().setZoomControlsEnabled(false);
         aMap.setLocationSource(this);// 设置定位监听
@@ -206,7 +254,7 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
 //        Log.i("MY", "geoAddress"+ searchLatlonPoint.toString());
 //        showDialog();
         searchText.setText("");
-        if (searchLatlonPoint != null){
+        if (searchLatlonPoint != null) {
             RegeocodeQuery query = new RegeocodeQuery(searchLatlonPoint, 200, GeocodeSearch.AMAP);// 第一个参数表示一个Latlng，第二参数表示范围多少米，第三个参数表示是火系坐标系还是GPS原生坐标系
             geocoderSearch.getFromLocationAsyn(query);
         }
@@ -214,11 +262,11 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
 
     public void startJumpAnimation() {
 
-        if (locationMarker != null ) {
+        if (locationMarker != null) {
             //根据屏幕距离计算需要移动的目标点
             final LatLng latLng = locationMarker.getPosition();
-            Point point =  aMap.getProjection().toScreenLocation(latLng);
-            point.y -= DPUtils.dip2px(this,125);
+            Point point = aMap.getProjection().toScreenLocation(latLng);
+            point.y -= DPUtils.dip2px(this, 125);
             LatLng target = aMap.getProjection()
                     .fromScreenLocation(point);
             //使用TranslateAnimation,填写一个需要移动的目标点
@@ -227,10 +275,10 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
                 @Override
                 public float getInterpolation(float input) {
                     // 模拟重加速度的interpolator
-                    if(input <= 0.5) {
+                    if (input <= 0.5) {
                         return (float) (0.5f - 2 * (0.5 - input) * (0.5 - input));
                     } else {
-                        return (float) (0.5f - Math.sqrt((input - 0.5f)*(1.5f - input)));
+                        return (float) (0.5f - Math.sqrt((input - 0.5f) * (1.5f - input)));
                     }
                 }
             });
@@ -242,7 +290,7 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
             locationMarker.startAnimation();
 
         } else {
-            Log.e("ama","screenMarker is null");
+            Log.e("ama", "screenMarker is null");
         }
     }
 
@@ -250,10 +298,10 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
         LatLng latLng = aMap.getCameraPosition().target;
         Point screenPosition = aMap.getProjection().toScreenLocation(latLng);
         locationMarker = aMap.addMarker(new MarkerOptions()
-                .anchor(0.5f,0.5f)
+                .anchor(0.5f, 0.5f)
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.purple_pin)));
         //设置Marker在屏幕上,不跟随地图移动
-        locationMarker.setPositionByPixels(screenPosition.x,screenPosition.y);
+        locationMarker.setPositionByPixels(screenPosition.x, screenPosition.y);
         locationMarker.setZIndex(1);
 
     }
@@ -331,9 +379,10 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
 
             @Override
             public void onPageSelected(int position) {
-                Log.e("position",position+"");
+                Log.e("position", position + "");
                 selectposition = position;
-                NoticeMainFragment1 getFragment = (NoticeMainFragment1) viewPagerDataSourceList.get(position).getFragment();;
+                NoticeMainFragment1 getFragment = (NoticeMainFragment1) viewPagerDataSourceList.get(position).getFragment();
+                ;
 //                mSwipeRefreshLayoutVanlianNew.setRecycleview(getFragment.getRecyclerView());
             }
 
@@ -366,9 +415,9 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
 
                 @Override
                 public void setTaybarVisible(boolean visible) {
-                    if(visible){
+                    if (visible) {
 
-                    }else {
+                    } else {
                         appBarLayout.setVisibility(View.GONE);
                     }
                 }
@@ -412,8 +461,9 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
                     appBarLayoutBehavior.setTopAndBottomOffset(0);
                 }
             }
-            for(int i = 0;i<viewPagerDataSourceList.size();i++){
-                NoticeMainFragment1 getFragment = (NoticeMainFragment1) viewPagerDataSourceList.get(i).getFragment();;
+            for (int i = 0; i < viewPagerDataSourceList.size(); i++) {
+                NoticeMainFragment1 getFragment = (NoticeMainFragment1) viewPagerDataSourceList.get(i).getFragment();
+                ;
                 getFragment.resateRecycle();
             }
 
@@ -423,7 +473,7 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
 
     }
 
-//    @RequiresApi(api = Build.VERSION_CODES.M)
+    //    @RequiresApi(api = Build.VERSION_CODES.M)
     private void setNewArraylist(List<DepartmentListBean> departmentListBean) {
         initItemAdapter();
         getTitleListData(departmentListBean);
@@ -434,15 +484,15 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
                 Log.e("verticalOffset", verticalOffset + "");
-                float mTabLayoutX= tabLayout.getX();
+                float mTabLayoutX = tabLayout.getX();
                 Log.e("mTabLayoutX", mTabLayoutX + "");
 
                 int totalScrollRange = appBarLayout.getTotalScrollRange();
-                if(Math.abs(verticalOffset)>=totalScrollRange){
-                    Log.e("totalScrollRange","totalScrollRange---true");
-                }else {
+                if (Math.abs(verticalOffset) >= totalScrollRange) {
+                    Log.e("totalScrollRange", "totalScrollRange---true");
+                } else {
                 }
-                if(Math.abs(verticalOffset)>=totalScrollRange-100){
+                if (Math.abs(verticalOffset) >= totalScrollRange - 100) {
                 }
             }
         });
@@ -504,8 +554,8 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
                 searchText.setText("");
 
             } else {
-                String errText = "定位失败," + amapLocation.getErrorCode()+ ": " + amapLocation.getErrorInfo();
-                Log.e("AmapErr",errText);
+                String errText = "定位失败," + amapLocation.getErrorCode() + ": " + amapLocation.getErrorInfo();
+                Log.e("AmapErr", errText);
             }
         }
     }
@@ -590,7 +640,7 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
 
     }
 
-    public interface TaybarVisibleListener{
+    public interface TaybarVisibleListener {
         void setTaybarVisible(boolean visible);
     }
 
