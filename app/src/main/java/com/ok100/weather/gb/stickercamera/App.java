@@ -1,6 +1,7 @@
 package com.ok100.weather.gb.stickercamera;
 
 import android.util.DisplayMetrics;
+import android.util.Log;
 
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiskCache;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
@@ -13,6 +14,8 @@ import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.utils.StorageUtils;
 import com.ok100.weather.base.BaseApplication;
 import com.umeng.commonsdk.UMConfigure;
+import com.umeng.message.IUmengRegisterCallback;
+import com.umeng.message.PushAgent;
 import com.umeng.socialize.PlatformConfig;
 
 /**
@@ -48,9 +51,24 @@ public class App extends BaseApplication {
         super.onCreate();
         initImageLoader();
         mInstance = this;
-        UMConfigure.init(this, "5a12384aa40fa3551f0001d1"
-                , "umeng", UMConfigure.DEVICE_TYPE_PHONE, "");
+        UMConfigure.init(this, "5dd780453fc1956f48000aa7"
+                , "Umeng", UMConfigure.DEVICE_TYPE_PHONE, "be04044ae199c2cea93c81fa238901fb");
         UMConfigure.setLogEnabled(true);
+
+        //获取消息推送代理示例
+        PushAgent mPushAgent = PushAgent.getInstance(this);
+        //注册推送服务，每次调用register方法都会回调该接口
+        mPushAgent.register(new IUmengRegisterCallback() {
+
+            @Override
+            public void onSuccess(String deviceToken) {
+                //注册成功会返回deviceToken deviceToken是推送消息的唯一标志
+            }
+
+            @Override
+            public void onFailure(String s, String s1) {
+            }
+        });
     }
 
 
