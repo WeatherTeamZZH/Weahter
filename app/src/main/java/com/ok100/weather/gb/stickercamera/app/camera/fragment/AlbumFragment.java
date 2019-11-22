@@ -12,7 +12,10 @@ import android.widget.GridView;
 import com.ok100.weather.R;
 import com.ok100.weather.gb.stickercamera.app.camera.CameraManager;
 import com.ok100.weather.gb.stickercamera.app.camera.adapter.GalleryAdapter;
+import com.ok100.weather.gb.stickercamera.app.camera.ui.AlbumActivity;
 import com.ok100.weather.gb.stickercamera.app.model.PhotoItem;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 
@@ -51,7 +54,8 @@ public class AlbumFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
                 PhotoItem photo = photos.get(arg2);
-				CameraManager.getInst().processPhotoItem(getActivity(), photo);
+                EventBus.getDefault().post(photo);
+//				CameraManager.getInst().processPhotoItem(getActivity(), photo);
             }
         });
         return root;
@@ -63,5 +67,5 @@ public class AlbumFragment extends Fragment {
         albums.setAdapter(new GalleryAdapter(getActivity(), photos));
     }
 
-	private GridView albums;
+    private GridView albums;
 }

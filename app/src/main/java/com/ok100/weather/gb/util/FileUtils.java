@@ -143,7 +143,9 @@ public class FileUtils {
         return Environment.getExternalStorageDirectory().getAbsolutePath() + "/DCIM/Camera";
     }
 
-
+    public String getSystemPhotoPathAdd() {
+        return Environment.getExternalStorageDirectory().getAbsolutePath() + "/DCIM/Camera"+"/wtr";
+    }
     private FileUtils() {
         String sdcardState = Environment.getExternalStorageState();
         //如果没SD卡则放缓存

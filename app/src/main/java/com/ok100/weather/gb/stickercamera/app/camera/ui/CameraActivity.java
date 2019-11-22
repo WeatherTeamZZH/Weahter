@@ -9,12 +9,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapRegionDecoder;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.PixelFormat;
 import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
 import android.hardware.Camera;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -22,13 +21,12 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -55,6 +53,8 @@ import com.tbruyelle.rxpermissions2.Permission;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -100,6 +100,8 @@ public class CameraActivity extends CameraBaseActivity {
     View takePhotoPanel;
     @BindView(R.id.takepicture)
     Button takePicture;
+    @BindView(R.id.surepicture)
+    Button surepicture;
     @BindView(R.id.flashBtn)
     ImageView flashBtn;
     @BindView(R.id.change)
@@ -113,22 +115,30 @@ public class CameraActivity extends CameraBaseActivity {
     @BindView(R.id.surfaceView)
     SurfaceView surfaceView;
     @BindView(R.id.root_view_layout)
-    LinearLayout root_view_layout;
+    RelativeLayout root_view_layout;
     @BindView(R.id.sub_img)
     ImageView sub_img;
     @BindView(R.id.animal_img)
     ImageView animal_img;
+    @BindView(R.id.view_preview_img)
+    ImageView view_preview_img;
 
     private final static int COMPLETED = 0x11;
+    private final static int ALBUM_COMPLETED = 0x12;
+    private Bitmap albumBitmap = null;
+    private int type = 0;//0 拍照 1 图库选择
+    private Bitmap takeBitmap = null;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
+        EventBus.getDefault().register(this);
         mCameraHelper = new CameraHelper(this);
         ButterKnife.bind(this);
         requestLocation();
+        view_preview_img.setImageBitmap(getBitmap());
     }
 
     @SuppressLint("CheckResult")
@@ -214,15 +224,6 @@ public class CameraActivity extends CameraBaseActivity {
             @Override
             public void onClick(View view) {
 
-//              Bitmap bitmap = createViewBitmap(frameLayout);
-//
-//              if(bitmap!=null){
-//                  root_view_layout.setVisibility(View.GONE);
-//                  surfaceView.setVisibility(View.GONE);
-//                  sub_img.setVisibility(View.VISIBLE);
-//                  sub_img.setImageBitmap(bitmap);
-//              }
-
                 try {
                     cameraInst.takePicture(null, null, new MyPictureCallback());
                 } catch (Throwable t) {
@@ -265,14 +266,23 @@ public class CameraActivity extends CameraBaseActivity {
             @Override
             public void onClick(View view) {
                 toast("暂未开通", 1000);
-//                startActivity(new Intent(CameraActivity.this, AlbumActivity.class));
+                startActivity(new Intent(CameraActivity.this, AlbumActivity.class));
             }
         });
         //返回按钮
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                if (type == 1) {//相册
+                    type = 0;
+                    takePicture.setVisibility(View.VISIBLE);
+                    surepicture.setVisibility(View.GONE);
+                    root_view_layout.setVisibility(View.VISIBLE);
+                    surfaceView.setVisibility(View.VISIBLE);
+                    sub_img.setVisibility(View.GONE);
+                } else {
+                    finish();
+                }
             }
         });
         surfaceView.setOnTouchListener(new View.OnTouchListener() {
@@ -315,8 +325,6 @@ public class CameraActivity extends CameraBaseActivity {
                 return false;
             }
         });
-
-
         surfaceView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -347,6 +355,23 @@ public class CameraActivity extends CameraBaseActivity {
 
         });
 
+        //确认图标
+        surepicture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (type == 1) {//相册
+                    if (albumBitmap != null) {
+                        EventBus.getDefault().post(albumBitmap);
+                        finish();
+                    }
+                } else {
+                    if (takeBitmap != null) {
+                        EventBus.getDefault().post(takeBitmap);
+                        finish();
+                    }
+                }
+            }
+        });
 
     }
 
@@ -437,23 +462,25 @@ public class CameraActivity extends CameraBaseActivity {
         parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
     }
 
-    Bitmap takePitmap = null;
-    Bitmap viewBitmap = null;
-    Bitmap combineBitmap = null;
 
     private Handler handler1 = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            if (msg.what == COMPLETED) {
-                Bitmap bit = (Bitmap) msg.obj;
-                if (bit != null) {
+            if (msg.what == COMPLETED) {//拍照处理
+                takeBitmap = (Bitmap) msg.obj;
+                if (takeBitmap != null) {
                     root_view_layout.setVisibility(View.GONE);
                     surfaceView.setVisibility(View.GONE);
                     sub_img.setVisibility(View.VISIBLE);
-                    sub_img.setImageBitmap(bit);
-                    EventBus.getDefault().post(bit);
-                    CameraActivity.this.finish();
+                    sub_img.setImageBitmap(takeBitmap);
+                    takePicture.setVisibility(View.GONE);
+                    surepicture.setVisibility(View.VISIBLE);
                 }
+            } else if (msg.what == ALBUM_COMPLETED) {//本地相册选择处理
+                albumBitmap = (Bitmap) msg.obj;
+                sub_img.setVisibility(View.VISIBLE);
+                sub_img.setImageBitmap(albumBitmap);
+                root_view_layout.setVisibility(View.GONE);
             }
         }
     };
@@ -466,24 +493,23 @@ public class CameraActivity extends CameraBaseActivity {
         return bmp;
     }
 
+
+    //todo  拍照处理============================================================
+
     private final class MyPictureCallback implements Camera.PictureCallback {
 
         @Override
         public void onPictureTaken(final byte[] data, final Camera camera) {
             bundle = new Bundle();
             bundle.putByteArray("bytes", data); //将图片字节数据保存在bundle当中，实现数据交换
-            takePitmap = null;
-            viewBitmap = null;
-            combineBitmap = null;
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    takePitmap = getBitmap(data);
-                    viewBitmap = getViewBitmap(root_view_layout);
-//                    Bitmap newViewBit = getNewBitmap(viewBitmap, root_view_layout.getWidth(), root_view_layout.getHeight());
-                    Bitmap viewRoateBit = rotateImage(viewBitmap, 0);//水印图
+                    Bitmap takePitmap = getBitmap(data);
+//                    Bitmap viewBitmap = getViewBitmap(root_view_layout);
+
                     Bitmap takeRoateBit = rotateImage(takePitmap, 90);//背景图
-                    combineBitmap = combineBitmap(takeRoateBit, viewRoateBit);
+                    Bitmap combineBitmap = combineBitmap(takeRoateBit, big(getBitmap()));
                     Message msg = new Message();
                     msg.what = COMPLETED;
                     msg.obj = combineBitmap;
@@ -498,17 +524,40 @@ public class CameraActivity extends CameraBaseActivity {
         }
     }
 
+    private Bitmap getBitmap() {
+        Bitmap bitmap = null;
+        LayoutInflater factorys = LayoutInflater.from(this);
+        final View textEntryView = factorys.inflate(R.layout.ll_bitmap, null);
+//        View root_view_layout = textEntryView.findViewById(R.id.root_view_layout);
+
+        textEntryView.setDrawingCacheEnabled(true);
+        textEntryView.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
+                View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
+        textEntryView.layout(0, 0, textEntryView.getMeasuredWidth(), textEntryView.getMeasuredHeight());
+        bitmap = Bitmap.createBitmap(textEntryView.getDrawingCache());
+        textEntryView.setDrawingCacheEnabled(false);
+        return bitmap;
+    }
+
+    /*bitmap放大*/
+    private static Bitmap big(Bitmap bitmap) {
+        Matrix matrix = new Matrix();
+        matrix.postScale(1.5f, 1.5f); //长和宽放大缩小的比例
+        Bitmap resizeBmp = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+        return resizeBmp;
+    }
+
+    private static Bitmap albumbig(Bitmap bitmap) {
+        Matrix matrix = new Matrix();
+        matrix.postScale(1.5f, 1.5f); //长和宽放大缩小的比例
+        Bitmap resizeBmp = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+        return resizeBmp;
+    }
 
     /**
      * 更具view生成bitmap
      */
 
-    //todo 方法1
-    private Bitmap createBitmap(View view) {
-        view.buildDrawingCache();
-        Bitmap bitmap = view.getDrawingCache();
-        return bitmap;
-    }
 
     //todo 方法2
     private Bitmap getViewBitmap(View v) {
@@ -531,22 +580,6 @@ public class CameraActivity extends CameraBaseActivity {
         v.setWillNotCacheDrawing(willNotCache);
         v.setDrawingCacheBackgroundColor(color);
         return bitmap;
-    }
-
-    //todo 方法3
-    public static Bitmap getBitmapFromView(View v) {
-        Bitmap b = Bitmap.createBitmap(v.getWidth(), v.getHeight(), Bitmap.Config.RGB_565);
-        Canvas c = new Canvas(b);
-        v.layout(v.getLeft(), v.getTop(), v.getRight(), v.getBottom());
-        // Draw background
-        Drawable bgDrawable = v.getBackground();
-        if (bgDrawable != null)
-            bgDrawable.draw(c);
-        else
-            c.drawColor(Color.WHITE);
-        // Draw view to canvas
-        v.draw(c);
-        return b;
     }
 
     public static Bitmap combineBitmap(Bitmap background, Bitmap foreground) {
@@ -1058,6 +1091,15 @@ public class CameraActivity extends CameraBaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        EventBus.getDefault().unregister(this);
+        if (albumBitmap != null) {
+//            albumBitmap.recycle();
+            albumBitmap = null;
+        }
+        if (takeBitmap != null) {
+//            takeBitmap.recycle();
+            takeBitmap = null;
+        }
     }
 
     /**
@@ -1065,94 +1107,55 @@ public class CameraActivity extends CameraBaseActivity {
      * animal_img
      */
 
-    public static Bitmap create(String path){
-        Bitmap bitmap = BitmapFactory.decodeFile( path);
+    public static Bitmap create(String path) {
+        Bitmap bitmap = BitmapFactory.decodeFile(path);
         return bitmap;
     }
 
+    //todo  选择图库处理=================================================================================
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMoonEvent(PhotoItem photoItem) {
+        type = 1;
+        Bitmap bitmap = create(photoItem.getImageUri());
+        root_view_layout.setVisibility(View.VISIBLE);
+        surfaceView.setVisibility(View.GONE);
+        takePicture.setVisibility(View.GONE);
+        surepicture.setVisibility(View.VISIBLE);
+        sub_img.setVisibility(View.VISIBLE);
+//        sub_img.setImageBitmap(bitmap);
 
-    private void setScaleAnimal(){
-        animal_img.setImageBitmap(create("/storage/emulated/0/Download/2008315204223450_2..jpg"));
-        ScaleAnimation scaleAnimation2 = new ScaleAnimation(1f, 5f, 1f, 5f, ScaleAnimation.START_ON_FIRST_FRAME, animal_img.getWidth() / 1f, ScaleAnimation.START_ON_FIRST_FRAME, animal_img.getHeight() / 1f);
-        //设置动画持续时长
-        scaleAnimation2.setDuration(4000);
-        //设置动画结束之后的状态是否是动画的最终状态，true，表示是保持动画结束时的最终状态
-        scaleAnimation2.setFillAfter(true);
-        //设置动画结束之后的状态是否是动画开始时的状态，true，表示是保持动画开始时的状态
-        scaleAnimation2.setFillBefore(true);
-        //设置动画的重复模式：反转REVERSE和重新开始RESTART
-        scaleAnimation2.setRepeatMode(ScaleAnimation.REVERSE);
-        scaleAnimation2.setAnimationListener(new Animation.AnimationListener() {
+        new Thread(new Runnable() {
             @Override
-            public void onAnimationStart(Animation animation) {
-                root_view_layout.setVisibility(View.GONE);
-                surfaceView.setVisibility(View.GONE);
-                sub_img.setVisibility(View.GONE);
-                animal_img.setVisibility(View.VISIBLE);
+            public void run() {
+                Bitmap viewBitmap = getBitmap();
+//                Bitmap takeRoateBit = rotateImage(bitmap, 90);//背景图
+                Bitmap combineBitmap = combineBitmap(bitmap, albumbig(viewBitmap));
+                Message msg = new Message();
+                msg.what = ALBUM_COMPLETED;
+                msg.obj = combineBitmap;
+                handler1.sendMessage(msg);
             }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                animal_img.setVisibility(View.GONE);
-                root_view_layout.setVisibility(View.VISIBLE);
-                surfaceView.setVisibility(View.VISIBLE);
-                sub_img.setVisibility(View.VISIBLE);
-//                animal_img.clearAnimation();
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-//                animal_img.setVisibility(View.GONE);
-//                root_view_layout.setVisibility(View.VISIBLE);
-//                surfaceView.setVisibility(View.VISIBLE);
-//                sub_img.setVisibility(View.VISIBLE);
-//                animal_img.clearAnimation();
-            }
-        });
-        //开始动画
-        animal_img.startAnimation(scaleAnimation2);
-        //清除动画
-//        scaleAnimation2.cancel();
+        }).start();
     }
 
-    /**
-     * 动画属性
-     */
-    private void animatorStyleOne() {
-        animal_img.setImageBitmap(create("/storage/emulated/0/Download/2008315204223450_2..jpg"));
-        //图片渐变模糊度始终
-        AlphaAnimation aa = new AlphaAnimation(0.1f,1.0f);
-        //渐变时间
-        aa.setDuration(4000);
-        //展示图片渐变动画
-        animal_img.startAnimation(aa);
 
-        //渐变过程监听
-        aa.setAnimationListener(new Animation.AnimationListener() {
+    //todo  保存bitmap在本地
 
-            /**
-             * 动画开始时
-             */
-            @Override
-            public void onAnimationStart(Animation animation) {
-                System.out.println("动画开始...");
+    private void saveImageToCache(Bitmap croppedImage) {
+        if (croppedImage != null) {
+            try {
+                ImageUtils.saveToFile(FileUtils.getInst().getCacheDir() + "/100weather",
+                        false, croppedImage);
+                Intent i = new Intent();
+                i.setData(Uri.parse("file://" + FileUtils.getInst().getCacheDir()
+                        + "/100weather"));
+                setResult(RESULT_OK, i);
+                dismissProgressDialog();
+                finish();
+            } catch (Exception e) {
+                e.printStackTrace();
+                toast("裁剪图片异常，请稍后重试", Toast.LENGTH_LONG);
             }
-
-            /**
-             * 重复动画时
-             */
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-                System.out.println("动画重复...");
-            }
-
-            /**
-             * 动画结束时
-             */
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                System.out.println("动画结束...");
-            }
-        });
+        }
     }
 }
