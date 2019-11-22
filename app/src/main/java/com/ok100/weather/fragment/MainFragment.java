@@ -61,10 +61,13 @@ import com.ok100.weather.view.MyViewPager;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import me.zhouzhuo.zzweatherview.AirLevel;
 import me.zhouzhuo.zzweatherview.WeatherItemView;
 import me.zhouzhuo.zzweatherview.WeatherModel;
 import me.zhouzhuo.zzweatherview.ZzWeatherView;
@@ -107,7 +110,6 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     @BindView(R.id.viewPager)
     MyViewPager viewPager;
 
-    Unbinder unbinder;
     @BindView(R.id.today24HourView)
     Today24HourView mToday24HourView;
     @BindView(R.id.indexHorizontalScrollView)
@@ -158,10 +160,6 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     @BindView(R.id.tv_riluo_time)
     TextView mTvRiluoTime;
 
-    private IndexHorizontalScrollView indexHorizontalScrollView;
-    private Today24HourView today24HourView;
-
-
     private LinearLayout ll_notice_main_more_item;
     private List<ViewPagerDataSource> viewPagerDataSourceList = new ArrayList<>();
 
@@ -171,6 +169,9 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
 
     List<DepartmentListBean> departmentListBeans = new ArrayList<>();
     ArrayList<String> departmentListBeansString = new ArrayList<>();
+
+    ZzWeatherView weatherView ;
+    Weather15MianAdapter weather15MianAdapter;
 
 
     private String city;
@@ -262,13 +263,6 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
         }
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        unbinder2 = ButterKnife.bind(this, rootView);
-        return rootView;
-    }
 
 
     public interface setItemTabListener {
@@ -289,9 +283,8 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
         setMianRelativeHeight();
         mCoordinatorLayout.getBackground().setAlpha(0);
         mSwipeRefreshLayoutVanlianNew.setOnRefreshListener(this);
-        Weather15MianAdapter weather15MianAdapter = new Weather15MianAdapter();
+        weather15MianAdapter = new Weather15MianAdapter();
         mRecyclerview15weather.setAdapter(weather15MianAdapter);
-        weather15MianAdapter.setNewData(DataBean.generateData());
         mRecyclerview15weather.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerview15weather.setNestedScrollingEnabled(false);//禁止滑动
 
@@ -347,9 +340,8 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
 
     private void findView() {
 
-        indexHorizontalScrollView = (IndexHorizontalScrollView) findViewById(R.id.indexHorizontalScrollView);
-        today24HourView = (Today24HourView) findViewById(R.id.today24HourView);
-        indexHorizontalScrollView.setToday24HourView(today24HourView);
+        mIndexHorizontalScrollView.setToday24HourView(mToday24HourView);
+
 
         ll_notice_main_more_item = (LinearLayout) findViewById(R.id.ll_notice_main_more_item);
         ll_notice_main_more_item.setOnClickListener(this);
@@ -428,40 +420,36 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     }
 
     private void initData() {
-        ZzWeatherView weatherView = (ZzWeatherView) findViewById(R.id.weather_view);
+        weatherView = (ZzWeatherView) findViewById(R.id.weather_view);
         //填充天气数据
-        weatherView.setList(DataBean.generateData());
         //画折线
 //        weatherView.setLineType(ZzWeatherView.LINE_TYPE_DISCOUNT);
         //画曲线
         weatherView.setLineType(ZzWeatherView.LINE_TYPE_CURVE);
-
         //设置线宽
-        weatherView.setLineWidth(6f);
-
-
+        weatherView.setLineWidth(4);
         //设置一屏幕显示几列(最少3列)
         try {
             weatherView.setColumnNumber(6);
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         //设置白天和晚上线条的颜色
         weatherView.setDayAndNightLineColor(Color.WHITE, Color.WHITE);
-
 
         //点击某一列
         weatherView.setOnWeatherItemClickListener(new ZzWeatherView.OnWeatherItemClickListener() {
             @Override
             public void onItemClick(WeatherItemView itemView, int position, WeatherModel weatherModel) {
-                Toast.makeText(getActivity(), position + "", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), position + "", Toast.LENGTH_SHORT).show();
             }
         });
 
         http();
 
     }
+
+
 
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -766,10 +754,13 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
                 weatherTotalBean = (WeatherTotalBean) o;
                 Log.e("weatherTotalBean", weatherTotalBean.toString());
                 setWeatherData(weatherTotalBean);
+                mToday24HourView.invalidate();
+                mToday24HourView.postInvalidate();
                 break;
             case "getTotalWeather15":
                 WeatherTotal15Bean getTotalWeather15 = (WeatherTotal15Bean) o;
-
+                weather15MianAdapter.setNewData(generateData(getTotalWeather15));
+                weatherView.setList(generateData(getTotalWeather15));
                 break;
             case "getTotalWeather7":
                 WeatherTotal7Bean weatherTotal7Bean = (WeatherTotal7Bean) o;
@@ -778,10 +769,51 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
                 break;
             case "getTotalWeather24":
                 WeatherTotal24Bean getTotalWeather24 = (WeatherTotal24Bean) o;
-
+                ArrayList<Integer> tempList = new ArrayList<Integer>();
+                ArrayList<Integer> windyList = new ArrayList<Integer>();
+                ArrayList<Integer> resList = new ArrayList<Integer>();
+                mToday24HourView.tempList.clear();
+                mToday24HourView.windyList.clear();
+                mToday24HourView.resList.clear();
+                for(int i = 0;i<getTotalWeather24.getData().getHour().size();i++){
+                    mToday24HourView.tempList.add(Integer.parseInt(getTotalWeather24.getData().getHour().get(i).getTemperature()));
+                    List<String> stringList = stringToInt(getTotalWeather24.getData().getHour().get(i).getWind_power());
+                    if(stringList!=null&&stringList.size()>0){
+                        mToday24HourView.windyList.add(Integer.parseInt(stringList.get(0)));
+                    }
+                    String weather = getTotalWeather24.getData().getHour().get(i).getWeather();
+                    if(weather.contains("晴")){
+                        mToday24HourView.resList.add(R.mipmap.icon_qing);
+                    }else if(weather.contains("云")){
+                        mToday24HourView.resList.add(R.mipmap.icon_duoyun);
+                    }else if(weather.contains("雾")){
+                        mToday24HourView.resList.add(R.mipmap.icon_wu);
+                    }else if(weather.contains("雨")){
+                        mToday24HourView.resList.add(R.mipmap.icon_xiaoyu);
+                    }else if(weather.contains("雪")){
+                        mToday24HourView.resList.add(R.mipmap.icon_xiaoxue);
+                    }else {
+                        mToday24HourView.resList.add(R.mipmap.icon_qing);
+                    }
+                    String time = getTotalWeather24.getData().getHour().get(i).getTime();
+                    time = time.substring(time.length()-4,time.length()-2)+":"+time.substring(time.length()-2,time.length());
+                    mToday24HourView.timeList.add(time);
+                }
+                mToday24HourView.setData();
+                mToday24HourView.invalidate();
                 break;
         }
+    }
 
+    public List<String> stringToInt(String args) {
+        List<String> digitList = new ArrayList<String>();
+        Pattern p = Pattern.compile("[^0-9]");
+        Matcher m = p.matcher(args);
+        String result = m.replaceAll("");
+        for (int i = 0; i < result.length(); i++) {
+            digitList.add(result.substring(i, i + 1));
+        }
+        return digitList;
     }
 
     private void setAirDialogFragment(WeatherTotal7Bean weatherTotal7Bean) {
@@ -867,4 +899,27 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
         }
     }
 
+
+    private List<WeatherModel> generateData(WeatherTotal15Bean getTotalWeather15) {
+        ArrayList<WeatherModel> weatherModels = new ArrayList<>();
+        WeatherModel model;
+        List<WeatherTotal15Bean.DataBean.Day15Bean> day15list = getTotalWeather15.getData().getDay15();
+        for (int i = 0; i < day15list.size(); i++) {
+            //数据源
+            model = new WeatherModel();
+            model.setWeek("周"+day15list.get(i).getWeek());
+            model.setDate(day15list.get(i).getDate().substring(4,6)+"/"+day15list.get(i).getDate().substring(6,day15list.get(i).getDate().length()));
+            model.setDayWeather(day15list.get(i).getDay_air_weather());
+            model.setDayTemp(Integer.parseInt(day15list.get(i).getDay_air_temperature()));
+            model.setNightTemp(Integer.parseInt(day15list.get(i).getNight_air_temperature()));
+            model.setNightWeather(day15list.get(i).getNight_air_weather());
+            model.setWindOrientation(day15list.get(i).getDay_wind_direction());
+            model.setWindLevel(day15list.get(i).getDay_wind_power()); //风级
+            model.setAirLevel(AirLevel.EXCELLENT); //空气质量
+            model.setDayPic(R.mipmap.ic_launcher);
+            model.setNightPic(R.mipmap.ic_launcher_round);
+            weatherModels.add(model);
+        }
+        return weatherModels;
+    }
 }

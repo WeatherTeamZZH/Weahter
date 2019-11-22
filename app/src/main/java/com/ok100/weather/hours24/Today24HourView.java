@@ -14,6 +14,7 @@ import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.text.TextPaint;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import com.ok100.weather.R;
@@ -30,8 +31,8 @@ public class Today24HourView extends View {
     private static final String TAG = "Today24HourView";
     private static final int ITEM_SIZE = 24;  //24小时
     private static final int ITEM_WIDTH = 140; //每个Item的宽度
-    private static final int MARGIN_LEFT_ITEM = 100; //左边预留宽度
-    private static final int MARGIN_RIGHT_ITEM = 100; //右边预留宽度
+    private static final int MARGIN_LEFT_ITEM = 30; //左边预留宽度
+    private static final int MARGIN_RIGHT_ITEM = 30; //右边预留宽度
 
     private static final int windyBoxAlpha = 80;
     private static final int windyBoxMaxHeight = 80;
@@ -51,15 +52,21 @@ public class Today24HourView extends View {
     private int currentItemIndex = 0; //当前滚动的位置所对应的item下标
     private int currentWeatherRes = -1;
 
-    private int maxTemp = 26;
-    private int minTemp = 21;
-    private int maxWindy = 5;
-    private int minWindy = 2;
-    private static final int TEMP[] = {22, 23, 23, 23, 23,
+    private int maxTemp = 40;
+    private int minTemp = -40;
+    private int maxWindy = 6;
+    private int minWindy = 0;
+
+    public ArrayList<Integer> tempList = new ArrayList<Integer>();
+    public ArrayList<Integer> windyList = new ArrayList<Integer>();
+    public ArrayList<Integer> resList = new ArrayList<Integer>();
+    public ArrayList<String> timeList = new ArrayList<String>();
+
+    private static final int TEMP[] = {29, 23, 23, 23, 23,
             22, 23, 23, 23, 22,
             21, 21, 22, 22, 23,
-            23, 24, 24, 25, 25,
-            25, 26, 25, 24};
+            23, 24, 24, 40, 25,
+            15, -10, -25, -35};
     private static final int WINDY[] = {2, 2, 3, 3, 3,
             4, 4, 4, 3, 3,
             3, 4, 4, 4, 4,
@@ -87,10 +94,13 @@ public class Today24HourView extends View {
 
     private void init() {
         mWidth = MARGIN_LEFT_ITEM + MARGIN_RIGHT_ITEM + ITEM_SIZE * ITEM_WIDTH;
-        mHeight = 500; //暂时先写死
-        tempBaseTop = (500 - bottomTextHeight)/4;
-        tempBaseBottom = (500 - bottomTextHeight)*2/3;
+        mHeight = 300; //暂时先写死
+        tempBaseTop = (300 - bottomTextHeight)/4;
+        tempBaseBottom = (300 - bottomTextHeight)*2/3;
 
+
+    }
+    public void setData(){
         initHourItems();
         initPaint();
     }
@@ -135,29 +145,31 @@ public class Today24HourView extends View {
         listItems = new ArrayList<>();
         for(int i=0; i<ITEM_SIZE; i++){
             String time;
-            if(i<10){
-                time = "0" + i + ":00";
-            } else {
-                time = i + ":00";
-            }
+//            if(i<10){
+//                time = "0" + i + ":00";
+//            } else {
+//                time = i + ":00";
+//            }
+            time= timeList.get(i);
             int left =MARGIN_LEFT_ITEM  +  i * ITEM_WIDTH;
             int right = left + ITEM_WIDTH - 1;
             int top = (int)(mHeight -bottomTextHeight +
-                    (maxWindy - WINDY[i])*1.0/(maxWindy - minWindy)*windyBoxSubHight
+                    (maxWindy - windyList.get(i))*1.0/(maxWindy - minWindy)*windyBoxSubHight
                     - windyBoxMaxHeight);
             int bottom =  mHeight - bottomTextHeight;
             Rect rect = new Rect(left, top, right, bottom);
-            Point point = calculateTempPoint(left, right, TEMP[i]);
+            Point point = calculateTempPoint(left, right, tempList.get(i));
 
             HourItem hourItem = new HourItem();
             hourItem.windyBoxRect = rect;
             hourItem.time = time;
-            hourItem.windy = WINDY[i];
-            hourItem.temperature = TEMP[i];
+            hourItem.windy =windyList.get(i);
+            hourItem.temperature = tempList.get(i);
             hourItem.tempPoint = point;
-            hourItem.res = WEATHER_RES[i];
+            hourItem.res = resList.get(i);
             listItems.add(hourItem);
         }
+
     }
 
     private Point calculateTempPoint(int left, int right, int temp){
@@ -182,6 +194,9 @@ public class Today24HourView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        if(listItems==null){
+            return;
+        }
         for(int i=0; i<listItems.size(); i++){
             Rect rect = listItems.get(i).windyBoxRect;
             Point point = listItems.get(i).tempPoint;
