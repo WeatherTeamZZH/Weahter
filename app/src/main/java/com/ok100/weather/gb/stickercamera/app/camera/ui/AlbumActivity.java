@@ -6,17 +6,23 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 
 
-import com.astuetz.PagerSlidingTabStrip;
 import com.ok100.weather.R;
+import com.ok100.weather.gb.customview.PagerSlidingTabStrip;
 import com.ok100.weather.gb.stickercamera.AppConstants;
 import com.ok100.weather.gb.stickercamera.app.camera.CameraBaseActivity;
 import com.ok100.weather.gb.stickercamera.app.camera.fragment.AlbumFragment;
 import com.ok100.weather.gb.stickercamera.app.model.Album;
+import com.ok100.weather.gb.stickercamera.app.model.PhotoItem;
 import com.ok100.weather.gb.util.FileUtils;
 import com.ok100.weather.gb.util.ImageUtils;
 import com.ok100.weather.gb.util.StringUtils;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +51,7 @@ public class AlbumActivity extends CameraBaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_album);
+        EventBus.getDefault().register(this);
         ButterKnife.bind(this);
         albums = ImageUtils.findGalleries(this, paths, 0);
         //ViewPager的adapter
@@ -56,14 +63,17 @@ public class AlbumActivity extends CameraBaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 
     @Override
     protected void onActivityResult(final int requestCode, final int resultCode, final Intent result) {
         if (requestCode == AppConstants.REQUEST_CROP && resultCode == RESULT_OK) {
-            Intent newIntent = new Intent(this, PhotoProcessActivity.class);
+
+            Log.e("camera==", result.getData() + "");
+          /*  Intent newIntent = new Intent(this, PhotoProcessActivity.class);
             newIntent.setData(result.getData());
-            startActivity(newIntent);
+            startActivity(newIntent);*/
         }
     }
 
@@ -98,4 +108,8 @@ public class AlbumActivity extends CameraBaseActivity {
     }
 
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMoonEvent(PhotoItem photoItem) {
+        AlbumActivity.this.finish();
+    }
 }

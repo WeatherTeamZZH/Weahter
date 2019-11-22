@@ -254,10 +254,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
 //                AirDialogFragment.access(getFragmentManager());
                 break;
             case R.id.tv_shidu_xiao:
-                intent = new Intent(getActivity(), GH_MapActivity.class);
-                intent.putStringArrayListExtra("listdata", departmentListBeansString);
-                startActivity(intent);
-
+                GH_MapActivity.access(getActivity(),departmentListBeansString,weatherTotalBean);
                 break;
 
         }

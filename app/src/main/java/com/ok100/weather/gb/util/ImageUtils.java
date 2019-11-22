@@ -12,6 +12,7 @@ import android.os.AsyncTask;
 import android.provider.MediaStore;
 
 import com.ok100.weather.gb.stickercamera.App;
+import com.ok100.weather.gb.stickercamera.app.camera.util.SharedPrefHelper;
 import com.ok100.weather.gb.stickercamera.app.model.Album;
 import com.ok100.weather.gb.stickercamera.app.model.PhotoItem;
 
@@ -36,6 +37,7 @@ import java.util.Map;
  * 图片工具类
  */
 public class ImageUtils {
+    public static final String LOCAL_LIST_DATA = "local_list_data";
 
     public static int getMiniSize(String imagePath) {
         BitmapFactory.Options options = new BitmapFactory.Options();
@@ -66,6 +68,18 @@ public class ImageUtils {
         return options.outHeight == options.outWidth;
     }
 
+    /**
+     * 设置本地历史数据
+     */
+
+    public static void setLocalBitmapListData(String resource) {
+        SharedPrefHelper.putString(App.getContext(), LOCAL_LIST_DATA, resource);
+    }
+
+    public static String getLocalListData() {
+        return SharedPrefHelper.getString(App.getContext(), LOCAL_LIST_DATA);
+    }
+
     //保存图片文件
     public static String saveToFile(String fileFolderStr, boolean isDir, Bitmap croppedImage) throws FileNotFoundException, IOException {
         File jpgFile;
@@ -91,7 +105,29 @@ public class ImageUtils {
         return jpgFile.getPath();
     }
 
+    public static String saveBitmapToFile(String fileFolderStr, boolean isDir, Bitmap croppedImage,String title) throws FileNotFoundException, IOException {
+        File jpgFile;
+        if (isDir) {
+            File fileFolder = new File(fileFolderStr);
+            Date date = new Date();
+            SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss"); // 格式化时间format.format(date)
+            String filename = title + ".jpg";
+            if (!fileFolder.exists()) { // 如果目录不存在，则创建一个名为"finger"的目录
+                FileUtils.getInst().mkdir(fileFolder);
+            }
+            jpgFile = new File(fileFolder, filename);
+        } else {
+            jpgFile = new File(fileFolderStr);
+            if (!jpgFile.getParentFile().exists()) { // 如果目录不存在，则创建一个名为"finger"的目录
+                FileUtils.getInst().mkdir(jpgFile.getParentFile());
+            }
+        }
+        FileOutputStream outputStream = new FileOutputStream(jpgFile); // 文件输出流
 
+        croppedImage.compress(Bitmap.CompressFormat.JPEG, 70, outputStream);
+        IOUtil.closeStream(outputStream);
+        return jpgFile.getPath();
+    }
 
     //从文件中读取Bitmap
     public static Bitmap decodeBitmapWithOrientation(String pathName, int width, int height) {

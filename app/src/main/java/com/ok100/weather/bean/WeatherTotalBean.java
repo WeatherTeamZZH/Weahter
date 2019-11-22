@@ -1,5 +1,7 @@
 package com.ok100.weather.bean;
 
+import java.io.Serializable;
+
 /**
  * @Description: This is WeatherTotalBean
  * @Author: QianDongDong
@@ -7,7 +9,7 @@ package com.ok100.weather.bean;
  * @Email: qdd2977@sina.com
  * @org: www.vanlian.cn 万科链家（北京）装饰有限公司
  */
-public class WeatherTotalBean {
+public class WeatherTotalBean implements Serializable {
 
     /**
      * ret : 200
@@ -43,7 +45,7 @@ public class WeatherTotalBean {
         this.qt = qt;
     }
 
-    public static class DataBean {
+    public static class DataBean implements Serializable{
         /**
          * cityinfo : {"provinces":"浙江","city":"杭州","area":"西湖","id":"101210113","prov_py":"zhejiang","city_py":"hangzhou","qh":"0571","jb":"3","yb":"310000","area_py":"xihu","area_short_code":"xh","lng":"120.12979","lat":"30.25949"}
          * now : {"id":"101210113","area_name":"西湖","city":{"night_air_temperature":"24","day_air_temperature":"31","wind_direction":"东风","wind_power":"4-5级转3-4级","weather":"多云","weather_code":"01"},"detail":{"time":"14:55","date":"09月12日","week":"四","temperature":"33","wind_direction":"东北风","wind_direction_str":"NE","wind_power":"2级","wind_speed":"<12km/h","humidity":"54%","weather":"多云","weather_code":"01","weather_english":"Cloudy","qy":"1006","njd":"10.98km","rain":"0.0","aqi":"57","quality":"良","aqi_pm25":"","so2":"2","o3":"16","co":"8","no2":"25","pm10":"73","nongli":"八月十四","sun_begin":"05:42","sun_end":"18:09"},"update_time":1568273100}
@@ -68,7 +70,7 @@ public class WeatherTotalBean {
             this.now = now;
         }
 
-        public static class CityinfoBean {
+        public static class CityinfoBean implements Serializable{
             /**
              * provinces : 浙江
              * city : 杭州
@@ -223,7 +225,7 @@ public class WeatherTotalBean {
             }
         }
 
-        public static class NowBean {
+        public static class NowBean implements Serializable{
             /**
              * id : 101210113
              * area_name : 西湖
@@ -278,7 +280,7 @@ public class WeatherTotalBean {
                 this.update_time = update_time;
             }
 
-            public static class CityBean {
+            public static class CityBean implements Serializable{
                 /**
                  * night_air_temperature : 24
                  * day_air_temperature : 31
@@ -356,7 +358,7 @@ public class WeatherTotalBean {
                 }
             }
 
-            public static class DetailBean {
+            public static class DetailBean implements Serializable{
                 /**
                  * time : 14:55
                  * date : 09月12日
