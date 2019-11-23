@@ -30,3 +30,5 @@ proguard.cfg
 
 #OSX
 .DS_Store
+/build/
+/.gitignore

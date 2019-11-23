@@ -11661,394 +11661,397 @@ public final class R2 {
     public static final int tv_air_level = 0x7f0801b6;
 
     @IdRes
-    public static final int tv_aqi = 0x7f0801b7;
+    public static final int tv_app_version = 0x7f0801b7;
 
     @IdRes
-    public static final int tv_birth = 0x7f0801b8;
+    public static final int tv_aqi = 0x7f0801b8;
 
     @IdRes
-    public static final int tv_bottom_today_feng = 0x7f0801b9;
+    public static final int tv_birth = 0x7f0801b9;
 
     @IdRes
-    public static final int tv_bottom_today_weather = 0x7f0801ba;
+    public static final int tv_bottom_today_feng = 0x7f0801ba;
 
     @IdRes
-    public static final int tv_bottom_today_wendu = 0x7f0801bb;
+    public static final int tv_bottom_today_weather = 0x7f0801bb;
 
     @IdRes
-    public static final int tv_bottom_tomorrow_feng = 0x7f0801bc;
+    public static final int tv_bottom_today_wendu = 0x7f0801bc;
 
     @IdRes
-    public static final int tv_bottom_tomorrow_weather = 0x7f0801bd;
+    public static final int tv_bottom_tomorrow_feng = 0x7f0801bd;
 
     @IdRes
-    public static final int tv_bottom_tomorrow_wendu = 0x7f0801be;
+    public static final int tv_bottom_tomorrow_weather = 0x7f0801be;
 
     @IdRes
-    public static final int tv_city = 0x7f0801bf;
+    public static final int tv_bottom_tomorrow_wendu = 0x7f0801bf;
 
     @IdRes
-    public static final int tv_co = 0x7f0801c0;
+    public static final int tv_city = 0x7f0801c0;
 
     @IdRes
-    public static final int tv_co2 = 0x7f0801c1;
+    public static final int tv_co = 0x7f0801c1;
 
     @IdRes
-    public static final int tv_content_toast = 0x7f0801c2;
+    public static final int tv_co2 = 0x7f0801c2;
 
     @IdRes
-    public static final int tv_content_toast_comment = 0x7f0801c3;
+    public static final int tv_content_toast = 0x7f0801c3;
 
     @IdRes
-    public static final int tv_data = 0x7f0801c4;
+    public static final int tv_content_toast_comment = 0x7f0801c4;
 
     @IdRes
-    public static final int tv_date = 0x7f0801c5;
+    public static final int tv_data = 0x7f0801c5;
 
     @IdRes
-    public static final int tv_day_temperature = 0x7f0801c6;
+    public static final int tv_date = 0x7f0801c6;
 
     @IdRes
-    public static final int tv_day_weather = 0x7f0801c7;
+    public static final int tv_day_temperature = 0x7f0801c7;
 
     @IdRes
-    public static final int tv_des = 0x7f0801c8;
+    public static final int tv_day_weather = 0x7f0801c8;
 
     @IdRes
-    public static final int tv_desc = 0x7f0801c9;
+    public static final int tv_des = 0x7f0801c9;
 
     @IdRes
-    public static final int tv_dir = 0x7f0801ca;
+    public static final int tv_desc = 0x7f0801ca;
 
     @IdRes
-    public static final int tv_edit = 0x7f0801cb;
+    public static final int tv_dir = 0x7f0801cb;
 
     @IdRes
-    public static final int tv_feng = 0x7f0801cc;
+    public static final int tv_edit = 0x7f0801cc;
 
     @IdRes
-    public static final int tv_fenglevel = 0x7f0801cd;
+    public static final int tv_feng = 0x7f0801cd;
 
     @IdRes
-    public static final int tv_folder_name = 0x7f0801ce;
+    public static final int tv_fenglevel = 0x7f0801ce;
 
     @IdRes
-    public static final int tv_goin_pindao = 0x7f0801cf;
+    public static final int tv_folder_name = 0x7f0801cf;
 
     @IdRes
-    public static final int tv_goin_pindao2 = 0x7f0801d0;
+    public static final int tv_goin_pindao = 0x7f0801d0;
 
     @IdRes
-    public static final int tv_home = 0x7f0801d1;
+    public static final int tv_goin_pindao2 = 0x7f0801d1;
 
     @IdRes
-    public static final int tv_image_count = 0x7f0801d2;
+    public static final int tv_home = 0x7f0801d2;
 
     @IdRes
-    public static final int tv_kongqizhiliang = 0x7f0801d3;
+    public static final int tv_image_count = 0x7f0801d3;
 
     @IdRes
-    public static final int tv_level = 0x7f0801d4;
+    public static final int tv_kongqizhiliang = 0x7f0801d4;
 
     @IdRes
-    public static final int tv_liebiao = 0x7f0801d5;
+    public static final int tv_level = 0x7f0801d5;
 
     @IdRes
-    public static final int tv_logout = 0x7f0801d6;
+    public static final int tv_liebiao = 0x7f0801d6;
 
     @IdRes
-    public static final int tv_my_city = 0x7f0801d7;
+    public static final int tv_logout = 0x7f0801d7;
 
     @IdRes
-    public static final int tv_name = 0x7f0801d8;
+    public static final int tv_my_city = 0x7f0801d8;
 
     @IdRes
-    public static final int tv_name1 = 0x7f0801d9;
+    public static final int tv_name = 0x7f0801d9;
 
     @IdRes
-    public static final int tv_name2 = 0x7f0801da;
+    public static final int tv_name1 = 0x7f0801da;
 
     @IdRes
-    public static final int tv_nengjiandu = 0x7f0801db;
+    public static final int tv_name2 = 0x7f0801db;
 
     @IdRes
-    public static final int tv_nick = 0x7f0801dc;
+    public static final int tv_nengjiandu = 0x7f0801dc;
 
     @IdRes
-    public static final int tv_night_temperature = 0x7f0801dd;
+    public static final int tv_nick = 0x7f0801dd;
 
     @IdRes
-    public static final int tv_night_weather = 0x7f0801de;
+    public static final int tv_night_temperature = 0x7f0801de;
 
     @IdRes
-    public static final int tv_no = 0x7f0801df;
+    public static final int tv_night_weather = 0x7f0801df;
 
     @IdRes
-    public static final int tv_notice_main_choose_name = 0x7f0801e0;
+    public static final int tv_no = 0x7f0801e0;
 
     @IdRes
-    public static final int tv_notice_main_list_content = 0x7f0801e1;
+    public static final int tv_notice_main_choose_name = 0x7f0801e1;
 
     @IdRes
-    public static final int tv_notice_main_list_fujian = 0x7f0801e2;
+    public static final int tv_notice_main_list_content = 0x7f0801e2;
 
     @IdRes
-    public static final int tv_notice_main_list_isread = 0x7f0801e3;
+    public static final int tv_notice_main_list_fujian = 0x7f0801e3;
 
     @IdRes
-    public static final int tv_notice_main_list_owner = 0x7f0801e4;
+    public static final int tv_notice_main_list_isread = 0x7f0801e4;
 
     @IdRes
-    public static final int tv_notice_main_list_readnumber = 0x7f0801e5;
+    public static final int tv_notice_main_list_owner = 0x7f0801e5;
 
     @IdRes
-    public static final int tv_notice_main_list_time = 0x7f0801e6;
+    public static final int tv_notice_main_list_readnumber = 0x7f0801e6;
 
     @IdRes
-    public static final int tv_notice_main_list_title = 0x7f0801e7;
+    public static final int tv_notice_main_list_time = 0x7f0801e7;
 
     @IdRes
-    public static final int tv_notice_main_list_top = 0x7f0801e8;
+    public static final int tv_notice_main_list_title = 0x7f0801e8;
 
     @IdRes
-    public static final int tv_o3 = 0x7f0801e9;
+    public static final int tv_notice_main_list_top = 0x7f0801e9;
 
     @IdRes
-    public static final int tv_ok = 0x7f0801ea;
+    public static final int tv_o3 = 0x7f0801ea;
 
     @IdRes
-    public static final int tv_phone = 0x7f0801eb;
+    public static final int tv_ok = 0x7f0801eb;
 
     @IdRes
-    public static final int tv_pm10 = 0x7f0801ec;
+    public static final int tv_phone = 0x7f0801ec;
 
     @IdRes
-    public static final int tv_pm25 = 0x7f0801ed;
+    public static final int tv_pm10 = 0x7f0801ed;
 
     @IdRes
-    public static final int tv_position = 0x7f0801ee;
+    public static final int tv_pm25 = 0x7f0801ee;
 
     @IdRes
-    public static final int tv_prompt = 0x7f0801ef;
+    public static final int tv_position = 0x7f0801ef;
 
     @IdRes
-    public static final int tv_qiya = 0x7f0801f0;
+    public static final int tv_prompt = 0x7f0801f0;
 
     @IdRes
-    public static final int tv_qushi = 0x7f0801f1;
+    public static final int tv_qiya = 0x7f0801f1;
 
     @IdRes
-    public static final int tv_richu_time = 0x7f0801f2;
+    public static final int tv_qushi = 0x7f0801f2;
 
     @IdRes
-    public static final int tv_riluo_time = 0x7f0801f3;
+    public static final int tv_richu_time = 0x7f0801f3;
 
     @IdRes
-    public static final int tv_sex = 0x7f0801f4;
+    public static final int tv_riluo_time = 0x7f0801f4;
 
     @IdRes
-    public static final int tv_shidu = 0x7f0801f5;
+    public static final int tv_sex = 0x7f0801f5;
 
     @IdRes
-    public static final int tv_shidu_xiao = 0x7f0801f6;
+    public static final int tv_shidu = 0x7f0801f6;
 
     @IdRes
-    public static final int tv_so2 = 0x7f0801f7;
+    public static final int tv_shidu_xiao = 0x7f0801f7;
 
     @IdRes
-    public static final int tv_switch_1 = 0x7f0801f8;
+    public static final int tv_so2 = 0x7f0801f8;
 
     @IdRes
-    public static final int tv_switch_2 = 0x7f0801f9;
+    public static final int tv_switch_1 = 0x7f0801f9;
 
     @IdRes
-    public static final int tv_tab_title = 0x7f0801fa;
+    public static final int tv_switch_2 = 0x7f0801fa;
 
     @IdRes
-    public static final int tv_temp = 0x7f0801fb;
+    public static final int tv_tab_title = 0x7f0801fb;
 
     @IdRes
-    public static final int tv_tigan = 0x7f0801fc;
+    public static final int tv_temp = 0x7f0801fc;
 
     @IdRes
-    public static final int tv_time = 0x7f0801fd;
+    public static final int tv_tigan = 0x7f0801fd;
 
     @IdRes
-    public static final int tv_title = 0x7f0801fe;
+    public static final int tv_time = 0x7f0801fe;
 
     @IdRes
-    public static final int tv_title_city = 0x7f0801ff;
+    public static final int tv_title = 0x7f0801ff;
 
     @IdRes
-    public static final int tv_title_left = 0x7f080200;
+    public static final int tv_title_city = 0x7f080200;
 
     @IdRes
-    public static final int tv_title_position = 0x7f080201;
+    public static final int tv_title_left = 0x7f080201;
 
     @IdRes
-    public static final int tv_title_right = 0x7f080202;
+    public static final int tv_title_position = 0x7f080202;
 
     @IdRes
-    public static final int tv_tongzhilan = 0x7f080203;
+    public static final int tv_title_right = 0x7f080203;
 
     @IdRes
-    public static final int tv_tuisong = 0x7f080204;
+    public static final int tv_tongzhilan = 0x7f080204;
 
     @IdRes
-    public static final int tv_updata = 0x7f080205;
+    public static final int tv_tuisong = 0x7f080205;
 
     @IdRes
-    public static final int tv_weater_xiao = 0x7f080206;
+    public static final int tv_updata = 0x7f080206;
 
     @IdRes
-    public static final int tv_weather = 0x7f080207;
+    public static final int tv_weater_xiao = 0x7f080207;
 
     @IdRes
-    public static final int tv_weather_temp = 0x7f080208;
+    public static final int tv_weather = 0x7f080208;
 
     @IdRes
-    public static final int tv_wechat = 0x7f080209;
+    public static final int tv_weather_temp = 0x7f080209;
 
     @IdRes
-    public static final int tv_week = 0x7f08020a;
+    public static final int tv_wechat = 0x7f08020a;
 
     @IdRes
-    public static final int tv_wind_level = 0x7f08020b;
+    public static final int tv_week = 0x7f08020b;
 
     @IdRes
-    public static final int tv_wind_ori = 0x7f08020c;
+    public static final int tv_wind_level = 0x7f08020c;
 
     @IdRes
-    public static final int tv_wodepindao = 0x7f08020d;
+    public static final int tv_wind_ori = 0x7f08020d;
 
     @IdRes
-    public static final int tv_wodepindao2 = 0x7f08020e;
+    public static final int tv_wodepindao = 0x7f08020e;
 
     @IdRes
-    public static final int tv_xiaoxi = 0x7f08020f;
+    public static final int tv_wodepindao2 = 0x7f08020f;
 
     @IdRes
-    public static final int tv_xingqi = 0x7f080210;
+    public static final int tv_xiaoxi = 0x7f080210;
 
     @IdRes
-    public static final int tv_yijian = 0x7f080211;
+    public static final int tv_xingqi = 0x7f080211;
 
     @IdRes
-    public static final int tv_zhuti = 0x7f080212;
+    public static final int tv_yijian = 0x7f080212;
 
     @IdRes
-    public static final int umeng_back = 0x7f080213;
+    public static final int tv_zhuti = 0x7f080213;
 
     @IdRes
-    public static final int umeng_del = 0x7f080214;
+    public static final int umeng_back = 0x7f080214;
 
     @IdRes
-    public static final int umeng_image_edge = 0x7f080215;
+    public static final int umeng_del = 0x7f080215;
 
     @IdRes
-    public static final int umeng_share_btn = 0x7f080216;
+    public static final int umeng_image_edge = 0x7f080216;
 
     @IdRes
-    public static final int umeng_share_icon = 0x7f080217;
+    public static final int umeng_share_btn = 0x7f080217;
 
     @IdRes
-    public static final int umeng_socialize_follow = 0x7f080218;
+    public static final int umeng_share_icon = 0x7f080218;
 
     @IdRes
-    public static final int umeng_socialize_follow_check = 0x7f080219;
+    public static final int umeng_socialize_follow = 0x7f080219;
 
     @IdRes
-    public static final int umeng_socialize_share_bottom_area = 0x7f08021a;
+    public static final int umeng_socialize_follow_check = 0x7f08021a;
 
     @IdRes
-    public static final int umeng_socialize_share_edittext = 0x7f08021b;
+    public static final int umeng_socialize_share_bottom_area = 0x7f08021b;
 
     @IdRes
-    public static final int umeng_socialize_share_titlebar = 0x7f08021c;
+    public static final int umeng_socialize_share_edittext = 0x7f08021c;
 
     @IdRes
-    public static final int umeng_socialize_share_word_num = 0x7f08021d;
+    public static final int umeng_socialize_share_titlebar = 0x7f08021d;
 
     @IdRes
-    public static final int umeng_socialize_titlebar = 0x7f08021e;
+    public static final int umeng_socialize_share_word_num = 0x7f08021e;
 
     @IdRes
-    public static final int umeng_title = 0x7f08021f;
+    public static final int umeng_socialize_titlebar = 0x7f08021f;
 
     @IdRes
-    public static final int umeng_web_title = 0x7f080220;
+    public static final int umeng_title = 0x7f080220;
 
     @IdRes
-    public static final int uniform = 0x7f080221;
+    public static final int umeng_web_title = 0x7f080221;
 
     @IdRes
-    public static final int up = 0x7f080222;
+    public static final int uniform = 0x7f080222;
 
     @IdRes
-    public static final int upush_notification1 = 0x7f080223;
+    public static final int up = 0x7f080223;
 
     @IdRes
-    public static final int upush_notification2 = 0x7f080224;
+    public static final int upush_notification1 = 0x7f080224;
 
     @IdRes
-    public static final int useLogo = 0x7f080225;
+    public static final int upush_notification2 = 0x7f080225;
 
     @IdRes
-    public static final int viewPager = 0x7f080226;
+    public static final int useLogo = 0x7f080226;
 
     @IdRes
-    public static final int view_line = 0x7f080227;
+    public static final int viewPager = 0x7f080227;
 
     @IdRes
-    public static final int view_offset_helper = 0x7f080228;
+    public static final int view_line = 0x7f080228;
 
     @IdRes
-    public static final int view_preview_img = 0x7f080229;
+    public static final int view_offset_helper = 0x7f080229;
 
     @IdRes
-    public static final int viewpager = 0x7f08022a;
+    public static final int view_preview_img = 0x7f08022a;
 
     @IdRes
-    public static final int visible = 0x7f08022b;
+    public static final int viewpager = 0x7f08022b;
 
     @IdRes
-    public static final int wb_img = 0x7f08022c;
+    public static final int visible = 0x7f08022c;
 
     @IdRes
-    public static final int weather_view = 0x7f08022d;
+    public static final int wb_img = 0x7f08022d;
 
     @IdRes
-    public static final int webView = 0x7f08022e;
+    public static final int weather_view = 0x7f08022e;
 
     @IdRes
-    public static final int webview = 0x7f08022f;
+    public static final int webView = 0x7f08022f;
 
     @IdRes
-    public static final int white = 0x7f080230;
+    public static final int webview = 0x7f080230;
 
     @IdRes
-    public static final int wide = 0x7f080231;
+    public static final int white = 0x7f080231;
 
     @IdRes
-    public static final int withText = 0x7f080232;
+    public static final int wide = 0x7f080232;
 
     @IdRes
-    public static final int wrap = 0x7f080233;
+    public static final int withText = 0x7f080233;
 
     @IdRes
-    public static final int wrap_content = 0x7f080234;
+    public static final int wrap = 0x7f080234;
 
     @IdRes
-    public static final int wrap_image = 0x7f080235;
+    public static final int wrap_content = 0x7f080235;
 
     @IdRes
-    public static final int wx_friend_img = 0x7f080236;
+    public static final int wrap_image = 0x7f080236;
 
     @IdRes
-    public static final int wx_img = 0x7f080237;
+    public static final int wx_friend_img = 0x7f080237;
 
     @IdRes
-    public static final int year = 0x7f080238;
+    public static final int wx_img = 0x7f080238;
+
+    @IdRes
+    public static final int year = 0x7f080239;
   }
 
   public static final class integer {
@@ -12223,349 +12226,352 @@ public final class R2 {
     public static final int activity_user_inof = 0x7f0a002b;
 
     @LayoutRes
-    public static final int activity_zhuti_imge = 0x7f0a002c;
+    public static final int activity_welcome = 0x7f0a002c;
 
     @LayoutRes
-    public static final int adapter_camera_item = 0x7f0a002d;
+    public static final int activity_zhuti_imge = 0x7f0a002d;
 
     @LayoutRes
-    public static final int adapter_folder_list_item = 0x7f0a002e;
+    public static final int adapter_camera_item = 0x7f0a002e;
 
     @LayoutRes
-    public static final int adapter_image_list_item = 0x7f0a002f;
+    public static final int adapter_folder_list_item = 0x7f0a002f;
 
     @LayoutRes
-    public static final int brvah_quick_view_load_more = 0x7f0a0030;
+    public static final int adapter_image_list_item = 0x7f0a0030;
 
     @LayoutRes
-    public static final int design_bottom_navigation_item = 0x7f0a0031;
+    public static final int brvah_quick_view_load_more = 0x7f0a0031;
 
     @LayoutRes
-    public static final int design_bottom_sheet_dialog = 0x7f0a0032;
+    public static final int design_bottom_navigation_item = 0x7f0a0032;
 
     @LayoutRes
-    public static final int design_layout_snackbar = 0x7f0a0033;
+    public static final int design_bottom_sheet_dialog = 0x7f0a0033;
 
     @LayoutRes
-    public static final int design_layout_snackbar_include = 0x7f0a0034;
+    public static final int design_layout_snackbar = 0x7f0a0034;
 
     @LayoutRes
-    public static final int design_layout_tab_icon = 0x7f0a0035;
+    public static final int design_layout_snackbar_include = 0x7f0a0035;
 
     @LayoutRes
-    public static final int design_layout_tab_text = 0x7f0a0036;
+    public static final int design_layout_tab_icon = 0x7f0a0036;
 
     @LayoutRes
-    public static final int design_menu_item_action_area = 0x7f0a0037;
+    public static final int design_layout_tab_text = 0x7f0a0037;
 
     @LayoutRes
-    public static final int design_navigation_item = 0x7f0a0038;
+    public static final int design_menu_item_action_area = 0x7f0a0038;
 
     @LayoutRes
-    public static final int design_navigation_item_header = 0x7f0a0039;
+    public static final int design_navigation_item = 0x7f0a0039;
 
     @LayoutRes
-    public static final int design_navigation_item_separator = 0x7f0a003a;
+    public static final int design_navigation_item_header = 0x7f0a003a;
 
     @LayoutRes
-    public static final int design_navigation_item_subheader = 0x7f0a003b;
+    public static final int design_navigation_item_separator = 0x7f0a003b;
 
     @LayoutRes
-    public static final int design_navigation_menu = 0x7f0a003c;
+    public static final int design_navigation_item_subheader = 0x7f0a003c;
 
     @LayoutRes
-    public static final int design_navigation_menu_item = 0x7f0a003d;
+    public static final int design_navigation_menu = 0x7f0a003d;
 
     @LayoutRes
-    public static final int design_text_input_password_icon = 0x7f0a003e;
+    public static final int design_navigation_menu_item = 0x7f0a003e;
 
     @LayoutRes
-    public static final int dialog_nickname = 0x7f0a003f;
+    public static final int design_text_input_password_icon = 0x7f0a003f;
 
     @LayoutRes
-    public static final int fragment_album = 0x7f0a0040;
+    public static final int dialog_nickname = 0x7f0a0040;
 
     @LayoutRes
-    public static final int fragment_main = 0x7f0a0041;
+    public static final int fragment_album = 0x7f0a0041;
 
     @LayoutRes
-    public static final int fragment_news_vanlian = 0x7f0a0042;
+    public static final int fragment_main = 0x7f0a0042;
 
     @LayoutRes
-    public static final int fragment_postassistant = 0x7f0a0043;
+    public static final int fragment_news_vanlian = 0x7f0a0043;
 
     @LayoutRes
-    public static final int fragment_weather_banner_layout = 0x7f0a0044;
+    public static final int fragment_postassistant = 0x7f0a0044;
 
     @LayoutRes
-    public static final int gh_activity_map = 0x7f0a0045;
+    public static final int fragment_weather_banner_layout = 0x7f0a0045;
 
     @LayoutRes
-    public static final int gh_dialogfragment_air = 0x7f0a0046;
+    public static final int gh_activity_map = 0x7f0a0046;
 
     @LayoutRes
-    public static final int gh_dialogfragment_default = 0x7f0a0047;
+    public static final int gh_dialogfragment_air = 0x7f0a0047;
 
     @LayoutRes
-    public static final int gh_fragment_air = 0x7f0a0048;
+    public static final int gh_dialogfragment_default = 0x7f0a0048;
 
     @LayoutRes
-    public static final int gh_fragment_air_item = 0x7f0a0049;
+    public static final int gh_fragment_air = 0x7f0a0049;
 
     @LayoutRes
-    public static final int gh_fragment_rank = 0x7f0a004a;
+    public static final int gh_fragment_air_item = 0x7f0a004a;
 
     @LayoutRes
-    public static final int gh_item_air = 0x7f0a004b;
+    public static final int gh_fragment_rank = 0x7f0a004b;
 
     @LayoutRes
-    public static final int gh_tablayou_view_air = 0x7f0a004c;
+    public static final int gh_item_air = 0x7f0a004c;
 
     @LayoutRes
-    public static final int include_pickerview_topbar = 0x7f0a004d;
+    public static final int gh_tablayou_view_air = 0x7f0a004d;
 
     @LayoutRes
-    public static final int include_top_bar = 0x7f0a004e;
+    public static final int include_pickerview_topbar = 0x7f0a004e;
 
     @LayoutRes
-    public static final int item_bottom_filter = 0x7f0a004f;
+    public static final int include_top_bar = 0x7f0a004f;
 
     @LayoutRes
-    public static final int item_bottom_tool = 0x7f0a0050;
+    public static final int item_bottom_filter = 0x7f0a0050;
 
     @LayoutRes
-    public static final int item_gallery = 0x7f0a0051;
+    public static final int item_bottom_tool = 0x7f0a0051;
 
     @LayoutRes
-    public static final int item_load_end_view_news = 0x7f0a0052;
+    public static final int item_gallery = 0x7f0a0052;
 
     @LayoutRes
-    public static final int item_notice_main1_fragment1 = 0x7f0a0053;
+    public static final int item_load_end_view_news = 0x7f0a0053;
 
     @LayoutRes
-    public static final int item_notice_main1_fragment1_top = 0x7f0a0054;
+    public static final int item_notice_main1_fragment1 = 0x7f0a0054;
 
     @LayoutRes
-    public static final int item_notice_main1_fragment2 = 0x7f0a0055;
+    public static final int item_notice_main1_fragment1_top = 0x7f0a0055;
 
     @LayoutRes
-    public static final int item_notice_main1_fragment3 = 0x7f0a0056;
+    public static final int item_notice_main1_fragment2 = 0x7f0a0056;
 
     @LayoutRes
-    public static final int item_notice_main1_fragment3_top = 0x7f0a0057;
+    public static final int item_notice_main1_fragment3 = 0x7f0a0057;
 
     @LayoutRes
-    public static final int item_notice_main_chooset = 0x7f0a0058;
+    public static final int item_notice_main1_fragment3_top = 0x7f0a0058;
 
     @LayoutRes
-    public static final int item_picture = 0x7f0a0059;
+    public static final int item_notice_main_chooset = 0x7f0a0059;
 
     @LayoutRes
-    public static final int item_setting_list1 = 0x7f0a005a;
+    public static final int item_picture = 0x7f0a005a;
 
     @LayoutRes
-    public static final int item_setting_list2 = 0x7f0a005b;
+    public static final int item_setting_list1 = 0x7f0a005b;
 
     @LayoutRes
-    public static final int layout_basepickerview = 0x7f0a005c;
+    public static final int item_setting_list2 = 0x7f0a005c;
 
     @LayoutRes
-    public static final int layout_tab = 0x7f0a005d;
+    public static final int layout_basepickerview = 0x7f0a005d;
 
     @LayoutRes
-    public static final int layout_tab_bottom = 0x7f0a005e;
+    public static final int layout_tab = 0x7f0a005e;
 
     @LayoutRes
-    public static final int layout_tab_left = 0x7f0a005f;
+    public static final int layout_tab_bottom = 0x7f0a005f;
 
     @LayoutRes
-    public static final int layout_tab_right = 0x7f0a0060;
+    public static final int layout_tab_left = 0x7f0a0060;
 
     @LayoutRes
-    public static final int layout_tab_segment = 0x7f0a0061;
+    public static final int layout_tab_right = 0x7f0a0061;
 
     @LayoutRes
-    public static final int layout_tab_top = 0x7f0a0062;
+    public static final int layout_tab_segment = 0x7f0a0062;
 
     @LayoutRes
-    public static final int ll_bitmap = 0x7f0a0063;
+    public static final int layout_tab_top = 0x7f0a0063;
 
     @LayoutRes
-    public static final int main_spot_list = 0x7f0a0064;
+    public static final int ll_bitmap = 0x7f0a0064;
 
     @LayoutRes
-    public static final int main_tianqi_list_include = 0x7f0a0065;
+    public static final int main_spot_list = 0x7f0a0065;
 
     @LayoutRes
-    public static final int main_today_fuwu_list = 0x7f0a0066;
+    public static final int main_tianqi_list_include = 0x7f0a0066;
 
     @LayoutRes
-    public static final int main_today_suggest_list = 0x7f0a0067;
+    public static final int main_today_fuwu_list = 0x7f0a0067;
 
     @LayoutRes
-    public static final int my_city_list1 = 0x7f0a0068;
+    public static final int main_today_suggest_list = 0x7f0a0068;
 
     @LayoutRes
-    public static final int my_city_list2 = 0x7f0a0069;
+    public static final int my_city_list1 = 0x7f0a0069;
 
     @LayoutRes
-    public static final int my_city_list4 = 0x7f0a006a;
+    public static final int my_city_list2 = 0x7f0a006a;
 
     @LayoutRes
-    public static final int my_pindao_list = 0x7f0a006b;
+    public static final int my_city_list4 = 0x7f0a006b;
 
     @LayoutRes
-    public static final int notice_center_list1 = 0x7f0a006c;
+    public static final int my_pindao_list = 0x7f0a006c;
 
     @LayoutRes
-    public static final int notice_center_list2 = 0x7f0a006d;
+    public static final int notice_center_list1 = 0x7f0a006d;
 
     @LayoutRes
-    public static final int notification_action = 0x7f0a006e;
+    public static final int notice_center_list2 = 0x7f0a006e;
 
     @LayoutRes
-    public static final int notification_action_tombstone = 0x7f0a006f;
+    public static final int notification_action = 0x7f0a006f;
 
     @LayoutRes
-    public static final int notification_media_action = 0x7f0a0070;
+    public static final int notification_action_tombstone = 0x7f0a0070;
 
     @LayoutRes
-    public static final int notification_media_cancel_action = 0x7f0a0071;
+    public static final int notification_media_action = 0x7f0a0071;
 
     @LayoutRes
-    public static final int notification_template_big_media = 0x7f0a0072;
+    public static final int notification_media_cancel_action = 0x7f0a0072;
 
     @LayoutRes
-    public static final int notification_template_big_media_custom = 0x7f0a0073;
+    public static final int notification_template_big_media = 0x7f0a0073;
 
     @LayoutRes
-    public static final int notification_template_big_media_narrow = 0x7f0a0074;
+    public static final int notification_template_big_media_custom = 0x7f0a0074;
 
     @LayoutRes
-    public static final int notification_template_big_media_narrow_custom = 0x7f0a0075;
+    public static final int notification_template_big_media_narrow = 0x7f0a0075;
 
     @LayoutRes
-    public static final int notification_template_custom_big = 0x7f0a0076;
+    public static final int notification_template_big_media_narrow_custom = 0x7f0a0076;
 
     @LayoutRes
-    public static final int notification_template_icon_group = 0x7f0a0077;
+    public static final int notification_template_custom_big = 0x7f0a0077;
 
     @LayoutRes
-    public static final int notification_template_lines_media = 0x7f0a0078;
+    public static final int notification_template_icon_group = 0x7f0a0078;
 
     @LayoutRes
-    public static final int notification_template_media = 0x7f0a0079;
+    public static final int notification_template_lines_media = 0x7f0a0079;
 
     @LayoutRes
-    public static final int notification_template_media_custom = 0x7f0a007a;
+    public static final int notification_template_media = 0x7f0a007a;
 
     @LayoutRes
-    public static final int notification_template_part_chronometer = 0x7f0a007b;
+    public static final int notification_template_media_custom = 0x7f0a007b;
 
     @LayoutRes
-    public static final int notification_template_part_time = 0x7f0a007c;
+    public static final int notification_template_part_chronometer = 0x7f0a007c;
 
     @LayoutRes
-    public static final int personalinfophoto = 0x7f0a007d;
+    public static final int notification_template_part_time = 0x7f0a007d;
 
     @LayoutRes
-    public static final int pickerview_options = 0x7f0a007e;
+    public static final int personalinfophoto = 0x7f0a007e;
 
     @LayoutRes
-    public static final int pickerview_time = 0x7f0a007f;
+    public static final int pickerview_options = 0x7f0a007f;
 
     @LayoutRes
-    public static final int pop_folder = 0x7f0a0080;
+    public static final int pickerview_time = 0x7f0a0080;
 
     @LayoutRes
-    public static final int psts_tab = 0x7f0a0081;
+    public static final int pop_folder = 0x7f0a0081;
 
     @LayoutRes
-    public static final int select_dialog_item_material = 0x7f0a0082;
+    public static final int psts_tab = 0x7f0a0082;
 
     @LayoutRes
-    public static final int select_dialog_multichoice_material = 0x7f0a0083;
+    public static final int select_dialog_item_material = 0x7f0a0083;
 
     @LayoutRes
-    public static final int select_dialog_singlechoice_material = 0x7f0a0084;
+    public static final int select_dialog_multichoice_material = 0x7f0a0084;
 
     @LayoutRes
-    public static final int select_pic_pop_dialog = 0x7f0a0085;
+    public static final int select_dialog_singlechoice_material = 0x7f0a0085;
 
     @LayoutRes
-    public static final int small_tools_list = 0x7f0a0086;
+    public static final int select_pic_pop_dialog = 0x7f0a0086;
 
     @LayoutRes
-    public static final int socialize_share_menu_item = 0x7f0a0087;
+    public static final int small_tools_list = 0x7f0a0087;
 
     @LayoutRes
-    public static final int support_simple_spinner_dropdown_item = 0x7f0a0088;
+    public static final int socialize_share_menu_item = 0x7f0a0088;
 
     @LayoutRes
-    public static final int tablayou_view_housepk_left = 0x7f0a0089;
+    public static final int support_simple_spinner_dropdown_item = 0x7f0a0089;
 
     @LayoutRes
-    public static final int tablayou_view_housepk_right = 0x7f0a008a;
+    public static final int tablayou_view_housepk_left = 0x7f0a008a;
 
     @LayoutRes
-    public static final int title = 0x7f0a008b;
+    public static final int tablayou_view_housepk_right = 0x7f0a008b;
 
     @LayoutRes
-    public static final int toast_comment = 0x7f0a008c;
+    public static final int title = 0x7f0a008c;
 
     @LayoutRes
-    public static final int toast_worker = 0x7f0a008d;
+    public static final int toast_comment = 0x7f0a008d;
 
     @LayoutRes
-    public static final int toolbar_shadow_layout = 0x7f0a008e;
+    public static final int toast_worker = 0x7f0a008e;
 
     @LayoutRes
-    public static final int tooltip = 0x7f0a008f;
+    public static final int toolbar_shadow_layout = 0x7f0a008f;
 
     @LayoutRes
-    public static final int umeng_socialize_oauth_dialog = 0x7f0a0090;
+    public static final int tooltip = 0x7f0a0090;
 
     @LayoutRes
-    public static final int umeng_socialize_share = 0x7f0a0091;
+    public static final int umeng_socialize_oauth_dialog = 0x7f0a0091;
 
     @LayoutRes
-    public static final int upush_bar_image_notification = 0x7f0a0092;
+    public static final int umeng_socialize_share = 0x7f0a0092;
 
     @LayoutRes
-    public static final int upush_notification = 0x7f0a0093;
+    public static final int upush_bar_image_notification = 0x7f0a0093;
 
     @LayoutRes
-    public static final int view_drawable_overlay = 0x7f0a0094;
+    public static final int upush_notification = 0x7f0a0094;
 
     @LayoutRes
-    public static final int view_label = 0x7f0a0095;
+    public static final int view_drawable_overlay = 0x7f0a0095;
 
     @LayoutRes
-    public static final int view_label_bottom = 0x7f0a0096;
+    public static final int view_label = 0x7f0a0096;
 
     @LayoutRes
-    public static final int view_label_layout = 0x7f0a0097;
+    public static final int view_label_bottom = 0x7f0a0097;
 
     @LayoutRes
-    public static final int view_null = 0x7f0a0098;
+    public static final int view_label_layout = 0x7f0a0098;
 
     @LayoutRes
-    public static final int view_progress_dialog = 0x7f0a0099;
+    public static final int view_null = 0x7f0a0099;
 
     @LayoutRes
-    public static final int view_title_bar = 0x7f0a009a;
+    public static final int view_progress_dialog = 0x7f0a009a;
 
     @LayoutRes
-    public static final int view_transient_notification = 0x7f0a009b;
+    public static final int view_title_bar = 0x7f0a009b;
 
     @LayoutRes
-    public static final int weather15_list = 0x7f0a009c;
+    public static final int view_transient_notification = 0x7f0a009c;
 
     @LayoutRes
-    public static final int weather_item = 0x7f0a009d;
+    public static final int weather15_list = 0x7f0a009d;
 
     @LayoutRes
-    public static final int zhuti_image_adapter = 0x7f0a009e;
+    public static final int weather_item = 0x7f0a009e;
+
+    @LayoutRes
+    public static final int zhuti_image_adapter = 0x7f0a009f;
   }
 
   public static final class menu {
@@ -13625,1156 +13631,1165 @@ public final class R2 {
     public static final int pre_getphone = 0x7f0e015d;
 
     @StringRes
-    public static final int saturday_week = 0x7f0e015e;
+    public static final int rationale_ask = 0x7f0e015e;
 
     @StringRes
-    public static final int saturday_week_eng = 0x7f0e015f;
+    public static final int rationale_ask_again = 0x7f0e015f;
 
     @StringRes
-    public static final int saturday_week_eng_abbr = 0x7f0e0160;
+    public static final int saturday_week = 0x7f0e0160;
 
     @StringRes
-    public static final int saturday_week_small = 0x7f0e0161;
+    public static final int saturday_week_eng = 0x7f0e0161;
 
     @StringRes
-    public static final int search_menu_title = 0x7f0e0162;
+    public static final int saturday_week_eng_abbr = 0x7f0e0162;
 
     @StringRes
-    public static final int select_mobilenumberBill = 0x7f0e0163;
+    public static final int saturday_week_small = 0x7f0e0163;
 
     @StringRes
-    public static final int select_sim_state = 0x7f0e0164;
+    public static final int search_menu_title = 0x7f0e0164;
 
     @StringRes
-    public static final int select_user_state = 0x7f0e0165;
+    public static final int select_mobilenumberBill = 0x7f0e0165;
 
     @StringRes
-    public static final int service_and_privacy = 0x7f0e0166;
+    public static final int select_sim_state = 0x7f0e0166;
 
     @StringRes
-    public static final int service_name = 0x7f0e0167;
+    public static final int select_user_state = 0x7f0e0167;
 
     @StringRes
-    public static final int settings_notification = 0x7f0e0168;
+    public static final int service_and_privacy = 0x7f0e0168;
 
     @StringRes
-    public static final int settings_push = 0x7f0e0169;
+    public static final int service_name = 0x7f0e0169;
 
     @StringRes
-    public static final int settings_weather_alarm = 0x7f0e016a;
+    public static final int settings_notification = 0x7f0e016a;
 
     @StringRes
-    public static final int settings_widgets = 0x7f0e016b;
+    public static final int settings_push = 0x7f0e016b;
 
     @StringRes
-    public static final int share_card_camera = 0x7f0e016c;
+    public static final int settings_weather_alarm = 0x7f0e016c;
 
     @StringRes
-    public static final int share_card_tip = 0x7f0e016d;
+    public static final int settings_widgets = 0x7f0e016d;
 
     @StringRes
-    public static final int shortTip_cold = 0x7f0e016e;
+    public static final int share_card_camera = 0x7f0e016e;
 
     @StringRes
-    public static final int shortTip_fog = 0x7f0e016f;
+    public static final int share_card_tip = 0x7f0e016f;
 
     @StringRes
-    public static final int shortTip_haze = 0x7f0e0170;
+    public static final int shortTip_cold = 0x7f0e0170;
 
     @StringRes
-    public static final int shortTip_hot = 0x7f0e0171;
+    public static final int shortTip_fog = 0x7f0e0171;
 
     @StringRes
-    public static final int shortTip_rain = 0x7f0e0172;
+    public static final int shortTip_haze = 0x7f0e0172;
 
     @StringRes
-    public static final int shortTip_rainStorm = 0x7f0e0173;
+    public static final int shortTip_hot = 0x7f0e0173;
 
     @StringRes
-    public static final int shortTip_snow = 0x7f0e0174;
+    public static final int shortTip_rain = 0x7f0e0174;
 
     @StringRes
-    public static final int shortTip_snowStorm = 0x7f0e0175;
+    public static final int shortTip_rainStorm = 0x7f0e0175;
 
     @StringRes
-    public static final int shortTip_stopBad = 0x7f0e0176;
+    public static final int shortTip_snow = 0x7f0e0176;
 
     @StringRes
-    public static final int shortTip_stopRain = 0x7f0e0177;
+    public static final int shortTip_snowStorm = 0x7f0e0177;
 
     @StringRes
-    public static final int shortTip_stopSnow = 0x7f0e0178;
+    public static final int shortTip_stopBad = 0x7f0e0178;
 
     @StringRes
-    public static final int shortTip_tornado = 0x7f0e0179;
+    public static final int shortTip_stopRain = 0x7f0e0179;
 
     @StringRes
-    public static final int srl_component_falsify = 0x7f0e017a;
+    public static final int shortTip_stopSnow = 0x7f0e017a;
 
     @StringRes
-    public static final int srl_content_empty = 0x7f0e017b;
+    public static final int shortTip_tornado = 0x7f0e017b;
 
     @StringRes
-    public static final int ssdk_accountkit = 0x7f0e017c;
+    public static final int srl_component_falsify = 0x7f0e017c;
 
     @StringRes
-    public static final int ssdk_alipay = 0x7f0e017d;
+    public static final int srl_content_empty = 0x7f0e017d;
 
     @StringRes
-    public static final int ssdk_alipay_client_inavailable = 0x7f0e017e;
+    public static final int ssdk_accountkit = 0x7f0e017e;
 
     @StringRes
-    public static final int ssdk_alipaymoments = 0x7f0e017f;
+    public static final int ssdk_alipay = 0x7f0e017f;
 
     @StringRes
-    public static final int ssdk_bluetooth = 0x7f0e0180;
+    public static final int ssdk_alipay_client_inavailable = 0x7f0e0180;
 
     @StringRes
-    public static final int ssdk_cmcc = 0x7f0e0181;
+    public static final int ssdk_alipaymoments = 0x7f0e0181;
 
     @StringRes
-    public static final int ssdk_cmcc_auth = 0x7f0e0182;
+    public static final int ssdk_bluetooth = 0x7f0e0182;
 
     @StringRes
-    public static final int ssdk_cmcc_exchange_account = 0x7f0e0183;
+    public static final int ssdk_cmcc = 0x7f0e0183;
 
     @StringRes
-    public static final int ssdk_cmcc_get_vercode = 0x7f0e0184;
+    public static final int ssdk_cmcc_auth = 0x7f0e0184;
 
     @StringRes
-    public static final int ssdk_cmcc_loading_text = 0x7f0e0185;
+    public static final int ssdk_cmcc_exchange_account = 0x7f0e0185;
 
     @StringRes
-    public static final int ssdk_cmcc_login_again = 0x7f0e0186;
+    public static final int ssdk_cmcc_get_vercode = 0x7f0e0186;
 
     @StringRes
-    public static final int ssdk_cmcc_login_argree = 0x7f0e0187;
+    public static final int ssdk_cmcc_loading_text = 0x7f0e0187;
 
     @StringRes
-    public static final int ssdk_cmcc_login_grant = 0x7f0e0188;
+    public static final int ssdk_cmcc_login_again = 0x7f0e0188;
 
     @StringRes
-    public static final int ssdk_cmcc_login_one_key = 0x7f0e0189;
+    public static final int ssdk_cmcc_login_argree = 0x7f0e0189;
 
     @StringRes
-    public static final int ssdk_cmcc_owner_number = 0x7f0e018a;
+    public static final int ssdk_cmcc_login_grant = 0x7f0e018a;
 
     @StringRes
-    public static final int ssdk_cmcc_phone_number = 0x7f0e018b;
+    public static final int ssdk_cmcc_login_one_key = 0x7f0e018b;
 
     @StringRes
-    public static final int ssdk_cmcc_quick_login = 0x7f0e018c;
+    public static final int ssdk_cmcc_owner_number = 0x7f0e018c;
 
     @StringRes
-    public static final int ssdk_cmcc_send_again = 0x7f0e018d;
+    public static final int ssdk_cmcc_phone_number = 0x7f0e018d;
 
     @StringRes
-    public static final int ssdk_cmcc_send_sms_bar = 0x7f0e018e;
+    public static final int ssdk_cmcc_quick_login = 0x7f0e018e;
 
     @StringRes
-    public static final int ssdk_cmcc_terms_of_service = 0x7f0e018f;
+    public static final int ssdk_cmcc_send_again = 0x7f0e018f;
 
     @StringRes
-    public static final int ssdk_cmcc_title_logon = 0x7f0e0190;
+    public static final int ssdk_cmcc_send_sms_bar = 0x7f0e0190;
 
     @StringRes
-    public static final int ssdk_cmcc_ver_code = 0x7f0e0191;
+    public static final int ssdk_cmcc_terms_of_service = 0x7f0e0191;
 
     @StringRes
-    public static final int ssdk_dingding = 0x7f0e0192;
+    public static final int ssdk_cmcc_title_logon = 0x7f0e0192;
 
     @StringRes
-    public static final int ssdk_dont_keep_activitys_client = 0x7f0e0193;
+    public static final int ssdk_cmcc_ver_code = 0x7f0e0193;
 
     @StringRes
-    public static final int ssdk_douban = 0x7f0e0194;
+    public static final int ssdk_dingding = 0x7f0e0194;
 
     @StringRes
-    public static final int ssdk_douyin = 0x7f0e0195;
+    public static final int ssdk_dont_keep_activitys_client = 0x7f0e0195;
 
     @StringRes
-    public static final int ssdk_dropbox = 0x7f0e0196;
+    public static final int ssdk_douban = 0x7f0e0196;
 
     @StringRes
-    public static final int ssdk_email = 0x7f0e0197;
+    public static final int ssdk_douyin = 0x7f0e0197;
 
     @StringRes
-    public static final int ssdk_evernote = 0x7f0e0198;
+    public static final int ssdk_dropbox = 0x7f0e0198;
 
     @StringRes
-    public static final int ssdk_facebook = 0x7f0e0199;
+    public static final int ssdk_email = 0x7f0e0199;
 
     @StringRes
-    public static final int ssdk_facebookmessenger = 0x7f0e019a;
+    public static final int ssdk_evernote = 0x7f0e019a;
 
     @StringRes
-    public static final int ssdk_facebookmessenger_client_inavailable = 0x7f0e019b;
+    public static final int ssdk_facebook = 0x7f0e019b;
 
     @StringRes
-    public static final int ssdk_flickr = 0x7f0e019c;
+    public static final int ssdk_facebookmessenger = 0x7f0e019c;
 
     @StringRes
-    public static final int ssdk_foursquare = 0x7f0e019d;
+    public static final int ssdk_facebookmessenger_client_inavailable = 0x7f0e019d;
 
     @StringRes
-    public static final int ssdk_gender_female = 0x7f0e019e;
+    public static final int ssdk_flickr = 0x7f0e019e;
 
     @StringRes
-    public static final int ssdk_gender_male = 0x7f0e019f;
+    public static final int ssdk_foursquare = 0x7f0e019f;
 
     @StringRes
-    public static final int ssdk_google_plus_client_inavailable = 0x7f0e01a0;
+    public static final int ssdk_gender_female = 0x7f0e01a0;
 
     @StringRes
-    public static final int ssdk_googleplus = 0x7f0e01a1;
+    public static final int ssdk_gender_male = 0x7f0e01a1;
 
     @StringRes
-    public static final int ssdk_instagram = 0x7f0e01a2;
+    public static final int ssdk_google_plus_client_inavailable = 0x7f0e01a2;
 
     @StringRes
-    public static final int ssdk_instagram_client_inavailable = 0x7f0e01a3;
+    public static final int ssdk_googleplus = 0x7f0e01a3;
 
     @StringRes
-    public static final int ssdk_instapager_email_or_password_incorrect = 0x7f0e01a4;
+    public static final int ssdk_instagram = 0x7f0e01a4;
 
     @StringRes
-    public static final int ssdk_instapager_login_html = 0x7f0e01a5;
+    public static final int ssdk_instagram_client_inavailable = 0x7f0e01a5;
 
     @StringRes
-    public static final int ssdk_instapaper = 0x7f0e01a6;
+    public static final int ssdk_instapager_email_or_password_incorrect = 0x7f0e01a6;
 
     @StringRes
-    public static final int ssdk_instapaper_email = 0x7f0e01a7;
+    public static final int ssdk_instapager_login_html = 0x7f0e01a7;
 
     @StringRes
-    public static final int ssdk_instapaper_login = 0x7f0e01a8;
+    public static final int ssdk_instapaper = 0x7f0e01a8;
 
     @StringRes
-    public static final int ssdk_instapaper_logining = 0x7f0e01a9;
+    public static final int ssdk_instapaper_email = 0x7f0e01a9;
 
     @StringRes
-    public static final int ssdk_instapaper_pwd = 0x7f0e01aa;
+    public static final int ssdk_instapaper_login = 0x7f0e01aa;
 
     @StringRes
-    public static final int ssdk_kaixin = 0x7f0e01ab;
+    public static final int ssdk_instapaper_logining = 0x7f0e01ab;
 
     @StringRes
-    public static final int ssdk_kakaostory = 0x7f0e01ac;
+    public static final int ssdk_instapaper_pwd = 0x7f0e01ac;
 
     @StringRes
-    public static final int ssdk_kakaostory_client_inavailable = 0x7f0e01ad;
+    public static final int ssdk_kaixin = 0x7f0e01ad;
 
     @StringRes
-    public static final int ssdk_kakaotalk = 0x7f0e01ae;
+    public static final int ssdk_kakaostory = 0x7f0e01ae;
 
     @StringRes
-    public static final int ssdk_kakaotalk_client_inavailable = 0x7f0e01af;
+    public static final int ssdk_kakaostory_client_inavailable = 0x7f0e01af;
 
     @StringRes
-    public static final int ssdk_laiwang = 0x7f0e01b0;
+    public static final int ssdk_kakaotalk = 0x7f0e01b0;
 
     @StringRes
-    public static final int ssdk_laiwang_client_inavailable = 0x7f0e01b1;
+    public static final int ssdk_kakaotalk_client_inavailable = 0x7f0e01b1;
 
     @StringRes
-    public static final int ssdk_laiwangmoments = 0x7f0e01b2;
+    public static final int ssdk_laiwang = 0x7f0e01b2;
 
     @StringRes
-    public static final int ssdk_line = 0x7f0e01b3;
+    public static final int ssdk_laiwang_client_inavailable = 0x7f0e01b3;
 
     @StringRes
-    public static final int ssdk_line_client_inavailable = 0x7f0e01b4;
+    public static final int ssdk_laiwangmoments = 0x7f0e01b4;
 
     @StringRes
-    public static final int ssdk_linkedin = 0x7f0e01b5;
+    public static final int ssdk_line = 0x7f0e01b5;
 
     @StringRes
-    public static final int ssdk_meipai = 0x7f0e01b6;
+    public static final int ssdk_line_client_inavailable = 0x7f0e01b6;
 
     @StringRes
-    public static final int ssdk_mingdao = 0x7f0e01b7;
+    public static final int ssdk_linkedin = 0x7f0e01b7;
 
     @StringRes
-    public static final int ssdk_mingdao_share_content = 0x7f0e01b8;
+    public static final int ssdk_meipai = 0x7f0e01b8;
 
     @StringRes
-    public static final int ssdk_neteasemicroblog = 0x7f0e01b9;
+    public static final int ssdk_mingdao = 0x7f0e01b9;
 
     @StringRes
-    public static final int ssdk_oks_cancel = 0x7f0e01ba;
+    public static final int ssdk_mingdao_share_content = 0x7f0e01ba;
 
     @StringRes
-    public static final int ssdk_oks_confirm = 0x7f0e01bb;
+    public static final int ssdk_neteasemicroblog = 0x7f0e01bb;
 
     @StringRes
-    public static final int ssdk_oks_contacts = 0x7f0e01bc;
+    public static final int ssdk_oks_cancel = 0x7f0e01bc;
 
     @StringRes
-    public static final int ssdk_oks_multi_share = 0x7f0e01bd;
+    public static final int ssdk_oks_confirm = 0x7f0e01bd;
 
     @StringRes
-    public static final int ssdk_oks_pull_to_refresh = 0x7f0e01be;
+    public static final int ssdk_oks_contacts = 0x7f0e01be;
 
     @StringRes
-    public static final int ssdk_oks_refreshing = 0x7f0e01bf;
+    public static final int ssdk_oks_multi_share = 0x7f0e01bf;
 
     @StringRes
-    public static final int ssdk_oks_release_to_refresh = 0x7f0e01c0;
+    public static final int ssdk_oks_pull_to_refresh = 0x7f0e01c0;
 
     @StringRes
-    public static final int ssdk_oks_share = 0x7f0e01c1;
+    public static final int ssdk_oks_refreshing = 0x7f0e01c1;
 
     @StringRes
-    public static final int ssdk_oks_share_canceled = 0x7f0e01c2;
+    public static final int ssdk_oks_release_to_refresh = 0x7f0e01c2;
 
     @StringRes
-    public static final int ssdk_oks_share_completed = 0x7f0e01c3;
+    public static final int ssdk_oks_share = 0x7f0e01c3;
 
     @StringRes
-    public static final int ssdk_oks_share_failed = 0x7f0e01c4;
+    public static final int ssdk_oks_share_canceled = 0x7f0e01c4;
 
     @StringRes
-    public static final int ssdk_oks_sharing = 0x7f0e01c5;
+    public static final int ssdk_oks_share_completed = 0x7f0e01c5;
 
     @StringRes
-    public static final int ssdk_pinterest = 0x7f0e01c6;
+    public static final int ssdk_oks_share_failed = 0x7f0e01c6;
 
     @StringRes
-    public static final int ssdk_pinterest_client_inavailable = 0x7f0e01c7;
+    public static final int ssdk_oks_sharing = 0x7f0e01c7;
 
     @StringRes
-    public static final int ssdk_plurk = 0x7f0e01c8;
+    public static final int ssdk_pinterest = 0x7f0e01c8;
 
     @StringRes
-    public static final int ssdk_pocket = 0x7f0e01c9;
+    public static final int ssdk_pinterest_client_inavailable = 0x7f0e01c9;
 
     @StringRes
-    public static final int ssdk_qq = 0x7f0e01ca;
+    public static final int ssdk_plurk = 0x7f0e01ca;
 
     @StringRes
-    public static final int ssdk_qq_client_inavailable = 0x7f0e01cb;
+    public static final int ssdk_pocket = 0x7f0e01cb;
 
     @StringRes
-    public static final int ssdk_qzone = 0x7f0e01cc;
+    public static final int ssdk_qq = 0x7f0e01cc;
 
     @StringRes
-    public static final int ssdk_reddit = 0x7f0e01cd;
+    public static final int ssdk_qq_client_inavailable = 0x7f0e01cd;
 
     @StringRes
-    public static final int ssdk_renren = 0x7f0e01ce;
+    public static final int ssdk_qzone = 0x7f0e01ce;
 
     @StringRes
-    public static final int ssdk_share_to_facebook = 0x7f0e01cf;
+    public static final int ssdk_reddit = 0x7f0e01cf;
 
     @StringRes
-    public static final int ssdk_share_to_googleplus = 0x7f0e01d0;
+    public static final int ssdk_renren = 0x7f0e01d0;
 
     @StringRes
-    public static final int ssdk_share_to_mingdao = 0x7f0e01d1;
+    public static final int ssdk_share_to_facebook = 0x7f0e01d1;
 
     @StringRes
-    public static final int ssdk_share_to_qq = 0x7f0e01d2;
+    public static final int ssdk_share_to_googleplus = 0x7f0e01d2;
 
     @StringRes
-    public static final int ssdk_share_to_qzone = 0x7f0e01d3;
+    public static final int ssdk_share_to_mingdao = 0x7f0e01d3;
 
     @StringRes
-    public static final int ssdk_share_to_qzone_default = 0x7f0e01d4;
+    public static final int ssdk_share_to_qq = 0x7f0e01d4;
 
     @StringRes
-    public static final int ssdk_share_to_youtube = 0x7f0e01d5;
+    public static final int ssdk_share_to_qzone = 0x7f0e01d5;
 
     @StringRes
-    public static final int ssdk_shortmessage = 0x7f0e01d6;
+    public static final int ssdk_share_to_qzone_default = 0x7f0e01d6;
 
     @StringRes
-    public static final int ssdk_sina_web_close = 0x7f0e01d7;
+    public static final int ssdk_share_to_youtube = 0x7f0e01d7;
 
     @StringRes
-    public static final int ssdk_sina_web_login_title = 0x7f0e01d8;
+    public static final int ssdk_shortmessage = 0x7f0e01d8;
 
     @StringRes
-    public static final int ssdk_sina_web_net_error = 0x7f0e01d9;
+    public static final int ssdk_sina_web_close = 0x7f0e01d9;
 
     @StringRes
-    public static final int ssdk_sina_web_refresh = 0x7f0e01da;
+    public static final int ssdk_sina_web_login_title = 0x7f0e01da;
 
     @StringRes
-    public static final int ssdk_sina_web_title = 0x7f0e01db;
+    public static final int ssdk_sina_web_net_error = 0x7f0e01db;
 
     @StringRes
-    public static final int ssdk_sinaweibo = 0x7f0e01dc;
+    public static final int ssdk_sina_web_refresh = 0x7f0e01dc;
 
     @StringRes
-    public static final int ssdk_sms_btn_next = 0x7f0e01dd;
+    public static final int ssdk_sina_web_title = 0x7f0e01dd;
 
     @StringRes
-    public static final int ssdk_sms_btn_sende_voice = 0x7f0e01de;
+    public static final int ssdk_sinaweibo = 0x7f0e01de;
 
     @StringRes
-    public static final int ssdk_sms_btn_submit = 0x7f0e01df;
+    public static final int ssdk_sms_btn_next = 0x7f0e01df;
 
     @StringRes
-    public static final int ssdk_sms_china = 0x7f0e01e0;
+    public static final int ssdk_sms_btn_sende_voice = 0x7f0e01e0;
 
     @StringRes
-    public static final int ssdk_sms_choose_country = 0x7f0e01e1;
+    public static final int ssdk_sms_btn_submit = 0x7f0e01e1;
 
     @StringRes
-    public static final int ssdk_sms_code = 0x7f0e01e2;
+    public static final int ssdk_sms_china = 0x7f0e01e2;
 
     @StringRes
-    public static final int ssdk_sms_country_search = 0x7f0e01e3;
+    public static final int ssdk_sms_choose_country = 0x7f0e01e3;
 
     @StringRes
-    public static final int ssdk_sms_dialog_btn_back = 0x7f0e01e4;
+    public static final int ssdk_sms_code = 0x7f0e01e4;
 
     @StringRes
-    public static final int ssdk_sms_dialog_btn_cancel = 0x7f0e01e5;
+    public static final int ssdk_sms_country_search = 0x7f0e01e5;
 
     @StringRes
-    public static final int ssdk_sms_dialog_btn_login = 0x7f0e01e6;
+    public static final int ssdk_sms_dialog_btn_back = 0x7f0e01e6;
 
     @StringRes
-    public static final int ssdk_sms_dialog_btn_ok = 0x7f0e01e7;
+    public static final int ssdk_sms_dialog_btn_cancel = 0x7f0e01e7;
 
     @StringRes
-    public static final int ssdk_sms_dialog_btn_sure = 0x7f0e01e8;
+    public static final int ssdk_sms_dialog_btn_login = 0x7f0e01e8;
 
     @StringRes
-    public static final int ssdk_sms_dialog_btn_wait = 0x7f0e01e9;
+    public static final int ssdk_sms_dialog_btn_ok = 0x7f0e01e9;
 
     @StringRes
-    public static final int ssdk_sms_dialog_close_identify_page = 0x7f0e01ea;
+    public static final int ssdk_sms_dialog_btn_sure = 0x7f0e01ea;
 
     @StringRes
-    public static final int ssdk_sms_dialog_confirm_des = 0x7f0e01eb;
+    public static final int ssdk_sms_dialog_btn_wait = 0x7f0e01eb;
 
     @StringRes
-    public static final int ssdk_sms_dialog_confirm_title = 0x7f0e01ec;
+    public static final int ssdk_sms_dialog_close_identify_page = 0x7f0e01ec;
 
     @StringRes
-    public static final int ssdk_sms_dialog_error_code = 0x7f0e01ed;
+    public static final int ssdk_sms_dialog_confirm_des = 0x7f0e01ed;
 
     @StringRes
-    public static final int ssdk_sms_dialog_error_des = 0x7f0e01ee;
+    public static final int ssdk_sms_dialog_confirm_title = 0x7f0e01ee;
 
     @StringRes
-    public static final int ssdk_sms_dialog_error_desc_100 = 0x7f0e01ef;
+    public static final int ssdk_sms_dialog_error_code = 0x7f0e01ef;
 
     @StringRes
-    public static final int ssdk_sms_dialog_error_desc_101 = 0x7f0e01f0;
+    public static final int ssdk_sms_dialog_error_des = 0x7f0e01f0;
 
     @StringRes
-    public static final int ssdk_sms_dialog_error_desc_102 = 0x7f0e01f1;
+    public static final int ssdk_sms_dialog_error_desc_100 = 0x7f0e01f1;
 
     @StringRes
-    public static final int ssdk_sms_dialog_error_desc_103 = 0x7f0e01f2;
+    public static final int ssdk_sms_dialog_error_desc_101 = 0x7f0e01f2;
 
     @StringRes
-    public static final int ssdk_sms_dialog_error_desc_104 = 0x7f0e01f3;
+    public static final int ssdk_sms_dialog_error_desc_102 = 0x7f0e01f3;
 
     @StringRes
-    public static final int ssdk_sms_dialog_error_desc_105 = 0x7f0e01f4;
+    public static final int ssdk_sms_dialog_error_desc_103 = 0x7f0e01f4;
 
     @StringRes
-    public static final int ssdk_sms_dialog_error_desc_106 = 0x7f0e01f5;
+    public static final int ssdk_sms_dialog_error_desc_104 = 0x7f0e01f5;
 
     @StringRes
-    public static final int ssdk_sms_dialog_error_desc_107 = 0x7f0e01f6;
+    public static final int ssdk_sms_dialog_error_desc_105 = 0x7f0e01f6;
 
     @StringRes
-    public static final int ssdk_sms_dialog_error_desc_108 = 0x7f0e01f7;
+    public static final int ssdk_sms_dialog_error_desc_106 = 0x7f0e01f7;
 
     @StringRes
-    public static final int ssdk_sms_dialog_error_desc_109 = 0x7f0e01f8;
+    public static final int ssdk_sms_dialog_error_desc_107 = 0x7f0e01f8;
 
     @StringRes
-    public static final int ssdk_sms_dialog_error_title = 0x7f0e01f9;
+    public static final int ssdk_sms_dialog_error_desc_108 = 0x7f0e01f9;
 
     @StringRes
-    public static final int ssdk_sms_dialog_login_success = 0x7f0e01fa;
+    public static final int ssdk_sms_dialog_error_desc_109 = 0x7f0e01fa;
 
     @StringRes
-    public static final int ssdk_sms_dialog_net_error = 0x7f0e01fb;
+    public static final int ssdk_sms_dialog_error_title = 0x7f0e01fb;
 
     @StringRes
-    public static final int ssdk_sms_dialog_send_success = 0x7f0e01fc;
+    public static final int ssdk_sms_dialog_login_success = 0x7f0e01fc;
 
     @StringRes
-    public static final int ssdk_sms_dialog_smart_dec = 0x7f0e01fd;
+    public static final int ssdk_sms_dialog_net_error = 0x7f0e01fd;
 
     @StringRes
-    public static final int ssdk_sms_dialog_smart_title = 0x7f0e01fe;
+    public static final int ssdk_sms_dialog_send_success = 0x7f0e01fe;
 
     @StringRes
-    public static final int ssdk_sms_dialog_system_error = 0x7f0e01ff;
+    public static final int ssdk_sms_dialog_smart_dec = 0x7f0e01ff;
 
     @StringRes
-    public static final int ssdk_sms_dialog_voice_text = 0x7f0e0200;
+    public static final int ssdk_sms_dialog_smart_title = 0x7f0e0200;
 
     @StringRes
-    public static final int ssdk_sms_input_code_hint = 0x7f0e0201;
+    public static final int ssdk_sms_dialog_system_error = 0x7f0e0201;
 
     @StringRes
-    public static final int ssdk_sms_input_phone_hint = 0x7f0e0202;
+    public static final int ssdk_sms_dialog_voice_text = 0x7f0e0202;
 
     @StringRes
-    public static final int ssdk_sms_input_voice_code = 0x7f0e0203;
+    public static final int ssdk_sms_input_code_hint = 0x7f0e0203;
 
     @StringRes
-    public static final int ssdk_sms_login = 0x7f0e0204;
+    public static final int ssdk_sms_input_phone_hint = 0x7f0e0204;
 
     @StringRes
-    public static final int ssdk_sms_phone = 0x7f0e0205;
+    public static final int ssdk_sms_input_voice_code = 0x7f0e0205;
 
     @StringRes
-    public static final int ssdk_sms_send_again = 0x7f0e0206;
+    public static final int ssdk_sms_login = 0x7f0e0206;
 
     @StringRes
-    public static final int ssdk_sms_top_identify_text = 0x7f0e0207;
+    public static final int ssdk_sms_phone = 0x7f0e0207;
 
     @StringRes
-    public static final int ssdk_sms_top_text = 0x7f0e0208;
+    public static final int ssdk_sms_send_again = 0x7f0e0208;
 
     @StringRes
-    public static final int ssdk_sms_zone = 0x7f0e0209;
+    public static final int ssdk_sms_top_identify_text = 0x7f0e0209;
 
     @StringRes
-    public static final int ssdk_sohumicroblog = 0x7f0e020a;
+    public static final int ssdk_sms_top_text = 0x7f0e020a;
 
     @StringRes
-    public static final int ssdk_sohusuishenkan = 0x7f0e020b;
+    public static final int ssdk_sms_zone = 0x7f0e020b;
 
     @StringRes
-    public static final int ssdk_symbol_ellipsis = 0x7f0e020c;
+    public static final int ssdk_sohumicroblog = 0x7f0e020c;
 
     @StringRes
-    public static final int ssdk_telecom = 0x7f0e020d;
+    public static final int ssdk_sohusuishenkan = 0x7f0e020d;
 
     @StringRes
-    public static final int ssdk_telegram = 0x7f0e020e;
+    public static final int ssdk_symbol_ellipsis = 0x7f0e020e;
 
     @StringRes
-    public static final int ssdk_telegram_client_inavailable = 0x7f0e020f;
+    public static final int ssdk_telecom = 0x7f0e020f;
 
     @StringRes
-    public static final int ssdk_tencentweibo = 0x7f0e0210;
+    public static final int ssdk_telegram = 0x7f0e0210;
 
     @StringRes
-    public static final int ssdk_tumblr = 0x7f0e0211;
+    public static final int ssdk_telegram_client_inavailable = 0x7f0e0211;
 
     @StringRes
-    public static final int ssdk_twitter = 0x7f0e0212;
+    public static final int ssdk_tencentweibo = 0x7f0e0212;
 
     @StringRes
-    public static final int ssdk_use_login_button = 0x7f0e0213;
+    public static final int ssdk_tumblr = 0x7f0e0213;
 
     @StringRes
-    public static final int ssdk_vkontakte = 0x7f0e0214;
+    public static final int ssdk_twitter = 0x7f0e0214;
 
     @StringRes
-    public static final int ssdk_website = 0x7f0e0215;
+    public static final int ssdk_use_login_button = 0x7f0e0215;
 
     @StringRes
-    public static final int ssdk_wechat = 0x7f0e0216;
+    public static final int ssdk_vkontakte = 0x7f0e0216;
 
     @StringRes
-    public static final int ssdk_wechat_client_inavailable = 0x7f0e0217;
+    public static final int ssdk_website = 0x7f0e0217;
 
     @StringRes
-    public static final int ssdk_wechatfavorite = 0x7f0e0218;
+    public static final int ssdk_wechat = 0x7f0e0218;
 
     @StringRes
-    public static final int ssdk_wechatmoments = 0x7f0e0219;
+    public static final int ssdk_wechat_client_inavailable = 0x7f0e0219;
 
     @StringRes
-    public static final int ssdk_weibo_oauth_regiseter = 0x7f0e021a;
+    public static final int ssdk_wechatfavorite = 0x7f0e021a;
 
     @StringRes
-    public static final int ssdk_weibo_upload_content = 0x7f0e021b;
+    public static final int ssdk_wechatmoments = 0x7f0e021b;
 
     @StringRes
-    public static final int ssdk_wework = 0x7f0e021c;
+    public static final int ssdk_weibo_oauth_regiseter = 0x7f0e021c;
 
     @StringRes
-    public static final int ssdk_whatsapp = 0x7f0e021d;
+    public static final int ssdk_weibo_upload_content = 0x7f0e021d;
 
     @StringRes
-    public static final int ssdk_whatsapp_client_inavailable = 0x7f0e021e;
+    public static final int ssdk_wework = 0x7f0e021e;
 
     @StringRes
-    public static final int ssdk_yixin = 0x7f0e021f;
+    public static final int ssdk_whatsapp = 0x7f0e021f;
 
     @StringRes
-    public static final int ssdk_yixin_client_inavailable = 0x7f0e0220;
+    public static final int ssdk_whatsapp_client_inavailable = 0x7f0e0220;
 
     @StringRes
-    public static final int ssdk_yixinmoments = 0x7f0e0221;
+    public static final int ssdk_yixin = 0x7f0e0221;
 
     @StringRes
-    public static final int ssdk_youdao = 0x7f0e0222;
+    public static final int ssdk_yixin_client_inavailable = 0x7f0e0222;
 
     @StringRes
-    public static final int ssdk_youtube = 0x7f0e0223;
+    public static final int ssdk_yixinmoments = 0x7f0e0223;
 
     @StringRes
-    public static final int status_bar_notification_info_overflow = 0x7f0e0224;
+    public static final int ssdk_youdao = 0x7f0e0224;
 
     @StringRes
-    public static final int strNetworkTipsCancelBtn = 0x7f0e0225;
+    public static final int ssdk_youtube = 0x7f0e0225;
 
     @StringRes
-    public static final int strNetworkTipsConfirmBtn = 0x7f0e0226;
+    public static final int status_bar_notification_info_overflow = 0x7f0e0226;
 
     @StringRes
-    public static final int strNetworkTipsMessage = 0x7f0e0227;
+    public static final int strNetworkTipsCancelBtn = 0x7f0e0227;
 
     @StringRes
-    public static final int strNetworkTipsTitle = 0x7f0e0228;
+    public static final int strNetworkTipsConfirmBtn = 0x7f0e0228;
 
     @StringRes
-    public static final int strNotificationClickToContinue = 0x7f0e0229;
+    public static final int strNetworkTipsMessage = 0x7f0e0229;
 
     @StringRes
-    public static final int strNotificationClickToInstall = 0x7f0e022a;
+    public static final int strNetworkTipsTitle = 0x7f0e022a;
 
     @StringRes
-    public static final int strNotificationClickToRetry = 0x7f0e022b;
+    public static final int strNotificationClickToContinue = 0x7f0e022b;
 
     @StringRes
-    public static final int strNotificationClickToView = 0x7f0e022c;
+    public static final int strNotificationClickToInstall = 0x7f0e022c;
 
     @StringRes
-    public static final int strNotificationDownloadError = 0x7f0e022d;
+    public static final int strNotificationClickToRetry = 0x7f0e022d;
 
     @StringRes
-    public static final int strNotificationDownloadSucc = 0x7f0e022e;
+    public static final int strNotificationClickToView = 0x7f0e022e;
 
     @StringRes
-    public static final int strNotificationDownloading = 0x7f0e022f;
+    public static final int strNotificationDownloadError = 0x7f0e022f;
 
     @StringRes
-    public static final int strNotificationHaveNewVersion = 0x7f0e0230;
+    public static final int strNotificationDownloadSucc = 0x7f0e0230;
 
     @StringRes
-    public static final int strToastCheckUpgradeError = 0x7f0e0231;
+    public static final int strNotificationDownloading = 0x7f0e0231;
 
     @StringRes
-    public static final int strToastCheckingUpgrade = 0x7f0e0232;
+    public static final int strNotificationHaveNewVersion = 0x7f0e0232;
 
     @StringRes
-    public static final int strToastYourAreTheLatestVersion = 0x7f0e0233;
+    public static final int strToastCheckUpgradeError = 0x7f0e0233;
 
     @StringRes
-    public static final int strUpgradeDialogCancelBtn = 0x7f0e0234;
+    public static final int strToastCheckingUpgrade = 0x7f0e0234;
 
     @StringRes
-    public static final int strUpgradeDialogContinueBtn = 0x7f0e0235;
+    public static final int strToastYourAreTheLatestVersion = 0x7f0e0235;
 
     @StringRes
-    public static final int strUpgradeDialogFeatureLabel = 0x7f0e0236;
+    public static final int strUpgradeDialogCancelBtn = 0x7f0e0236;
 
     @StringRes
-    public static final int strUpgradeDialogFileSizeLabel = 0x7f0e0237;
+    public static final int strUpgradeDialogContinueBtn = 0x7f0e0237;
 
     @StringRes
-    public static final int strUpgradeDialogInstallBtn = 0x7f0e0238;
+    public static final int strUpgradeDialogFeatureLabel = 0x7f0e0238;
 
     @StringRes
-    public static final int strUpgradeDialogRetryBtn = 0x7f0e0239;
+    public static final int strUpgradeDialogFileSizeLabel = 0x7f0e0239;
 
     @StringRes
-    public static final int strUpgradeDialogUpdateTimeLabel = 0x7f0e023a;
+    public static final int strUpgradeDialogInstallBtn = 0x7f0e023a;
 
     @StringRes
-    public static final int strUpgradeDialogUpgradeBtn = 0x7f0e023b;
+    public static final int strUpgradeDialogRetryBtn = 0x7f0e023b;
 
     @StringRes
-    public static final int strUpgradeDialogVersionLabel = 0x7f0e023c;
+    public static final int strUpgradeDialogUpdateTimeLabel = 0x7f0e023c;
 
     @StringRes
-    public static final int sunday_week = 0x7f0e023d;
+    public static final int strUpgradeDialogUpgradeBtn = 0x7f0e023d;
 
     @StringRes
-    public static final int sunday_week_eng = 0x7f0e023e;
+    public static final int strUpgradeDialogVersionLabel = 0x7f0e023e;
 
     @StringRes
-    public static final int sunday_week_eng_abbr = 0x7f0e023f;
+    public static final int sunday_week = 0x7f0e023f;
 
     @StringRes
-    public static final int sunday_week_small = 0x7f0e0240;
+    public static final int sunday_week_eng = 0x7f0e0240;
 
     @StringRes
-    public static final int switch_sms_login = 0x7f0e0241;
+    public static final int sunday_week_eng_abbr = 0x7f0e0241;
 
     @StringRes
-    public static final int sync_name = 0x7f0e0242;
+    public static final int sunday_week_small = 0x7f0e0242;
 
     @StringRes
-    public static final int theme_square = 0x7f0e0243;
+    public static final int switch_sms_login = 0x7f0e0243;
 
     @StringRes
-    public static final int thursday_week = 0x7f0e0244;
+    public static final int sync_name = 0x7f0e0244;
 
     @StringRes
-    public static final int thursday_week_eng = 0x7f0e0245;
+    public static final int theme_square = 0x7f0e0245;
 
     @StringRes
-    public static final int thursday_week_eng_abbr = 0x7f0e0246;
+    public static final int thursday_week = 0x7f0e0246;
 
     @StringRes
-    public static final int thursday_week_small = 0x7f0e0247;
+    public static final int thursday_week_eng = 0x7f0e0247;
 
     @StringRes
-    public static final int title_activity_acplayer = 0x7f0e0248;
+    public static final int thursday_week_eng_abbr = 0x7f0e0248;
 
     @StringRes
-    public static final int title_activity_screen = 0x7f0e0249;
+    public static final int thursday_week_small = 0x7f0e0249;
 
     @StringRes
-    public static final int today_suggest = 0x7f0e024a;
+    public static final int title_activity_acplayer = 0x7f0e024a;
 
     @StringRes
-    public static final int today_suggest_more = 0x7f0e024b;
+    public static final int title_activity_screen = 0x7f0e024b;
 
     @StringRes
-    public static final int tt_00_00 = 0x7f0e024c;
+    public static final int title_settings_dialog = 0x7f0e024c;
 
     @StringRes
-    public static final int tt_ad = 0x7f0e024d;
+    public static final int today_suggest = 0x7f0e024d;
 
     @StringRes
-    public static final int tt_ad_logo_txt = 0x7f0e024e;
+    public static final int today_suggest_more = 0x7f0e024e;
 
     @StringRes
-    public static final int tt_app_name = 0x7f0e024f;
+    public static final int tt_00_00 = 0x7f0e024f;
 
     @StringRes
-    public static final int tt_auto_play_cancel_text = 0x7f0e0250;
+    public static final int tt_ad = 0x7f0e0250;
 
     @StringRes
-    public static final int tt_cancel = 0x7f0e0251;
+    public static final int tt_ad_logo_txt = 0x7f0e0251;
 
     @StringRes
-    public static final int tt_comment_num = 0x7f0e0252;
+    public static final int tt_app_name = 0x7f0e0252;
 
     @StringRes
-    public static final int tt_comment_num_backup = 0x7f0e0253;
+    public static final int tt_auto_play_cancel_text = 0x7f0e0253;
 
     @StringRes
-    public static final int tt_comment_score = 0x7f0e0254;
+    public static final int tt_cancel = 0x7f0e0254;
 
     @StringRes
-    public static final int tt_confirm_download = 0x7f0e0255;
+    public static final int tt_comment_num = 0x7f0e0255;
 
     @StringRes
-    public static final int tt_confirm_download_have_app_name = 0x7f0e0256;
+    public static final int tt_comment_num_backup = 0x7f0e0256;
 
     @StringRes
-    public static final int tt_dislike_header_tv_back = 0x7f0e0257;
+    public static final int tt_comment_score = 0x7f0e0257;
 
     @StringRes
-    public static final int tt_dislike_header_tv_title = 0x7f0e0258;
+    public static final int tt_confirm_download = 0x7f0e0258;
 
     @StringRes
-    public static final int tt_full_screen_skip_tx = 0x7f0e0259;
+    public static final int tt_confirm_download_have_app_name = 0x7f0e0259;
 
     @StringRes
-    public static final int tt_label_cancel = 0x7f0e025a;
+    public static final int tt_dislike_header_tv_back = 0x7f0e025a;
 
     @StringRes
-    public static final int tt_label_ok = 0x7f0e025b;
+    public static final int tt_dislike_header_tv_title = 0x7f0e025b;
 
     @StringRes
-    public static final int tt_no_network = 0x7f0e025c;
+    public static final int tt_full_screen_skip_tx = 0x7f0e025c;
 
     @StringRes
-    public static final int tt_permission_denied = 0x7f0e025d;
+    public static final int tt_label_cancel = 0x7f0e025d;
 
     @StringRes
-    public static final int tt_request_permission_descript_external_storage = 0x7f0e025e;
+    public static final int tt_label_ok = 0x7f0e025e;
 
     @StringRes
-    public static final int tt_request_permission_descript_location = 0x7f0e025f;
+    public static final int tt_no_network = 0x7f0e025f;
 
     @StringRes
-    public static final int tt_request_permission_descript_read_phone_state = 0x7f0e0260;
+    public static final int tt_permission_denied = 0x7f0e0260;
 
     @StringRes
-    public static final int tt_reward_screen_skip_tx = 0x7f0e0261;
+    public static final int tt_request_permission_descript_external_storage = 0x7f0e0261;
 
     @StringRes
-    public static final int tt_splash_skip_tv_text = 0x7f0e0262;
+    public static final int tt_request_permission_descript_location = 0x7f0e0262;
 
     @StringRes
-    public static final int tt_tip = 0x7f0e0263;
+    public static final int tt_request_permission_descript_read_phone_state = 0x7f0e0263;
 
     @StringRes
-    public static final int tt_unlike = 0x7f0e0264;
+    public static final int tt_reward_screen_skip_tx = 0x7f0e0264;
 
     @StringRes
-    public static final int tt_video_bytesize = 0x7f0e0265;
+    public static final int tt_splash_skip_tv_text = 0x7f0e0265;
 
     @StringRes
-    public static final int tt_video_bytesize_M = 0x7f0e0266;
+    public static final int tt_tip = 0x7f0e0266;
 
     @StringRes
-    public static final int tt_video_bytesize_MB = 0x7f0e0267;
+    public static final int tt_unlike = 0x7f0e0267;
 
     @StringRes
-    public static final int tt_video_continue_play = 0x7f0e0268;
+    public static final int tt_video_bytesize = 0x7f0e0268;
 
     @StringRes
-    public static final int tt_video_dial_phone = 0x7f0e0269;
+    public static final int tt_video_bytesize_M = 0x7f0e0269;
 
     @StringRes
-    public static final int tt_video_download_apk = 0x7f0e026a;
+    public static final int tt_video_bytesize_MB = 0x7f0e026a;
 
     @StringRes
-    public static final int tt_video_mobile_go_detail = 0x7f0e026b;
+    public static final int tt_video_continue_play = 0x7f0e026b;
 
     @StringRes
-    public static final int tt_video_retry_des_txt = 0x7f0e026c;
+    public static final int tt_video_dial_phone = 0x7f0e026c;
 
     @StringRes
-    public static final int tt_video_without_wifi_tips = 0x7f0e026d;
+    public static final int tt_video_download_apk = 0x7f0e026d;
 
     @StringRes
-    public static final int tt_web_title_default = 0x7f0e026e;
+    public static final int tt_video_mobile_go_detail = 0x7f0e026e;
 
     @StringRes
-    public static final int tt_will_play = 0x7f0e026f;
+    public static final int tt_video_retry_des_txt = 0x7f0e026f;
 
     @StringRes
-    public static final int tuesday_week = 0x7f0e0270;
+    public static final int tt_video_without_wifi_tips = 0x7f0e0270;
 
     @StringRes
-    public static final int tuesday_week_eng = 0x7f0e0271;
+    public static final int tt_web_title_default = 0x7f0e0271;
 
     @StringRes
-    public static final int tuesday_week_eng_abbr = 0x7f0e0272;
+    public static final int tt_will_play = 0x7f0e0272;
 
     @StringRes
-    public static final int tuesday_week_small = 0x7f0e0273;
+    public static final int tuesday_week = 0x7f0e0273;
 
     @StringRes
-    public static final int umc_get_user_info = 0x7f0e0274;
+    public static final int tuesday_week_eng = 0x7f0e0274;
 
     @StringRes
-    public static final int umc_lable = 0x7f0e0275;
+    public static final int tuesday_week_eng_abbr = 0x7f0e0275;
 
     @StringRes
-    public static final int umcsdk_grey = 0x7f0e0276;
+    public static final int tuesday_week_small = 0x7f0e0276;
 
     @StringRes
-    public static final int umcsdk_product = 0x7f0e0277;
+    public static final int umc_get_user_info = 0x7f0e0277;
 
     @StringRes
-    public static final int umcsdk_test = 0x7f0e0278;
+    public static final int umc_lable = 0x7f0e0278;
 
     @StringRes
-    public static final int umeng_example_home_btn_plus = 0x7f0e0279;
+    public static final int umcsdk_grey = 0x7f0e0279;
 
     @StringRes
-    public static final int umeng_socialize_cancel_btn_str = 0x7f0e027a;
+    public static final int umcsdk_product = 0x7f0e027a;
 
     @StringRes
-    public static final int umeng_socialize_content_hint = 0x7f0e027b;
+    public static final int umcsdk_test = 0x7f0e027b;
 
     @StringRes
-    public static final int umeng_socialize_female = 0x7f0e027c;
+    public static final int umeng_example_home_btn_plus = 0x7f0e027c;
 
     @StringRes
-    public static final int umeng_socialize_mail = 0x7f0e027d;
+    public static final int umeng_socialize_cancel_btn_str = 0x7f0e027d;
 
     @StringRes
-    public static final int umeng_socialize_male = 0x7f0e027e;
+    public static final int umeng_socialize_content_hint = 0x7f0e027e;
 
     @StringRes
-    public static final int umeng_socialize_send_btn_str = 0x7f0e027f;
+    public static final int umeng_socialize_female = 0x7f0e027f;
 
     @StringRes
-    public static final int umeng_socialize_share = 0x7f0e0280;
+    public static final int umeng_socialize_mail = 0x7f0e0280;
 
     @StringRes
-    public static final int umeng_socialize_sharetodouban = 0x7f0e0281;
+    public static final int umeng_socialize_male = 0x7f0e0281;
 
     @StringRes
-    public static final int umeng_socialize_sharetolinkin = 0x7f0e0282;
+    public static final int umeng_socialize_send_btn_str = 0x7f0e0282;
 
     @StringRes
-    public static final int umeng_socialize_sharetorenren = 0x7f0e0283;
+    public static final int umeng_socialize_share = 0x7f0e0283;
 
     @StringRes
-    public static final int umeng_socialize_sharetosina = 0x7f0e0284;
+    public static final int umeng_socialize_sharetodouban = 0x7f0e0284;
 
     @StringRes
-    public static final int umeng_socialize_sharetotencent = 0x7f0e0285;
+    public static final int umeng_socialize_sharetolinkin = 0x7f0e0285;
 
     @StringRes
-    public static final int umeng_socialize_sharetotwitter = 0x7f0e0286;
+    public static final int umeng_socialize_sharetorenren = 0x7f0e0286;
 
     @StringRes
-    public static final int umeng_socialize_sina = 0x7f0e0287;
+    public static final int umeng_socialize_sharetosina = 0x7f0e0287;
 
     @StringRes
-    public static final int umeng_socialize_sms = 0x7f0e0288;
+    public static final int umeng_socialize_sharetotencent = 0x7f0e0288;
 
     @StringRes
-    public static final int umeng_socialize_text_add_custom_platform = 0x7f0e0289;
+    public static final int umeng_socialize_sharetotwitter = 0x7f0e0289;
 
     @StringRes
-    public static final int umeng_socialize_text_alipay_key = 0x7f0e028a;
+    public static final int umeng_socialize_sina = 0x7f0e028a;
 
     @StringRes
-    public static final int umeng_socialize_text_dingding_key = 0x7f0e028b;
+    public static final int umeng_socialize_sms = 0x7f0e028b;
 
     @StringRes
-    public static final int umeng_socialize_text_douban_key = 0x7f0e028c;
+    public static final int umeng_socialize_text_add_custom_platform = 0x7f0e028c;
 
     @StringRes
-    public static final int umeng_socialize_text_dropbox_key = 0x7f0e028d;
+    public static final int umeng_socialize_text_alipay_key = 0x7f0e028d;
 
     @StringRes
-    public static final int umeng_socialize_text_evernote_key = 0x7f0e028e;
+    public static final int umeng_socialize_text_dingding_key = 0x7f0e028e;
 
     @StringRes
-    public static final int umeng_socialize_text_facebook_key = 0x7f0e028f;
+    public static final int umeng_socialize_text_douban_key = 0x7f0e028f;
 
     @StringRes
-    public static final int umeng_socialize_text_facebookmessager_key = 0x7f0e0290;
+    public static final int umeng_socialize_text_dropbox_key = 0x7f0e0290;
 
     @StringRes
-    public static final int umeng_socialize_text_flickr_key = 0x7f0e0291;
+    public static final int umeng_socialize_text_evernote_key = 0x7f0e0291;
 
     @StringRes
-    public static final int umeng_socialize_text_foursquare_key = 0x7f0e0292;
+    public static final int umeng_socialize_text_facebook_key = 0x7f0e0292;
 
     @StringRes
-    public static final int umeng_socialize_text_googleplus_key = 0x7f0e0293;
+    public static final int umeng_socialize_text_facebookmessager_key = 0x7f0e0293;
 
     @StringRes
-    public static final int umeng_socialize_text_instagram_key = 0x7f0e0294;
+    public static final int umeng_socialize_text_flickr_key = 0x7f0e0294;
 
     @StringRes
-    public static final int umeng_socialize_text_kakao_key = 0x7f0e0295;
+    public static final int umeng_socialize_text_foursquare_key = 0x7f0e0295;
 
     @StringRes
-    public static final int umeng_socialize_text_laiwangdynamic_key = 0x7f0e0296;
+    public static final int umeng_socialize_text_googleplus_key = 0x7f0e0296;
 
     @StringRes
-    public static final int umeng_socialize_text_line_key = 0x7f0e0297;
+    public static final int umeng_socialize_text_instagram_key = 0x7f0e0297;
 
     @StringRes
-    public static final int umeng_socialize_text_linkedin_key = 0x7f0e0298;
+    public static final int umeng_socialize_text_kakao_key = 0x7f0e0298;
 
     @StringRes
-    public static final int umeng_socialize_text_more_key = 0x7f0e0299;
+    public static final int umeng_socialize_text_laiwangdynamic_key = 0x7f0e0299;
 
     @StringRes
-    public static final int umeng_socialize_text_pinterest_key = 0x7f0e029a;
+    public static final int umeng_socialize_text_line_key = 0x7f0e029a;
 
     @StringRes
-    public static final int umeng_socialize_text_pocket_key = 0x7f0e029b;
+    public static final int umeng_socialize_text_linkedin_key = 0x7f0e029b;
 
     @StringRes
-    public static final int umeng_socialize_text_qq_key = 0x7f0e029c;
+    public static final int umeng_socialize_text_more_key = 0x7f0e029c;
 
     @StringRes
-    public static final int umeng_socialize_text_qq_zone_key = 0x7f0e029d;
+    public static final int umeng_socialize_text_pinterest_key = 0x7f0e029d;
 
     @StringRes
-    public static final int umeng_socialize_text_renren_key = 0x7f0e029e;
+    public static final int umeng_socialize_text_pocket_key = 0x7f0e029e;
 
     @StringRes
-    public static final int umeng_socialize_text_sina_key = 0x7f0e029f;
+    public static final int umeng_socialize_text_qq_key = 0x7f0e029f;
 
     @StringRes
-    public static final int umeng_socialize_text_tencent_key = 0x7f0e02a0;
+    public static final int umeng_socialize_text_qq_zone_key = 0x7f0e02a0;
 
     @StringRes
-    public static final int umeng_socialize_text_tumblr_key = 0x7f0e02a1;
+    public static final int umeng_socialize_text_renren_key = 0x7f0e02a1;
 
     @StringRes
-    public static final int umeng_socialize_text_twitter_key = 0x7f0e02a2;
+    public static final int umeng_socialize_text_sina_key = 0x7f0e02a2;
 
     @StringRes
-    public static final int umeng_socialize_text_vkontakte_key = 0x7f0e02a3;
+    public static final int umeng_socialize_text_tencent_key = 0x7f0e02a3;
 
     @StringRes
-    public static final int umeng_socialize_text_waitting_share = 0x7f0e02a4;
+    public static final int umeng_socialize_text_tumblr_key = 0x7f0e02a4;
 
     @StringRes
-    public static final int umeng_socialize_text_weixin_circle_key = 0x7f0e02a5;
+    public static final int umeng_socialize_text_twitter_key = 0x7f0e02a5;
 
     @StringRes
-    public static final int umeng_socialize_text_weixin_fav_key = 0x7f0e02a6;
+    public static final int umeng_socialize_text_vkontakte_key = 0x7f0e02a6;
 
     @StringRes
-    public static final int umeng_socialize_text_weixin_key = 0x7f0e02a7;
+    public static final int umeng_socialize_text_waitting_share = 0x7f0e02a7;
 
     @StringRes
-    public static final int umeng_socialize_text_wenxin_fav = 0x7f0e02a8;
+    public static final int umeng_socialize_text_weixin_circle_key = 0x7f0e02a8;
 
     @StringRes
-    public static final int umeng_socialize_text_whatsapp_key = 0x7f0e02a9;
+    public static final int umeng_socialize_text_weixin_fav_key = 0x7f0e02a9;
 
     @StringRes
-    public static final int umeng_socialize_text_ydnote_key = 0x7f0e02aa;
+    public static final int umeng_socialize_text_weixin_key = 0x7f0e02aa;
 
     @StringRes
-    public static final int umeng_socialize_text_yixin_key = 0x7f0e02ab;
+    public static final int umeng_socialize_text_wenxin_fav = 0x7f0e02ab;
 
     @StringRes
-    public static final int umeng_socialize_text_yixincircle_key = 0x7f0e02ac;
+    public static final int umeng_socialize_text_whatsapp_key = 0x7f0e02ac;
 
     @StringRes
-    public static final int upsdk_app_dl_installing = 0x7f0e02ad;
+    public static final int umeng_socialize_text_ydnote_key = 0x7f0e02ad;
 
     @StringRes
-    public static final int upsdk_app_download_info_new = 0x7f0e02ae;
+    public static final int umeng_socialize_text_yixin_key = 0x7f0e02ae;
 
     @StringRes
-    public static final int upsdk_app_size = 0x7f0e02af;
+    public static final int umeng_socialize_text_yixincircle_key = 0x7f0e02af;
 
     @StringRes
-    public static final int upsdk_app_version = 0x7f0e02b0;
+    public static final int upsdk_app_dl_installing = 0x7f0e02b0;
 
     @StringRes
-    public static final int upsdk_cancel = 0x7f0e02b1;
+    public static final int upsdk_app_download_info_new = 0x7f0e02b1;
 
     @StringRes
-    public static final int upsdk_checking_update_prompt = 0x7f0e02b2;
+    public static final int upsdk_app_size = 0x7f0e02b2;
 
     @StringRes
-    public static final int upsdk_choice_update = 0x7f0e02b3;
+    public static final int upsdk_app_version = 0x7f0e02b3;
 
     @StringRes
-    public static final int upsdk_connect_server_fail_prompt_toast = 0x7f0e02b4;
+    public static final int upsdk_cancel = 0x7f0e02b4;
 
     @StringRes
-    public static final int upsdk_detail = 0x7f0e02b5;
+    public static final int upsdk_checking_update_prompt = 0x7f0e02b5;
 
     @StringRes
-    public static final int upsdk_getting_message_fail_prompt_toast = 0x7f0e02b6;
+    public static final int upsdk_choice_update = 0x7f0e02b6;
 
     @StringRes
-    public static final int upsdk_install = 0x7f0e02b7;
+    public static final int upsdk_connect_server_fail_prompt_toast = 0x7f0e02b7;
 
     @StringRes
-    public static final int upsdk_no_available_network_prompt_toast = 0x7f0e02b8;
+    public static final int upsdk_detail = 0x7f0e02b8;
 
     @StringRes
-    public static final int upsdk_ota_app_name = 0x7f0e02b9;
+    public static final int upsdk_getting_message_fail_prompt_toast = 0x7f0e02b9;
 
     @StringRes
-    public static final int upsdk_ota_cancel = 0x7f0e02ba;
+    public static final int upsdk_install = 0x7f0e02ba;
 
     @StringRes
-    public static final int upsdk_ota_force_cancel_new = 0x7f0e02bb;
+    public static final int upsdk_no_available_network_prompt_toast = 0x7f0e02bb;
 
     @StringRes
-    public static final int upsdk_ota_notify_updatebtn = 0x7f0e02bc;
+    public static final int upsdk_ota_app_name = 0x7f0e02bc;
 
     @StringRes
-    public static final int upsdk_ota_title = 0x7f0e02bd;
+    public static final int upsdk_ota_cancel = 0x7f0e02bd;
 
     @StringRes
-    public static final int upsdk_storage_utils = 0x7f0e02be;
+    public static final int upsdk_ota_force_cancel_new = 0x7f0e02be;
 
     @StringRes
-    public static final int upsdk_third_app_dl_cancel_download_prompt_ex = 0x7f0e02bf;
+    public static final int upsdk_ota_notify_updatebtn = 0x7f0e02bf;
 
     @StringRes
-    public static final int upsdk_third_app_dl_install_failed = 0x7f0e02c0;
+    public static final int upsdk_ota_title = 0x7f0e02c0;
 
     @StringRes
-    public static final int upsdk_third_app_dl_sure_cancel_download = 0x7f0e02c1;
+    public static final int upsdk_storage_utils = 0x7f0e02c1;
 
     @StringRes
-    public static final int upsdk_update_check_no_new_version = 0x7f0e02c2;
+    public static final int upsdk_third_app_dl_cancel_download_prompt_ex = 0x7f0e02c2;
 
     @StringRes
-    public static final int upsdk_updating = 0x7f0e02c3;
+    public static final int upsdk_third_app_dl_install_failed = 0x7f0e02c3;
 
     @StringRes
-    public static final int user_authorization = 0x7f0e02c4;
+    public static final int upsdk_third_app_dl_sure_cancel_download = 0x7f0e02c4;
 
     @StringRes
-    public static final int verify_mobileNumber = 0x7f0e02c5;
+    public static final int upsdk_update_check_no_new_version = 0x7f0e02c5;
 
     @StringRes
-    public static final int warn_tip_blue = 0x7f0e02c6;
+    public static final int upsdk_updating = 0x7f0e02c6;
 
     @StringRes
-    public static final int warn_tip_orange = 0x7f0e02c7;
+    public static final int user_authorization = 0x7f0e02c7;
 
     @StringRes
-    public static final int warn_tip_red = 0x7f0e02c8;
+    public static final int verify_mobileNumber = 0x7f0e02c8;
 
     @StringRes
-    public static final int warn_tip_yellow = 0x7f0e02c9;
+    public static final int warn_tip_blue = 0x7f0e02c9;
 
     @StringRes
-    public static final int wednesday_week = 0x7f0e02ca;
+    public static final int warn_tip_orange = 0x7f0e02ca;
 
     @StringRes
-    public static final int wednesday_week_eng = 0x7f0e02cb;
+    public static final int warn_tip_red = 0x7f0e02cb;
 
     @StringRes
-    public static final int wednesday_week_eng_abbr = 0x7f0e02cc;
+    public static final int warn_tip_yellow = 0x7f0e02cc;
 
     @StringRes
-    public static final int wednesday_week_small = 0x7f0e02cd;
+    public static final int wednesday_week = 0x7f0e02cd;
 
     @StringRes
-    public static final int widgets_4x1 = 0x7f0e02ce;
+    public static final int wednesday_week_eng = 0x7f0e02ce;
 
     @StringRes
-    public static final int widgets_4x2 = 0x7f0e02cf;
+    public static final int wednesday_week_eng_abbr = 0x7f0e02cf;
 
     @StringRes
-    public static final int widgets_4x3 = 0x7f0e02d0;
+    public static final int wednesday_week_small = 0x7f0e02d0;
 
     @StringRes
-    public static final int widgets_4x4 = 0x7f0e02d1;
+    public static final int widgets_4x1 = 0x7f0e02d1;
 
     @StringRes
-    public static final int xupdate_connecting_service = 0x7f0e02d2;
+    public static final int widgets_4x2 = 0x7f0e02d2;
 
     @StringRes
-    public static final int xupdate_download_complete = 0x7f0e02d3;
+    public static final int widgets_4x3 = 0x7f0e02d3;
 
     @StringRes
-    public static final int xupdate_lab_background_update = 0x7f0e02d4;
+    public static final int widgets_4x4 = 0x7f0e02d4;
 
     @StringRes
-    public static final int xupdate_lab_downloading = 0x7f0e02d5;
+    public static final int xupdate_connecting_service = 0x7f0e02d5;
 
     @StringRes
-    public static final int xupdate_lab_ignore = 0x7f0e02d6;
+    public static final int xupdate_download_complete = 0x7f0e02d6;
 
     @StringRes
-    public static final int xupdate_lab_install = 0x7f0e02d7;
+    public static final int xupdate_lab_background_update = 0x7f0e02d7;
 
     @StringRes
-    public static final int xupdate_lab_new_version_size = 0x7f0e02d8;
+    public static final int xupdate_lab_downloading = 0x7f0e02d8;
 
     @StringRes
-    public static final int xupdate_lab_ready_update = 0x7f0e02d9;
+    public static final int xupdate_lab_ignore = 0x7f0e02d9;
 
     @StringRes
-    public static final int xupdate_lab_update = 0x7f0e02da;
+    public static final int xupdate_lab_install = 0x7f0e02da;
 
     @StringRes
-    public static final int xupdate_start_download = 0x7f0e02db;
+    public static final int xupdate_lab_new_version_size = 0x7f0e02db;
 
     @StringRes
-    public static final int xupdate_tip_download_url_error = 0x7f0e02dc;
+    public static final int xupdate_lab_ready_update = 0x7f0e02dc;
 
     @StringRes
-    public static final int xupdate_tip_permissions_reject = 0x7f0e02dd;
+    public static final int xupdate_lab_update = 0x7f0e02dd;
+
+    @StringRes
+    public static final int xupdate_start_download = 0x7f0e02de;
+
+    @StringRes
+    public static final int xupdate_tip_download_url_error = 0x7f0e02df;
+
+    @StringRes
+    public static final int xupdate_tip_permissions_reject = 0x7f0e02e0;
   }
 
   public static final class style {
@@ -15310,742 +15325,748 @@ public final class R2 {
     public static final int CardView_Light = 0x7f0f00b0;
 
     @StyleRes
-    public static final int ImagePickerTheme = 0x7f0f00b1;
+    public static final int EasyPermissions = 0x7f0f00b1;
 
     @StyleRes
-    public static final int ImagePickerThemeFullScreen = 0x7f0f00b2;
+    public static final int EasyPermissions_Transparent = 0x7f0f00b2;
 
     @StyleRes
-    public static final int MyDialogStyleBottom = 0x7f0f00b3;
+    public static final int ImagePickerTheme = 0x7f0f00b3;
 
     @StyleRes
-    public static final int MyTabLayoutTextAppearance = 0x7f0f00b4;
+    public static final int ImagePickerThemeFullScreen = 0x7f0f00b4;
 
     @StyleRes
-    public static final int Platform_AppCompat = 0x7f0f00b5;
+    public static final int MyDialogStyleBottom = 0x7f0f00b5;
 
     @StyleRes
-    public static final int Platform_AppCompat_Light = 0x7f0f00b6;
+    public static final int MyTabLayoutTextAppearance = 0x7f0f00b6;
 
     @StyleRes
-    public static final int Platform_ThemeOverlay_AppCompat = 0x7f0f00b7;
+    public static final int Platform_AppCompat = 0x7f0f00b7;
 
     @StyleRes
-    public static final int Platform_ThemeOverlay_AppCompat_Dark = 0x7f0f00b8;
+    public static final int Platform_AppCompat_Light = 0x7f0f00b8;
 
     @StyleRes
-    public static final int Platform_ThemeOverlay_AppCompat_Light = 0x7f0f00b9;
+    public static final int Platform_ThemeOverlay_AppCompat = 0x7f0f00b9;
 
     @StyleRes
-    public static final int Platform_V11_AppCompat = 0x7f0f00ba;
+    public static final int Platform_ThemeOverlay_AppCompat_Dark = 0x7f0f00ba;
 
     @StyleRes
-    public static final int Platform_V11_AppCompat_Light = 0x7f0f00bb;
+    public static final int Platform_ThemeOverlay_AppCompat_Light = 0x7f0f00bb;
 
     @StyleRes
-    public static final int Platform_V14_AppCompat = 0x7f0f00bc;
+    public static final int Platform_V11_AppCompat = 0x7f0f00bc;
 
     @StyleRes
-    public static final int Platform_V14_AppCompat_Light = 0x7f0f00bd;
+    public static final int Platform_V11_AppCompat_Light = 0x7f0f00bd;
 
     @StyleRes
-    public static final int Platform_V21_AppCompat = 0x7f0f00be;
+    public static final int Platform_V14_AppCompat = 0x7f0f00be;
 
     @StyleRes
-    public static final int Platform_V21_AppCompat_Light = 0x7f0f00bf;
+    public static final int Platform_V14_AppCompat_Light = 0x7f0f00bf;
 
     @StyleRes
-    public static final int Platform_V25_AppCompat = 0x7f0f00c0;
+    public static final int Platform_V21_AppCompat = 0x7f0f00c0;
 
     @StyleRes
-    public static final int Platform_V25_AppCompat_Light = 0x7f0f00c1;
+    public static final int Platform_V21_AppCompat_Light = 0x7f0f00c1;
 
     @StyleRes
-    public static final int Platform_Widget_AppCompat_Spinner = 0x7f0f00c2;
+    public static final int Platform_V25_AppCompat = 0x7f0f00c2;
 
     @StyleRes
-    public static final int RedTheme = 0x7f0f00c3;
+    public static final int Platform_V25_AppCompat_Light = 0x7f0f00c3;
 
     @StyleRes
-    public static final int RtlOverlay_DialogWindowTitle_AppCompat = 0x7f0f00c4;
+    public static final int Platform_Widget_AppCompat_Spinner = 0x7f0f00c4;
 
     @StyleRes
-    public static final int RtlOverlay_Widget_AppCompat_ActionBar_TitleItem = 0x7f0f00c5;
+    public static final int RedTheme = 0x7f0f00c5;
 
     @StyleRes
-    public static final int RtlOverlay_Widget_AppCompat_DialogTitle_Icon = 0x7f0f00c6;
+    public static final int RtlOverlay_DialogWindowTitle_AppCompat = 0x7f0f00c6;
 
     @StyleRes
-    public static final int RtlOverlay_Widget_AppCompat_PopupMenuItem = 0x7f0f00c7;
+    public static final int RtlOverlay_Widget_AppCompat_ActionBar_TitleItem = 0x7f0f00c7;
 
     @StyleRes
-    public static final int RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup = 0x7f0f00c8;
+    public static final int RtlOverlay_Widget_AppCompat_DialogTitle_Icon = 0x7f0f00c8;
 
     @StyleRes
-    public static final int RtlOverlay_Widget_AppCompat_PopupMenuItem_Text = 0x7f0f00c9;
+    public static final int RtlOverlay_Widget_AppCompat_PopupMenuItem = 0x7f0f00c9;
 
     @StyleRes
-    public static final int RtlOverlay_Widget_AppCompat_Search_DropDown = 0x7f0f00ca;
+    public static final int RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup = 0x7f0f00ca;
 
     @StyleRes
-    public static final int RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1 = 0x7f0f00cb;
+    public static final int RtlOverlay_Widget_AppCompat_PopupMenuItem_Text = 0x7f0f00cb;
 
     @StyleRes
-    public static final int RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2 = 0x7f0f00cc;
+    public static final int RtlOverlay_Widget_AppCompat_Search_DropDown = 0x7f0f00cc;
 
     @StyleRes
-    public static final int RtlOverlay_Widget_AppCompat_Search_DropDown_Query = 0x7f0f00cd;
+    public static final int RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1 = 0x7f0f00cd;
 
     @StyleRes
-    public static final int RtlOverlay_Widget_AppCompat_Search_DropDown_Text = 0x7f0f00ce;
+    public static final int RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2 = 0x7f0f00ce;
 
     @StyleRes
-    public static final int RtlOverlay_Widget_AppCompat_SearchView_MagIcon = 0x7f0f00cf;
+    public static final int RtlOverlay_Widget_AppCompat_Search_DropDown_Query = 0x7f0f00cf;
 
     @StyleRes
-    public static final int RtlUnderlay_Widget_AppCompat_ActionButton = 0x7f0f00d0;
+    public static final int RtlOverlay_Widget_AppCompat_Search_DropDown_Text = 0x7f0f00d0;
 
     @StyleRes
-    public static final int RtlUnderlay_Widget_AppCompat_ActionButton_Overflow = 0x7f0f00d1;
+    public static final int RtlOverlay_Widget_AppCompat_SearchView_MagIcon = 0x7f0f00d1;
 
     @StyleRes
-    public static final int SuperCheckboxTheme = 0x7f0f00d2;
+    public static final int RtlUnderlay_Widget_AppCompat_ActionButton = 0x7f0f00d2;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat = 0x7f0f00d3;
+    public static final int RtlUnderlay_Widget_AppCompat_ActionButton_Overflow = 0x7f0f00d3;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Body1 = 0x7f0f00d4;
+    public static final int SuperCheckboxTheme = 0x7f0f00d4;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Body2 = 0x7f0f00d5;
+    public static final int TextAppearance_AppCompat = 0x7f0f00d5;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Button = 0x7f0f00d6;
+    public static final int TextAppearance_AppCompat_Body1 = 0x7f0f00d6;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Caption = 0x7f0f00d7;
+    public static final int TextAppearance_AppCompat_Body2 = 0x7f0f00d7;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Display1 = 0x7f0f00d8;
+    public static final int TextAppearance_AppCompat_Button = 0x7f0f00d8;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Display2 = 0x7f0f00d9;
+    public static final int TextAppearance_AppCompat_Caption = 0x7f0f00d9;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Display3 = 0x7f0f00da;
+    public static final int TextAppearance_AppCompat_Display1 = 0x7f0f00da;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Display4 = 0x7f0f00db;
+    public static final int TextAppearance_AppCompat_Display2 = 0x7f0f00db;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Headline = 0x7f0f00dc;
+    public static final int TextAppearance_AppCompat_Display3 = 0x7f0f00dc;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Inverse = 0x7f0f00dd;
+    public static final int TextAppearance_AppCompat_Display4 = 0x7f0f00dd;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Large = 0x7f0f00de;
+    public static final int TextAppearance_AppCompat_Headline = 0x7f0f00de;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Large_Inverse = 0x7f0f00df;
+    public static final int TextAppearance_AppCompat_Inverse = 0x7f0f00df;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Light_SearchResult_Subtitle = 0x7f0f00e0;
+    public static final int TextAppearance_AppCompat_Large = 0x7f0f00e0;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Light_SearchResult_Title = 0x7f0f00e1;
+    public static final int TextAppearance_AppCompat_Large_Inverse = 0x7f0f00e1;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = 0x7f0f00e2;
+    public static final int TextAppearance_AppCompat_Light_SearchResult_Subtitle = 0x7f0f00e2;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = 0x7f0f00e3;
+    public static final int TextAppearance_AppCompat_Light_SearchResult_Title = 0x7f0f00e3;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Medium = 0x7f0f00e4;
+    public static final int TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = 0x7f0f00e4;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Medium_Inverse = 0x7f0f00e5;
+    public static final int TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = 0x7f0f00e5;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Menu = 0x7f0f00e6;
+    public static final int TextAppearance_AppCompat_Medium = 0x7f0f00e6;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Notification = 0x7f0f00e7;
+    public static final int TextAppearance_AppCompat_Medium_Inverse = 0x7f0f00e7;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Notification_Info = 0x7f0f00e8;
+    public static final int TextAppearance_AppCompat_Menu = 0x7f0f00e8;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Notification_Info_Media = 0x7f0f00e9;
+    public static final int TextAppearance_AppCompat_Notification = 0x7f0f00e9;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Notification_Line2 = 0x7f0f00ea;
+    public static final int TextAppearance_AppCompat_Notification_Info = 0x7f0f00ea;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Notification_Line2_Media = 0x7f0f00eb;
+    public static final int TextAppearance_AppCompat_Notification_Info_Media = 0x7f0f00eb;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Notification_Media = 0x7f0f00ec;
+    public static final int TextAppearance_AppCompat_Notification_Line2 = 0x7f0f00ec;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Notification_Time = 0x7f0f00ed;
+    public static final int TextAppearance_AppCompat_Notification_Line2_Media = 0x7f0f00ed;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Notification_Time_Media = 0x7f0f00ee;
+    public static final int TextAppearance_AppCompat_Notification_Media = 0x7f0f00ee;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Notification_Title = 0x7f0f00ef;
+    public static final int TextAppearance_AppCompat_Notification_Time = 0x7f0f00ef;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Notification_Title_Media = 0x7f0f00f0;
+    public static final int TextAppearance_AppCompat_Notification_Time_Media = 0x7f0f00f0;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_SearchResult_Subtitle = 0x7f0f00f1;
+    public static final int TextAppearance_AppCompat_Notification_Title = 0x7f0f00f1;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_SearchResult_Title = 0x7f0f00f2;
+    public static final int TextAppearance_AppCompat_Notification_Title_Media = 0x7f0f00f2;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Small = 0x7f0f00f3;
+    public static final int TextAppearance_AppCompat_SearchResult_Subtitle = 0x7f0f00f3;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Small_Inverse = 0x7f0f00f4;
+    public static final int TextAppearance_AppCompat_SearchResult_Title = 0x7f0f00f4;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Subhead = 0x7f0f00f5;
+    public static final int TextAppearance_AppCompat_Small = 0x7f0f00f5;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Subhead_Inverse = 0x7f0f00f6;
+    public static final int TextAppearance_AppCompat_Small_Inverse = 0x7f0f00f6;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Title = 0x7f0f00f7;
+    public static final int TextAppearance_AppCompat_Subhead = 0x7f0f00f7;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Title_Inverse = 0x7f0f00f8;
+    public static final int TextAppearance_AppCompat_Subhead_Inverse = 0x7f0f00f8;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Tooltip = 0x7f0f00f9;
+    public static final int TextAppearance_AppCompat_Title = 0x7f0f00f9;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Widget_ActionBar_Menu = 0x7f0f00fa;
+    public static final int TextAppearance_AppCompat_Title_Inverse = 0x7f0f00fa;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Widget_ActionBar_Subtitle = 0x7f0f00fb;
+    public static final int TextAppearance_AppCompat_Tooltip = 0x7f0f00fb;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = 0x7f0f00fc;
+    public static final int TextAppearance_AppCompat_Widget_ActionBar_Menu = 0x7f0f00fc;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Widget_ActionBar_Title = 0x7f0f00fd;
+    public static final int TextAppearance_AppCompat_Widget_ActionBar_Subtitle = 0x7f0f00fd;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = 0x7f0f00fe;
+    public static final int TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = 0x7f0f00fe;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Widget_ActionMode_Subtitle = 0x7f0f00ff;
+    public static final int TextAppearance_AppCompat_Widget_ActionBar_Title = 0x7f0f00ff;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse = 0x7f0f0100;
+    public static final int TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = 0x7f0f0100;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Widget_ActionMode_Title = 0x7f0f0101;
+    public static final int TextAppearance_AppCompat_Widget_ActionMode_Subtitle = 0x7f0f0101;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse = 0x7f0f0102;
+    public static final int TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse = 0x7f0f0102;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Widget_Button = 0x7f0f0103;
+    public static final int TextAppearance_AppCompat_Widget_ActionMode_Title = 0x7f0f0103;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Widget_Button_Borderless_Colored = 0x7f0f0104;
+    public static final int TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse = 0x7f0f0104;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Widget_Button_Colored = 0x7f0f0105;
+    public static final int TextAppearance_AppCompat_Widget_Button = 0x7f0f0105;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Widget_Button_Inverse = 0x7f0f0106;
+    public static final int TextAppearance_AppCompat_Widget_Button_Borderless_Colored = 0x7f0f0106;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Widget_DropDownItem = 0x7f0f0107;
+    public static final int TextAppearance_AppCompat_Widget_Button_Colored = 0x7f0f0107;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Widget_PopupMenu_Header = 0x7f0f0108;
+    public static final int TextAppearance_AppCompat_Widget_Button_Inverse = 0x7f0f0108;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Widget_PopupMenu_Large = 0x7f0f0109;
+    public static final int TextAppearance_AppCompat_Widget_DropDownItem = 0x7f0f0109;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Widget_PopupMenu_Small = 0x7f0f010a;
+    public static final int TextAppearance_AppCompat_Widget_PopupMenu_Header = 0x7f0f010a;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Widget_Switch = 0x7f0f010b;
+    public static final int TextAppearance_AppCompat_Widget_PopupMenu_Large = 0x7f0f010b;
 
     @StyleRes
-    public static final int TextAppearance_AppCompat_Widget_TextView_SpinnerItem = 0x7f0f010c;
+    public static final int TextAppearance_AppCompat_Widget_PopupMenu_Small = 0x7f0f010c;
 
     @StyleRes
-    public static final int TextAppearance_Compat_Notification = 0x7f0f010d;
+    public static final int TextAppearance_AppCompat_Widget_Switch = 0x7f0f010d;
 
     @StyleRes
-    public static final int TextAppearance_Compat_Notification_Info = 0x7f0f010e;
+    public static final int TextAppearance_AppCompat_Widget_TextView_SpinnerItem = 0x7f0f010e;
 
     @StyleRes
-    public static final int TextAppearance_Compat_Notification_Info_Media = 0x7f0f010f;
+    public static final int TextAppearance_Compat_Notification = 0x7f0f010f;
 
     @StyleRes
-    public static final int TextAppearance_Compat_Notification_Line2 = 0x7f0f0110;
+    public static final int TextAppearance_Compat_Notification_Info = 0x7f0f0110;
 
     @StyleRes
-    public static final int TextAppearance_Compat_Notification_Line2_Media = 0x7f0f0111;
+    public static final int TextAppearance_Compat_Notification_Info_Media = 0x7f0f0111;
 
     @StyleRes
-    public static final int TextAppearance_Compat_Notification_Media = 0x7f0f0112;
+    public static final int TextAppearance_Compat_Notification_Line2 = 0x7f0f0112;
 
     @StyleRes
-    public static final int TextAppearance_Compat_Notification_Time = 0x7f0f0113;
+    public static final int TextAppearance_Compat_Notification_Line2_Media = 0x7f0f0113;
 
     @StyleRes
-    public static final int TextAppearance_Compat_Notification_Time_Media = 0x7f0f0114;
+    public static final int TextAppearance_Compat_Notification_Media = 0x7f0f0114;
 
     @StyleRes
-    public static final int TextAppearance_Compat_Notification_Title = 0x7f0f0115;
+    public static final int TextAppearance_Compat_Notification_Time = 0x7f0f0115;
 
     @StyleRes
-    public static final int TextAppearance_Compat_Notification_Title_Media = 0x7f0f0116;
+    public static final int TextAppearance_Compat_Notification_Time_Media = 0x7f0f0116;
 
     @StyleRes
-    public static final int TextAppearance_Design_CollapsingToolbar_Expanded = 0x7f0f0117;
+    public static final int TextAppearance_Compat_Notification_Title = 0x7f0f0117;
 
     @StyleRes
-    public static final int TextAppearance_Design_Counter = 0x7f0f0118;
+    public static final int TextAppearance_Compat_Notification_Title_Media = 0x7f0f0118;
 
     @StyleRes
-    public static final int TextAppearance_Design_Counter_Overflow = 0x7f0f0119;
+    public static final int TextAppearance_Design_CollapsingToolbar_Expanded = 0x7f0f0119;
 
     @StyleRes
-    public static final int TextAppearance_Design_Error = 0x7f0f011a;
+    public static final int TextAppearance_Design_Counter = 0x7f0f011a;
 
     @StyleRes
-    public static final int TextAppearance_Design_Hint = 0x7f0f011b;
+    public static final int TextAppearance_Design_Counter_Overflow = 0x7f0f011b;
 
     @StyleRes
-    public static final int TextAppearance_Design_Snackbar_Message = 0x7f0f011c;
+    public static final int TextAppearance_Design_Error = 0x7f0f011c;
 
     @StyleRes
-    public static final int TextAppearance_Design_Tab = 0x7f0f011d;
+    public static final int TextAppearance_Design_Hint = 0x7f0f011d;
 
     @StyleRes
-    public static final int TextAppearance_Widget_AppCompat_ExpandedMenu_Item = 0x7f0f011e;
+    public static final int TextAppearance_Design_Snackbar_Message = 0x7f0f011e;
 
     @StyleRes
-    public static final int TextAppearance_Widget_AppCompat_Toolbar_Subtitle = 0x7f0f011f;
+    public static final int TextAppearance_Design_Tab = 0x7f0f011f;
 
     @StyleRes
-    public static final int TextAppearance_Widget_AppCompat_Toolbar_Title = 0x7f0f0120;
+    public static final int TextAppearance_Widget_AppCompat_ExpandedMenu_Item = 0x7f0f0120;
 
     @StyleRes
-    public static final int Theme_AppCompat = 0x7f0f0121;
+    public static final int TextAppearance_Widget_AppCompat_Toolbar_Subtitle = 0x7f0f0121;
 
     @StyleRes
-    public static final int Theme_AppCompat_CompactMenu = 0x7f0f0122;
+    public static final int TextAppearance_Widget_AppCompat_Toolbar_Title = 0x7f0f0122;
 
     @StyleRes
-    public static final int Theme_AppCompat_DayNight = 0x7f0f0123;
+    public static final int Theme_AppCompat = 0x7f0f0123;
 
     @StyleRes
-    public static final int Theme_AppCompat_DayNight_DarkActionBar = 0x7f0f0124;
+    public static final int Theme_AppCompat_CompactMenu = 0x7f0f0124;
 
     @StyleRes
-    public static final int Theme_AppCompat_DayNight_Dialog = 0x7f0f0125;
+    public static final int Theme_AppCompat_DayNight = 0x7f0f0125;
 
     @StyleRes
-    public static final int Theme_AppCompat_DayNight_Dialog_Alert = 0x7f0f0126;
+    public static final int Theme_AppCompat_DayNight_DarkActionBar = 0x7f0f0126;
 
     @StyleRes
-    public static final int Theme_AppCompat_DayNight_Dialog_MinWidth = 0x7f0f0127;
+    public static final int Theme_AppCompat_DayNight_Dialog = 0x7f0f0127;
 
     @StyleRes
-    public static final int Theme_AppCompat_DayNight_DialogWhenLarge = 0x7f0f0128;
+    public static final int Theme_AppCompat_DayNight_Dialog_Alert = 0x7f0f0128;
 
     @StyleRes
-    public static final int Theme_AppCompat_DayNight_NoActionBar = 0x7f0f0129;
+    public static final int Theme_AppCompat_DayNight_Dialog_MinWidth = 0x7f0f0129;
 
     @StyleRes
-    public static final int Theme_AppCompat_Dialog = 0x7f0f012a;
+    public static final int Theme_AppCompat_DayNight_DialogWhenLarge = 0x7f0f012a;
 
     @StyleRes
-    public static final int Theme_AppCompat_Dialog_Alert = 0x7f0f012b;
+    public static final int Theme_AppCompat_DayNight_NoActionBar = 0x7f0f012b;
 
     @StyleRes
-    public static final int Theme_AppCompat_Dialog_MinWidth = 0x7f0f012c;
+    public static final int Theme_AppCompat_Dialog = 0x7f0f012c;
 
     @StyleRes
-    public static final int Theme_AppCompat_DialogWhenLarge = 0x7f0f012d;
+    public static final int Theme_AppCompat_Dialog_Alert = 0x7f0f012d;
 
     @StyleRes
-    public static final int Theme_AppCompat_Light = 0x7f0f012e;
+    public static final int Theme_AppCompat_Dialog_MinWidth = 0x7f0f012e;
 
     @StyleRes
-    public static final int Theme_AppCompat_Light_DarkActionBar = 0x7f0f012f;
+    public static final int Theme_AppCompat_DialogWhenLarge = 0x7f0f012f;
 
     @StyleRes
-    public static final int Theme_AppCompat_Light_Dialog = 0x7f0f0130;
+    public static final int Theme_AppCompat_Light = 0x7f0f0130;
 
     @StyleRes
-    public static final int Theme_AppCompat_Light_Dialog_Alert = 0x7f0f0131;
+    public static final int Theme_AppCompat_Light_DarkActionBar = 0x7f0f0131;
 
     @StyleRes
-    public static final int Theme_AppCompat_Light_Dialog_MinWidth = 0x7f0f0132;
+    public static final int Theme_AppCompat_Light_Dialog = 0x7f0f0132;
 
     @StyleRes
-    public static final int Theme_AppCompat_Light_DialogWhenLarge = 0x7f0f0133;
+    public static final int Theme_AppCompat_Light_Dialog_Alert = 0x7f0f0133;
 
     @StyleRes
-    public static final int Theme_AppCompat_Light_NoActionBar = 0x7f0f0134;
+    public static final int Theme_AppCompat_Light_Dialog_MinWidth = 0x7f0f0134;
 
     @StyleRes
-    public static final int Theme_AppCompat_Light_NoActionBar_FullScreen = 0x7f0f0135;
+    public static final int Theme_AppCompat_Light_DialogWhenLarge = 0x7f0f0135;
 
     @StyleRes
-    public static final int Theme_AppCompat_NoActionBar = 0x7f0f0136;
+    public static final int Theme_AppCompat_Light_NoActionBar = 0x7f0f0136;
 
     @StyleRes
-    public static final int Theme_Design = 0x7f0f0137;
+    public static final int Theme_AppCompat_Light_NoActionBar_FullScreen = 0x7f0f0137;
 
     @StyleRes
-    public static final int Theme_Design_BottomSheetDialog = 0x7f0f0138;
+    public static final int Theme_AppCompat_NoActionBar = 0x7f0f0138;
 
     @StyleRes
-    public static final int Theme_Design_Light = 0x7f0f0139;
+    public static final int Theme_Design = 0x7f0f0139;
 
     @StyleRes
-    public static final int Theme_Design_Light_BottomSheetDialog = 0x7f0f013a;
+    public static final int Theme_Design_BottomSheetDialog = 0x7f0f013a;
 
     @StyleRes
-    public static final int Theme_Design_Light_NoActionBar = 0x7f0f013b;
+    public static final int Theme_Design_Light = 0x7f0f013b;
 
     @StyleRes
-    public static final int Theme_Design_NoActionBar = 0x7f0f013c;
+    public static final int Theme_Design_Light_BottomSheetDialog = 0x7f0f013c;
 
     @StyleRes
-    public static final int Theme_UMDefault = 0x7f0f013d;
+    public static final int Theme_Design_Light_NoActionBar = 0x7f0f013d;
 
     @StyleRes
-    public static final int ThemeOverlay_AppCompat = 0x7f0f013e;
+    public static final int Theme_Design_NoActionBar = 0x7f0f013e;
 
     @StyleRes
-    public static final int ThemeOverlay_AppCompat_ActionBar = 0x7f0f013f;
+    public static final int Theme_UMDefault = 0x7f0f013f;
 
     @StyleRes
-    public static final int ThemeOverlay_AppCompat_Dark = 0x7f0f0140;
+    public static final int ThemeOverlay_AppCompat = 0x7f0f0140;
 
     @StyleRes
-    public static final int ThemeOverlay_AppCompat_Dark_ActionBar = 0x7f0f0141;
+    public static final int ThemeOverlay_AppCompat_ActionBar = 0x7f0f0141;
 
     @StyleRes
-    public static final int ThemeOverlay_AppCompat_Dialog = 0x7f0f0142;
+    public static final int ThemeOverlay_AppCompat_Dark = 0x7f0f0142;
 
     @StyleRes
-    public static final int ThemeOverlay_AppCompat_Dialog_Alert = 0x7f0f0143;
+    public static final int ThemeOverlay_AppCompat_Dark_ActionBar = 0x7f0f0143;
 
     @StyleRes
-    public static final int ThemeOverlay_AppCompat_Light = 0x7f0f0144;
+    public static final int ThemeOverlay_AppCompat_Dialog = 0x7f0f0144;
 
     @StyleRes
-    public static final int Widget_AppCompat_ActionBar = 0x7f0f0145;
+    public static final int ThemeOverlay_AppCompat_Dialog_Alert = 0x7f0f0145;
 
     @StyleRes
-    public static final int Widget_AppCompat_ActionBar_Solid = 0x7f0f0146;
+    public static final int ThemeOverlay_AppCompat_Light = 0x7f0f0146;
 
     @StyleRes
-    public static final int Widget_AppCompat_ActionBar_TabBar = 0x7f0f0147;
+    public static final int Widget_AppCompat_ActionBar = 0x7f0f0147;
 
     @StyleRes
-    public static final int Widget_AppCompat_ActionBar_TabText = 0x7f0f0148;
+    public static final int Widget_AppCompat_ActionBar_Solid = 0x7f0f0148;
 
     @StyleRes
-    public static final int Widget_AppCompat_ActionBar_TabView = 0x7f0f0149;
+    public static final int Widget_AppCompat_ActionBar_TabBar = 0x7f0f0149;
 
     @StyleRes
-    public static final int Widget_AppCompat_ActionButton = 0x7f0f014a;
+    public static final int Widget_AppCompat_ActionBar_TabText = 0x7f0f014a;
 
     @StyleRes
-    public static final int Widget_AppCompat_ActionButton_CloseMode = 0x7f0f014b;
+    public static final int Widget_AppCompat_ActionBar_TabView = 0x7f0f014b;
 
     @StyleRes
-    public static final int Widget_AppCompat_ActionButton_Overflow = 0x7f0f014c;
+    public static final int Widget_AppCompat_ActionButton = 0x7f0f014c;
 
     @StyleRes
-    public static final int Widget_AppCompat_ActionMode = 0x7f0f014d;
+    public static final int Widget_AppCompat_ActionButton_CloseMode = 0x7f0f014d;
 
     @StyleRes
-    public static final int Widget_AppCompat_ActivityChooserView = 0x7f0f014e;
+    public static final int Widget_AppCompat_ActionButton_Overflow = 0x7f0f014e;
 
     @StyleRes
-    public static final int Widget_AppCompat_AutoCompleteTextView = 0x7f0f014f;
+    public static final int Widget_AppCompat_ActionMode = 0x7f0f014f;
 
     @StyleRes
-    public static final int Widget_AppCompat_Button = 0x7f0f0150;
+    public static final int Widget_AppCompat_ActivityChooserView = 0x7f0f0150;
 
     @StyleRes
-    public static final int Widget_AppCompat_Button_Borderless = 0x7f0f0151;
+    public static final int Widget_AppCompat_AutoCompleteTextView = 0x7f0f0151;
 
     @StyleRes
-    public static final int Widget_AppCompat_Button_Borderless_Colored = 0x7f0f0152;
+    public static final int Widget_AppCompat_Button = 0x7f0f0152;
 
     @StyleRes
-    public static final int Widget_AppCompat_Button_ButtonBar_AlertDialog = 0x7f0f0153;
+    public static final int Widget_AppCompat_Button_Borderless = 0x7f0f0153;
 
     @StyleRes
-    public static final int Widget_AppCompat_Button_Colored = 0x7f0f0154;
+    public static final int Widget_AppCompat_Button_Borderless_Colored = 0x7f0f0154;
 
     @StyleRes
-    public static final int Widget_AppCompat_Button_Small = 0x7f0f0155;
+    public static final int Widget_AppCompat_Button_ButtonBar_AlertDialog = 0x7f0f0155;
 
     @StyleRes
-    public static final int Widget_AppCompat_ButtonBar = 0x7f0f0156;
+    public static final int Widget_AppCompat_Button_Colored = 0x7f0f0156;
 
     @StyleRes
-    public static final int Widget_AppCompat_ButtonBar_AlertDialog = 0x7f0f0157;
+    public static final int Widget_AppCompat_Button_Small = 0x7f0f0157;
 
     @StyleRes
-    public static final int Widget_AppCompat_CompoundButton_CheckBox = 0x7f0f0158;
+    public static final int Widget_AppCompat_ButtonBar = 0x7f0f0158;
 
     @StyleRes
-    public static final int Widget_AppCompat_CompoundButton_RadioButton = 0x7f0f0159;
+    public static final int Widget_AppCompat_ButtonBar_AlertDialog = 0x7f0f0159;
 
     @StyleRes
-    public static final int Widget_AppCompat_CompoundButton_Switch = 0x7f0f015a;
+    public static final int Widget_AppCompat_CompoundButton_CheckBox = 0x7f0f015a;
 
     @StyleRes
-    public static final int Widget_AppCompat_DrawerArrowToggle = 0x7f0f015b;
+    public static final int Widget_AppCompat_CompoundButton_RadioButton = 0x7f0f015b;
 
     @StyleRes
-    public static final int Widget_AppCompat_DropDownItem_Spinner = 0x7f0f015c;
+    public static final int Widget_AppCompat_CompoundButton_Switch = 0x7f0f015c;
 
     @StyleRes
-    public static final int Widget_AppCompat_EditText = 0x7f0f015d;
+    public static final int Widget_AppCompat_DrawerArrowToggle = 0x7f0f015d;
 
     @StyleRes
-    public static final int Widget_AppCompat_ImageButton = 0x7f0f015e;
+    public static final int Widget_AppCompat_DropDownItem_Spinner = 0x7f0f015e;
 
     @StyleRes
-    public static final int Widget_AppCompat_Light_ActionBar = 0x7f0f015f;
+    public static final int Widget_AppCompat_EditText = 0x7f0f015f;
 
     @StyleRes
-    public static final int Widget_AppCompat_Light_ActionBar_Solid = 0x7f0f0160;
+    public static final int Widget_AppCompat_ImageButton = 0x7f0f0160;
 
     @StyleRes
-    public static final int Widget_AppCompat_Light_ActionBar_Solid_Inverse = 0x7f0f0161;
+    public static final int Widget_AppCompat_Light_ActionBar = 0x7f0f0161;
 
     @StyleRes
-    public static final int Widget_AppCompat_Light_ActionBar_TabBar = 0x7f0f0162;
+    public static final int Widget_AppCompat_Light_ActionBar_Solid = 0x7f0f0162;
 
     @StyleRes
-    public static final int Widget_AppCompat_Light_ActionBar_TabBar_Inverse = 0x7f0f0163;
+    public static final int Widget_AppCompat_Light_ActionBar_Solid_Inverse = 0x7f0f0163;
 
     @StyleRes
-    public static final int Widget_AppCompat_Light_ActionBar_TabText = 0x7f0f0164;
+    public static final int Widget_AppCompat_Light_ActionBar_TabBar = 0x7f0f0164;
 
     @StyleRes
-    public static final int Widget_AppCompat_Light_ActionBar_TabText_Inverse = 0x7f0f0165;
+    public static final int Widget_AppCompat_Light_ActionBar_TabBar_Inverse = 0x7f0f0165;
 
     @StyleRes
-    public static final int Widget_AppCompat_Light_ActionBar_TabView = 0x7f0f0166;
+    public static final int Widget_AppCompat_Light_ActionBar_TabText = 0x7f0f0166;
 
     @StyleRes
-    public static final int Widget_AppCompat_Light_ActionBar_TabView_Inverse = 0x7f0f0167;
+    public static final int Widget_AppCompat_Light_ActionBar_TabText_Inverse = 0x7f0f0167;
 
     @StyleRes
-    public static final int Widget_AppCompat_Light_ActionButton = 0x7f0f0168;
+    public static final int Widget_AppCompat_Light_ActionBar_TabView = 0x7f0f0168;
 
     @StyleRes
-    public static final int Widget_AppCompat_Light_ActionButton_CloseMode = 0x7f0f0169;
+    public static final int Widget_AppCompat_Light_ActionBar_TabView_Inverse = 0x7f0f0169;
 
     @StyleRes
-    public static final int Widget_AppCompat_Light_ActionButton_Overflow = 0x7f0f016a;
+    public static final int Widget_AppCompat_Light_ActionButton = 0x7f0f016a;
 
     @StyleRes
-    public static final int Widget_AppCompat_Light_ActionMode_Inverse = 0x7f0f016b;
+    public static final int Widget_AppCompat_Light_ActionButton_CloseMode = 0x7f0f016b;
 
     @StyleRes
-    public static final int Widget_AppCompat_Light_ActivityChooserView = 0x7f0f016c;
+    public static final int Widget_AppCompat_Light_ActionButton_Overflow = 0x7f0f016c;
 
     @StyleRes
-    public static final int Widget_AppCompat_Light_AutoCompleteTextView = 0x7f0f016d;
+    public static final int Widget_AppCompat_Light_ActionMode_Inverse = 0x7f0f016d;
 
     @StyleRes
-    public static final int Widget_AppCompat_Light_DropDownItem_Spinner = 0x7f0f016e;
+    public static final int Widget_AppCompat_Light_ActivityChooserView = 0x7f0f016e;
 
     @StyleRes
-    public static final int Widget_AppCompat_Light_ListPopupWindow = 0x7f0f016f;
+    public static final int Widget_AppCompat_Light_AutoCompleteTextView = 0x7f0f016f;
 
     @StyleRes
-    public static final int Widget_AppCompat_Light_ListView_DropDown = 0x7f0f0170;
+    public static final int Widget_AppCompat_Light_DropDownItem_Spinner = 0x7f0f0170;
 
     @StyleRes
-    public static final int Widget_AppCompat_Light_PopupMenu = 0x7f0f0171;
+    public static final int Widget_AppCompat_Light_ListPopupWindow = 0x7f0f0171;
 
     @StyleRes
-    public static final int Widget_AppCompat_Light_PopupMenu_Overflow = 0x7f0f0172;
+    public static final int Widget_AppCompat_Light_ListView_DropDown = 0x7f0f0172;
 
     @StyleRes
-    public static final int Widget_AppCompat_Light_SearchView = 0x7f0f0173;
+    public static final int Widget_AppCompat_Light_PopupMenu = 0x7f0f0173;
 
     @StyleRes
-    public static final int Widget_AppCompat_Light_Spinner_DropDown_ActionBar = 0x7f0f0174;
+    public static final int Widget_AppCompat_Light_PopupMenu_Overflow = 0x7f0f0174;
 
     @StyleRes
-    public static final int Widget_AppCompat_ListMenuView = 0x7f0f0175;
+    public static final int Widget_AppCompat_Light_SearchView = 0x7f0f0175;
 
     @StyleRes
-    public static final int Widget_AppCompat_ListPopupWindow = 0x7f0f0176;
+    public static final int Widget_AppCompat_Light_Spinner_DropDown_ActionBar = 0x7f0f0176;
 
     @StyleRes
-    public static final int Widget_AppCompat_ListView = 0x7f0f0177;
+    public static final int Widget_AppCompat_ListMenuView = 0x7f0f0177;
 
     @StyleRes
-    public static final int Widget_AppCompat_ListView_DropDown = 0x7f0f0178;
+    public static final int Widget_AppCompat_ListPopupWindow = 0x7f0f0178;
 
     @StyleRes
-    public static final int Widget_AppCompat_ListView_Menu = 0x7f0f0179;
+    public static final int Widget_AppCompat_ListView = 0x7f0f0179;
 
     @StyleRes
-    public static final int Widget_AppCompat_PopupMenu = 0x7f0f017a;
+    public static final int Widget_AppCompat_ListView_DropDown = 0x7f0f017a;
 
     @StyleRes
-    public static final int Widget_AppCompat_PopupMenu_Overflow = 0x7f0f017b;
+    public static final int Widget_AppCompat_ListView_Menu = 0x7f0f017b;
 
     @StyleRes
-    public static final int Widget_AppCompat_PopupWindow = 0x7f0f017c;
+    public static final int Widget_AppCompat_PopupMenu = 0x7f0f017c;
 
     @StyleRes
-    public static final int Widget_AppCompat_ProgressBar = 0x7f0f017d;
+    public static final int Widget_AppCompat_PopupMenu_Overflow = 0x7f0f017d;
 
     @StyleRes
-    public static final int Widget_AppCompat_ProgressBar_Horizontal = 0x7f0f017e;
+    public static final int Widget_AppCompat_PopupWindow = 0x7f0f017e;
 
     @StyleRes
-    public static final int Widget_AppCompat_RatingBar = 0x7f0f017f;
+    public static final int Widget_AppCompat_ProgressBar = 0x7f0f017f;
 
     @StyleRes
-    public static final int Widget_AppCompat_RatingBar_Indicator = 0x7f0f0180;
+    public static final int Widget_AppCompat_ProgressBar_Horizontal = 0x7f0f0180;
 
     @StyleRes
-    public static final int Widget_AppCompat_RatingBar_Small = 0x7f0f0181;
+    public static final int Widget_AppCompat_RatingBar = 0x7f0f0181;
 
     @StyleRes
-    public static final int Widget_AppCompat_SearchView = 0x7f0f0182;
+    public static final int Widget_AppCompat_RatingBar_Indicator = 0x7f0f0182;
 
     @StyleRes
-    public static final int Widget_AppCompat_SearchView_ActionBar = 0x7f0f0183;
+    public static final int Widget_AppCompat_RatingBar_Small = 0x7f0f0183;
 
     @StyleRes
-    public static final int Widget_AppCompat_SeekBar = 0x7f0f0184;
+    public static final int Widget_AppCompat_SearchView = 0x7f0f0184;
 
     @StyleRes
-    public static final int Widget_AppCompat_SeekBar_Discrete = 0x7f0f0185;
+    public static final int Widget_AppCompat_SearchView_ActionBar = 0x7f0f0185;
 
     @StyleRes
-    public static final int Widget_AppCompat_Spinner = 0x7f0f0186;
+    public static final int Widget_AppCompat_SeekBar = 0x7f0f0186;
 
     @StyleRes
-    public static final int Widget_AppCompat_Spinner_DropDown = 0x7f0f0187;
+    public static final int Widget_AppCompat_SeekBar_Discrete = 0x7f0f0187;
 
     @StyleRes
-    public static final int Widget_AppCompat_Spinner_DropDown_ActionBar = 0x7f0f0188;
+    public static final int Widget_AppCompat_Spinner = 0x7f0f0188;
 
     @StyleRes
-    public static final int Widget_AppCompat_Spinner_Underlined = 0x7f0f0189;
+    public static final int Widget_AppCompat_Spinner_DropDown = 0x7f0f0189;
 
     @StyleRes
-    public static final int Widget_AppCompat_TextView_SpinnerItem = 0x7f0f018a;
+    public static final int Widget_AppCompat_Spinner_DropDown_ActionBar = 0x7f0f018a;
 
     @StyleRes
-    public static final int Widget_AppCompat_Toolbar = 0x7f0f018b;
+    public static final int Widget_AppCompat_Spinner_Underlined = 0x7f0f018b;
 
     @StyleRes
-    public static final int Widget_AppCompat_Toolbar_Button_Navigation = 0x7f0f018c;
+    public static final int Widget_AppCompat_TextView_SpinnerItem = 0x7f0f018c;
 
     @StyleRes
-    public static final int Widget_Compat_NotificationActionContainer = 0x7f0f018d;
+    public static final int Widget_AppCompat_Toolbar = 0x7f0f018d;
 
     @StyleRes
-    public static final int Widget_Compat_NotificationActionText = 0x7f0f018e;
+    public static final int Widget_AppCompat_Toolbar_Button_Navigation = 0x7f0f018e;
 
     @StyleRes
-    public static final int Widget_Design_AppBarLayout = 0x7f0f018f;
+    public static final int Widget_Compat_NotificationActionContainer = 0x7f0f018f;
 
     @StyleRes
-    public static final int Widget_Design_BottomNavigationView = 0x7f0f0190;
+    public static final int Widget_Compat_NotificationActionText = 0x7f0f0190;
 
     @StyleRes
-    public static final int Widget_Design_BottomSheet_Modal = 0x7f0f0191;
+    public static final int Widget_Design_AppBarLayout = 0x7f0f0191;
 
     @StyleRes
-    public static final int Widget_Design_CollapsingToolbar = 0x7f0f0192;
+    public static final int Widget_Design_BottomNavigationView = 0x7f0f0192;
 
     @StyleRes
-    public static final int Widget_Design_CoordinatorLayout = 0x7f0f0193;
+    public static final int Widget_Design_BottomSheet_Modal = 0x7f0f0193;
 
     @StyleRes
-    public static final int Widget_Design_FloatingActionButton = 0x7f0f0194;
+    public static final int Widget_Design_CollapsingToolbar = 0x7f0f0194;
 
     @StyleRes
-    public static final int Widget_Design_NavigationView = 0x7f0f0195;
+    public static final int Widget_Design_CoordinatorLayout = 0x7f0f0195;
 
     @StyleRes
-    public static final int Widget_Design_ScrimInsetsFrameLayout = 0x7f0f0196;
+    public static final int Widget_Design_FloatingActionButton = 0x7f0f0196;
 
     @StyleRes
-    public static final int Widget_Design_Snackbar = 0x7f0f0197;
+    public static final int Widget_Design_NavigationView = 0x7f0f0197;
 
     @StyleRes
-    public static final int Widget_Design_TabLayout = 0x7f0f0198;
+    public static final int Widget_Design_ScrimInsetsFrameLayout = 0x7f0f0198;
 
     @StyleRes
-    public static final int Widget_Design_TextInputLayout = 0x7f0f0199;
+    public static final int Widget_Design_Snackbar = 0x7f0f0199;
 
     @StyleRes
-    public static final int alert_dialog = 0x7f0f019a;
+    public static final int Widget_Design_TabLayout = 0x7f0f019a;
 
     @StyleRes
-    public static final int custom_dialog2 = 0x7f0f019b;
+    public static final int Widget_Design_TextInputLayout = 0x7f0f019b;
 
     @StyleRes
-    public static final int head_default = 0x7f0f019c;
+    public static final int alert_dialog = 0x7f0f019c;
 
     @StyleRes
-    public static final int message_divider = 0x7f0f019d;
+    public static final int custom_dialog2 = 0x7f0f019d;
 
     @StyleRes
-    public static final int news_main_rogress_circle = 0x7f0f019e;
+    public static final int head_default = 0x7f0f019e;
 
     @StyleRes
-    public static final int picker_view_scale_anim = 0x7f0f019f;
+    public static final int message_divider = 0x7f0f019f;
 
     @StyleRes
-    public static final int picker_view_slide_anim = 0x7f0f01a0;
+    public static final int news_main_rogress_circle = 0x7f0f01a0;
 
     @StyleRes
-    public static final int popupwindow_anim_style = 0x7f0f01a1;
+    public static final int picker_view_scale_anim = 0x7f0f01a1;
 
     @StyleRes
-    public static final int text_default = 0x7f0f01a2;
+    public static final int picker_view_slide_anim = 0x7f0f01a2;
 
     @StyleRes
-    public static final int transparent_activity = 0x7f0f01a3;
+    public static final int popupwindow_anim_style = 0x7f0f01a3;
 
     @StyleRes
-    public static final int umeng_socialize_popup_dialog = 0x7f0f01a4;
+    public static final int text_default = 0x7f0f01a4;
 
     @StyleRes
-    public static final int view_vertical_grayline_height1_left0_right0 = 0x7f0f01a5;
+    public static final int transparent_activity = 0x7f0f01a5;
 
     @StyleRes
-    public static final int view_vertical_grayline_height1_left8_right10 = 0x7f0f01a6;
+    public static final int umeng_socialize_popup_dialog = 0x7f0f01a6;
+
+    @StyleRes
+    public static final int view_vertical_grayline_height1_left0_right0 = 0x7f0f01a7;
+
+    @StyleRes
+    public static final int view_vertical_grayline_height1_left8_right10 = 0x7f0f01a8;
   }
 
   public static final class styleable {

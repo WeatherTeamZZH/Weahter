@@ -98,6 +98,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     private int key;
     private TextPagerAdapter mPagerAdapter;
 
+    public String locationX = "";
+    public String locationY = "";
+    public String locationCiyt = "";
+    AllCityGreenBeanDao allCityGreenBeanDao ;
 
     @Override
     public int getLayoutID() {
@@ -108,9 +112,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void InitView() {
-//        setTitle("首页", true, TITLE_TYPE_IMG, R.mipmap.back_left, false, 0, "地址管理");
+        locationX = getIntent().getStringExtra("locationX");
+        locationY =  getIntent().getStringExtra("locationY");
+        locationCiyt =  getIntent().getStringExtra("locationCiyt");
+        BaseApplication application = (BaseApplication)getApplication();
+        allCityGreenBeanDao = application.getDaoSession().getAllCityGreenBeanDao();
+        initAllDbCity();
         initWeatherData();
-        initCity();
         mTestFragments = new SparseArray<>();
         initViewpagerAdapter();
         initSpotAdapter();
@@ -132,13 +140,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 Log.d("sort:", "onPageSelected: " + position);
                 mviewpager.setCurrentItem(position);
                 setSelect(position);
-                MainFragment mainfragment = mTestFragments.get(position);
-                mainfragment.setTitleDateListener(new TitleDateListener() {
-                    @Override
-                    public void setTitleDate(String string) {
-                        setTitleDate(string);
-                    }
-                });
+//                MainFragment mainfragment = mTestFragments.get(position);
+//                mainfragment.setTitleDateListener(new TitleDateListener() {
+//                    @Override
+//                    public void setTitleDate(String string) {
+//                        setTitleDate(string);
+//                    }
+//                });
 //                mainfragment.setTitleData();
 //                switch (position) {
 //                    case 0:
@@ -192,10 +200,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 mLlAllBg.setBackgroundResource(res);
             }
         };
+
+
     }
 
 
-//    ListDataSave dataSave;
 
     private void initWeatherData() {
         cityGreenDaoBeanList.clear();
@@ -301,6 +310,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 Log.e("cityName", cityName);
                 //设置结果显示框的显示数值
                 addCity(cityName);
+            }else {
+
             }
         }
 //        }
@@ -334,15 +345,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 //        int ceil = (int)Math.ceil(mTestFragments.size() / 2);
 //        mviewpager.setOffscreenPageLimit(ceil);
         CityGreenDaoBean cityGreenDaoBean = cityGreenDaoBeanList.get(cityGreenDaoBeanList.size() - 1);
+
         mTestFragments.put(key++, MainFragment.newInstance(cityGreenDaoBean.getProv(), cityGreenDaoBean.getCity(), cityGreenDaoBean.getArea()));
         mPagerAdapter.notifyDataSetChanged();
-
-
     }
 
     private void addGreenDAO(String city) {
         CityGreenDaoBean cityGreenDaoBean = new CityGreenDaoBean();
         List<AllCityGreenBean> list = allCityGreenBeanDao.queryBuilder().where(AllCityGreenBeanDao.Properties.NAMECN.like("%" + city + "%")).list();
+
         if(list!=null&&list.size()>0){
             cityGreenDaoBean.setCity(list.get(0).getDISTRICTCN());
             cityGreenDaoBean.setProv(list.get(0).getPROVCN());
@@ -366,7 +377,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     }
 
     private void deleteGreenDao(String cityName) {
-        CityGreenDaoBean cityDao = cityGreenDaoBeanDao.queryBuilder().where(CityGreenDaoBeanDao.Properties.City.eq(cityName)).build().unique();
+        CityGreenDaoBean cityDao = cityGreenDaoBeanDao.queryBuilder().where(CityGreenDaoBeanDao.Properties.Area.eq(cityName)).build().unique();
         if (cityDao != null) {
             //通过Key来删除，这里的Key就是user字段中的ID号
             cityGreenDaoBeanDao.deleteByKey(cityDao.getId());
@@ -381,7 +392,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         mainSpotClickBeanList.remove(position);
         mianSpotAdapter.notifyDataSetChanged();
 
-//        dataSave.setDataList("javaBean", weatherBeanList);
         //删除城市
         deleteGreenDao(cityGreenDaoBeanList.get(position).getCity());
         initWeatherData();
@@ -416,7 +426,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         void setTitleDate(String string);
     }
 
-    private void initCity() {
+    private void initAllDbCity() {
+        Log.e("initAllDbCity","initAllDbCity");
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -429,11 +440,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         }).start();
     }
 
-    AllCityGreenBeanDao allCityGreenBeanDao ;
+
     public void addAllCityDb(List<String> stringList){
 //        try{
-        BaseApplication application = (BaseApplication)getApplication();
-        allCityGreenBeanDao = application.getDaoSession().getAllCityGreenBeanDao();
+
         AllCityGreenBean allCityGreenBean ;
         for(int i = 0;i<stringList.size();i++){
             String string = stringList.get(i);
@@ -450,6 +460,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             }
         }
         Log.e("init","数据库初始化完成");
+
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if(cityGreenDaoBeanList.size()==0){
+                    addCity(locationCiyt.substring(0,locationCiyt.length()-1));
+                }
+            }
+        });
+
 //        }catch (Exception e){
 //            Log.e("init","数据库初始化失败");
 //        }
@@ -489,4 +509,5 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         return stringBuffer.toString();
 
     }
+
 }

@@ -157,7 +157,6 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     TextView mTvBottomTomorrowWeather;
     @BindView(R.id.tv_bottom_tomorrow_feng)
     TextView mTvBottomTomorrowFeng;
-    Unbinder unbinder2;
     @BindView(R.id.tv_richu_time)
     TextView mTvRichuTime;
     @BindView(R.id.tv_riluo_time)
@@ -203,6 +202,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
         args.putString(PROV, prov);
         args.putString(CITY, city);
         args.putString(AREA, area);
+        Log.e("xxxx",city+prov+area);
         MainFragment fragment = new MainFragment();
         fragment.setArguments(args);
         return fragment;
@@ -395,6 +395,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
 //        onRefresh();
 
         initData();
+        departmentListBeans.clear();
         for (int i = 0; i < DataBean.getNewTitleList().size(); i++) {
             DepartmentListBean departmentListBean = new DepartmentListBean(DataBean.getNewTitleList().get(i));
             departmentListBeans.add(departmentListBean);
@@ -667,7 +668,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     public void onDestroyView() {
         super.onDestroyView();
 //        unbinder.unbind();
-        unbinder2.unbind();
+//        unbinder2.unbind();
     }
 
     private class ViewPagerDataSource {

@@ -2,6 +2,7 @@ package com.ok100.weather.adapter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.ok100.weather.R;
+import com.ok100.weather.utils.ChooseTypeUtils;
 
 import me.zhouzhuo.zzweatherview.WeatherModel;
 
@@ -20,8 +21,9 @@ public class Weather15MianAdapter extends BaseQuickAdapter<WeatherModel, BaseVie
         helper.setText(R.id.tv_data ,item.getDate());
 //        helper.setText(R.id.iv_weather ,item.getName());
         helper.setText(R.id.tv_weather ,item.getDayWeather());
-        helper.setText(R.id.tv_day_temperature ,item.getDayTemp()+"");
-        helper.setText(R.id.tv_night_temperature ,item.getNightTemp()+"");
+        helper.setText(R.id.tv_day_temperature ,item.getDayTemp()+"°");
+        helper.setText(R.id.tv_night_temperature ,item.getNightTemp()+"°");
+        helper.setBackgroundRes(R.id.iv_weather, ChooseTypeUtils.getWeatherImgge(item.getDayWeather()));
 //        if(item.isClick()){
 //            helper.setBackgroundRes(R.id.iv_notice_main_choose_state ,R.mipmap.notice_main_choose_true);
 //        }else {

@@ -89,7 +89,6 @@ public class MyCityActivity extends BaseActivity implements BaseQuickAdapter.OnI
     public void InitView() {
         initWeatherData();
         //数据
-        cityDataList = searchGreenDao();
         myCityAdapter1 = new MyCityAdapter1();
         myCityAdapter1.setOnItemChildClickListener(this);
         mRecycleview1.setAdapter(myCityAdapter1);
@@ -347,12 +346,7 @@ public class MyCityActivity extends BaseActivity implements BaseQuickAdapter.OnI
         cityGreenDaoBeanList = searchGreenDao();
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
+
 
 
     public interface delectCityListener {
@@ -371,9 +365,9 @@ public class MyCityActivity extends BaseActivity implements BaseQuickAdapter.OnI
         cityGreenDaoBeanDao.insert(cityGreenDaoBean);
     }
 
-    public List<CityGreenDaoBean> cityDataList = new ArrayList<CityGreenDaoBean>();
 
     private List<CityGreenDaoBean> searchGreenDao() {
+
         List<CityGreenDaoBean> cityGreenDaoBeans = cityGreenDaoBeanDao.loadAll();
         return cityGreenDaoBeans;
 //        if(cityBean != null) {
@@ -387,7 +381,7 @@ public class MyCityActivity extends BaseActivity implements BaseQuickAdapter.OnI
     }
 
     private void deleteGreenDao(String cityName) {
-        CityGreenDaoBean cityDao = cityGreenDaoBeanDao.queryBuilder().where(CityGreenDaoBeanDao.Properties.City.eq(cityName)).build().unique();
+        CityGreenDaoBean cityDao = cityGreenDaoBeanDao.queryBuilder().where(CityGreenDaoBeanDao.Properties.Area.eq(cityName)).build().unique();
         if (cityDao != null) {
             //通过Key来删除，这里的Key就是user字段中的ID号
             cityGreenDaoBeanDao.deleteByKey(cityDao.getId());
