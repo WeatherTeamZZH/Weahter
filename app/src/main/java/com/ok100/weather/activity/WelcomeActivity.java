@@ -35,6 +35,7 @@ public class WelcomeActivity extends BaseActivity  implements EasyPermissions.Ra
     private SharePreferencesUtil sharePreferenceUtil;
     private ImageView iv_welcome;
     private TextView tv_app_version;
+    private TextView tv_app_name;
    public static final String[] perms = { Manifest.permission.ACCESS_FINE_LOCATION , Manifest.permission.ACCESS_COARSE_LOCATION };
    public String locationX = "";
    public String locationY = "";
@@ -50,7 +51,10 @@ public class WelcomeActivity extends BaseActivity  implements EasyPermissions.Ra
     public void InitView() {
 
         tv_app_version = (TextView) findViewById(R.id.tv_app_version);
+        tv_app_name = (TextView) findViewById(R.id.tv_app_name);
         String versionCode = AppUtils.getVersionNameCode(WelcomeActivity.this);
+        String appName = AppUtils.getAppName(WelcomeActivity.this);
+        tv_app_name.setText(appName);
         tv_app_version.setText("V " + versionCode);
         sharePreferenceUtil = new SharePreferencesUtil();
     }

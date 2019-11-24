@@ -3,7 +3,6 @@ package com.ok100.weather;
 
 import android.support.annotation.CallSuper;
 import android.support.annotation.UiThread;
-import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -12,6 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import butterknife.Unbinder;
 import butterknife.internal.Utils;
+import com.ok100.weather.view.MainViewPager;
 import java.lang.IllegalStateException;
 import java.lang.Override;
 
@@ -32,7 +32,7 @@ public class MainActivity_ViewBinding implements Unbinder {
     target.mTvDate = Utils.findRequiredViewAsType(source, R.id.tv_date, "field 'mTvDate'", TextView.class);
     target.mIvWeatherShare = Utils.findRequiredViewAsType(source, R.id.iv_weather_share, "field 'mIvWeatherShare'", ImageView.class);
     target.mIvWeatherUser = Utils.findRequiredViewAsType(source, R.id.iv_weather_user, "field 'mIvWeatherUser'", ImageView.class);
-    target.mviewpager = Utils.findRequiredViewAsType(source, R.id.id_viewpager, "field 'mviewpager'", ViewPager.class);
+    target.mviewpager = Utils.findRequiredViewAsType(source, R.id.id_viewpager, "field 'mviewpager'", MainViewPager.class);
     target.mRceycleviewSpot = Utils.findRequiredViewAsType(source, R.id.rceycleview_spot, "field 'mRceycleviewSpot'", RecyclerView.class);
     target.mLlAllBg = Utils.findRequiredViewAsType(source, R.id.ll_all_bg, "field 'mLlAllBg'", LinearLayout.class);
     target.mIvTitleBigImage = Utils.findRequiredViewAsType(source, R.id.iv_title_big_image, "field 'mIvTitleBigImage'", ImageView.class);

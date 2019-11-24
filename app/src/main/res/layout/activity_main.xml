@@ -92,7 +92,7 @@
             android:id="@+id/iv_title_big_image"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@mipmap/ic_launcher"
+            android:background="@mipmap/ic_launcher"
             android:layout_marginLeft="@dimen/x30"
             android:layout_centerVertical="true"
             />
@@ -107,20 +107,24 @@
                     android:id="@+id/tv_title_position"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="国贸三期  8°"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="16dp"
                     android:layout_marginTop="@dimen/x10"
+                    android:layout_centerVertical="true"
                     />
 
             <TextView
                 android:id="@+id/tv_title_city"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="朝阳区"
-                android:textSize="14dp"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="@dimen/x10"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x20"
+                android:layout_toRightOf="@+id/tv_title_position"
+
                 />
         </RelativeLayout>
 
@@ -153,12 +157,12 @@
         </LinearLayout>
     </RelativeLayout>
 
-    <android.support.v4.view.ViewPager
+    <com.ok100.weather.view.MainViewPager
         android:id="@+id/id_viewpager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
 
-    </android.support.v4.view.ViewPager>
+    </com.ok100.weather.view.MainViewPager>
 
 </LinearLayout>

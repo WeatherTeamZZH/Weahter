@@ -80,9 +80,6 @@ public class NoticeCenter2Fragment extends BaseFragment implements BaseQuickAdap
         List<NoticeCenter2Bean> noticeCenter2Beans = new ArrayList<>();
         NoticeCenter2Bean noticeCenter2Bean = new NoticeCenter2Bean();
         noticeCenter2Beans.add(noticeCenter2Bean);
-        noticeCenter2Beans.add(noticeCenter2Bean);
-        noticeCenter2Beans.add(noticeCenter2Bean);
-        noticeCenter2Beans.add(noticeCenter2Bean);
         return noticeCenter2Beans;
     }
 

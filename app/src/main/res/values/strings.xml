@@ -63,7 +63,7 @@
     <string name="air_quality_pn">PM2.5</string>
     <string name="air_quality_rank">全国城市排名</string>
     <string name="air_quality_so2">二氧化硫</string>
-    <string name="app_name">中央天气预报</string>
+    <string name="app_name">天天气象-关注天气，开启美好生活</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="appdownloader_button_cancel_download">取消</string>
     <string name="appdownloader_button_queue_for_wifi">排队</string>

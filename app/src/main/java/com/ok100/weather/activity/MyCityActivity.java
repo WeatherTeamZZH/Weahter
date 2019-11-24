@@ -35,14 +35,21 @@ import com.ok100.weather.bean.AllCityGreenBean;
 import com.ok100.weather.bean.CityGreenDaoBean;
 import com.ok100.weather.bean.DataBean;
 import com.ok100.weather.bean.DefultGridViewBean;
+import com.ok100.weather.bean.MyCityAdapter1Bean;
+import com.ok100.weather.bean.WeatherTotalBean;
+import com.ok100.weather.http.ReturnDataView;
+import com.ok100.weather.presenter.NewsListPresenterImpl;
+import com.ok100.weather.presenter.NoticeMainListPresenterImpl;
+import com.ok100.weather.utils.ChooseTypeUtils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MyCityActivity extends BaseActivity implements BaseQuickAdapter.OnItemChildClickListener {
+public class MyCityActivity extends BaseActivity implements BaseQuickAdapter.OnItemChildClickListener , ReturnDataView<Object> {
 
 
     @BindView(R.id.tv_my_city)
@@ -73,6 +80,7 @@ public class MyCityActivity extends BaseActivity implements BaseQuickAdapter.OnI
     ImageView mIvChooseCity;
 
     public List<CityGreenDaoBean> cityGreenDaoBeanList = new ArrayList<>();
+    public List<MyCityAdapter1Bean> adapter1BeanList = new ArrayList<>();
     @BindView(R.id.recycleview4)
     RecyclerView mRecycleview4;
 
@@ -92,13 +100,14 @@ public class MyCityActivity extends BaseActivity implements BaseQuickAdapter.OnI
         myCityAdapter1 = new MyCityAdapter1();
         myCityAdapter1.setOnItemChildClickListener(this);
         mRecycleview1.setAdapter(myCityAdapter1);
-        myCityAdapter1.setNewData(cityGreenDaoBeanList);
+        myCityAdapter1.setNewData(adapter1BeanList);
         mRecycleview1.setLayoutManager(new LinearLayoutManager(MyCityActivity.this));
 //        myCityAdapter1.setNestedScrollingEnabled(false);//禁止滑动
         myCityAdapter1.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-
+                MyCityAdapter1Bean myCityAdapter1Bean = (MyCityAdapter1Bean) adapter.getData().get(position);
+                stataActivity(myCityAdapter1Bean.getArea());
             }
         });
 
@@ -229,7 +238,16 @@ public class MyCityActivity extends BaseActivity implements BaseQuickAdapter.OnI
 
     @Override
     public void initData(Bundle savedInstanceState, View contentView) {
-
+        adapter1BeanList.clear();
+        for (int i=0;i<cityGreenDaoBeanList.size();i++){
+            MyCityAdapter1Bean myCityAdapter1Bean = new MyCityAdapter1Bean();
+            myCityAdapter1Bean.setArea(cityGreenDaoBeanList.get(i).getArea());
+            myCityAdapter1Bean.setCity(cityGreenDaoBeanList.get(i).getCity());
+            myCityAdapter1Bean.setProv(cityGreenDaoBeanList.get(i).getProv());
+            adapter1BeanList.add(myCityAdapter1Bean);
+        }
+        myCityAdapter1.notifyDataSetChanged();
+        http();
     }
 
     @Override
@@ -241,6 +259,7 @@ public class MyCityActivity extends BaseActivity implements BaseQuickAdapter.OnI
                 break;
             case R.id.iv_back:
                 finish();
+                overridePendingTransition(R.anim.my_city_activity_in, R.anim.my_city_activity_out);
                 break;
             case R.id.textview_quxiao:
                 fangjiaodian(v);
@@ -339,6 +358,7 @@ public class MyCityActivity extends BaseActivity implements BaseQuickAdapter.OnI
         //setResult(resultCode, data);第一个参数表示结果返回码，一般只要大于1就可以，但是
         setResult(MyCityResult, intent);
         finish();
+        overridePendingTransition(R.anim.my_city_activity_in, R.anim.my_city_activity_out);
     }
 
     private void initWeatherData() {
@@ -346,7 +366,54 @@ public class MyCityActivity extends BaseActivity implements BaseQuickAdapter.OnI
         cityGreenDaoBeanList = searchGreenDao();
     }
 
+    NewsListPresenterImpl newsListPresenterImpl ;
+    WeatherTotalBean weatherTotalBean ;
 
+    @Override
+    public void returnData(String responseCode, Object o) {
+        switch (responseCode) {
+            case "getTotalWeather":
+                weatherTotalBean = (WeatherTotalBean) o;
+                Log.e("weatherTotalBean", weatherTotalBean.toString());
+                for(int i=0;i<adapter1BeanList.size();i++){
+                    if(adapter1BeanList.get(i).getArea().equals(weatherTotalBean.getData().getCityinfo().getArea())){
+                        adapter1BeanList.get(i).setDay_air_temperature(weatherTotalBean.getData().getNow().getCity().getDay_air_temperature()+"°");
+                        adapter1BeanList.get(i).setNight_air_temperature(weatherTotalBean.getData().getNow().getCity().getNight_air_temperature()+"°");
+                        adapter1BeanList.get(i).setWeatherImage(ChooseTypeUtils.getWeatherImgge(weatherTotalBean.getData().getNow().getCity().getWeather()));
+                    }
+                }
+               myCityAdapter1.notifyDataSetChanged();
+                break;
+        }
+    }
+
+    private void http() {
+        NoticeMainListPresenterImpl noticeMainListPresenter = new NoticeMainListPresenterImpl(this);
+        HashMap<String, String> hashMap ;
+//        hashMap.put("area", "西湖");
+        for(int i= 0;i<cityGreenDaoBeanList.size();i++){
+            hashMap = new HashMap<>();
+            String prov = cityGreenDaoBeanList.get(i).getProv();
+            String city = cityGreenDaoBeanList.get(i).getCity();
+            String area = cityGreenDaoBeanList.get(i).getArea();
+            if (!TextUtils.isEmpty(prov)) {
+                hashMap.put("prov", prov);
+            }
+            if (!TextUtils.isEmpty(city)) {
+                hashMap.put("city", city);
+            }
+            if (!TextUtils.isEmpty(area)) {
+                hashMap.put("area", area);
+            }
+            hashMap.put("needday", "1");
+            noticeMainListPresenter.getTotalWeather(MyCityActivity.this, hashMap);
+        }
+    }
+
+    @Override
+    public void showError(String msg) {
+
+    }
 
 
     public interface delectCityListener {

@@ -1,6 +1,7 @@
 package com.ok100.weather.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,12 +12,18 @@ import android.view.ViewGroup;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.ok100.weather.R;
+import com.ok100.weather.activity.NoticeDetatilActivity;
 import com.ok100.weather.adapter.NoticeCenter1adapter;
 import com.ok100.weather.base.BaseFragment;
+import com.ok100.weather.bean.NewsListBean;
 import com.ok100.weather.bean.NoticeCenter1Bean;
 import com.ok100.weather.bean.NoticeCenter2Bean;
+import com.ok100.weather.http.ReturnDataView;
+import com.ok100.weather.presenter.NewsListPresenterImpl;
+import com.ok100.weather.utils.ChooseTypeUtils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -33,7 +40,7 @@ import butterknife.Unbinder;
  * update: 2017-12-6
  * version:
  */
-public class NoticeCenter1Fragment extends BaseFragment implements BaseQuickAdapter.OnItemClickListener {
+public class NoticeCenter1Fragment extends BaseFragment implements BaseQuickAdapter.OnItemClickListener , ReturnDataView<Object> {
 
     List<Map<String, String>> mlist = new ArrayList<>();
     @BindView(R.id.recycle_post_assistant)
@@ -58,20 +65,31 @@ public class NoticeCenter1Fragment extends BaseFragment implements BaseQuickAdap
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 //        mRecyclerView.setLayoutManager(manager);
         int spacing = (int) getResources().getDimension(R.dimen.x30);
-        mAdapter = new NoticeCenter1adapter();
-
+        mAdapter = new NoticeCenter1adapter(getActivity());
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.setOnItemClickListener(this);
+
+        mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                NewsListBean.ResultBean.DataBean newsListBean = (NewsListBean.ResultBean.DataBean) adapter.getData().get(position);
+                String url = newsListBean.getUrl();
+                Intent intent = new Intent(getActivity(), NoticeDetatilActivity.class);
+                intent.putExtra("url",url);
+                getActivity().startActivity(intent);
+
+            }
+        });
     }
 
     @Override
     protected void lazyLoad() {
         super.lazyLoad();
-        initData();
+        http();
     }
 
     private void initData() {
-        mAdapter.setNewData(getListData());
+
     }
 
     private List<NoticeCenter1Bean> getListData() {
@@ -109,4 +127,42 @@ public class NoticeCenter1Fragment extends BaseFragment implements BaseQuickAdap
         super.onDestroyView();
         unbinder.unbind();
     }
+
+    @Override
+    public void returnData(String responseCode, Object o) {
+        switch (responseCode){
+            case "getNewsList":
+                newsListBean = (NewsListBean) o;
+                newsListBean.getResult().getData();
+                if (page == 1) {
+                    mAdapter.setNewData(newsListBean.getResult().getData());
+//            listBeenData.addAll(noticeMainListBean.getList());
+//            noticeMainFragmentAdapter.setNewData(listBeenData);
+//            mSwipeRefreshLayout.setRefreshing(false);
+                } else {
+//            listBeenData.addAll(noticeMainListBean.getList());
+//            noticeMainFragmentAdapter.setNewData(listBeenData);
+                    mAdapter.addData(newsListBean.getResult().getData());
+                    mAdapter.loadMoreComplete();
+                }
+                break;
+        }
+    }
+
+    @Override
+    public void showError(String msg) {
+
+    }
+    private int page = 1;
+    NewsListBean newsListBean ;
+    NewsListPresenterImpl newsListPresenterImpl ;
+    private String type = "";
+
+    private void http() {
+        newsListPresenterImpl =  new NewsListPresenterImpl(this);
+        HashMap<String, String> stringStringHashMap = new HashMap<>();
+        stringStringHashMap.put("type", ChooseTypeUtils.getNewType(type));
+        newsListPresenterImpl.getNewsList(getActivity(),stringStringHashMap);
+    }
+
 }

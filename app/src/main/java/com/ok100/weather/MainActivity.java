@@ -36,6 +36,7 @@ import com.ok100.weather.http.ReturnDataView;
 import com.ok100.weather.myviewpager.TextPagerAdapter;
 import com.ok100.weather.utils.DataUtils;
 import com.ok100.weather.utils.ListDataSave;
+import com.ok100.weather.view.MainViewPager;
 
 import org.greenrobot.greendao.query.QueryBuilder;
 
@@ -67,7 +68,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     @BindView(R.id.iv_weather_user)
     ImageView mIvWeatherUser;
     @BindView(R.id.id_viewpager)
-    ViewPager mviewpager;
+    MainViewPager mviewpager;
     @BindView(R.id.rceycleview_spot)
     RecyclerView mRceycleviewSpot;
     @BindView(R.id.ll_all_bg)
@@ -126,6 +127,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         List<CityGreenDaoBean> cityGreenDaoBeans = cityGreenDaoBeanDao.loadAll();
         if(cityGreenDaoBeans!=null&&cityGreenDaoBeans.size()>0){
             mTvCity.setText(cityGreenDaoBeans.get(0).getArea());
+            mTvTitlePosition.setText(cityGreenDaoBeans.get(0).getArea());
         }
 
         mviewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -251,6 +253,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         }
         mianSpotAdapter.notifyDataSetChanged();
         mTvCity.setText(cityGreenDaoBeanList.get(location).getArea());
+        mTvTitlePosition.setText(cityGreenDaoBeanList.get(location).getArea());
     }
 
 
@@ -279,6 +282,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             case R.id.iv_add_weather:
                 intent = new Intent(MainActivity.this, MyCityActivity.class);
                 startActivityForResult(intent, 10001);
+                overridePendingTransition(R.anim.my_city_activity_in, R.anim.my_city_activity_out);
                 break;
             case R.id.iv_title_back_weather:
                 MainFragment mainFragment = (MainFragment) mTestFragments.get(mviewpager.getCurrentItem());
@@ -286,6 +290,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 mainFragment.setBottomVisible(false);
                 mainFragment.setAllGoneViewVisible(true);
                 hitiTitle(false);
+
                 break;
             case R.id.iv_weather_share:
 //                intent = new Intent(MainActivity.this, ShareMainActivity.class);
@@ -332,7 +337,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
 
     public void addCity(String cityName) {
-
+        for(int i=0;i<cityGreenDaoBeanList.size();i++){
+            if(cityGreenDaoBeanList.get(i).getArea().contains(cityName)){
+                mviewpager.setCurrentItem(i);
+                return;
+            }
+        }
 //        weatherBeanList.add(new WeatherBean(cityName));
 //        dataSave.setDataList("javaBean", weatherBeanList);
         //插入城市
@@ -348,6 +358,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
         mTestFragments.put(key++, MainFragment.newInstance(cityGreenDaoBean.getProv(), cityGreenDaoBean.getCity(), cityGreenDaoBean.getArea()));
         mPagerAdapter.notifyDataSetChanged();
+        mviewpager.setCurrentItem(mTestFragments.size()-1);
     }
 
     private void addGreenDAO(String city) {
@@ -404,22 +415,26 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     }
 
     public void hitiTitle(boolean visitle) {
+        mviewpager.setCanScroll(!visitle);
         if (!visitle) {
             mRlTitleAll.setVisibility(View.GONE);
             mRlTitleDefult.setVisibility(View.VISIBLE);
-            Log.e("visible", "mRlTitleAll隐藏");
-            Log.e("visible", "RlTitleDefult显示");
         } else {
             mRlTitleAll.setVisibility(View.VISIBLE);
             mRlTitleDefult.setVisibility(View.GONE);
-            Log.e("visible", "mRlTitleAll显示");
-            Log.e("visible", "RlTitleDefult隐藏");
         }
 
     }
 
     public void setTitleDate(String string) {
         mTvDate.setText(string);
+    }
+
+    public void setTitleWeather(String string) {
+        mTvTitleCity.setText(string);
+    }
+    public void setTitleWeatherImage(int string) {
+        mIvTitleBigImage.setBackgroundResource(string);
     }
 
     public interface TitleDateListener {

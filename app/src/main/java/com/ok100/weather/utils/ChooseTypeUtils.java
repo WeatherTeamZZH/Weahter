@@ -2,6 +2,8 @@ package com.ok100.weather.utils;
 
 import com.ok100.weather.R;
 
+import me.zhouzhuo.zzweatherview.AirLevel;
+
 /**
  * @Description: This is ChooseTypeUtils
  * @Author: QianDongDong
@@ -35,6 +37,7 @@ public class ChooseTypeUtils {
         return string;
     }
 
+    //选择天气图片
     public static int getWeatherImgge(String type){
         int string  = R.mipmap.icon_qing;
         if(type.contains("晴")){
@@ -55,6 +58,25 @@ public class ChooseTypeUtils {
             string = R.mipmap.icon_qing;
         }else if(type.contains("晴")){
             string = R.mipmap.icon_qing;
+        }
+        return string;
+    }
+
+    //选择天气质量
+    public static AirLevel getWeatherQuality(String type){
+        AirLevel string  = AirLevel.GOOD;
+        if(type.contains("优")){
+            string = AirLevel.EXCELLENT;
+        }else if(type.contains("良")){
+            string = AirLevel.GOOD;
+        }else if(type.contains("轻")){
+            string = AirLevel.LIGHT;
+        } else if(type.contains("中")){
+            string = AirLevel.MIDDLE;
+        } else if(type.contains("重")){
+            string = AirLevel.HIGH;
+        } else if(type.contains("毒")){
+            string = AirLevel.POISONOUS;
         }
         return string;
     }

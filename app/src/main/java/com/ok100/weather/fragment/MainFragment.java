@@ -187,6 +187,11 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     NewsListPresenterImpl newsListPresenterImpl ;
     WeatherTotalBean weatherTotalBean ;
 
+    public boolean weather7 = false;
+    public boolean weather15 = false;
+    WeatherTotal15Bean weatherTotal15Bean ;
+    WeatherTotal7Bean weatherTotal7Bean ;
+
     @Override
     protected int getLayoutID() {
         city = getArguments().getString(CITY);
@@ -756,14 +761,29 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
                 mToday24HourView.postInvalidate();
                 break;
             case "getTotalWeather15":
-                WeatherTotal15Bean getTotalWeather15 = (WeatherTotal15Bean) o;
-                weather15MianAdapter.setNewData(generateData(getTotalWeather15));
-                weatherView.setList(generateData(getTotalWeather15));
+                weather15 = true;
+                weatherTotal15Bean = (WeatherTotal15Bean) o;
+                if(weather7){
+                    List<WeatherModel> arraylist = new ArrayList<WeatherModel>();
+                    arraylist.addAll(generateData7(weatherTotal7Bean));
+                    arraylist.addAll(generateData15(weatherTotal15Bean));
+                    weather15MianAdapter.setNewData(arraylist);
+                    weatherView.setList(arraylist);
+                }
                 break;
             case "getTotalWeather7":
-                WeatherTotal7Bean weatherTotal7Bean = (WeatherTotal7Bean) o;
+                weather7 = true;
+                weatherTotal7Bean = (WeatherTotal7Bean) o;
+                if(weather15){
+                    List<WeatherModel> arraylist = new ArrayList<WeatherModel>();
+                    arraylist.addAll(generateData7(weatherTotal7Bean));
+                    arraylist.addAll(generateData15(weatherTotal15Bean));
+                    weather15MianAdapter.setNewData(arraylist);
+                    weatherView.setList(arraylist);
+                }
                 setTomorrowData(weatherTotal7Bean);
                 setAirDialogFragment(weatherTotal7Bean);
+
                 break;
 
             case "getTotalWeather24":
@@ -864,6 +884,8 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
         if(weatherTotalBean!=null&&this.isVisible){
             MainActivity activity = (MainActivity) getActivity();
             activity.setTitleDate(weatherTotalBean.getData().getNow().getDetail().getDate()+" 周"+weatherTotalBean.getData().getNow().getDetail().getWeek()+" 农历"+weatherTotalBean.getData().getNow().getDetail().getNongli());
+            activity.setTitleWeather(weatherTotalBean.getData().getNow().getDetail().getTemperature()+"°");
+            activity.setTitleWeatherImage(ChooseTypeUtils.getWeatherImgge(weatherTotalBean.getData().getNow().getDetail().getWeather()));
         }
     }
 
@@ -892,6 +914,8 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
             if(weatherTotalBean!=null){
                 MainActivity activity = (MainActivity) getActivity();
                 activity.setTitleDate(weatherTotalBean.getData().getNow().getDetail().getDate()+" 周"+weatherTotalBean.getData().getNow().getDetail().getWeek()+" 农历"+weatherTotalBean.getData().getNow().getDetail().getNongli());
+                activity.setTitleWeather(weatherTotalBean.getData().getNow().getDetail().getTemperature()+"°");
+                activity.setTitleWeatherImage(ChooseTypeUtils.getWeatherImgge(weatherTotalBean.getData().getNow().getDetail().getWeather()));
             }
 
         } else {
@@ -900,7 +924,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     }
 
 
-    private List<WeatherModel> generateData(WeatherTotal15Bean getTotalWeather15) {
+    private List<WeatherModel> generateData15(WeatherTotal15Bean getTotalWeather15) {
         ArrayList<WeatherModel> weatherModels = new ArrayList<>();
         WeatherModel model;
         List<WeatherTotal15Bean.DataBean.Day15Bean> day15list = getTotalWeather15.getData().getDay15();
@@ -918,6 +942,29 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
             model.setAirLevel(AirLevel.EXCELLENT); //空气质量
             model.setDayPic(ChooseTypeUtils.getWeatherImgge(day15list.get(i).getDay_air_weather()));
             model.setNightPic(ChooseTypeUtils.getWeatherImgge(day15list.get(i).getNight_air_weather()));
+            weatherModels.add(model);
+        }
+        return weatherModels;
+    }
+
+    private List<WeatherModel> generateData7(WeatherTotal7Bean getTotalWeather7) {
+        ArrayList<WeatherModel> weatherModels = new ArrayList<>();
+        WeatherModel model;
+        List<WeatherTotal7Bean.DataBean.Day7Bean> day7list = getTotalWeather7.getData().getDay7();
+        for (int i = 0; i < day7list.size(); i++) {
+            //数据源
+            model = new WeatherModel();
+            model.setWeek("周"+day7list.get(i).getWeek());
+            model.setDate(day7list.get(i).getDate().substring(4,6)+"/"+day7list.get(i).getDate().substring(6,day7list.get(i).getDate().length()));
+            model.setDayWeather(day7list.get(i).getDay_air_weather());
+            model.setDayTemp(Integer.parseInt(day7list.get(i).getDay_air_temperature()));
+            model.setNightTemp(Integer.parseInt(day7list.get(i).getNight_air_temperature()));
+            model.setNightWeather(day7list.get(i).getNight_air_weather());
+            model.setWindOrientation(day7list.get(i).getDay_wind_direction());
+            model.setWindLevel(day7list.get(i).getDay_wind_power()); //风级
+            model.setAirLevel(ChooseTypeUtils.getWeatherQuality(day7list.get(i).getQuality())); //空气质量
+            model.setDayPic(ChooseTypeUtils.getWeatherImgge(day7list.get(i).getDay_air_weather()));
+            model.setNightPic(ChooseTypeUtils.getWeatherImgge(day7list.get(i).getNight_air_weather()));
             weatherModels.add(model);
         }
         return weatherModels;

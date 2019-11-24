@@ -14,12 +14,16 @@
         android:background="@drawable/shape_white_24"
        >
         <TextView
+            android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:text="降温！东西两路冷空气来袭"
+            android:text=""
             android:layout_marginTop="@dimen/x30"
             android:layout_marginLeft="@dimen/x30"
+            android:layout_marginRight="@dimen/x30"
+            android:lines="1"
+            android:ellipsize="end"
             android:textSize="18dp"
             />
         <LinearLayout
@@ -34,16 +38,18 @@
             >
 
                 <ImageView
+                    android:id="@+id/imageview1"
                     android:layout_width="@dimen/x120"
                     android:layout_height="@dimen/x120"
                     android:background="@mipmap/ic_launcher"
                     />
 
                 <TextView
+                    android:id="@+id/tv_data"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:text="今天起，华北北部冷空气来袭，冷空气来袭，冷空气来袭，冷空气来袭，冷空气来袭，冷空气来袭，冷空气来袭"
+                    android:text=""
                     android:lines="2"
                     android:enabled="true"
                     android:lineSpacingExtra="@dimen/x10"
@@ -64,6 +70,7 @@
             android:layout_marginTop="@dimen/x20"
             android:layout_marginBottom="@dimen/x20">
             <TextView
+                android:id="@+id/tv_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="12dp"
