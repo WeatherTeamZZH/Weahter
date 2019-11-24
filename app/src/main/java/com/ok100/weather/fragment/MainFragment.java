@@ -541,8 +541,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
             public void onPageSelected(int position) {
                 Log.e("position", position + "");
                 NoticeMainFragment1 getFragment = (NoticeMainFragment1) viewPagerDataSourceList.get(position).getFragment();
-                ;
-//                mSwipeRefreshLayoutVanlianNew.setRecycleview(getFragment.getRecyclerView());
+
             }
 
             @Override

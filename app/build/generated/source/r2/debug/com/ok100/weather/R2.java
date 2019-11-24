@@ -11667,400 +11667,403 @@ public final class R2 {
     public static final int tv_air_level = 0x7f0801b6;
 
     @IdRes
-    public static final int tv_app_version = 0x7f0801b7;
+    public static final int tv_app_name = 0x7f0801b7;
 
     @IdRes
-    public static final int tv_aqi = 0x7f0801b8;
+    public static final int tv_app_version = 0x7f0801b8;
 
     @IdRes
-    public static final int tv_birth = 0x7f0801b9;
+    public static final int tv_aqi = 0x7f0801b9;
 
     @IdRes
-    public static final int tv_bottom_today_feng = 0x7f0801ba;
+    public static final int tv_birth = 0x7f0801ba;
 
     @IdRes
-    public static final int tv_bottom_today_weather = 0x7f0801bb;
+    public static final int tv_bottom_today_feng = 0x7f0801bb;
 
     @IdRes
-    public static final int tv_bottom_today_wendu = 0x7f0801bc;
+    public static final int tv_bottom_today_weather = 0x7f0801bc;
 
     @IdRes
-    public static final int tv_bottom_tomorrow_feng = 0x7f0801bd;
+    public static final int tv_bottom_today_wendu = 0x7f0801bd;
 
     @IdRes
-    public static final int tv_bottom_tomorrow_weather = 0x7f0801be;
+    public static final int tv_bottom_tomorrow_feng = 0x7f0801be;
 
     @IdRes
-    public static final int tv_bottom_tomorrow_wendu = 0x7f0801bf;
+    public static final int tv_bottom_tomorrow_weather = 0x7f0801bf;
 
     @IdRes
-    public static final int tv_city = 0x7f0801c0;
+    public static final int tv_bottom_tomorrow_wendu = 0x7f0801c0;
 
     @IdRes
-    public static final int tv_co = 0x7f0801c1;
+    public static final int tv_city = 0x7f0801c1;
 
     @IdRes
-    public static final int tv_co2 = 0x7f0801c2;
+    public static final int tv_co = 0x7f0801c2;
 
     @IdRes
-    public static final int tv_content_toast = 0x7f0801c3;
+    public static final int tv_co2 = 0x7f0801c3;
 
     @IdRes
-    public static final int tv_content_toast_comment = 0x7f0801c4;
+    public static final int tv_content_toast = 0x7f0801c4;
 
     @IdRes
-    public static final int tv_data = 0x7f0801c5;
+    public static final int tv_content_toast_comment = 0x7f0801c5;
 
     @IdRes
-    public static final int tv_date = 0x7f0801c6;
+    public static final int tv_data = 0x7f0801c6;
 
     @IdRes
-    public static final int tv_day_temperature = 0x7f0801c7;
+    public static final int tv_date = 0x7f0801c7;
 
     @IdRes
-    public static final int tv_day_weather = 0x7f0801c8;
+    public static final int tv_day_temperature = 0x7f0801c8;
 
     @IdRes
-    public static final int tv_des = 0x7f0801c9;
+    public static final int tv_day_weather = 0x7f0801c9;
 
     @IdRes
-    public static final int tv_desc = 0x7f0801ca;
+    public static final int tv_des = 0x7f0801ca;
 
     @IdRes
-    public static final int tv_dir = 0x7f0801cb;
+    public static final int tv_desc = 0x7f0801cb;
 
     @IdRes
-    public static final int tv_edit = 0x7f0801cc;
+    public static final int tv_dir = 0x7f0801cc;
 
     @IdRes
-    public static final int tv_feng = 0x7f0801cd;
+    public static final int tv_edit = 0x7f0801cd;
 
     @IdRes
-    public static final int tv_fenglevel = 0x7f0801ce;
+    public static final int tv_feng = 0x7f0801ce;
 
     @IdRes
-    public static final int tv_folder_name = 0x7f0801cf;
+    public static final int tv_fenglevel = 0x7f0801cf;
 
     @IdRes
-    public static final int tv_goin_pindao = 0x7f0801d0;
+    public static final int tv_folder_name = 0x7f0801d0;
 
     @IdRes
-    public static final int tv_goin_pindao2 = 0x7f0801d1;
+    public static final int tv_goin_pindao = 0x7f0801d1;
 
     @IdRes
-    public static final int tv_home = 0x7f0801d2;
+    public static final int tv_goin_pindao2 = 0x7f0801d2;
 
     @IdRes
-    public static final int tv_image_count = 0x7f0801d3;
+    public static final int tv_home = 0x7f0801d3;
 
     @IdRes
-    public static final int tv_kongqizhiliang = 0x7f0801d4;
+    public static final int tv_image_count = 0x7f0801d4;
 
     @IdRes
-    public static final int tv_level = 0x7f0801d5;
+    public static final int tv_kongqizhiliang = 0x7f0801d5;
 
     @IdRes
-    public static final int tv_liebiao = 0x7f0801d6;
+    public static final int tv_level = 0x7f0801d6;
 
     @IdRes
-    public static final int tv_logout = 0x7f0801d7;
+    public static final int tv_liebiao = 0x7f0801d7;
 
     @IdRes
-    public static final int tv_my_city = 0x7f0801d8;
+    public static final int tv_logout = 0x7f0801d8;
 
     @IdRes
-    public static final int tv_name = 0x7f0801d9;
+    public static final int tv_my_city = 0x7f0801d9;
 
     @IdRes
-    public static final int tv_name1 = 0x7f0801da;
+    public static final int tv_name = 0x7f0801da;
 
     @IdRes
-    public static final int tv_name2 = 0x7f0801db;
+    public static final int tv_name1 = 0x7f0801db;
 
     @IdRes
-    public static final int tv_nengjiandu = 0x7f0801dc;
+    public static final int tv_name2 = 0x7f0801dc;
 
     @IdRes
-    public static final int tv_nick = 0x7f0801dd;
+    public static final int tv_nengjiandu = 0x7f0801dd;
 
     @IdRes
-    public static final int tv_night_temperature = 0x7f0801de;
+    public static final int tv_nick = 0x7f0801de;
 
     @IdRes
-    public static final int tv_night_weather = 0x7f0801df;
+    public static final int tv_night_temperature = 0x7f0801df;
 
     @IdRes
-    public static final int tv_no = 0x7f0801e0;
+    public static final int tv_night_weather = 0x7f0801e0;
 
     @IdRes
-    public static final int tv_notice_main_choose_name = 0x7f0801e1;
+    public static final int tv_no = 0x7f0801e1;
 
     @IdRes
-    public static final int tv_notice_main_list_content = 0x7f0801e2;
+    public static final int tv_notice_main_choose_name = 0x7f0801e2;
 
     @IdRes
-    public static final int tv_notice_main_list_fujian = 0x7f0801e3;
+    public static final int tv_notice_main_list_content = 0x7f0801e3;
 
     @IdRes
-    public static final int tv_notice_main_list_isread = 0x7f0801e4;
+    public static final int tv_notice_main_list_fujian = 0x7f0801e4;
 
     @IdRes
-    public static final int tv_notice_main_list_owner = 0x7f0801e5;
+    public static final int tv_notice_main_list_isread = 0x7f0801e5;
 
     @IdRes
-    public static final int tv_notice_main_list_readnumber = 0x7f0801e6;
+    public static final int tv_notice_main_list_owner = 0x7f0801e6;
 
     @IdRes
-    public static final int tv_notice_main_list_time = 0x7f0801e7;
+    public static final int tv_notice_main_list_readnumber = 0x7f0801e7;
 
     @IdRes
-    public static final int tv_notice_main_list_title = 0x7f0801e8;
+    public static final int tv_notice_main_list_time = 0x7f0801e8;
 
     @IdRes
-    public static final int tv_notice_main_list_top = 0x7f0801e9;
+    public static final int tv_notice_main_list_title = 0x7f0801e9;
 
     @IdRes
-    public static final int tv_o3 = 0x7f0801ea;
+    public static final int tv_notice_main_list_top = 0x7f0801ea;
 
     @IdRes
-    public static final int tv_ok = 0x7f0801eb;
+    public static final int tv_o3 = 0x7f0801eb;
 
     @IdRes
-    public static final int tv_phone = 0x7f0801ec;
+    public static final int tv_ok = 0x7f0801ec;
 
     @IdRes
-    public static final int tv_pm10 = 0x7f0801ed;
+    public static final int tv_phone = 0x7f0801ed;
 
     @IdRes
-    public static final int tv_pm25 = 0x7f0801ee;
+    public static final int tv_pm10 = 0x7f0801ee;
 
     @IdRes
-    public static final int tv_position = 0x7f0801ef;
+    public static final int tv_pm25 = 0x7f0801ef;
 
     @IdRes
-    public static final int tv_prompt = 0x7f0801f0;
+    public static final int tv_position = 0x7f0801f0;
 
     @IdRes
-    public static final int tv_qiya = 0x7f0801f1;
+    public static final int tv_prompt = 0x7f0801f1;
 
     @IdRes
-    public static final int tv_qushi = 0x7f0801f2;
+    public static final int tv_qiya = 0x7f0801f2;
 
     @IdRes
-    public static final int tv_richu_time = 0x7f0801f3;
+    public static final int tv_qushi = 0x7f0801f3;
 
     @IdRes
-    public static final int tv_riluo_time = 0x7f0801f4;
+    public static final int tv_richu_time = 0x7f0801f4;
 
     @IdRes
-    public static final int tv_sex = 0x7f0801f5;
+    public static final int tv_riluo_time = 0x7f0801f5;
 
     @IdRes
-    public static final int tv_shidu = 0x7f0801f6;
+    public static final int tv_sex = 0x7f0801f6;
 
     @IdRes
-    public static final int tv_shidu_xiao = 0x7f0801f7;
+    public static final int tv_shidu = 0x7f0801f7;
 
     @IdRes
-    public static final int tv_so2 = 0x7f0801f8;
+    public static final int tv_shidu_xiao = 0x7f0801f8;
 
     @IdRes
-    public static final int tv_switch_1 = 0x7f0801f9;
+    public static final int tv_so2 = 0x7f0801f9;
 
     @IdRes
-    public static final int tv_switch_2 = 0x7f0801fa;
+    public static final int tv_switch_1 = 0x7f0801fa;
 
     @IdRes
-    public static final int tv_tab_title = 0x7f0801fb;
+    public static final int tv_switch_2 = 0x7f0801fb;
 
     @IdRes
-    public static final int tv_temp = 0x7f0801fc;
+    public static final int tv_tab_title = 0x7f0801fc;
 
     @IdRes
-    public static final int tv_tempater = 0x7f0801fd;
+    public static final int tv_temp = 0x7f0801fd;
 
     @IdRes
-    public static final int tv_tigan = 0x7f0801fe;
+    public static final int tv_tempater = 0x7f0801fe;
 
     @IdRes
-    public static final int tv_time = 0x7f0801ff;
+    public static final int tv_tigan = 0x7f0801ff;
 
     @IdRes
-    public static final int tv_title = 0x7f080200;
+    public static final int tv_time = 0x7f080200;
 
     @IdRes
-    public static final int tv_title_city = 0x7f080201;
+    public static final int tv_title = 0x7f080201;
 
     @IdRes
-    public static final int tv_title_left = 0x7f080202;
+    public static final int tv_title_city = 0x7f080202;
 
     @IdRes
-    public static final int tv_title_position = 0x7f080203;
+    public static final int tv_title_left = 0x7f080203;
 
     @IdRes
-    public static final int tv_title_right = 0x7f080204;
+    public static final int tv_title_position = 0x7f080204;
 
     @IdRes
-    public static final int tv_tongzhilan = 0x7f080205;
+    public static final int tv_title_right = 0x7f080205;
 
     @IdRes
-    public static final int tv_tuisong = 0x7f080206;
+    public static final int tv_tongzhilan = 0x7f080206;
 
     @IdRes
-    public static final int tv_updata = 0x7f080207;
+    public static final int tv_tuisong = 0x7f080207;
 
     @IdRes
-    public static final int tv_weater_xiao = 0x7f080208;
+    public static final int tv_updata = 0x7f080208;
 
     @IdRes
-    public static final int tv_weather = 0x7f080209;
+    public static final int tv_weater_xiao = 0x7f080209;
 
     @IdRes
-    public static final int tv_weather_temp = 0x7f08020a;
+    public static final int tv_weather = 0x7f08020a;
 
     @IdRes
-    public static final int tv_wechat = 0x7f08020b;
+    public static final int tv_weather_temp = 0x7f08020b;
 
     @IdRes
-    public static final int tv_week = 0x7f08020c;
+    public static final int tv_wechat = 0x7f08020c;
 
     @IdRes
-    public static final int tv_wind_level = 0x7f08020d;
+    public static final int tv_week = 0x7f08020d;
 
     @IdRes
-    public static final int tv_wind_ori = 0x7f08020e;
+    public static final int tv_wind_level = 0x7f08020e;
 
     @IdRes
-    public static final int tv_wodepindao = 0x7f08020f;
+    public static final int tv_wind_ori = 0x7f08020f;
 
     @IdRes
-    public static final int tv_wodepindao2 = 0x7f080210;
+    public static final int tv_wodepindao = 0x7f080210;
 
     @IdRes
-    public static final int tv_xiaoxi = 0x7f080211;
+    public static final int tv_wodepindao2 = 0x7f080211;
 
     @IdRes
-    public static final int tv_xingqi = 0x7f080212;
+    public static final int tv_xiaoxi = 0x7f080212;
 
     @IdRes
-    public static final int tv_yijian = 0x7f080213;
+    public static final int tv_xingqi = 0x7f080213;
 
     @IdRes
-    public static final int tv_zhuti = 0x7f080214;
+    public static final int tv_yijian = 0x7f080214;
 
     @IdRes
-    public static final int umeng_back = 0x7f080215;
+    public static final int tv_zhuti = 0x7f080215;
 
     @IdRes
-    public static final int umeng_del = 0x7f080216;
+    public static final int umeng_back = 0x7f080216;
 
     @IdRes
-    public static final int umeng_image_edge = 0x7f080217;
+    public static final int umeng_del = 0x7f080217;
 
     @IdRes
-    public static final int umeng_share_btn = 0x7f080218;
+    public static final int umeng_image_edge = 0x7f080218;
 
     @IdRes
-    public static final int umeng_share_icon = 0x7f080219;
+    public static final int umeng_share_btn = 0x7f080219;
 
     @IdRes
-    public static final int umeng_socialize_follow = 0x7f08021a;
+    public static final int umeng_share_icon = 0x7f08021a;
 
     @IdRes
-    public static final int umeng_socialize_follow_check = 0x7f08021b;
+    public static final int umeng_socialize_follow = 0x7f08021b;
 
     @IdRes
-    public static final int umeng_socialize_share_bottom_area = 0x7f08021c;
+    public static final int umeng_socialize_follow_check = 0x7f08021c;
 
     @IdRes
-    public static final int umeng_socialize_share_edittext = 0x7f08021d;
+    public static final int umeng_socialize_share_bottom_area = 0x7f08021d;
 
     @IdRes
-    public static final int umeng_socialize_share_titlebar = 0x7f08021e;
+    public static final int umeng_socialize_share_edittext = 0x7f08021e;
 
     @IdRes
-    public static final int umeng_socialize_share_word_num = 0x7f08021f;
+    public static final int umeng_socialize_share_titlebar = 0x7f08021f;
 
     @IdRes
-    public static final int umeng_socialize_titlebar = 0x7f080220;
+    public static final int umeng_socialize_share_word_num = 0x7f080220;
 
     @IdRes
-    public static final int umeng_title = 0x7f080221;
+    public static final int umeng_socialize_titlebar = 0x7f080221;
 
     @IdRes
-    public static final int umeng_web_title = 0x7f080222;
+    public static final int umeng_title = 0x7f080222;
 
     @IdRes
-    public static final int uniform = 0x7f080223;
+    public static final int umeng_web_title = 0x7f080223;
 
     @IdRes
-    public static final int up = 0x7f080224;
+    public static final int uniform = 0x7f080224;
 
     @IdRes
-    public static final int upush_notification1 = 0x7f080225;
+    public static final int up = 0x7f080225;
 
     @IdRes
-    public static final int upush_notification2 = 0x7f080226;
+    public static final int upush_notification1 = 0x7f080226;
 
     @IdRes
-    public static final int useLogo = 0x7f080227;
+    public static final int upush_notification2 = 0x7f080227;
 
     @IdRes
-    public static final int viewPager = 0x7f080228;
+    public static final int useLogo = 0x7f080228;
 
     @IdRes
-    public static final int view_line = 0x7f080229;
+    public static final int viewPager = 0x7f080229;
 
     @IdRes
-    public static final int view_offset_helper = 0x7f08022a;
+    public static final int view_line = 0x7f08022a;
 
     @IdRes
-    public static final int view_preview_img = 0x7f08022b;
+    public static final int view_offset_helper = 0x7f08022b;
 
     @IdRes
-    public static final int viewpager = 0x7f08022c;
+    public static final int view_preview_img = 0x7f08022c;
 
     @IdRes
-    public static final int visible = 0x7f08022d;
+    public static final int viewpager = 0x7f08022d;
 
     @IdRes
-    public static final int wb_img = 0x7f08022e;
+    public static final int visible = 0x7f08022e;
 
     @IdRes
-    public static final int weather_view = 0x7f08022f;
+    public static final int wb_img = 0x7f08022f;
 
     @IdRes
-    public static final int webView = 0x7f080230;
+    public static final int weather_view = 0x7f080230;
 
     @IdRes
-    public static final int webview = 0x7f080231;
+    public static final int webView = 0x7f080231;
 
     @IdRes
-    public static final int white = 0x7f080232;
+    public static final int webview = 0x7f080232;
 
     @IdRes
-    public static final int wide = 0x7f080233;
+    public static final int white = 0x7f080233;
 
     @IdRes
-    public static final int withText = 0x7f080234;
+    public static final int wide = 0x7f080234;
 
     @IdRes
-    public static final int wrap = 0x7f080235;
+    public static final int withText = 0x7f080235;
 
     @IdRes
-    public static final int wrap_content = 0x7f080236;
+    public static final int wrap = 0x7f080236;
 
     @IdRes
-    public static final int wrap_image = 0x7f080237;
+    public static final int wrap_content = 0x7f080237;
 
     @IdRes
-    public static final int wx_friend_img = 0x7f080238;
+    public static final int wrap_image = 0x7f080238;
 
     @IdRes
-    public static final int wx_img = 0x7f080239;
+    public static final int wx_friend_img = 0x7f080239;
 
     @IdRes
-    public static final int year = 0x7f08023a;
+    public static final int wx_img = 0x7f08023a;
+
+    @IdRes
+    public static final int year = 0x7f08023b;
   }
 
   public static final class integer {

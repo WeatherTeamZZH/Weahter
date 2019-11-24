@@ -45,12 +45,16 @@ import com.ok100.weather.R;
 import com.ok100.weather.activity.SelectPicPopupWindowActivity;
 import com.ok100.weather.adapter.NoticeMainFragmentItemAdapter;
 import com.ok100.weather.base.BaseActivity;
+import com.ok100.weather.bean.DataBean;
 import com.ok100.weather.bean.DepartmentListBean;
 import com.ok100.weather.bean.NoticeMainChooseBean;
 import com.ok100.weather.bean.WeatherTotalBean;
 import com.ok100.weather.fragment.MainFragment;
 import com.ok100.weather.fragment.NoticeMainFragment1;
+import com.ok100.weather.utils.ChooseTypeUtils;
 import com.ok100.weather.utils.DPUtils;
+import com.ok100.weather.view.MySwipeRefreshLayout;
+import com.ok100.weather.view.MyViewPager;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -60,7 +64,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class GH_MapActivity extends BaseActivity implements LocationSource, AMapLocationListener {
+public class GH_MapActivity extends BaseActivity implements LocationSource, AMapLocationListener, SwipeRefreshLayout.OnRefreshListener {
 
 
     @BindView(R.id.ll_all_gone_view)
@@ -74,9 +78,9 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
     @BindView(R.id.rl_title_bar)
     RelativeLayout rlTitleBar;
     @BindView(R.id.viewPager)
-    ViewPager viewPager;
+    MyViewPager viewPager;
     @BindView(R.id.swipeRefreshLayout_vanlian_new)
-    SwipeRefreshLayout swipeRefreshLayoutVanlianNew;
+    MySwipeRefreshLayout swipeRefreshLayoutVanlianNew;
     @BindView(R.id.coordinatorLayout)
     CoordinatorLayout coordinatorLayout;
     @BindView(R.id.iv_updata_list)
@@ -111,6 +115,26 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
     TextView tvFenglevel;
     @BindView(R.id.tv_title)
     TextView tvTitle;
+    @BindView(R.id.iv_title_big_image)
+    ImageView mIvTitleBigImage;
+    @BindView(R.id.tv_title_position)
+    TextView mTvTitlePosition;
+    @BindView(R.id.tv_title_city)
+    TextView mTvTitleCity;
+    @BindView(R.id.rl_title_city)
+    RelativeLayout mRlTitleCity;
+    @BindView(R.id.iv_title_shouzhang)
+    ImageView mIvTitleShouzhang;
+    @BindView(R.id.iv_title_back_weather)
+    TextView mIvTitleBackWeather;
+    @BindView(R.id.rl_title_all)
+    RelativeLayout mRlTitleAll;
+    @BindView(R.id.iv_weather)
+    ImageView mIvWeather;
+    @BindView(R.id.iv_back)
+    ImageView mIvBack;
+    @BindView(R.id.rl_title)
+    RelativeLayout mRlTitle;
     private AMap aMap;
     private boolean isItemClickAction;
     private boolean isInputKeySearch;
@@ -153,15 +177,15 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
         departmentListBeansString = (ArrayList<String>) getIntent().getSerializableExtra("listdata");
 
 
-        for (int i = 0; i < 10; i++) {
-            DepartmentListBean departmentListBean = new DepartmentListBean("标题" + i);
+        departmentListBeans.clear();
+        for (int i = 0; i < DataBean.getNewTitleList().size(); i++) {
+            DepartmentListBean departmentListBean = new DepartmentListBean(DataBean.getNewTitleList().get(i));
             departmentListBeans.add(departmentListBean);
         }
         setNewArraylist(departmentListBeans);
         tabLayout.setSelectedTabIndicatorColor(Color.BLUE);
 
         llNoticeMainMoreItem.setOnClickListener(this);
-
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy年 MM月 dd日 HH时 mm分 ss秒");
         //上方天气数据接口对接
@@ -177,11 +201,12 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
         tvFeng.setText(data.getData().getNow().getDetail().getWind_direction());
         tvFenglevel.setText(data.getData().getNow().getDetail().getWind_power());
         tvAqi.setText(data.getData().getNow().getDetail().getAqi());
-    }
 
-    @Override
-    public void initListener() {
-
+        mIvWeather.setImageResource(ChooseTypeUtils.getWeatherImgge(data.getData().getNow().getDetail().getWeather()));
+        setTitleWeather(data.getData().getNow().getDetail().getTemperature() + "°");
+        setTitleWeatherImage(ChooseTypeUtils.getWeatherImgge(data.getData().getNow().getDetail().getWeather()));
+        mTvTitlePosition.setText(data.getData().getCityinfo().getArea());
+        swipeRefreshLayoutVanlianNew.setOnRefreshListener(this);
     }
 
     @Override
@@ -318,15 +343,28 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
                 intent.putStringArrayListExtra("listdata", departmentListBeansString);
                 startActivity(intent);
 
-//                SelectPicPopupWindowActivity.itemTabListener = new setItemTabListener() {
-//                    @Override
-//                    public void setItemPosition(int position) {
-//                        tabLayout.getTabAt(position).select();
-//                    }
-//                };
+                SelectPicPopupWindowActivity.itemTabListener = new MainFragment.setItemTabListener() {
+                    @Override
+                    public void setItemPosition(int position) {
+                        tabLayout.getTabAt(position).select();
+                    }
+                };
                 break;
             case R.id.iv_shipin_list:
                 tabLayout.getTabAt(1).select();
+                break;
+            case R.id.iv_updata_list:
+
+                break;
+            case R.id.iv_back:
+                finish();
+                break;
+            case R.id.rl_main_bottom:
+
+                break;
+            case R.id.iv_title_back_weather:
+                setBottomVisible(false);
+                setAllGoneViewVisible(true);
                 break;
         }
     }
@@ -402,8 +440,9 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
             fragment = new NoticeMainFragment1();
             Bundle args = new Bundle();
             args.putString("departmentId", i + "");
+            args.putString("type", DataBean.getNewTitleList().get(i));
             fragment.setArguments(args);
-            titleListData = new TitleListData("标题" + i);
+            titleListData = new TitleListData(DataBean.getNewTitleList().get(i));
             viewPagerDataSourceList.add(new ViewPagerDataSource(fragment, titleListData));
             ((NoticeMainFragment1) fragment).setBootomVisibleListener(new MainFragment.BootomVisibleListener() {
                 @Override
@@ -419,6 +458,8 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
 
                     } else {
                         appBarLayout.setVisibility(View.GONE);
+                        mRlTitle.setVisibility(View.GONE);
+                        mRlTitleAll.setVisibility(View.VISIBLE);
                     }
                 }
             });
@@ -560,6 +601,11 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
         }
     }
 
+    @Override
+    public void onRefresh() {
+        swipeRefreshLayoutVanlianNew.setRefreshing(false);
+    }
+
     public interface setItemTabListener {
         void setItemPosition(int position);
     }
@@ -634,8 +680,14 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
     public void setBottomVisible(boolean visible) {
         if (visible) {
             rlMainBottom.setVisibility(View.VISIBLE);
+            appBarLayout.setVisibility(View.GONE);
+            mRlTitle.setVisibility(View.GONE);
+            mRlTitleAll.setVisibility(View.VISIBLE);
         } else {
             rlMainBottom.setVisibility(View.GONE);
+            appBarLayout.setVisibility(View.VISIBLE);
+            mRlTitle.setVisibility(View.VISIBLE);
+            mRlTitleAll.setVisibility(View.GONE);
         }
 
     }
@@ -653,4 +705,23 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
             }
         }
     }
+
+
+    @Override
+    public void initListener() {
+        ivShipinList.setOnClickListener(this);
+        rlMainBottom.setOnClickListener(this);
+        mIvTitleBackWeather.setOnClickListener(this);
+        mIvBack.setOnClickListener(this);
+    }
+
+    public void setTitleWeather(String string) {
+        mTvTitleCity.setText(string);
+    }
+
+    public void setTitleWeatherImage(int string) {
+        mIvTitleBigImage.setBackgroundResource(string);
+    }
+
+
 }

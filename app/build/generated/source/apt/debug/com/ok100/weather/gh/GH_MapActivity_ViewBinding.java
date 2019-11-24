@@ -6,8 +6,6 @@ import android.support.annotation.UiThread;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -16,6 +14,8 @@ import android.widget.TextView;
 import butterknife.Unbinder;
 import butterknife.internal.Utils;
 import com.ok100.weather.R;
+import com.ok100.weather.view.MySwipeRefreshLayout;
+import com.ok100.weather.view.MyViewPager;
 import java.lang.IllegalStateException;
 import java.lang.Override;
 
@@ -36,8 +36,8 @@ public class GH_MapActivity_ViewBinding implements Unbinder {
     target.tabLayout = Utils.findRequiredViewAsType(source, R.id.tabLayout, "field 'tabLayout'", TabLayout.class);
     target.llNoticeMainMoreItem = Utils.findRequiredViewAsType(source, R.id.ll_notice_main_more_item, "field 'llNoticeMainMoreItem'", LinearLayout.class);
     target.rlTitleBar = Utils.findRequiredViewAsType(source, R.id.rl_title_bar, "field 'rlTitleBar'", RelativeLayout.class);
-    target.viewPager = Utils.findRequiredViewAsType(source, R.id.viewPager, "field 'viewPager'", ViewPager.class);
-    target.swipeRefreshLayoutVanlianNew = Utils.findRequiredViewAsType(source, R.id.swipeRefreshLayout_vanlian_new, "field 'swipeRefreshLayoutVanlianNew'", SwipeRefreshLayout.class);
+    target.viewPager = Utils.findRequiredViewAsType(source, R.id.viewPager, "field 'viewPager'", MyViewPager.class);
+    target.swipeRefreshLayoutVanlianNew = Utils.findRequiredViewAsType(source, R.id.swipeRefreshLayout_vanlian_new, "field 'swipeRefreshLayoutVanlianNew'", MySwipeRefreshLayout.class);
     target.coordinatorLayout = Utils.findRequiredViewAsType(source, R.id.coordinatorLayout, "field 'coordinatorLayout'", CoordinatorLayout.class);
     target.ivUpdataList = Utils.findRequiredViewAsType(source, R.id.iv_updata_list, "field 'ivUpdataList'", ImageView.class);
     target.ivShipinList = Utils.findRequiredViewAsType(source, R.id.iv_shipin_list, "field 'ivShipinList'", ImageView.class);
@@ -54,6 +54,16 @@ public class GH_MapActivity_ViewBinding implements Unbinder {
     target.map = Utils.findRequiredViewAsType(source, R.id.map, "field 'map'", GH_MapView.class);
     target.tvFenglevel = Utils.findRequiredViewAsType(source, R.id.tv_fenglevel, "field 'tvFenglevel'", TextView.class);
     target.tvTitle = Utils.findRequiredViewAsType(source, R.id.tv_title, "field 'tvTitle'", TextView.class);
+    target.mIvTitleBigImage = Utils.findRequiredViewAsType(source, R.id.iv_title_big_image, "field 'mIvTitleBigImage'", ImageView.class);
+    target.mTvTitlePosition = Utils.findRequiredViewAsType(source, R.id.tv_title_position, "field 'mTvTitlePosition'", TextView.class);
+    target.mTvTitleCity = Utils.findRequiredViewAsType(source, R.id.tv_title_city, "field 'mTvTitleCity'", TextView.class);
+    target.mRlTitleCity = Utils.findRequiredViewAsType(source, R.id.rl_title_city, "field 'mRlTitleCity'", RelativeLayout.class);
+    target.mIvTitleShouzhang = Utils.findRequiredViewAsType(source, R.id.iv_title_shouzhang, "field 'mIvTitleShouzhang'", ImageView.class);
+    target.mIvTitleBackWeather = Utils.findRequiredViewAsType(source, R.id.iv_title_back_weather, "field 'mIvTitleBackWeather'", TextView.class);
+    target.mRlTitleAll = Utils.findRequiredViewAsType(source, R.id.rl_title_all, "field 'mRlTitleAll'", RelativeLayout.class);
+    target.mIvWeather = Utils.findRequiredViewAsType(source, R.id.iv_weather, "field 'mIvWeather'", ImageView.class);
+    target.mIvBack = Utils.findRequiredViewAsType(source, R.id.iv_back, "field 'mIvBack'", ImageView.class);
+    target.mRlTitle = Utils.findRequiredViewAsType(source, R.id.rl_title, "field 'mRlTitle'", RelativeLayout.class);
   }
 
   @Override
@@ -86,5 +96,15 @@ public class GH_MapActivity_ViewBinding implements Unbinder {
     target.map = null;
     target.tvFenglevel = null;
     target.tvTitle = null;
+    target.mIvTitleBigImage = null;
+    target.mTvTitlePosition = null;
+    target.mTvTitleCity = null;
+    target.mRlTitleCity = null;
+    target.mIvTitleShouzhang = null;
+    target.mIvTitleBackWeather = null;
+    target.mRlTitleAll = null;
+    target.mIvWeather = null;
+    target.mIvBack = null;
+    target.mRlTitle = null;
   }
 }

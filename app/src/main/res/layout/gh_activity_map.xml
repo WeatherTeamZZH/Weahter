@@ -1,10 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/style_red"
+    android:orientation="vertical"
     android:fitsSystemWindows="true">
+
+    <RelativeLayout
+        android:id="@+id/rl_title_all"
+        android:layout_width="match_parent"
+        android:background="#FAFAFA"
+        android:visibility="gone"
+        android:layout_height="60dp">
+        <ImageView
+            android:id="@+id/iv_title_big_image"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@mipmap/ic_launcher"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_centerVertical="true"
+            />
+        <RelativeLayout
+            android:layout_toRightOf="@+id/iv_title_big_image"
+            android:id="@+id/rl_title_city"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/x20"
+            >
+            <TextView
+                android:id="@+id/tv_title_position"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:layout_marginTop="@dimen/x10"
+                android:layout_centerVertical="true"
+                />
+
+            <TextView
+                android:id="@+id/tv_title_city"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x20"
+                android:layout_toRightOf="@+id/tv_title_position"
+
+                />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/x30"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/iv_title_shouzhang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/image_title_shouzhang"
+                android:layout_marginRight="@dimen/x30"
+                />
+
+            <TextView
+                android:id="@+id/iv_title_back_weather"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="返回天气"
+                android:textColor="@color/skyblue"
+                android:gravity="center"
+                android:paddingLeft="@dimen/x30"
+                android:paddingRight="@dimen/x30"
+                android:background="@drawable/shape_banyue_lan_30"
+                />
+        </LinearLayout>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rl_title"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        >
+        <TextView
+            android:id="@+id/tv_title"
+            android:textSize="18sp"
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="上海" />
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/back_left"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_centerVertical="true"
+            />
+    </RelativeLayout>
 
     <android.support.design.widget.CoordinatorLayout
         android:id="@+id/coordinatorLayout"
@@ -29,15 +128,7 @@
                 android:orientation="vertical"
                 app:layout_scrollFlags="scroll">
 
-                <TextView
-                    android:id="@+id/tv_title"
-                    android:textSize="15sp"
-                    android:gravity="center"
-                    android:textColor="@color/white"
-                    android:drawableLeft="@mipmap/back_left"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:text="上海" />
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -46,6 +137,7 @@
                   >
 
                     <ImageView
+                        android:id="@+id/iv_weather"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -221,7 +313,8 @@
                             android:gravity="center"
                             android:text="AQI指数"
                             android:textColor="@color/whites"
-                            android:textSize="14sp" />
+                            android:textSize="14sp"
+                            android:paddingBottom="@dimen/x30"/>
 
                     </LinearLayout>
 
@@ -229,7 +322,6 @@
 
                 <com.ok100.weather.gh.GH_MapView
                     android:id="@+id/map"
-                    android:paddingTop="@dimen/x50"
                     android:background="@color/white"
                     android:layout_width="match_parent"
                     android:layout_height="220dp" />
@@ -291,18 +383,19 @@
 
             </RelativeLayout>
 
-            <android.support.v4.widget.SwipeRefreshLayout
+            <com.ok100.weather.view.MySwipeRefreshLayout
                 android:id="@+id/swipeRefreshLayout_vanlian_new"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <android.support.v4.view.ViewPager
+                android:layout_height="match_parent"
+                >
+                <com.ok100.weather.view.MyViewPager
                     android:id="@+id/viewPager"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/rl_title_bar" />
+                    android:layout_below="@+id/rl_title_bar"
 
-            </android.support.v4.widget.SwipeRefreshLayout>
+                    />
+            </com.ok100.weather.view.MySwipeRefreshLayout>
 
         </LinearLayout>
 
@@ -313,22 +406,51 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/white"
-        android:visibility="gone">
+        android:visibility="gone"
+        android:background="@color/white">
 
-        <ImageView
-            android:id="@+id/iv_updata_list"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@mipmap/ic_launcher" />
+            android:layout_marginLeft="@dimen/x100"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/iv_updata_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/x5"
+                android:background="@mipmap/main_updeta" />
 
-        <ImageView
-            android:id="@+id/iv_shipin_list"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="刷新"
+                android:layout_marginBottom="@dimen/x5"
+                />
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:background="@mipmap/ic_launcher" />
+            android:layout_marginRight="@dimen/x100"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/iv_shipin_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/x5"
+                android:background="@mipmap/main_shipin" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="社会"
+                android:layout_marginBottom="@dimen/x5"
+                />
+        </LinearLayout>
+
 
     </RelativeLayout>
 
-</RelativeLayout>
+</LinearLayout>
