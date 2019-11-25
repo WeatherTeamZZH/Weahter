@@ -16,6 +16,8 @@ anim design_snackbar_out
 anim fade_in
 anim fade_out
 anim hide_to_bottom
+anim my_city_activity_in
+anim my_city_activity_out
 anim pickerview_dialog_scale_in
 anim pickerview_dialog_scale_out
 anim pickerview_slide_in_bottom
@@ -3565,6 +3567,8 @@ id draw_area
 id drawable_overlay
 id drawing_view_container
 id edit_query
+id edittext1
+id edittext2
 id edittext_search
 id effect_area
 id effect_background
@@ -3848,6 +3852,8 @@ id text_input
 id text_input_password_toggle
 id textinput_counter
 id textinput_error
+id textview1
+id textview2
 id textview_quxiao
 id time
 id timepicker
@@ -3877,6 +3883,8 @@ id transition_transform
 id ttv_day
 id tvTitle
 id tv_air_level
+id tv_app_name
+id tv_app_version
 id tv_aqi
 id tv_birth
 id tv_bottom_today_feng
@@ -3946,6 +3954,7 @@ id tv_switch_1
 id tv_switch_2
 id tv_tab_title
 id tv_temp
+id tv_tempater
 id tv_tigan
 id tv_time
 id tv_title
@@ -4054,6 +4063,7 @@ layout activity_image_crop
 layout activity_image_grid
 layout activity_image_preview
 layout activity_image_process
+layout activity_login
 layout activity_main
 layout activity_minecenter
 layout activity_my_city
@@ -4063,6 +4073,7 @@ layout activity_notice_detatil
 layout activity_setting
 layout activity_share_main
 layout activity_user_inof
+layout activity_welcome
 layout activity_zhuti_imge
 layout adapter_camera_item
 layout adapter_folder_list_item
@@ -4235,6 +4246,7 @@ mipmap main_updeta
 mipmap main_user
 mipmap mian_menu
 mipmap mine_center_head
+mipmap mycity_delete
 mipmap mycity_delete_city
 mipmap mycity_search
 mipmap notice_main_all_itme
@@ -4628,6 +4640,8 @@ string pickerview_submit
 string pickerview_year
 string pollution_index
 string pre_getphone
+string rationale_ask
+string rationale_ask_again
 string saturday_week
 string saturday_week_eng
 string saturday_week_eng_abbr
@@ -4864,6 +4878,7 @@ string thursday_week_eng_abbr
 string thursday_week_small
 string title_activity_acplayer
 string title_activity_screen
+string title_settings_dialog
 string today_suggest
 string today_suggest_more
 string tt_00_00
@@ -5189,6 +5204,8 @@ style BlueTheme
 style CardView
 style CardView_Dark
 style CardView_Light
+style EasyPermissions
+style EasyPermissions_Transparent
 style ImagePickerTheme
 style ImagePickerThemeFullScreen
 style MyDialogStyleBottom

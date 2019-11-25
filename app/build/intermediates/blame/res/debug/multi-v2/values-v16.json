@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "G:\\OKWeather\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v16\\values-v16.xml",
+            "outputFile": "/Users/gh/Desktop/android/android_projects/my/Weahter/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.1.aar\\960f789efdca2387da005ce963857841\\res\\values-v16\\values-v16.xml",
+                    "source": "/Users/gh/Android/gradle-4.4/caches/transforms-1/files-1.1/appcompat-v7-26.0.1.aar/bad7d8231e4737a034648a32f43ff13d/res/values-v16/values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\support-compat-26.0.1.aar\\ecd1ecb14ab02f1b4c529d3acf193689\\res\\values-v16\\values-v16.xml",
+                    "source": "/Users/gh/Android/gradle-4.4/caches/transforms-1/files-1.1/support-compat-26.0.1.aar/53a92b87bbdb758f95a72285b5b23253/res/values-v16/values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

@@ -53,23 +53,23 @@ public final class R {
     public static final class id {
         private id() {}
 
-        public static final int iv_day_weather = 0x7f0800b8;
-        public static final int iv_night_weather = 0x7f0800bf;
-        public static final int line_one = 0x7f0800db;
-        public static final int line_two = 0x7f0800dd;
-        public static final int ttv_day = 0x7f0801b4;
-        public static final int tv_air_level = 0x7f0801b6;
-        public static final int tv_date = 0x7f0801c5;
-        public static final int tv_day_weather = 0x7f0801c7;
-        public static final int tv_night_weather = 0x7f0801de;
-        public static final int tv_week = 0x7f08020a;
-        public static final int tv_wind_level = 0x7f08020b;
-        public static final int tv_wind_ori = 0x7f08020c;
+        public static final int iv_day_weather = 0x7f0800ba;
+        public static final int iv_night_weather = 0x7f0800c1;
+        public static final int line_one = 0x7f0800dd;
+        public static final int line_two = 0x7f0800df;
+        public static final int ttv_day = 0x7f0801b8;
+        public static final int tv_air_level = 0x7f0801ba;
+        public static final int tv_date = 0x7f0801cb;
+        public static final int tv_day_weather = 0x7f0801cd;
+        public static final int tv_night_weather = 0x7f0801e4;
+        public static final int tv_week = 0x7f080211;
+        public static final int tv_wind_level = 0x7f080212;
+        public static final int tv_wind_ori = 0x7f080213;
     }
     public static final class layout {
         private layout() {}
 
-        public static final int weather_item = 0x7f0a009d;
+        public static final int weather_item = 0x7f0a009f;
     }
     public static final class string {
         private string() {}

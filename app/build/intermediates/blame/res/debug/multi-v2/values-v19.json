@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "G:\\OKWeather\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v19\\values-v19.xml",
+            "outputFile": "/Users/gh/Desktop/android/android_projects/my/Weahter/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v19/values-v19.xml",
             "map": [
                 {
-                    "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\imagepicker-0.6.1.aar\\60f2bfb3c3834f36369f5799f5d5eb28\\res\\values-v19\\values-v19.xml",
+                    "source": "/Users/gh/Android/gradle-4.4/caches/transforms-1/files-1.1/imagepicker-0.6.1.aar/ca4bdee04d90ec597a9f345a55e308f3/res/values-v19/values-v19.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
