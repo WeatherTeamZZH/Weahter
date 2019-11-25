@@ -181,9 +181,7 @@ public class MyRecyclerView extends RecyclerView {
                 //getRawX ：表示相对于屏幕左上角的x坐标值
                 //getX ：是表示Widget相对于自身左上角的x坐标,
                 mMoveY = event.getY();
-                Log.e("mMoveY",mMoveY+"--++--");
                 int scollerY = (int) (mMoveY - mYLastMove);
-                Log.e("scollerY",scollerY+"");
 //                if (getScollerY() + scollerY < leftBorder) {
 //                    //边界保护，，防止用户拖出边界
 //                    scrollTo(0, leftBorder);
@@ -217,8 +215,6 @@ public class MyRecyclerView extends RecyclerView {
     public void onDraw(Canvas c) {
         int[] position = new int[2];
         getLocationInWindow(position);
-        Log.e("111111111",position[1]+"");
-
         super.onDraw(c);
     }
 }

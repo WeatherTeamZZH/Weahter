@@ -10,6 +10,7 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -403,19 +404,10 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
 //        onRefresh();
 
         initData();
-        departmentListBeans.clear();
-        for (int i = 0; i < DataBean.getNewTitleList().size(); i++) {
-            DepartmentListBean departmentListBean = new DepartmentListBean(DataBean.getNewTitleList().get(i));
-            departmentListBeans.add(departmentListBean);
-        }
-        setNewArraylist(departmentListBeans);
+        http();
+
+        setNewArraylist();
         mTabLayout.setSelectedTabIndicatorColor(Color.BLUE);
-        mTabLayout.post(new Runnable() {
-            @Override
-            public void run() {
-//                setIndicator(mTabLayout, 20, 20);
-            }
-        });
 
     }
 
@@ -455,29 +447,22 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
             }
         });
 
-        http();
-
     }
 
 
 
 
     @RequiresApi(api = Build.VERSION_CODES.M)
-    private void setNewArraylist(List<DepartmentListBean> departmentListBean) {
-//        initItemAdapter();
-        getTitleListData(departmentListBean);
+    private void setNewArraylist() {
+        departmentListBeans.clear();
+        for (int i = 0; i < DataBean.getNewTitleList().size(); i++) {
+            DepartmentListBean departmentListBean = new DepartmentListBean(DataBean.getNewTitleList().get(i));
+            departmentListBeans.add(departmentListBean);
+        }
+        getTitleListData(departmentListBeans);
         initFragment();
         initViewPager();
         initTablayout();
-//        initAppbar();
-        mAppBarLayout.setOnScrollChangeListener(new View.OnScrollChangeListener() {
-            @Override
-            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-                Log.e("scrollY", scrollY + "");
-
-            }
-        });
-
 
         mAppBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override
@@ -486,18 +471,6 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
                 if(jvli<180){
                     mCoordinatorLayout.getBackground().setAlpha(jvli);
                 }
-                int totalScrollRange = mAppBarLayout.getTotalScrollRange();
-                if (Math.abs(verticalOffset) >= totalScrollRange) {
-                } else {
-
-                }
-
-
-                if (Math.abs(verticalOffset) >= totalScrollRange - 100) {
-//                    scrollToTop(false);
-
-                }
-
             }
         });
     }
@@ -581,7 +554,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
         for (int i = 0; i < departmentListBean.size(); i++) {
             fragment = new NoticeMainFragment1();
             Bundle args = new Bundle();
-            args.putString("departmentId", i + "");
+            args.putString("departmentId", area);
             args.putString("type", DataBean.getNewTitleList().get(i));
             fragment.setArguments(args);
             titleListData = new TitleListData(DataBean.getNewTitleList().get(i));
@@ -672,8 +645,6 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-//        unbinder.unbind();
-//        unbinder2.unbind();
     }
 
     private class ViewPagerDataSource {
@@ -706,10 +677,8 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     public void setBottomVisible(boolean visible) {
         if (visible) {
             mRlMainBottom.setVisibility(View.VISIBLE);
-            Log.e("visible", "RlMainBottom显示");
         } else {
             mRlMainBottom.setVisibility(View.GONE);
-            Log.e("visible", "RlMainBottom隐藏");
         }
 
     }
@@ -737,9 +706,10 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
                     appBarLayoutBehavior.setTopAndBottomOffset(0);
                 }
             }
-            Log.e("viewPagerDataSourceList",viewPagerDataSourceList.size()+"");
+            Log.e("viewPagerDataSourceList",viewPagerDataSourceList.size()+area);
             for (int i = 0; i < viewPagerDataSourceList.size(); i++) {
                 NoticeMainFragment1 getFragment = (NoticeMainFragment1) viewPagerDataSourceList.get(i).getFragment();
+                Log.e("NoticeMainFragment1",getFragment.type+"----");
                 getFragment.resateRecycle();
                 getFragment.xiaoyulin = true;
             }

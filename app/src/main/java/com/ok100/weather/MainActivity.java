@@ -236,7 +236,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         mPagerAdapter = new TextPagerAdapter(getSupportFragmentManager(), mTestFragments);
         mviewpager.setAdapter(mPagerAdapter);
 //        int ceil = (int)Math.ceil(mTestFragments.size() / 2);
-        mviewpager.setOffscreenPageLimit(10);
+        mviewpager.setOffscreenPageLimit(0);
     }
 
     private void initSpotAdapter() {
@@ -308,7 +308,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             case R.id.iv_title_back_weather:
                 MainFragment mainFragment = (MainFragment) mTestFragments.get(getFragmentId());
                 Log.e("mainFragment",mainFragment.city+mainFragment.area);
-//                mainFragment.setMainHeightAll();
                 if(mainFragment!=null){
                     mainFragment.setAllGoneViewVisible(true);
                     mainFragment.setBottomVisible(false);
@@ -422,8 +421,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     }
 
     public void deleteCity(int position) {
-//        int ceil = (int)Math.ceil(mTestFragments.size() / 2);
-//        mviewpager.setOffscreenPageLimit(ceil);
 
         mainSpotClickBeanList.remove(position);
         mianSpotAdapter.notifyDataSetChanged();

@@ -31,7 +31,7 @@ public class DataBean {
         model.setWindLevel("3级"); //风级
         model.setAirLevel(AirLevel.EXCELLENT); //空气质量
         model.setDayPic(R.mipmap.ic_launcher); //白天天气图标(默认提供常用天气图标)
-        model.setNightPic(R.mipmap.ic_launcher_round); //晚上天气图标(默认提供常用天气图标)
+        model.setNightPic(R.mipmap.ic_launcher); //晚上天气图标(默认提供常用天气图标)
         weatherModels.add(model);
 
         WeatherModel mode2 = new WeatherModel();
@@ -72,7 +72,7 @@ public class DataBean {
         model.setWindLevel("3级"); //风级
         model.setAirLevel(AirLevel.EXCELLENT); //空气质量
         model.setDayPic(R.mipmap.ic_launcher); //白天天气图标(默认提供常用天气图标)
-        model.setNightPic(R.mipmap.ic_launcher_round); //晚上天气图标(默认提供常用天气图标)
+        model.setNightPic(R.mipmap.ic_launcher); //晚上天气图标(默认提供常用天气图标)
     }
 
     public static List<DefultGridViewBean> getHotCicy() {

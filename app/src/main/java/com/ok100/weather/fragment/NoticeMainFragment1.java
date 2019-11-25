@@ -49,7 +49,7 @@ public class NoticeMainFragment1 extends BaseFragment implements BaseQuickAdapte
     private int page = 1;
     private int pageNubmer = 10;
     private String departmentId = "100";
-    private String type = "";
+    public String type = "";
     private NoticeMainListPresenterImpl noticeMainListPresenterImpl;
     private ArrayList<NoticeMainListBean> listBeenData = new ArrayList<>();
 
@@ -115,6 +115,7 @@ public class NoticeMainFragment1 extends BaseFragment implements BaseQuickAdapte
 
     @Override
     protected void init(Bundle savedInstanceState, View contentView) {
+        Log.e("init", "+++"+departmentId+"+++"+type);
         findView();
         initAdapter();
         recyvleViewScrollLister();
@@ -133,7 +134,6 @@ public class NoticeMainFragment1 extends BaseFragment implements BaseQuickAdapte
 
     public boolean isTabVisible = true;
     private int totalDy = 0;
-    private boolean setAnimation = true;
 
 
     private void recyvleViewScrollLister() {
@@ -156,10 +156,8 @@ public class NoticeMainFragment1 extends BaseFragment implements BaseQuickAdapte
 
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                boolean b = mRecyclerView.canScrollVertically(-1);
-                Log.e("bbbbbb", b + "");
                 totalDy -= dy;
-                Log.e("totalDy", totalDy + "");
+                Log.e("totalDy", totalDy + "---"+departmentId+"---"+type);
                 if (totalDy < 0) {
                     if (xiaoyulin) {
                         mRecyclerView.stopScroll();
@@ -305,91 +303,21 @@ public class NoticeMainFragment1 extends BaseFragment implements BaseQuickAdapte
     private GestureDetector mGestureDetector;
     @Override
     public void onDestroyView() {
+        Log.e("onDestroyView", "+++"+departmentId+"+++"+type);
         super.onDestroyView();
 
     }
 
-    private class gestureListener implements GestureDetector.OnGestureListener {
-
-        // 用户轻触触摸屏，由1个MotionEvent ACTION_DOWN触发
-        public boolean onDown(MotionEvent e) {
-            Log.e("MyGesture", "onDown");
-            Toast.makeText(getActivity(), "onDown", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-
-        /*
-         * 用户轻触触摸屏，尚未松开或拖动，由一个1个MotionEvent ACTION_DOWN触发
-         * 注意和onDown()的区别，强调的是没有松开或者拖动的状态
-         *
-         * 而onDown也是由一个MotionEventACTION_DOWN触发的，但是他没有任何限制，
-         * 也就是说当用户点击的时候，首先MotionEventACTION_DOWN，onDown就会执行，
-         * 如果在按下的瞬间没有松开或者是拖动的时候onShowPress就会执行，如果是按下的时间超过瞬间
-         * （这块我也不太清楚瞬间的时间差是多少，一般情况下都会执行onShowPress），拖动了，就不执行onShowPress。
-         */
-        public void onShowPress(MotionEvent e) {
-            Log.e("MyGesture", "onShowPress");
-            Toast.makeText(getActivity(), "onShowPress", Toast.LENGTH_SHORT).show();
-        }
-
-        // 用户（轻触触摸屏后）松开，由一个1个MotionEvent ACTION_UP触发
-        ///轻击一下屏幕，立刻抬起来，才会有这个触发
-        //从名子也可以看出,一次单独的轻击抬起操作,当然,如果除了Down以外还有其它操作,那就不再算是Single操作了,所以这个事件 就不再响应
-        public boolean onSingleTapUp(MotionEvent e) {
-            Log.e("MyGesture", "onSingleTapUp");
-            Toast.makeText(getActivity(), "onSingleTapUp", Toast.LENGTH_SHORT).show();
-            return true;
-        }
-
-        // 用户按下触摸屏，并拖动，由1个MotionEvent ACTION_DOWN, 多个ACTION_MOVE触发
-        public boolean onScroll(MotionEvent e1, MotionEvent e2,
-                                float distanceX, float distanceY) {
-//            Log.e("MyGesture22", "onScroll:"+(e2.getX()-e1.getX()) +"   "+distanceX);
-            Toast.makeText(getActivity(), "onScroll", Toast.LENGTH_LONG).show();
-
-            return false;
-        }
-
-        // 用户长按触摸屏，由多个MotionEvent ACTION_DOWN触发
-        public void onLongPress(MotionEvent e) {
-            Log.e("MyGesture", "onLongPress");
-            Toast.makeText(getActivity(), "onLongPress", Toast.LENGTH_LONG).show();
-        }
-
-        // 用户按下触摸屏、快速移动后松开，由1个MotionEvent ACTION_DOWN, 多个ACTION_MOVE, 1个ACTION_UP触发
-        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
-                               float velocityY) {
-            Log.e("MyGesture", "onFling");
-            Log.e("MyGesture", "velocityX==" + velocityX + "====velocityY" + velocityY);
-            Toast.makeText(getActivity(), "onFling", Toast.LENGTH_LONG).show();
-            float rawy1 = 0;
-            float rewy2 = 0;
-            float y1 = 0;
-            float y2 = 0;
-            if (e1 != null) {
-                rawy1 = e1.getRawY();
-                y1 = e1.getY();
-            }
-            if (e2 != null) {
-                rewy2 = e2.getRawY();
-                y2 = e2.getY();
-            }
-
-            Log.e("MyGesture", y1 + "-----" + y2);
-            Log.e("MyGesture", rawy1 + "--raw---" + rewy2);
-            int scollerY = mRecyclerView.getScollerY();
-            Log.e("scollerY", scollerY + "----");
-            return false;
-        }
-
+    @Override
+    public void onDestroy() {
+        Log.e("onDestroyView", "+++"+departmentId+"+++"+type);
+        super.onDestroy();
     }
 
-    ;
-
-
     public void resateRecycle() {
+//        RecyclerView recyclerView  = (RecyclerView) findViewById(R.id.recycle);
+        Log.e("totalDy", "+++"+departmentId+"+++"+type);
         if (mRecyclerView != null) {
-            Log.e("totalDytotalDy", totalDy + "");
             Log.e("mainFragment", "有");
             mRecyclerView.scrollBy(0, totalDy - 100);
         }
