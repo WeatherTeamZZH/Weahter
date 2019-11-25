@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:fitsSystemWindows="true"
     tools:context=".activity.LoginActivity">
     <include layout="@layout/title" />
 
@@ -17,6 +18,7 @@
         android:id="@+id/textview1"
         android:layout_width="match_parent"
         android:text="textview1"
+        android:background="@color/red"
         android:layout_height="50dp" />
 
     <EditText
@@ -28,5 +30,6 @@
         android:id="@+id/textview2"
         android:text="textview2"
         android:layout_width="match_parent"
+        android:background="@color/red"
         android:layout_height="50dp" />
 </LinearLayout>
