@@ -4,12 +4,13 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:gravity="center_horizontal"
+
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
      <ImageView
          android:layout_width="match_parent"
          android:layout_height="1px"
-         android:background="@color/white"/>
+         android:background="#33ffffff"/>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -20,20 +21,23 @@
         android:id="@+id/tv_name1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="不带伞"
+        android:text=""
         android:textColor="@color/white"
         android:layout_marginTop="@dimen/x30"
         android:textSize="16dp"
+        android:gravity="center"
         />
 
     <TextView
         android:id="@+id/tv_name2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="雨伞"
+        android:text=""
         android:textSize="14dp"
         android:textColor="#aaffffff"
-        android:layout_marginTop="@dimen/x30"
+        android:layout_marginTop="@dimen/x20"
+        android:gravity="center"
+        android:layout_marginBottom="@dimen/x20"
         />
 
 </LinearLayout>

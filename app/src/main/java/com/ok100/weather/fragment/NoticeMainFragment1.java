@@ -1,12 +1,8 @@
 package com.ok100.weather.fragment;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.LinearSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -14,13 +10,10 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.ok100.weather.MainActivity;
 import com.ok100.weather.R;
 import com.ok100.weather.activity.NoticeDetatilActivity;
 import com.ok100.weather.adapter.NoticeMainFragmentAdapter;
@@ -32,30 +25,25 @@ import com.ok100.weather.presenter.NewsListPresenterImpl;
 import com.ok100.weather.presenter.NoticeMainListPresenterImpl;
 import com.ok100.weather.utils.ChooseTypeUtils;
 import com.ok100.weather.view.CustomLoadMoreViewNews;
-import com.ok100.weather.view.FullyLinearLayoutManager;
-import com.ok100.weather.view.MyLinearLayoutManager;
 import com.ok100.weather.view.MyLinearLayoutManager1;
 import com.ok100.weather.view.MyRecyclerView;
-import com.ok100.weather.view.MySwipeRefreshLayout;
-
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 
-public class NoticeMainFragment1 extends BaseFragment implements BaseQuickAdapter.OnItemClickListener, BaseQuickAdapter.OnItemLongClickListener, ReturnDataView<Object>, View.OnClickListener, BaseQuickAdapter.OnItemChildClickListener, SwipeRefreshLayout.OnRefreshListener, BaseQuickAdapter.RequestLoadMoreListener , View.OnTouchListener {
+public class NoticeMainFragment1 extends BaseFragment implements BaseQuickAdapter.OnItemClickListener, BaseQuickAdapter.OnItemLongClickListener, ReturnDataView<Object>, View.OnClickListener, BaseQuickAdapter.OnItemChildClickListener, SwipeRefreshLayout.OnRefreshListener, BaseQuickAdapter.RequestLoadMoreListener, View.OnTouchListener {
 
-    public RecyclerView getRecyclerView() {
-        return mRecyclerView;
-    }
-
-//    public void setRecyclerView(RecyclerView recyclerView) {
-//        mRecyclerView = recyclerView;
-//    }
+    @BindView(R.id.recycle)
+    MyRecyclerView mRecyclerView;
+    Unbinder unbinder;
 
     //    private SwipeRefreshLayout mSwipeRefreshLayout;
-    public MyRecyclerView mRecyclerView;
+
     private NoticeMainFragmentAdapter noticeMainFragmentAdapter;
 
     private int page = 1;
@@ -65,8 +53,18 @@ public class NoticeMainFragment1 extends BaseFragment implements BaseQuickAdapte
     private NoticeMainListPresenterImpl noticeMainListPresenterImpl;
     private ArrayList<NoticeMainListBean> listBeenData = new ArrayList<>();
 
-    NewsListBean newsListBean ;
-    NewsListPresenterImpl newsListPresenterImpl ;
+    NewsListBean newsListBean;
+    NewsListPresenterImpl newsListPresenterImpl;
+
+    public boolean isXiaoyulin() {
+        return xiaoyulin;
+    }
+
+    public void setXiaoyulin(boolean xiaoyulin) {
+        this.xiaoyulin = xiaoyulin;
+    }
+
+    public boolean xiaoyulin = true;
 
     @Override
     public void onClick(View v) {
@@ -75,18 +73,15 @@ public class NoticeMainFragment1 extends BaseFragment implements BaseQuickAdapte
         }
     }
 
-
-    public void setRecyclerViewScoll(boolean isscoll){
-        if(mRecyclerView!=null){
-            mRecyclerView.setNestedScrollingEnabled(isscoll);//禁止滑动
-//            mRecyclerView.setHasFixedSize(!isscoll);
-        }
-
+    @Override
+    protected int getLayoutID() {
+        return R.layout.fragment_news_vanlian;
     }
+
 
     @Override
     public void returnData(String responseCode, Object o) {
-        switch (responseCode){
+        switch (responseCode) {
             case "getNewsList":
                 newsListBean = (NewsListBean) o;
                 newsListBean.getResult().getData();
@@ -117,10 +112,6 @@ public class NoticeMainFragment1 extends BaseFragment implements BaseQuickAdapte
 //        mSwipeRefreshLayout.setRefreshing(false);
     }
 
-    @Override
-    protected int getLayoutID() {
-        return R.layout.fragment_news_vanlian;
-    }
 
     @Override
     protected void init(Bundle savedInstanceState, View contentView) {
@@ -133,10 +124,10 @@ public class NoticeMainFragment1 extends BaseFragment implements BaseQuickAdapte
 
 
     private void http() {
-        newsListPresenterImpl =  new NewsListPresenterImpl(this);
+        newsListPresenterImpl = new NewsListPresenterImpl(this);
         HashMap<String, String> stringStringHashMap = new HashMap<>();
         stringStringHashMap.put("type", ChooseTypeUtils.getNewType(type));
-        newsListPresenterImpl.getNewsList(getActivity(),stringStringHashMap);
+        newsListPresenterImpl.getNewsList(getActivity(), stringStringHashMap);
     }
 
 
@@ -144,7 +135,7 @@ public class NoticeMainFragment1 extends BaseFragment implements BaseQuickAdapte
     private int totalDy = 0;
     private boolean setAnimation = true;
 
-    private boolean isXiaoyulin = false;
+
     private void recyvleViewScrollLister() {
         mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
 
@@ -152,12 +143,12 @@ public class NoticeMainFragment1 extends BaseFragment implements BaseQuickAdapte
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
 
-                if (newState == RecyclerView.SCROLL_STATE_IDLE||newState == RecyclerView.SCROLL_STATE_IDLE) {
+                if (newState == RecyclerView.SCROLL_STATE_IDLE || newState == RecyclerView.SCROLL_STATE_IDLE) {
                     if (!recyclerView.canScrollVertically(1)) {
 //                        callback.onScrollToBottom();
                     }
                     if (!recyclerView.canScrollVertically(-1)) {
-                        Log.e("stopScroll","stopScroll");
+                        Log.e("stopScroll", "stopScroll");
                         mRecyclerView.stopScroll();
                     }
                 }
@@ -166,67 +157,39 @@ public class NoticeMainFragment1 extends BaseFragment implements BaseQuickAdapte
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 boolean b = mRecyclerView.canScrollVertically(-1);
-                Log.e("bbbbbb",b+"");
+                Log.e("bbbbbb", b + "");
                 totalDy -= dy;
-                Log.e("totalDy",totalDy+"");
-                if(totalDy<0){
-                    if(isXiaoyulin){
-                        recyclerView.stopScroll();
+                Log.e("totalDy", totalDy + "");
+                if (totalDy < 0) {
+                    if (xiaoyulin) {
+                        mRecyclerView.stopScroll();
                         bootomVisibleListener.setBootomVisible(true);
                         taybarVisibleListener.setTaybarVisible(false);
-                        isXiaoyulin = false;
+                        xiaoyulin = false;
                     }
 
-                }else {
-                    recyclerView.stopScroll();
-                    isXiaoyulin = true;
+                } else {
+                    mRecyclerView.stopScroll();
+                    xiaoyulin = true;
 //                    bootomVisibleListener.setBootomVisible(false);
 //                    taybarVisibleListener.setTaybarVisible(true);
                     //滑到顶部
-//                    mRecyclerView.stopScroll();
                 }
 
-
-//                AlphaAnimation appearAnimation = new AlphaAnimation(0, 1);
-//                appearAnimation.setDuration(500);
-//                AlphaAnimation disappearAnimation = new AlphaAnimation(1, 0);
-//                disappearAnimation.setDuration(500);
-//                if (totalDy != 0) {
-//                    if (setAnimation) {
-//                        setAnimation = false;
-//                    }
-//                } else {
-//                    setAnimation = true;
-//                    disappearAnimation.setAnimationListener(new Animation.AnimationListener() {
-//
-//                        @Override
-//                        public void onAnimationStart(Animation animation) {
-//                        }
-//
-//                        @Override
-//                        public void onAnimationRepeat(Animation animation) {
-//                        }
-//
-//                        @Override
-//                        public void onAnimationEnd(Animation animation) {
-//
-//
-//                        }
-//                    });
-//                }
 
             }
         });
 
     }
-    MyLinearLayoutManager1 linearLayoutManager ;
+
+    MyLinearLayoutManager1 linearLayoutManager;
+
     private void initAdapter() {
         linearLayoutManager = new MyLinearLayoutManager1(getActivity());
         mRecyclerView.setLayoutManager(linearLayoutManager);
         noticeMainFragmentAdapter = new NoticeMainFragmentAdapter(getActivity());
 //        mRecyclerView.setNestedScrollingEnabled(false);//禁止滑动
         mRecyclerView.setAdapter(noticeMainFragmentAdapter);
-
 
 
         //设置加载
@@ -250,7 +213,7 @@ public class NoticeMainFragment1 extends BaseFragment implements BaseQuickAdapte
                 NewsListBean.ResultBean.DataBean newsListBean = (NewsListBean.ResultBean.DataBean) adapter.getData().get(position);
                 String url = newsListBean.getUrl();
                 Intent intent = new Intent(getActivity(), NoticeDetatilActivity.class);
-                intent.putExtra("url",url);
+                intent.putExtra("url", url);
                 getActivity().startActivity(intent);
 
             }
@@ -259,12 +222,8 @@ public class NoticeMainFragment1 extends BaseFragment implements BaseQuickAdapte
     }
 
 
-
     private void findView() {
-        mRecyclerView = (MyRecyclerView) findViewById(R.id.recycle);
 //        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout_vanlian_new);
-
-
         if (getArguments() != null) {
             departmentId = getArguments().getString("departmentId");
             type = getArguments().getString("type");
@@ -328,12 +287,13 @@ public class NoticeMainFragment1 extends BaseFragment implements BaseQuickAdapte
 
     public MainFragment.BootomVisibleListener bootomVisibleListener;
 
-    public void setBootomVisibleListener(MainFragment.BootomVisibleListener bootomVisibleListener){
+    public void setBootomVisibleListener(MainFragment.BootomVisibleListener bootomVisibleListener) {
         this.bootomVisibleListener = bootomVisibleListener;
     }
-   public MainFragment.TaybarVisibleListener taybarVisibleListener;
 
-    public void setTaybarVisibleListener(MainFragment.TaybarVisibleListener taybarVisibleListener){
+    public MainFragment.TaybarVisibleListener taybarVisibleListener;
+
+    public void setTaybarVisibleListener(MainFragment.TaybarVisibleListener taybarVisibleListener) {
         this.taybarVisibleListener = taybarVisibleListener;
     }
 
@@ -343,7 +303,13 @@ public class NoticeMainFragment1 extends BaseFragment implements BaseQuickAdapte
     }
 
     private GestureDetector mGestureDetector;
-    private class gestureListener implements GestureDetector.OnGestureListener{
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+
+    }
+
+    private class gestureListener implements GestureDetector.OnGestureListener {
 
         // 用户轻触触摸屏，由1个MotionEvent ACTION_DOWN触发
         public boolean onDown(MotionEvent e) {
@@ -394,35 +360,38 @@ public class NoticeMainFragment1 extends BaseFragment implements BaseQuickAdapte
         public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
                                float velocityY) {
             Log.e("MyGesture", "onFling");
-            Log.e("MyGesture", "velocityX=="+velocityX+"====velocityY"+velocityY);
+            Log.e("MyGesture", "velocityX==" + velocityX + "====velocityY" + velocityY);
             Toast.makeText(getActivity(), "onFling", Toast.LENGTH_LONG).show();
             float rawy1 = 0;
             float rewy2 = 0;
             float y1 = 0;
             float y2 = 0;
-            if(e1!=null){
+            if (e1 != null) {
                 rawy1 = e1.getRawY();
                 y1 = e1.getY();
             }
-            if(e2!=null){
+            if (e2 != null) {
                 rewy2 = e2.getRawY();
                 y2 = e2.getY();
             }
 
-            Log.e("MyGesture",y1+"-----"+y2);
-            Log.e("MyGesture",rawy1+"--raw---"+rewy2);
+            Log.e("MyGesture", y1 + "-----" + y2);
+            Log.e("MyGesture", rawy1 + "--raw---" + rewy2);
             int scollerY = mRecyclerView.getScollerY();
-            Log.e("scollerY",scollerY+"----");
+            Log.e("scollerY", scollerY + "----");
             return false;
         }
 
-    };
+    }
+
+    ;
 
 
-    public void resateRecycle(){
-        if(mRecyclerView!=null){
-            Log.e("totalDytotalDy",totalDy+"");
-            mRecyclerView.scrollBy(0 ,totalDy-100);
+    public void resateRecycle() {
+        if (mRecyclerView != null) {
+            Log.e("totalDytotalDy", totalDy + "");
+            Log.e("mainFragment", "有");
+            mRecyclerView.scrollBy(0, totalDy - 100);
         }
 
     }

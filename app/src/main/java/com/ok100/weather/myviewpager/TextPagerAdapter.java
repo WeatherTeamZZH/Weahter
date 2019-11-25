@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.util.Log;
+import android.util.LongSparseArray;
 import android.util.SparseArray;
 import android.view.ViewGroup;
 
@@ -18,10 +19,10 @@ import com.ok100.weather.fragment.MainFragment;
 public class TextPagerAdapter extends FragmentPagerAdapter {
     private static final String TAG = "PagerAdapter";
 
-    SparseArray<MainFragment> mTestFragments;
+    LongSparseArray<MainFragment> mTestFragments;
 
 
-    public TextPagerAdapter(FragmentManager fm, SparseArray<MainFragment> testFragments) {
+    public TextPagerAdapter(FragmentManager fm, LongSparseArray<MainFragment> testFragments) {
         super(fm);
         this.mTestFragments = testFragments;
     }

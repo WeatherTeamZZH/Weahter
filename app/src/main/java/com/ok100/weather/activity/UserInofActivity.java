@@ -116,7 +116,8 @@ public class UserInofActivity extends BaseActivity {
                 startActivity(intent);
                 break;
             case R.id.iv_goto_maincenter:
-                intent = new Intent(UserInofActivity.this, MineCenterActivity.class);
+//                intent = new Intent(UserInofActivity.this, MineCenterActivity.class);
+                intent = new Intent(UserInofActivity.this, LoginActivity.class);
                 startActivity(intent);
                 break;
         }

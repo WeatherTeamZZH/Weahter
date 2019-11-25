@@ -2,12 +2,13 @@ package com.ok100.weather.adapter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.ok100.weather.R;
+import com.ok100.weather.bean.SuggestGridViewBean;
+import com.ok100.weather.bean.WeatherTotal7Bean;
+import com.ok100.weather.bean.WeatherTotalBean;
 
 import me.zhouzhuo.zzweatherview.WeatherModel;
 
-public class MainTodaySuggestAdapter extends BaseQuickAdapter<WeatherModel, BaseViewHolder> {
-
-    private boolean isSubhead;
+public class MainTodaySuggestAdapter extends BaseQuickAdapter<SuggestGridViewBean, BaseViewHolder> {
 
     public MainTodaySuggestAdapter() {
         super(R.layout.main_today_suggest_list);
@@ -15,7 +16,10 @@ public class MainTodaySuggestAdapter extends BaseQuickAdapter<WeatherModel, Base
 
 
     @Override
-    protected void convert(BaseViewHolder helper, WeatherModel item) {
+    protected void convert(BaseViewHolder helper, SuggestGridViewBean item) {
+                helper.setText(R.id.tv_name1,item.getName1());
+                helper.setText(R.id.tv_name2,item.getName2());
+
 //        helper.setVisible(R.id.tv_subhead_pop_project_item, isSubhead);
 //        helper.setBackgroundColor(R.id.tv_subhead_pop_project_item, item.isCheck() ? 0xFFFAFAFA : 0xFFFFFFFF);
 //

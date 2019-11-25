@@ -38,7 +38,7 @@ public class MainFragment_ViewBinding implements Unbinder {
     target.mLlGuanggao1 = Utils.findRequiredViewAsType(source, R.id.ll_guanggao1, "field 'mLlGuanggao1'", LinearLayout.class);
     target.mTvLiebiao = Utils.findRequiredViewAsType(source, R.id.tv_liebiao, "field 'mTvLiebiao'", TextView.class);
     target.mTvQushi = Utils.findRequiredViewAsType(source, R.id.tv_qushi, "field 'mTvQushi'", TextView.class);
-    target.mWeatherView = Utils.findRequiredViewAsType(source, R.id.weather_view, "field 'mWeatherView'", ZzWeatherView.class);
+    target.weatherView = Utils.findRequiredViewAsType(source, R.id.weather_view, "field 'weatherView'", ZzWeatherView.class);
     target.mRecyclerview15weather = Utils.findRequiredViewAsType(source, R.id.recyclerview_15weather, "field 'mRecyclerview15weather'", RecyclerView.class);
     target.mIvGuanggaoDonghua = Utils.findRequiredViewAsType(source, R.id.iv_guanggao_donghua, "field 'mIvGuanggaoDonghua'", ImageView.class);
     target.mRecyclerviewTodaySuggest = Utils.findRequiredViewAsType(source, R.id.recyclerview_today_suggest, "field 'mRecyclerviewTodaySuggest'", RecyclerView.class);
@@ -82,7 +82,7 @@ public class MainFragment_ViewBinding implements Unbinder {
     target.mLlGuanggao1 = null;
     target.mTvLiebiao = null;
     target.mTvQushi = null;
-    target.mWeatherView = null;
+    target.weatherView = null;
     target.mRecyclerview15weather = null;
     target.mIvGuanggaoDonghua = null;
     target.mRecyclerviewTodaySuggest = null;

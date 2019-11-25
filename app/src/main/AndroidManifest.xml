@@ -30,7 +30,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.StatusBarWhite.NoActionBar"
         tools:replace="android:icon, android:label, android:theme">
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".activity.LoginActivity"></activity>
+        <activity android:name=".MainActivity" />
         <activity android:name=".activity.ZhutiImgeActivity" />
         <activity android:name=".activity.ShareMainActivity" />
         <activity android:name=".activity.NoticeCenterActivity" />
@@ -128,7 +129,7 @@
         <activity
             android:name="com.tencent.connect.common.AssistActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity> <!-- 微信 -->
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" /> <!-- 微信 -->
         <activity
             android:name=".wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"

@@ -9,6 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.util.LongSparseArray;
 import android.util.SparseArray;
 import android.view.View;
 import android.widget.ImageView;
@@ -31,6 +32,7 @@ import com.ok100.weather.bean.DepartmentListBean;
 import com.ok100.weather.bean.MainSpotClickBean;
 import com.ok100.weather.bean.WeatherBean;
 import com.ok100.weather.fragment.MainFragment;
+import com.ok100.weather.fragment.NoticeMainFragment1;
 import com.ok100.weather.gb.view.HomeActivity;
 import com.ok100.weather.http.ReturnDataView;
 import com.ok100.weather.myviewpager.TextPagerAdapter;
@@ -95,7 +97,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     public List<CityGreenDaoBean> cityGreenDaoBeanList = new ArrayList<>();
 
     private List<String> tagList;
-    private SparseArray<MainFragment> mTestFragments;
+    private LongSparseArray<MainFragment> mTestFragments;
     private int key;
     private TextPagerAdapter mPagerAdapter;
 
@@ -103,6 +105,18 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     public String locationY = "";
     public String locationCiyt = "";
     AllCityGreenBeanDao allCityGreenBeanDao ;
+
+    public static boolean isInitDb = false;
+
+    public boolean isXiaoyulin() {
+        return isXiaoyulin;
+    }
+
+    public void setXiaoyulin(boolean xiaoyulin) {
+        isXiaoyulin = xiaoyulin;
+    }
+
+    public static boolean isXiaoyulin = false;
 
     @Override
     public int getLayoutID() {
@@ -120,7 +134,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         allCityGreenBeanDao = application.getDaoSession().getAllCityGreenBeanDao();
         initAllDbCity();
         initWeatherData();
-        mTestFragments = new SparseArray<>();
+        mTestFragments = new LongSparseArray<>();
         initViewpagerAdapter();
         initSpotAdapter();
 
@@ -128,6 +142,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         if(cityGreenDaoBeans!=null&&cityGreenDaoBeans.size()>0){
             mTvCity.setText(cityGreenDaoBeans.get(0).getArea());
             mTvTitlePosition.setText(cityGreenDaoBeans.get(0).getArea());
+
         }
 
         mviewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -139,8 +154,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             @Override
             public void onPageSelected(int position) {
 
-                Log.d("sort:", "onPageSelected: " + position);
-                mviewpager.setCurrentItem(position);
+                Log.e("sort:", "onPageSelected: " + position);
+//                mviewpager.setCurrentItem(position);
                 setSelect(position);
 //                MainFragment mainfragment = mTestFragments.get(position);
 //                mainfragment.setTitleDateListener(new TitleDateListener() {
@@ -215,7 +230,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     private void initViewpagerAdapter() {
         for (int i = 0; i < cityGreenDaoBeanList.size(); i++) {
-            mTestFragments.put(key++, MainFragment.newInstance(cityGreenDaoBeanList.get(i).getProv(), cityGreenDaoBeanList.get(i).getCity(), cityGreenDaoBeanList.get(i).getArea()));
+            mTestFragments.put(cityGreenDaoBeanList.get(i).getId(), MainFragment.newInstance(cityGreenDaoBeanList.get(i).getProv(), cityGreenDaoBeanList.get(i).getCity(), cityGreenDaoBeanList.get(i).getArea()));
         }
 
         mPagerAdapter = new TextPagerAdapter(getSupportFragmentManager(), mTestFragments);
@@ -254,6 +269,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         mianSpotAdapter.notifyDataSetChanged();
         mTvCity.setText(cityGreenDaoBeanList.get(location).getArea());
         mTvTitlePosition.setText(cityGreenDaoBeanList.get(location).getArea());
+
     }
 
 
@@ -280,17 +296,26 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 startActivity(intent);
                 break;
             case R.id.iv_add_weather:
-                intent = new Intent(MainActivity.this, MyCityActivity.class);
-                startActivityForResult(intent, 10001);
-                overridePendingTransition(R.anim.my_city_activity_in, R.anim.my_city_activity_out);
+                if(isInitDb){
+                    intent = new Intent(MainActivity.this, MyCityActivity.class);
+                    startActivityForResult(intent, 10001);
+                    overridePendingTransition(R.anim.my_city_activity_in, R.anim.my_city_activity_out);
+                }else {
+                    Toast.makeText(MainActivity.this,"正在初始化数据库，请您稍等片刻。。。",Toast.LENGTH_SHORT).show();
+                }
+
                 break;
             case R.id.iv_title_back_weather:
-                MainFragment mainFragment = (MainFragment) mTestFragments.get(mviewpager.getCurrentItem());
+                MainFragment mainFragment = (MainFragment) mTestFragments.get(getFragmentId());
+                Log.e("mainFragment",mainFragment.city+mainFragment.area);
 //                mainFragment.setMainHeightAll();
-                mainFragment.setBottomVisible(false);
-                mainFragment.setAllGoneViewVisible(true);
-                hitiTitle(false);
-
+                if(mainFragment!=null){
+                    mainFragment.setAllGoneViewVisible(true);
+                    mainFragment.setBottomVisible(false);
+//                    mainFragment.setXiaoyulin();
+                    hitiTitle(false);
+                }
+                isXiaoyulin = true;
                 break;
             case R.id.iv_weather_share:
 //                intent = new Intent(MainActivity.this, ShareMainActivity.class);
@@ -356,7 +381,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 //        mviewpager.setOffscreenPageLimit(ceil);
         CityGreenDaoBean cityGreenDaoBean = cityGreenDaoBeanList.get(cityGreenDaoBeanList.size() - 1);
 
-        mTestFragments.put(key++, MainFragment.newInstance(cityGreenDaoBean.getProv(), cityGreenDaoBean.getCity(), cityGreenDaoBean.getArea()));
+        mTestFragments.put(cityGreenDaoBean.getId(), MainFragment.newInstance(cityGreenDaoBean.getProv(), cityGreenDaoBean.getCity(), cityGreenDaoBean.getArea()));
         mPagerAdapter.notifyDataSetChanged();
         mviewpager.setCurrentItem(mTestFragments.size()-1);
     }
@@ -407,7 +432,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         deleteGreenDao(cityGreenDaoBeanList.get(position).getCity());
         initWeatherData();
         mTestFragments.removeAt(position);
-        mPagerAdapter.notifyDataSetChanged();
+        Log.e("mTestFragments",mTestFragments.size()+"")
+;        mPagerAdapter.notifyDataSetChanged();
     }
 
     public interface SetZhutiBgListener {
@@ -474,6 +500,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 allCityGreenBeanDao.insert(allCityGreenBean);
             }
         }
+        isInitDb = true;
         Log.e("init","数据库初始化完成");
 
         runOnUiThread(new Runnable() {
@@ -525,4 +552,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     }
 
+
+
+    public long fragmentId = 0;
+    public long getFragmentId(){
+        int currentItem = mviewpager.getCurrentItem();
+        Log.e("mainFragment",currentItem+"");
+        fragmentId = cityGreenDaoBeanList.get(currentItem).getId();
+        return fragmentId;
+    }
 }

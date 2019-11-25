@@ -42,7 +42,6 @@ public class ShareMainActivity extends BaseActivity {
         mRecycle.setLayoutManager(myLinearLayoutManager);
 
         MainTodaySuggestAdapter mainTodaySuggestAdapter = new MainTodaySuggestAdapter();
-        mainTodaySuggestAdapter.setNewData(generateData());
         mRecycle.setAdapter(mainTodaySuggestAdapter);
 //        mRecycle.setNestedScrollingEnabled(false);
 //        mScrollview.setEnabled(false);

@@ -21,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.ok100.greendao.gen.AllCityGreenBeanDao;
@@ -341,7 +342,10 @@ public class MyCityActivity extends BaseActivity implements BaseQuickAdapter.OnI
         switch (view.getId()) {
             case R.id.iv_delete:
                 //删除
-                deleteGreenDao(cityGreenDaoBeanList.get(position).getCity());
+                if(cityGreenDaoBeanList.size()<=1){
+                    Toast.makeText(MyCityActivity.this,"请您至少保留一个城市",Toast.LENGTH_SHORT).show();
+                }
+                deleteGreenDao(cityGreenDaoBeanList.get(position).getArea());
                 adapter.getData().remove(position);
                 adapter.notifyDataSetChanged();
                 delectCityListener.setdelectCity(position);
@@ -436,6 +440,7 @@ public class MyCityActivity extends BaseActivity implements BaseQuickAdapter.OnI
     private List<CityGreenDaoBean> searchGreenDao() {
 
         List<CityGreenDaoBean> cityGreenDaoBeans = cityGreenDaoBeanDao.loadAll();
+        Log.e("cityGreenDaoBeans",cityGreenDaoBeans.size()+"");
         return cityGreenDaoBeans;
 //        if(cityBean != null) {
 //            cityBean.setCity("CD");

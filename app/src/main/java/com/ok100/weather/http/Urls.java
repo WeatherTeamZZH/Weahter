@@ -16,6 +16,9 @@ public class Urls {
     //获取通知列表
     public static final String noticeMainList = rapIp + "/announcement/getAnnouncementList";
 
-
+    //获取短信
+    public static final String sendSms = "http://www.asiaky.top/api/sendSms";
+    //注册
+    public static final String smslogin = "http://www.asiaky.top/api/smslogin";
 
 }

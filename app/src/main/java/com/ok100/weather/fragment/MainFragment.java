@@ -41,9 +41,11 @@ import com.ok100.weather.adapter.NoticeMainFragmentItemAdapter;
 import com.ok100.weather.adapter.Weather15MianAdapter;
 import com.ok100.weather.base.BaseFragment;
 import com.ok100.weather.bean.DataBean;
+import com.ok100.weather.bean.DefultGridViewBean;
 import com.ok100.weather.bean.DepartmentListBean;
 import com.ok100.weather.bean.NewsListBean;
 import com.ok100.weather.bean.NoticeMainChooseBean;
+import com.ok100.weather.bean.SuggestGridViewBean;
 import com.ok100.weather.bean.WeatherTotal15Bean;
 import com.ok100.weather.bean.WeatherTotal24Bean;
 import com.ok100.weather.bean.WeatherTotal7Bean;
@@ -98,7 +100,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     @BindView(R.id.tv_qushi)
     TextView mTvQushi;
     @BindView(R.id.weather_view)
-    ZzWeatherView mWeatherView;
+    ZzWeatherView weatherView;
     @BindView(R.id.recyclerview_15weather)
     RecyclerView mRecyclerview15weather;
     @BindView(R.id.iv_guanggao_donghua)
@@ -171,14 +173,12 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
 
     List<DepartmentListBean> departmentListBeans = new ArrayList<>();
     ArrayList<String> departmentListBeansString = new ArrayList<>();
-
-    ZzWeatherView weatherView ;
     Weather15MianAdapter weather15MianAdapter;
 
 
-    private String city;
-    private String prov;
-    private String area;
+    public String city;
+    public String prov;
+    public String area;
 
     public static final String CITY = "city";
     public static final String PROV = "prov";
@@ -191,6 +191,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     public boolean weather15 = false;
     WeatherTotal15Bean weatherTotal15Bean ;
     WeatherTotal7Bean weatherTotal7Bean ;
+    MainTodaySuggestAdapter mainTodaySuggestAdapter;
 
     @Override
     protected int getLayoutID() {
@@ -296,14 +297,16 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
         mRecyclerview15weather.setNestedScrollingEnabled(false);//禁止滑动
 
         mRecyclerviewTodaySuggest.setLayoutManager(new GridLayoutManager(getActivity(), 4));
-        MainTodaySuggestAdapter mainTodaySuggestAdapter = new MainTodaySuggestAdapter();
-        mainTodaySuggestAdapter.setNewData(DataBean.generateData());
+        mainTodaySuggestAdapter = new MainTodaySuggestAdapter();
+
         mRecyclerviewTodaySuggest.setAdapter(mainTodaySuggestAdapter);
         mRecyclerviewTodaySuggest.setNestedScrollingEnabled(false);//禁止滑动
         mainTodaySuggestAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                GH_DefaultDialogFragment.access(getChildFragmentManager());
+                SuggestGridViewBean bean  = (SuggestGridViewBean) adapter.getData().get(position);
+                GH_DefaultDialogFragment access = GH_DefaultDialogFragment.access(getChildFragmentManager());
+                access.setTitle(bean.getName1(),bean.getName2(),bean.getName3());
             }
         });
 
@@ -428,7 +431,6 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     }
 
     private void initData() {
-        weatherView = (ZzWeatherView) findViewById(R.id.weather_view);
         //填充天气数据
         //画折线
 //        weatherView.setLineType(ZzWeatherView.LINE_TYPE_DISCOUNT);
@@ -519,9 +521,8 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
 
 
     private void initViewPager() {
-        viewPager.setOffscreenPageLimit(0);
+        viewPager.setOffscreenPageLimit(5);
         viewPager.setAdapter(fragmentPagerAdapter);
-
 
 //        pagerTabStrip.setOnTabReselectedListener(new PagerSlidingTabStrip.OnTabReselectedListener() {
 //            @Override
@@ -576,7 +577,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
 
         NoticeMainFragment1 fragment;
         TitleListData titleListData;
-        viewPager.setOffscreenPageLimit(0);
+        viewPagerDataSourceList.clear();
         for (int i = 0; i < departmentListBean.size(); i++) {
             fragment = new NoticeMainFragment1();
             Bundle args = new Bundle();
@@ -736,10 +737,11 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
                     appBarLayoutBehavior.setTopAndBottomOffset(0);
                 }
             }
+            Log.e("viewPagerDataSourceList",viewPagerDataSourceList.size()+"");
             for (int i = 0; i < viewPagerDataSourceList.size(); i++) {
                 NoticeMainFragment1 getFragment = (NoticeMainFragment1) viewPagerDataSourceList.get(i).getFragment();
-                ;
                 getFragment.resateRecycle();
+                getFragment.xiaoyulin = true;
             }
 
         } else {
@@ -782,6 +784,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
                 }
                 setTomorrowData(weatherTotal7Bean);
                 setAirDialogFragment(weatherTotal7Bean);
+                setSuggettAdapter(weatherTotal7Bean);
 
                 break;
 
@@ -819,8 +822,111 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
                 }
                 mToday24HourView.setData();
                 mToday24HourView.invalidate();
+
                 break;
         }
+    }
+
+    private void setSuggettAdapter(WeatherTotal7Bean weatherTotal7Bean) {
+        ArrayList<SuggestGridViewBean> suggestGridViewBeanList = new ArrayList<>();
+        SuggestGridViewBean suggestGridViewBean ;
+        WeatherTotal7Bean.DataBean.Day7Bean.LiveBean live = weatherTotal7Bean.getData().getDay7().get(0).getLive();
+        for (int i= 0 ;i<12;i++){
+        switch (i){
+            case 1:
+                suggestGridViewBean = new SuggestGridViewBean();
+                suggestGridViewBean.setName1(live.getAc().getName());
+                suggestGridViewBean.setName2(live.getAc().getTitle());
+                suggestGridViewBean.setName3(live.getAc().getDesc());
+                suggestGridViewBeanList.add(suggestGridViewBean);
+                break;
+            case 2:
+                suggestGridViewBean = new SuggestGridViewBean();
+                suggestGridViewBean.setName1(live.getAg().getName());
+                suggestGridViewBean.setName2(live.getAg().getTitle());
+                suggestGridViewBean.setName3(live.getAg().getDesc());
+                suggestGridViewBeanList.add(suggestGridViewBean);
+                break;
+            case 3:
+                suggestGridViewBean = new SuggestGridViewBean();
+                suggestGridViewBean.setName1(live.getBl().getName());
+                suggestGridViewBean.setName2(live.getBl().getTitle());
+                suggestGridViewBean.setName3(live.getBl().getDesc());
+                suggestGridViewBeanList.add(suggestGridViewBean);
+                break;
+            case 4:
+                suggestGridViewBean = new SuggestGridViewBean();
+                suggestGridViewBean.setName1(live.getCl().getName());
+                suggestGridViewBean.setName2(live.getCl().getTitle());
+                suggestGridViewBean.setName3(live.getCl().getDesc());
+                suggestGridViewBeanList.add(suggestGridViewBean);
+                break;
+            case 5:
+                suggestGridViewBean = new SuggestGridViewBean();
+                suggestGridViewBean.setName1(live.getCo().getName());
+                suggestGridViewBean.setName2(live.getCo().getTitle());
+                suggestGridViewBean.setName3(live.getCo().getDesc());
+                suggestGridViewBeanList.add(suggestGridViewBean);
+                break;
+            case 6:
+                suggestGridViewBean = new SuggestGridViewBean();
+                suggestGridViewBean.setName1(live.getDy().getName());
+                suggestGridViewBean.setName2(live.getDy().getTitle());
+                suggestGridViewBean.setName3(live.getDy().getDesc());
+                suggestGridViewBeanList.add(suggestGridViewBean);
+                break;
+            case 7:
+                suggestGridViewBean = new SuggestGridViewBean();
+                suggestGridViewBean.setName1(live.getFs().getName());
+                suggestGridViewBean.setName2(live.getFs().getTitle());
+                suggestGridViewBean.setName3(live.getFs().getDesc());
+                suggestGridViewBeanList.add(suggestGridViewBean);
+                break;
+            case 8:
+                suggestGridViewBean = new SuggestGridViewBean();
+                suggestGridViewBean.setName1(live.getGj().getName());
+                suggestGridViewBean.setName2(live.getGj().getTitle());
+                suggestGridViewBean.setName3(live.getGj().getDesc());
+                suggestGridViewBeanList.add(suggestGridViewBean);
+                break;
+            case 9:
+                suggestGridViewBean = new SuggestGridViewBean();
+                suggestGridViewBean.setName1(live.getGl().getName());
+                suggestGridViewBean.setName2(live.getGl().getTitle());
+                suggestGridViewBean.setName3(live.getGl().getDesc());
+                suggestGridViewBeanList.add(suggestGridViewBean);
+                break;
+            case 10:
+                suggestGridViewBean = new SuggestGridViewBean();
+                suggestGridViewBean.setName1(live.getGm().getName());
+                suggestGridViewBean.setName2(live.getGm().getTitle());
+                suggestGridViewBean.setName3(live.getGm().getDesc());
+                suggestGridViewBeanList.add(suggestGridViewBean);
+                break;
+            case 11:
+                suggestGridViewBean = new SuggestGridViewBean();
+                suggestGridViewBean.setName1(live.getHc().getName());
+                suggestGridViewBean.setName2(live.getHc().getTitle());
+                suggestGridViewBean.setName3(live.getHc().getDesc());
+                suggestGridViewBeanList.add(suggestGridViewBean);
+                break;
+            case 12:
+                suggestGridViewBean = new SuggestGridViewBean();
+                suggestGridViewBean.setName1(live.getJt().getName());
+                suggestGridViewBean.setName2(live.getJt().getTitle());
+                suggestGridViewBean.setName3(live.getJt().getDesc());
+                suggestGridViewBeanList.add(suggestGridViewBean);
+                break;
+            case 13:
+                suggestGridViewBean = new SuggestGridViewBean();
+                suggestGridViewBean.setName1(live.getLs().getName());
+                suggestGridViewBean.setName2(live.getLs().getTitle());
+                suggestGridViewBean.setName3(live.getLs().getDesc());
+                suggestGridViewBeanList.add(suggestGridViewBean);
+                break;
+        }
+        }
+        mainTodaySuggestAdapter.setNewData(suggestGridViewBeanList);
     }
 
     public List<String> stringToInt(String args) {
@@ -968,4 +1074,5 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
         }
         return weatherModels;
     }
+
 }
