@@ -46,14 +46,14 @@ public final class R {
         private id() {}
 
         public static final int bold = 0x7f08003c;
-        public static final int italic = 0x7f0800af;
-        public static final int normal = 0x7f080113;
-        public static final int psts_tab_title = 0x7f080131;
+        public static final int italic = 0x7f0800b1;
+        public static final int normal = 0x7f080115;
+        public static final int psts_tab_title = 0x7f080133;
     }
     public static final class layout {
         private layout() {}
 
-        public static final int psts_tab = 0x7f0a0081;
+        public static final int psts_tab = 0x7f0a0083;
     }
     public static final class styleable {
         private styleable() {}
