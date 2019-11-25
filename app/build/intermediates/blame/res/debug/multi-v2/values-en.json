@@ -1,20 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "G:\\OKWeather\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en\\values-en.xml",
+            "outputFile": "/Users/gh/Desktop/android/android_projects/my/Weahter/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-en/values-en.xml",
             "map": [
                 {
-                    "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\BaseRecyclerViewAdapterHelper-2.9.47.aar\\77b2b1c266758dee7166e33fbfb755a4\\res\\values-en\\values-en.xml",
-                    "from": {
-                        "startLines": "2,3,4",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "55,111,174",
-                        "endColumns": "55,62,52",
-                        "endOffsets": "106,169,222"
-                    }
-                },
-                {
-                    "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\Android-PickerView-4.1.9.aar\\e4005d8c054a4c08081ca4579849ae63\\res\\values-en\\values-en.xml",
+                    "source": "/Users/gh/Android/gradle-4.4/caches/transforms-1/files-1.1/Android-PickerView-4.1.9.aar/9c59286f0081180506188a9a8583ba8b/res/values-en/values-en.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -28,6 +18,16 @@
                         "startOffsets": "227,280,325,372,421,468,517,571",
                         "endColumns": "52,44,46,48,46,48,53,45",
                         "endOffsets": "275,320,367,416,463,512,566,612"
+                    }
+                },
+                {
+                    "source": "/Users/gh/Android/gradle-4.4/caches/transforms-1/files-1.1/BaseRecyclerViewAdapterHelper-2.9.47.aar/6fa5f841dca3d302a47ae8c3e9030999/res/values-en/values-en.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,111,174",
+                        "endColumns": "55,62,52",
+                        "endOffsets": "106,169,222"
                     }
                 }
             ]

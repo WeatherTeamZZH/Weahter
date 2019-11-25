@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
+import android.text.Editable;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
@@ -33,10 +34,10 @@ import com.bigkoo.pickerview.view.OptionsPickerView;
 import com.bigkoo.pickerview.view.TimePickerView;
 import com.bumptech.glide.Glide;
 import com.ok100.weather.R;
-import com.ok100.weather.activity.ZhutiImgeActivity;
 import com.ok100.weather.base.BaseActivity;
 import com.ok100.weather.utils.ActivityBarSettingUtils;
-import com.ok100.weather.utils.ToastUtil;
+import com.ok100.weather.utils.EmptyUtils;
+import com.ok100.weather.utils.SPObj;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -93,6 +94,7 @@ public class MineCenterActivity extends BaseActivity {
     private static final int PHOTO_REQUEST_CAMERA = 1;// 拍照
     private static final int PHOTO_REQUEST_GALLERY = 2;// 从相册中选择
     private File savePhoto;
+    private SPObj spObj;
 
     public static void access(Context context) {
         Intent intent = new Intent(context, MineCenterActivity.class);
@@ -111,7 +113,7 @@ public class MineCenterActivity extends BaseActivity {
         registerBack();
         initTimePicker();
         initNoLinkOptionsPicker();
-        ActivityBarSettingUtils.setAndroidNativeLightStatusBar(MineCenterActivity.this,true);
+        ActivityBarSettingUtils.setAndroidNativeLightStatusBar(MineCenterActivity.this, true);
     }
 
     @Override
@@ -121,7 +123,33 @@ public class MineCenterActivity extends BaseActivity {
 
     @Override
     public void initData(Bundle savedInstanceState, View contentView) {
+        spObj = new SPObj(getContext(), "gh");
 
+        Glide.with(getContext()).load(spObj.getObject("imgurl", String.class)).transform(new GlideCircleTransform(getContext())).into(ivImg);
+        tvNick.setText(EmptyUtils.EmptyString(spObj.getObject("nick", String.class),"未设置"));
+        tvBirth.setText(EmptyUtils.EmptyString(spObj.getObject("birth", String.class),"未设置"));
+        tvSex.setText(EmptyUtils.EmptyString(spObj.getObject("sex", String.class),"未设置"));
+        tvPhone.setText(EmptyUtils.EmptyString(spObj.getObject("phone", String.class),"未绑定"));
+        tvWechat.setText(EmptyUtils.EmptyString(spObj.getObject("wechat", String.class),"未绑定"));
+
+        tvNick.addTextChangedListener(new GHTextWather() {
+            @Override
+            public void afterTextChanged(Editable s) {
+                spObj.setObject( "nick", s.toString());
+            }
+        });
+        tvPhone.addTextChangedListener(new GHTextWather() {
+            @Override
+            public void afterTextChanged(Editable s) {
+                spObj.setObject( "phone", s.toString());
+            }
+        });
+        tvWechat.addTextChangedListener(new GHTextWather() {
+            @Override
+            public void afterTextChanged(Editable s) {
+                spObj.setObject( "wechat", s.toString());
+            }
+        });
     }
 
     @Override
@@ -143,21 +171,7 @@ public class MineCenterActivity extends BaseActivity {
                 showPopupWindow();
                 break;
             case R.id.ll_nick:
-                CustomerDialog dialog = new CustomerDialog(this, R.layout.dialog_nickname);
-                dialog.setDlgIfClick(true);
-                dialog.setOnCustomerViewCreated(new CustomerDialog.CustomerViewInterface() {
-                    @Override
-                    public void getCustomerView(Window window, AlertDialog dlg) {
-                        EditText dialog_et = window.findViewById(R.id.dialog_et);
-                        window.findViewById(R.id.dialog_cancle).setOnClickListener(v -> dialog.dismissDlg());
-                        window.findViewById(R.id.dialog_ok).setOnClickListener(v -> {
-                            tvNick.setText(dialog_et.getText());
-                            dialog.dismissDlg();
-                        });
-                    }
-                });
-                dialog.showDlg();
-                dialog.getDlg().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+                showDialog("用户昵称");
                 break;
             case R.id.ll_birth:
                 pvTime.show();
@@ -166,15 +180,50 @@ public class MineCenterActivity extends BaseActivity {
                 pvNoLinkOptions.show();
                 break;
             case R.id.ll_phone:
-                ToastUtil.makeShortText(getContext(),"绑定手机号");
+                showDialog("绑定手机号");
                 break;
             case R.id.ll_wechat:
-                ToastUtil.makeShortText(getContext(),"绑定微信号");
+                showDialog("绑定微信号");
                 break;
             case R.id.tv_logout:
-                ToastUtil.makeShortText(getContext(),"退出登录");
+                spObj.setObject("imgurl",null);
+                spObj.setObject("nick",null);
+                spObj.setObject("birth",null);
+                spObj.setObject("sex",null);
+                spObj.setObject("phone",null);
+                spObj.setObject("wechat",null);
                 break;
         }
+    }
+
+    private void showDialog(String title) {
+        CustomerDialog dialog = new CustomerDialog(this, R.layout.dialog_nickname);
+        dialog.setDlgIfClick(true);
+        dialog.setOnCustomerViewCreated(new CustomerDialog.CustomerViewInterface() {
+            @Override
+            public void getCustomerView(Window window, AlertDialog dlg) {
+                EditText dialog_et = window.findViewById(R.id.dialog_et);
+                TextView tv_title = window.findViewById(R.id.tv_title);
+                tv_title.setText(title);
+                window.findViewById(R.id.dialog_cancle).setOnClickListener(v -> dialog.dismissDlg());
+                window.findViewById(R.id.dialog_ok).setOnClickListener(v -> {
+                    switch (title) {
+                        case "用户昵称":
+                            tvNick.setText(dialog_et.getText());
+                            break;
+                        case "绑定手机号":
+                            tvPhone.setText(dialog_et.getText());
+                            break;
+                        case "绑定微信号":
+                            tvWechat.setText(dialog_et.getText());
+                            break;
+                    }
+                    dialog.dismissDlg();
+                });
+            }
+        });
+        dialog.showDlg();
+        dialog.getDlg().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
     }
 
     private void initTimePicker() {//Dialog 模式下，在底部弹出
@@ -182,6 +231,7 @@ public class MineCenterActivity extends BaseActivity {
             @Override
             public void onTimeSelect(Date date, View v) {
                 tvBirth.setText(getTime(date));
+                spObj.setObject("birth",tvBirth.getText().toString().trim());
             }
         })
                 .setTimeSelectChangeListener(new OnTimeSelectChangeListener() {
@@ -237,6 +287,7 @@ public class MineCenterActivity extends BaseActivity {
             @Override
             public void onOptionsSelect(int options1, int options2, int options3, View v) {
                 tvSex.setText(sexList.get(options1));
+                spObj.setObject("sex",tvSex.getText().toString().trim());
             }
         })
                 .setOptionsSelectChangeListener(new OnOptionsSelectChangeListener() {
@@ -304,19 +355,19 @@ public class MineCenterActivity extends BaseActivity {
     public void camera() {
         Intent intent = new Intent();
         intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
-        savePhoto = new File(Environment.getExternalStorageDirectory().getAbsolutePath(),"/test/"+System.currentTimeMillis() + ".png");
+        savePhoto = new File(Environment.getExternalStorageDirectory().getAbsolutePath(), "/test/" + System.currentTimeMillis() + ".png");
         intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(savePhoto));
         Uri data;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             // "net.csdn.blog.ruancoder.fileprovider"即是在清单文件中配置的authorities
-            data = FileProvider.getUriForFile(MineCenterActivity.this,"com.ok100.weather.provider", savePhoto);
+            data = FileProvider.getUriForFile(MineCenterActivity.this, "com.ok100.weather.provider", savePhoto);
             // 给目标应用一个临时授权
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         } else {
             data = Uri.fromFile(savePhoto);
         }
         intent.putExtra(MediaStore.EXTRA_OUTPUT, data);
-        startActivityForResult(intent,PHOTO_REQUEST_CAMERA);
+        startActivityForResult(intent, PHOTO_REQUEST_CAMERA);
     }
 
     /**
@@ -347,7 +398,6 @@ public class MineCenterActivity extends BaseActivity {
     }
 
 
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
@@ -358,10 +408,12 @@ public class MineCenterActivity extends BaseActivity {
             case PHOTO_REQUEST_GALLERY:
                 Uri uri1 = intent.getData();
                 Glide.with(getContext()).load(uri1).transform(new GlideCircleTransform(getContext())).into(ivImg);
+                spObj.setObject( "imgurl", uri1.toString());
                 break;
             // 从相机中获取照片
             case PHOTO_REQUEST_CAMERA:
                 Glide.with(getContext()).load(savePhoto).transform(new GlideCircleTransform(getContext())).into(ivImg);
+                spObj.setObject( "imgurl", savePhoto.getAbsolutePath());
                 break;
         }
     }

@@ -808,7 +808,7 @@ public final class R {
         public static final int checkbox_checked = 0x7f0c0006;
         public static final int checkbox_normal = 0x7f0c0007;
         public static final int grid_camera = 0x7f0c000b;
-        public static final int text_indicator = 0x7f0c003f;
+        public static final int text_indicator = 0x7f0c0040;
     }
     public static final class string {
         private string() {}
