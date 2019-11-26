@@ -1,27 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/gh/Desktop/android/android_projects/my/Weahter/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ur-rPK/values-ur-rPK.xml",
+            "outputFile": "G:\\OKWeather\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ur-rPK\\values-ur-rPK.xml",
             "map": [
                 {
-                    "source": "/Users/gh/Android/gradle-4.4/caches/transforms-1/files-1.1/play-services-basement-8.4.0.aar/0b48adbf2789c535c91bfb9042685ecf/res/values-ur-rPK/common_strings.xml",
-                    "from": {
-                        "startLines": "3",
-                        "startColumns": "4",
-                        "startOffsets": "170",
-                        "endColumns": "261",
-                        "endOffsets": "427"
-                    },
-                    "to": {
-                        "startLines": "19",
-                        "startColumns": "4",
-                        "startOffsets": "2839",
-                        "endColumns": "257",
-                        "endOffsets": "3092"
-                    }
-                },
-                {
-                    "source": "/Users/gh/Android/gradle-4.4/caches/transforms-1/files-1.1/play-services-base-8.4.0.aar/04bbcf3d33738ffae9f30f3885718125/res/values-ur-rPK/base_strings.xml",
+                    "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\play-services-base-8.4.0.aar\\853e754b8f8b70942bd41027979afe2f\\res\\values-ur-rPK\\base_strings.xml",
                     "from": {
                         "startLines": "24,10,9,8,7,5,6,4,19,18,17,16,3,28,27,26,25,21,20,22,12,11,15,14,13,23,29,30",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -35,6 +18,23 @@
                         "startOffsets": "105,364,493,689,817,947,1152,1361,1490,1673,1789,1961,2085,2219,2393,2518,2707,3097,3353,3475,3587,3785,3915,4120,4258,4457,4549,4646",
                         "endColumns": "258,128,195,127,129,204,208,128,182,115,171,123,133,173,124,188,131,255,121,111,197,129,204,137,198,91,96,117",
                         "endOffsets": "359,488,684,812,942,1147,1356,1485,1668,1784,1956,2080,2214,2388,2513,2702,2834,3348,3470,3582,3780,3910,4115,4253,4452,4544,4641,4759"
+                    }
+                },
+                {
+                    "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\play-services-basement-8.4.0.aar\\eb2e7dbb8539bfefbb583965c7605120\\res\\values-ur-rPK\\common_strings.xml",
+                    "from": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "170",
+                        "endColumns": "261",
+                        "endOffsets": "427"
+                    },
+                    "to": {
+                        "startLines": "19",
+                        "startColumns": "4",
+                        "startOffsets": "2839",
+                        "endColumns": "257",
+                        "endOffsets": "3092"
                     }
                 }
             ]

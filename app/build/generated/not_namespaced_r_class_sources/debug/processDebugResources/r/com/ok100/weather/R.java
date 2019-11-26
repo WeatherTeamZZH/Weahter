@@ -743,6 +743,7 @@ public final class R {
      */
     public static final int checkedTextViewStyle=0x7f030058;
     /**
+     * Whether or not this view should have a circular clip applied
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      */
@@ -1607,6 +1608,7 @@ public final class R {
      */
     public static final int hlv_childIndicatorGravity=0x7f0300c8;
     /**
+     * a custom padding can be set
      * <p>May be a dimension value, which is a floating point number appended with a
      * unit such as "<code>14.5sp</code>".
      * Available units are: px (pixels), dp (density-independent pixels),
@@ -1679,6 +1681,7 @@ public final class R {
      */
     public static final int hlv_indicatorGravity=0x7f0300d0;
     /**
+     * a custom padding can be set
      * <p>May be a dimension value, which is a floating point number appended with a
      * unit such as "<code>14.5sp</code>".
      * Available units are: px (pixels), dp (density-independent pixels),
@@ -1710,6 +1713,9 @@ public final class R {
      */
     public static final int hlv_listViewStyle=0x7f0300d4;
     /**
+     * When "wrap_content" is used as value of the layout_height property.
+     * Pass the position, inside the adapter, of the view being used to measure the view
+     * or '-1' to use the default behavior ( default is -1 )
      * <p>May be an integer value, such as "<code>100</code>".
      */
     public static final int hlv_measureWithChild=0x7f0300d5;
@@ -1800,10 +1806,13 @@ public final class R {
      */
     public static final int iconifiedByDefault=0x7f0300df;
     /**
+     * The fixed aspect ratio to use in aspect ratio adjustments.
      * <p>May be a floating point value, such as "<code>1.2</code>".
      */
     public static final int imageAspectRatio=0x7f0300e0;
     /**
+     * What kind of aspect ratio adjustment to do.  It must be one of "none", "adjust_width",
+     * or "adjust_height".
      * <p>Must be one of the following constant values.</p>
      * <table>
      * <colgroup align="left" />
@@ -8183,7 +8192,6 @@ public final class R {
     public static final int hour24_hint=0x7f0c000c;
     public static final int hour_24_float=0x7f0c000d;
     public static final int ic_launcher=0x7f0c000e;
-<<<<<<< HEAD
     public static final int icon=0x7f0c000f;
     public static final int icon_daxue=0x7f0c0010;
     public static final int icon_dayu=0x7f0c0011;
@@ -8252,77 +8260,6 @@ public final class R {
     public static final int w7=0x7f0c0050;
     public static final int w8=0x7f0c0051;
     public static final int w9=0x7f0c0052;
-=======
-    public static final int ic_launcher_round=0x7f0c000f;
-    public static final int icon=0x7f0c0010;
-    public static final int icon_daxue=0x7f0c0011;
-    public static final int icon_dayu=0x7f0c0012;
-    public static final int icon_duoyun=0x7f0c0013;
-    public static final int icon_leizhenyu=0x7f0c0014;
-    public static final int icon_qing=0x7f0c0015;
-    public static final int icon_round=0x7f0c0016;
-    public static final int icon_taiyangyu=0x7f0c0017;
-    public static final int icon_wu=0x7f0c0018;
-    public static final int icon_xiaoxue=0x7f0c0019;
-    public static final int icon_xiaoyu=0x7f0c001a;
-    public static final int icon_yin=0x7f0c001b;
-    public static final int icon_yujiaxue=0x7f0c001c;
-    public static final int icon_zhongxue=0x7f0c001d;
-    public static final int icon_zhongyu=0x7f0c001e;
-    public static final int image_title_shouzhang=0x7f0c001f;
-    public static final int life_suggest1=0x7f0c0020;
-    public static final int life_suggest2=0x7f0c0021;
-    public static final int life_suggest3=0x7f0c0022;
-    public static final int life_suggest4=0x7f0c0023;
-    public static final int main_add=0x7f0c0024;
-    public static final int main_bg=0x7f0c0025;
-    public static final int main_bg1=0x7f0c0026;
-    public static final int main_bg2=0x7f0c0027;
-    public static final int main_bg3=0x7f0c0028;
-    public static final int main_bg4=0x7f0c0029;
-    public static final int main_bg5=0x7f0c002a;
-    public static final int main_bg6=0x7f0c002b;
-    public static final int main_bg7=0x7f0c002c;
-    public static final int main_bg8=0x7f0c002d;
-    public static final int main_city_add=0x7f0c002e;
-    public static final int main_city_close=0x7f0c002f;
-    public static final int main_city_edit=0x7f0c0030;
-    public static final int main_setting=0x7f0c0031;
-    public static final int main_share=0x7f0c0032;
-    public static final int main_shipin=0x7f0c0033;
-    public static final int main_updeta=0x7f0c0034;
-    public static final int main_user=0x7f0c0035;
-    public static final int mian_menu=0x7f0c0036;
-    public static final int mine_center_head=0x7f0c0037;
-    public static final int mycity_delete=0x7f0c0038;
-    public static final int mycity_delete_city=0x7f0c0039;
-    public static final int mycity_search=0x7f0c003a;
-    public static final int notice_main_all_itme=0x7f0c003b;
-    public static final int notice_main_choose_false=0x7f0c003c;
-    public static final int sun_loading=0x7f0c003d;
-    public static final int sunrise=0x7f0c003e;
-    public static final int sunset=0x7f0c003f;
-    public static final int text_indicator=0x7f0c0040;
-    public static final int user_vip=0x7f0c0041;
-    public static final int w0=0x7f0c0042;
-    public static final int w1=0x7f0c0043;
-    public static final int w10=0x7f0c0044;
-    public static final int w13=0x7f0c0045;
-    public static final int w14=0x7f0c0046;
-    public static final int w15=0x7f0c0047;
-    public static final int w16=0x7f0c0048;
-    public static final int w17=0x7f0c0049;
-    public static final int w18=0x7f0c004a;
-    public static final int w19=0x7f0c004b;
-    public static final int w2=0x7f0c004c;
-    public static final int w3=0x7f0c004d;
-    public static final int w4=0x7f0c004e;
-    public static final int w5=0x7f0c004f;
-    public static final int w6=0x7f0c0050;
-    public static final int w7=0x7f0c0051;
-    public static final int w8=0x7f0c0052;
-    public static final int w9=0x7f0c0053;
->>>>>>> bff3486d9977b50ca5c31f49ecc077442e830c5b
   }
   public static final class raw {
     public static final int aimei=0x7f0d0000;
@@ -16547,11 +16484,11 @@ public final class R {
      * <tr><td><code>{@link #ExpandableHListView_hlv_childDivider com.ok100.weather:hlv_childDivider}</code></td><td></td></tr>
      * <tr><td><code>{@link #ExpandableHListView_hlv_childIndicator com.ok100.weather:hlv_childIndicator}</code></td><td></td></tr>
      * <tr><td><code>{@link #ExpandableHListView_hlv_childIndicatorGravity com.ok100.weather:hlv_childIndicatorGravity}</code></td><td></td></tr>
-     * <tr><td><code>{@link #ExpandableHListView_hlv_childIndicatorPaddingLeft com.ok100.weather:hlv_childIndicatorPaddingLeft}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ExpandableHListView_hlv_childIndicatorPaddingLeft com.ok100.weather:hlv_childIndicatorPaddingLeft}</code></td><td>a custom padding can be set</td></tr>
      * <tr><td><code>{@link #ExpandableHListView_hlv_childIndicatorPaddingTop com.ok100.weather:hlv_childIndicatorPaddingTop}</code></td><td></td></tr>
      * <tr><td><code>{@link #ExpandableHListView_hlv_groupIndicator com.ok100.weather:hlv_groupIndicator}</code></td><td></td></tr>
      * <tr><td><code>{@link #ExpandableHListView_hlv_indicatorGravity com.ok100.weather:hlv_indicatorGravity}</code></td><td></td></tr>
-     * <tr><td><code>{@link #ExpandableHListView_hlv_indicatorPaddingLeft com.ok100.weather:hlv_indicatorPaddingLeft}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ExpandableHListView_hlv_indicatorPaddingLeft com.ok100.weather:hlv_indicatorPaddingLeft}</code></td><td>a custom padding can be set</td></tr>
      * <tr><td><code>{@link #ExpandableHListView_hlv_indicatorPaddingTop com.ok100.weather:hlv_indicatorPaddingTop}</code></td><td></td></tr>
      * </table>
      * @see #ExpandableHListView_hlv_childDivider
@@ -16626,8 +16563,9 @@ public final class R {
      */
     public static final int ExpandableHListView_hlv_childIndicatorGravity=2;
     /**
-     * <p>This symbol is the offset where the {@link com.ok100.weather.R.attr#hlv_childIndicatorPaddingLeft}
-     * attribute's value can be found in the {@link #ExpandableHListView} array.
+     * <p>
+     * @attr description
+     * a custom padding can be set
      *
      * <p>May be a dimension value, which is a floating point number appended with a
      * unit such as "<code>14.5sp</code>".
@@ -16693,8 +16631,9 @@ public final class R {
      */
     public static final int ExpandableHListView_hlv_indicatorGravity=6;
     /**
-     * <p>This symbol is the offset where the {@link com.ok100.weather.R.attr#hlv_indicatorPaddingLeft}
-     * attribute's value can be found in the {@link #ExpandableHListView} array.
+     * <p>
+     * @attr description
+     * a custom padding can be set
      *
      * <p>May be a dimension value, which is a floating point number appended with a
      * unit such as "<code>14.5sp</code>".
@@ -17754,7 +17693,7 @@ public final class R {
      * <tr><td><code>{@link #HListView_hlv_dividerWidth com.ok100.weather:hlv_dividerWidth}</code></td><td></td></tr>
      * <tr><td><code>{@link #HListView_hlv_footerDividersEnabled com.ok100.weather:hlv_footerDividersEnabled}</code></td><td></td></tr>
      * <tr><td><code>{@link #HListView_hlv_headerDividersEnabled com.ok100.weather:hlv_headerDividersEnabled}</code></td><td></td></tr>
-     * <tr><td><code>{@link #HListView_hlv_measureWithChild com.ok100.weather:hlv_measureWithChild}</code></td><td></td></tr>
+     * <tr><td><code>{@link #HListView_hlv_measureWithChild com.ok100.weather:hlv_measureWithChild}</code></td><td>When "wrap_content" is used as value of the layout_height property.</td></tr>
      * <tr><td><code>{@link #HListView_hlv_overScrollFooter com.ok100.weather:hlv_overScrollFooter}</code></td><td></td></tr>
      * <tr><td><code>{@link #HListView_hlv_overScrollHeader com.ok100.weather:hlv_overScrollHeader}</code></td><td></td></tr>
      * </table>
@@ -17832,8 +17771,11 @@ public final class R {
      */
     public static final int HListView_hlv_headerDividersEnabled=4;
     /**
-     * <p>This symbol is the offset where the {@link com.ok100.weather.R.attr#hlv_measureWithChild}
-     * attribute's value can be found in the {@link #HListView} array.
+     * <p>
+     * @attr description
+     * When "wrap_content" is used as value of the layout_height property.
+     * Pass the position, inside the adapter, of the view being used to measure the view
+     * or '-1' to use the default behavior ( default is -1 )
      *
      * <p>May be an integer value, such as "<code>100</code>".
      *
@@ -18214,9 +18156,9 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #LoadingImageView_circleCrop com.ok100.weather:circleCrop}</code></td><td></td></tr>
-     * <tr><td><code>{@link #LoadingImageView_imageAspectRatio com.ok100.weather:imageAspectRatio}</code></td><td></td></tr>
-     * <tr><td><code>{@link #LoadingImageView_imageAspectRatioAdjust com.ok100.weather:imageAspectRatioAdjust}</code></td><td></td></tr>
+     * <tr><td><code>{@link #LoadingImageView_circleCrop com.ok100.weather:circleCrop}</code></td><td>Whether or not this view should have a circular clip applied</td></tr>
+     * <tr><td><code>{@link #LoadingImageView_imageAspectRatio com.ok100.weather:imageAspectRatio}</code></td><td>The fixed aspect ratio to use in aspect ratio adjustments.</td></tr>
+     * <tr><td><code>{@link #LoadingImageView_imageAspectRatioAdjust com.ok100.weather:imageAspectRatioAdjust}</code></td><td>What kind of aspect ratio adjustment to do.</td></tr>
      * </table>
      * @see #LoadingImageView_circleCrop
      * @see #LoadingImageView_imageAspectRatio
@@ -18226,8 +18168,9 @@ public final class R {
       0x7f030059, 0x7f0300e0, 0x7f0300e1
     };
     /**
-     * <p>This symbol is the offset where the {@link com.ok100.weather.R.attr#circleCrop}
-     * attribute's value can be found in the {@link #LoadingImageView} array.
+     * <p>
+     * @attr description
+     * Whether or not this view should have a circular clip applied
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
@@ -18236,8 +18179,9 @@ public final class R {
      */
     public static final int LoadingImageView_circleCrop=0;
     /**
-     * <p>This symbol is the offset where the {@link com.ok100.weather.R.attr#imageAspectRatio}
-     * attribute's value can be found in the {@link #LoadingImageView} array.
+     * <p>
+     * @attr description
+     * The fixed aspect ratio to use in aspect ratio adjustments.
      *
      * <p>May be a floating point value, such as "<code>1.2</code>".
      *
@@ -18245,8 +18189,10 @@ public final class R {
      */
     public static final int LoadingImageView_imageAspectRatio=1;
     /**
-     * <p>This symbol is the offset where the {@link com.ok100.weather.R.attr#imageAspectRatioAdjust}
-     * attribute's value can be found in the {@link #LoadingImageView} array.
+     * <p>
+     * @attr description
+     * What kind of aspect ratio adjustment to do.  It must be one of "none", "adjust_width",
+     * or "adjust_height".
      *
      * <p>Must be one of the following constant values.</p>
      * <table>

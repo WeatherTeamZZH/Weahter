@@ -1,16 +1,17 @@
 package com.ok100.weather.fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.GestureDetector;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.ok100.weather.MainActivity;
@@ -18,6 +19,7 @@ import com.ok100.weather.R;
 import com.ok100.weather.activity.NoticeDetatilActivity;
 import com.ok100.weather.adapter.NoticeMainFragmentAdapter;
 import com.ok100.weather.base.BaseFragment;
+import com.ok100.weather.bean.EventTitleMessage;
 import com.ok100.weather.bean.NewsListBean;
 import com.ok100.weather.bean.NoticeMainListBean;
 import com.ok100.weather.http.ReturnDataView;
@@ -28,11 +30,14 @@ import com.ok100.weather.view.CustomLoadMoreViewNews;
 import com.ok100.weather.view.MyLinearLayoutManager1;
 import com.ok100.weather.view.MyRecyclerView;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 
@@ -124,6 +129,7 @@ public class NoticeMainFragment1 extends BaseFragment implements BaseQuickAdapte
     }
 
 
+
     private void http() {
         newsListPresenterImpl = new NewsListPresenterImpl(this);
         HashMap<String, String> stringStringHashMap = new HashMap<>();
@@ -154,6 +160,7 @@ public class NoticeMainFragment1 extends BaseFragment implements BaseQuickAdapte
                 }
             }
 
+            @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 totalDy -= dy;
@@ -161,13 +168,23 @@ public class NoticeMainFragment1 extends BaseFragment implements BaseQuickAdapte
                 if (totalDy < 0) {
                     if (xiaoyulin) {
                         mRecyclerView.stopScroll();
-                        bootomVisibleListener.setBootomVisible(true);
-                        taybarVisibleListener.setTaybarVisible(false);
+                        if(MainActivity.backTitle){
+                            xiaoyulin = true;
+                            resateRecycle();
+                            return;
+                        }
+
+//                            bootomVisibleListener.setBootomVisible(true);
+//                            taybarVisibleListener.setTaybarVisible(false);
+                        MainActivity activity = (MainActivity) getActivity();
+                        activity.hitiTitle(false);
+                        activity.appBarView(false);
+                        activity.bottomView(true);
                         xiaoyulin = false;
                     }
 
                 } else {
-                    mRecyclerView.stopScroll();
+//                    mRecyclerView.stopScroll();
                     xiaoyulin = true;
 //                    bootomVisibleListener.setBootomVisible(false);
 //                    taybarVisibleListener.setTaybarVisible(true);
@@ -301,22 +318,34 @@ public class NoticeMainFragment1 extends BaseFragment implements BaseQuickAdapte
     }
 
     private GestureDetector mGestureDetector;
+
+
+
     @Override
     public void onDestroyView() {
-        Log.e("onDestroyView", "+++"+departmentId+"+++"+type);
+        Log.e("onDestroy", "nocitefragmet++onDestroyView++"+departmentId+"+++"+type);
         super.onDestroyView();
 
     }
 
     @Override
     public void onDestroy() {
-        Log.e("onDestroyView", "+++"+departmentId+"+++"+type);
+        Log.e("onDestroy", "nocitefragmet++onDestroy++"+departmentId+"+++"+type);
         super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
+
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EventBus.getDefault().register(this);
+    }
+
 
     public void resateRecycle() {
 //        RecyclerView recyclerView  = (RecyclerView) findViewById(R.id.recycle);
-        Log.e("totalDy", "+++"+departmentId+"+++"+type);
+        Log.e("onDestroy", "nocitefragmet++resateRecycle++"+departmentId+"+++"+type);
         if (mRecyclerView != null) {
             Log.e("mainFragment", "有");
             mRecyclerView.scrollBy(0, totalDy - 100);
@@ -324,4 +353,14 @@ public class NoticeMainFragment1 extends BaseFragment implements BaseQuickAdapte
 
     }
 
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onReceiveMsg(EventTitleMessage titleMessage) {
+        String message = titleMessage.getMessage();
+        Log.e("message",message);
+        if (mRecyclerView != null) {
+            mRecyclerView.scrollBy(0, totalDy - 100);
+        }
+
+    }
 }

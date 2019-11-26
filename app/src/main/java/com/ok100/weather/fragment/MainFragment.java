@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
@@ -169,7 +170,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     private List<ViewPagerDataSource> viewPagerDataSourceList = new ArrayList<>();
 
     private ArrayList<NoticeMainChooseBean> noticeMainChooseBeanList = new ArrayList<NoticeMainChooseBean>();
-    private FragmentPagerAdapter fragmentPagerAdapter;
+    private FragmentStatePagerAdapter fragmentPagerAdapter;
     private NoticeMainFragmentItemAdapter noticeMainFragmentItemAdapter;
 
     List<DepartmentListBean> departmentListBeans = new ArrayList<>();
@@ -288,6 +289,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void init(Bundle savedInstanceState, View contentView) {
+        Log.e("onDestroy", "mainfragmetn++init++"+city+"+++"+area);
         findView();
         setMianRelativeHeight();
         mCoordinatorLayout.getBackground().setAlpha(0);
@@ -404,12 +406,12 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
 //        onRefresh();
 
         initData();
-        http();
+
 
         setNewArraylist();
         mTabLayout.setSelectedTabIndicatorColor(Color.BLUE);
-
-    }
+        http();
+            }
 
     @Override
     public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
@@ -528,7 +530,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
 
     private void initFragment() {
 
-        fragmentPagerAdapter = new FragmentPagerAdapter(getChildFragmentManager()) {
+        fragmentPagerAdapter = new FragmentStatePagerAdapter(getChildFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
                 return viewPagerDataSourceList.get(position).getFragment();
@@ -545,10 +547,8 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
             }
         };
     }
-
+    NoticeMainFragment1 fragment;
     private void getTitleListData(List<DepartmentListBean> departmentListBean) {
-
-        NoticeMainFragment1 fragment;
         TitleListData titleListData;
         viewPagerDataSourceList.clear();
         for (int i = 0; i < departmentListBean.size(); i++) {
@@ -559,14 +559,11 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
             fragment.setArguments(args);
             titleListData = new TitleListData(DataBean.getNewTitleList().get(i));
             viewPagerDataSourceList.add(new ViewPagerDataSource(fragment, titleListData));
-            NoticeMainFragment1 finalFragment = fragment;
             ((NoticeMainFragment1) fragment).setBootomVisibleListener(new BootomVisibleListener() {
                 @Override
                 public void setBootomVisible(boolean visible) {
-                    finalFragment.mRecyclerView.stopScroll();
                     setBottomVisible(visible);
-                    MainActivity activity = (MainActivity) getActivity();
-                    activity.hitiTitle(visible);
+
 //                    mAppBarLayout.setVisibility(View.GONE);
 
                 }
@@ -575,7 +572,6 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
 
                 @Override
                 public void setTaybarVisible(boolean visible) {
-                    finalFragment.mRecyclerView.stopScroll();
                     setAllGoneViewVisible(visible);
 
                 }
@@ -642,10 +638,6 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
 //        return rootView;
 //    }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-    }
 
     private class ViewPagerDataSource {
         private Fragment fragment;
@@ -915,6 +907,11 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     }
 
     private void http() {
+
+        city = getArguments().getString(CITY);
+        prov = getArguments().getString(PROV);
+        area = getArguments().getString(AREA);
+
         NoticeMainListPresenterImpl noticeMainListPresenter = new NoticeMainListPresenterImpl(this);
         HashMap<String, String> hashMap = new HashMap<>();
 //        hashMap.put("area", "西湖");
@@ -984,18 +981,18 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        if(isVisibleToUser){
-            Log.e("isVisibleToUser","true"+area);
-            if(weatherTotalBean!=null){
-                MainActivity activity = (MainActivity) getActivity();
-                activity.setTitleDate(weatherTotalBean.getData().getNow().getDetail().getDate()+" 周"+weatherTotalBean.getData().getNow().getDetail().getWeek()+" 农历"+weatherTotalBean.getData().getNow().getDetail().getNongli());
-                activity.setTitleWeather(weatherTotalBean.getData().getNow().getDetail().getTemperature()+"°");
-                activity.setTitleWeatherImage(ChooseTypeUtils.getWeatherImgge(weatherTotalBean.getData().getNow().getDetail().getWeather()));
-            }
-
-        } else {
-            Log.e("isVisibleToUser","false"+area);
-        }
+//        if(isVisibleToUser){
+//            Log.e("isVisibleToUser","true"+area);
+//            if(weatherTotalBean!=null){
+//                MainActivity activity = (MainActivity) getActivity();
+//                activity.setTitleDate(weatherTotalBean.getData().getNow().getDetail().getDate()+" 周"+weatherTotalBean.getData().getNow().getDetail().getWeek()+" 农历"+weatherTotalBean.getData().getNow().getDetail().getNongli());
+//                activity.setTitleWeather(weatherTotalBean.getData().getNow().getDetail().getTemperature()+"°");
+//                activity.setTitleWeatherImage(ChooseTypeUtils.getWeatherImgge(weatherTotalBean.getData().getNow().getDetail().getWeather()));
+//            }
+//
+//        } else {
+//            Log.e("isVisibleToUser","false"+area);
+//        }
     }
 
 
@@ -1045,4 +1042,22 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
         return weatherModels;
     }
 
+    @Override
+    public void onDestroy() {
+        Log.e("onDestroy", "mainfragmet++onDestroy++"+city+"+++"+area);
+        super.onDestroy();
+    }
+
+    @Override
+    public void onDestroyView() {
+        Log.e("onDestroy", "mainfragmet++onDestroyView++"+city+"+++"+area);
+        super.onDestroyView();
+
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        Log.e("onDestroy", "mainfragmetn++onCreate++"+city+"+++"+area);
+        super.onCreate(savedInstanceState);
+    }
 }

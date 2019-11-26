@@ -3,6 +3,7 @@ package com.ok100.weather.myviewpager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.util.Log;
 import android.util.LongSparseArray;
 import android.util.SparseArray;
@@ -67,6 +68,8 @@ public class TextPagerAdapter extends FragmentPagerAdapter {
     @Override
     public int getItemPosition(Object object) {
             return POSITION_NONE;
+
+
     }
 
     @Override

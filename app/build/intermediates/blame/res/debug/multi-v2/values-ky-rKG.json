@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/gh/Desktop/android/android_projects/my/Weahter/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ky-rKG/values-ky-rKG.xml",
+            "outputFile": "G:\\OKWeather\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ky-rKG\\values-ky-rKG.xml",
             "map": [
                 {
-                    "source": "/Users/gh/Android/gradle-4.4/caches/transforms-1/files-1.1/play-services-base-8.4.0.aar/04bbcf3d33738ffae9f30f3885718125/res/values-ky-rKG/base_strings.xml",
+                    "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\play-services-base-8.4.0.aar\\853e754b8f8b70942bd41027979afe2f\\res\\values-ky-rKG\\base_strings.xml",
                     "from": {
                         "startLines": "24,10,9,8,7,5,6,4,19,18,17,16,3,28,27,26,25,21,20,22,12,11,15,14,13,23,29,30",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "/Users/gh/Android/gradle-4.4/caches/transforms-1/files-1.1/play-services-basement-8.4.0.aar/0b48adbf2789c535c91bfb9042685ecf/res/values-ky-rKG/common_strings.xml",
+                    "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\play-services-basement-8.4.0.aar\\eb2e7dbb8539bfefbb583965c7605120\\res\\values-ky-rKG\\common_strings.xml",
                     "from": {
                         "startLines": "3",
                         "startColumns": "4",
