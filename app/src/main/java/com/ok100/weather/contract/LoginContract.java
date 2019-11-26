@@ -3,7 +3,7 @@ package com.ok100.weather.contract;
 import android.content.Context;
 
 import com.ok100.weather.bean.LoginBean;
-import com.ok100.weather.bean.NewsListBean;
+import com.ok100.weather.bean.SMSBean;
 import com.ok100.weather.http.ServiceResult;
 
 import java.util.Map;
@@ -25,7 +25,7 @@ public class LoginContract {
     }
 
     public interface Model {
-        void sendSms(Context context, Map<String, String> map, ServiceResult<LoginBean> serviceResult);
+        void sendSms(Context context, Map<String, String> map, ServiceResult<SMSBean> serviceResult);
         void smslogin(Context context, Map<String, String> map, ServiceResult<LoginBean> serviceResult);
 
     }

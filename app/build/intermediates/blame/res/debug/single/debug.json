@@ -48,12 +48,12 @@
         "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\play-services-base-8.4.0.aar\\853e754b8f8b70942bd41027979afe2f\\res\\drawable-hdpi\\common_plus_signin_btn_text_light_normal.9.png"
     },
     {
-        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\layout_layout_tab_top.xml.flat",
-        "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\FlycoTabLayout_Lib-2.1.2.aar\\7f6be0a87f081d52290f5af4e611536d\\res\\layout\\layout_tab_top.xml"
-    },
-    {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\layout_design_text_input_password_icon.xml.flat",
         "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\design-26.0.1.aar\\f566bfd8a4a7719afecb0ecdc211cae0\\res\\layout\\design_text_input_password_icon.xml"
+    },
+    {
+        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\layout_layout_tab_top.xml.flat",
+        "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\FlycoTabLayout_Lib-2.1.2.aar\\7f6be0a87f081d52290f5af4e611536d\\res\\layout\\layout_tab_top.xml"
     },
     {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_aviary_delete_knob.png.flat",
@@ -64,28 +64,28 @@
         "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\play-services-base-8.4.0.aar\\853e754b8f8b70942bd41027979afe2f\\res\\drawable-tvdpi\\common_plus_signin_btn_icon_light_disabled.9.png"
     },
     {
-        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\layout_select_pic_pop_dialog.xml.flat",
-        "source": "G:\\OKWeather\\app\\src\\main\\res\\layout\\select_pic_pop_dialog.xml"
-    },
-    {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\layout_pickerview_options.xml.flat",
         "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\Android-PickerView-4.1.9.aar\\e4005d8c054a4c08081ca4579849ae63\\res\\layout\\pickerview_options.xml"
     },
     {
-        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_ic_menu_cut_mtrl_alpha.png.flat",
-        "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.1.aar\\960f789efdca2387da005ce963857841\\res\\drawable-xxxhdpi-v4\\abc_ic_menu_cut_mtrl_alpha.png"
+        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\layout_select_pic_pop_dialog.xml.flat",
+        "source": "G:\\OKWeather\\app\\src\\main\\res\\layout\\select_pic_pop_dialog.xml"
     },
     {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_btn_switch_to_on_mtrl_00012.9.png.flat",
         "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.1.aar\\960f789efdca2387da005ce963857841\\res\\drawable-xxxhdpi-v4\\abc_btn_switch_to_on_mtrl_00012.9.png"
     },
     {
-        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\layout_tablayou_view_housepk_right.xml.flat",
-        "source": "G:\\OKWeather\\app\\src\\main\\res\\layout\\tablayou_view_housepk_right.xml"
+        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_ic_menu_cut_mtrl_alpha.png.flat",
+        "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.1.aar\\960f789efdca2387da005ce963857841\\res\\drawable-xxxhdpi-v4\\abc_ic_menu_cut_mtrl_alpha.png"
     },
     {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_btn_switch_to_on_mtrl_00001.9.png.flat",
         "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.1.aar\\960f789efdca2387da005ce963857841\\res\\drawable-xxxhdpi-v4\\abc_btn_switch_to_on_mtrl_00001.9.png"
+    },
+    {
+        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\layout_tablayou_view_housepk_right.xml.flat",
+        "source": "G:\\OKWeather\\app\\src\\main\\res\\layout\\tablayou_view_housepk_right.xml"
     },
     {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_camera_flash_on.png.flat",
@@ -96,12 +96,12 @@
         "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.1.aar\\960f789efdca2387da005ce963857841\\res\\drawable\\abc_edit_text_material.xml"
     },
     {
-        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_item_background_holo_light.xml.flat",
-        "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.1.aar\\960f789efdca2387da005ce963857841\\res\\drawable\\abc_item_background_holo_light.xml"
-    },
-    {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
         "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.1.aar\\960f789efdca2387da005ce963857841\\res\\drawable-xhdpi-v4\\abc_ic_menu_copy_mtrl_am_alpha.png"
+    },
+    {
+        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_item_background_holo_light.xml.flat",
+        "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.1.aar\\960f789efdca2387da005ce963857841\\res\\drawable\\abc_item_background_holo_light.xml"
     },
     {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_w1.png.flat",
@@ -136,12 +136,12 @@
         "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\imagepicker-0.6.1.aar\\60f2bfb3c3834f36369f5799f5d5eb28\\res\\layout\\adapter_folder_list_item.xml"
     },
     {
-        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_main_bg7.jpg.flat",
-        "source": "G:\\OKWeather\\app\\src\\main\\res\\drawable-xhdpi\\main_bg7.jpg"
-    },
-    {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_w0.png.flat",
         "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\zz-weather-view-1.0.2.aar\\c3f1ab519a2f4c8d5eeb97e9c45214cf\\res\\drawable-xhdpi-v4\\w0.png"
+    },
+    {
+        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_main_bg7.jpg.flat",
+        "source": "G:\\OKWeather\\app\\src\\main\\res\\drawable-xhdpi\\main_bg7.jpg"
     },
     {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_camera_library.png.flat",
@@ -156,32 +156,32 @@
         "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\library-2.1.3.aar\\b90da1151a2926936443674608d2809e\\res\\drawable-hdpi\\met_ic_clear.png"
     },
     {
-        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_fab_shadow_mini.png.flat",
-        "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\floatingactionbutton-1.3.0.aar\\0e3b26bed62b35cb7068b4d0c8cc8756\\res\\drawable-mdpi-v4\\fab_shadow_mini.png"
-    },
-    {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_common_plus_signin_btn_icon_light_disabled.9.png.flat",
         "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\play-services-base-8.4.0.aar\\853e754b8f8b70942bd41027979afe2f\\res\\drawable-mdpi\\common_plus_signin_btn_icon_light_disabled.9.png"
     },
     {
-        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_design_ic_visibility.xml.flat",
-        "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\design-26.0.1.aar\\f566bfd8a4a7719afecb0ecdc211cae0\\res\\drawable-anydpi-v21\\design_ic_visibility.xml"
-    },
-    {
-        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_ic_launcher_foreground.xml.flat",
-        "source": "G:\\OKWeather\\app\\src\\main\\res\\drawable-v24\\ic_launcher_foreground.xml"
+        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_fab_shadow_mini.png.flat",
+        "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\floatingactionbutton-1.3.0.aar\\0e3b26bed62b35cb7068b4d0c8cc8756\\res\\drawable-mdpi-v4\\fab_shadow_mini.png"
     },
     {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\anim_abc_fade_in.xml.flat",
         "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.1.aar\\960f789efdca2387da005ce963857841\\res\\anim\\abc_fade_in.xml"
     },
     {
-        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_cab_background_top_mtrl_alpha.9.png.flat",
-        "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.1.aar\\960f789efdca2387da005ce963857841\\res\\drawable-mdpi-v4\\abc_cab_background_top_mtrl_alpha.9.png"
+        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_ic_launcher_foreground.xml.flat",
+        "source": "G:\\OKWeather\\app\\src\\main\\res\\drawable-v24\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_design_ic_visibility.xml.flat",
+        "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\design-26.0.1.aar\\f566bfd8a4a7719afecb0ecdc211cae0\\res\\drawable-anydpi-v21\\design_ic_visibility.xml"
     },
     {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_list_menu_item_checkbox.xml.flat",
         "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.1.aar\\960f789efdca2387da005ce963857841\\res\\layout\\abc_list_menu_item_checkbox.xml"
+    },
+    {
+        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_cab_background_top_mtrl_alpha.9.png.flat",
+        "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.1.aar\\960f789efdca2387da005ce963857841\\res\\drawable-mdpi-v4\\abc_cab_background_top_mtrl_alpha.9.png"
     },
     {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_icon_daxue.png.flat",
@@ -196,12 +196,12 @@
         "source": "G:\\OKWeather\\app\\src\\main\\res\\drawable-xxhdpi\\abc_text_select_handle_left_mtrl_light.png"
     },
     {
-        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_mycity_search.png.flat",
-        "source": "G:\\OKWeather\\app\\src\\main\\res\\mipmap-xhdpi\\mycity_search.png"
-    },
-    {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable_selector_top_ok.xml.flat",
         "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\imagepicker-0.6.1.aar\\60f2bfb3c3834f36369f5799f5d5eb28\\res\\drawable\\selector_top_ok.xml"
+    },
+    {
+        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_mycity_search.png.flat",
+        "source": "G:\\OKWeather\\app\\src\\main\\res\\mipmap-xhdpi\\mycity_search.png"
     },
     {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_back.png.flat",
@@ -248,12 +248,12 @@
         "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\play-services-base-8.4.0.aar\\853e754b8f8b70942bd41027979afe2f\\res\\drawable-xhdpi\\common_plus_signin_btn_text_dark_pressed.9.png"
     },
     {
-        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_ic_menu_share_mtrl_alpha.png.flat",
-        "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.1.aar\\960f789efdca2387da005ce963857841\\res\\drawable-hdpi-v4\\abc_ic_menu_share_mtrl_alpha.png"
-    },
-    {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\layout-v16_notification_template_custom_big.xml.flat",
         "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\support-compat-26.0.1.aar\\ecd1ecb14ab02f1b4c529d3acf193689\\res\\layout-v16\\notification_template_custom_big.xml"
+    },
+    {
+        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_ic_menu_share_mtrl_alpha.png.flat",
+        "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.1.aar\\960f789efdca2387da005ce963857841\\res\\drawable-hdpi-v4\\abc_ic_menu_share_mtrl_alpha.png"
     },
     {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_main_user.png.flat",
@@ -276,12 +276,12 @@
         "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\imagepicker-0.6.1.aar\\60f2bfb3c3834f36369f5799f5d5eb28\\res\\layout\\activity_image_crop.xml"
     },
     {
-        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_back_right.png.flat",
-        "source": "G:\\OKWeather\\app\\src\\main\\res\\mipmap-xhdpi\\back_right.png"
-    },
-    {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\layout_design_layout_snackbar.xml.flat",
         "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\design-26.0.1.aar\\f566bfd8a4a7719afecb0ecdc211cae0\\res\\layout\\design_layout_snackbar.xml"
+    },
+    {
+        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_back_right.png.flat",
+        "source": "G:\\OKWeather\\app\\src\\main\\res\\mipmap-xhdpi\\back_right.png"
     },
     {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_common_google_signin_btn_icon_dark_disabled.9.png.flat",
@@ -300,16 +300,16 @@
         "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\floatingactionbutton-1.3.0.aar\\0e3b26bed62b35cb7068b4d0c8cc8756\\res\\drawable-xhdpi-v4\\fab_shadow_mini.png"
     },
     {
-        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21_avd_hide_password.xml.flat",
-        "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\design-26.0.1.aar\\f566bfd8a4a7719afecb0ecdc211cae0\\res\\drawable-v21\\avd_hide_password.xml"
+        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-xxxhdpi-v17_abc_ic_menu_cut_mtrl_alpha.png.flat",
+        "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.1.aar\\960f789efdca2387da005ce963857841\\res\\drawable-ldrtl-xxxhdpi-v17\\abc_ic_menu_cut_mtrl_alpha.png"
     },
     {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_scrubber_primary_mtrl_alpha.9.png.flat",
         "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.1.aar\\960f789efdca2387da005ce963857841\\res\\drawable-xhdpi-v4\\abc_scrubber_primary_mtrl_alpha.9.png"
     },
     {
-        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-xxxhdpi-v17_abc_ic_menu_cut_mtrl_alpha.png.flat",
-        "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.1.aar\\960f789efdca2387da005ce963857841\\res\\drawable-ldrtl-xxxhdpi-v17\\abc_ic_menu_cut_mtrl_alpha.png"
+        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21_avd_hide_password.xml.flat",
+        "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\design-26.0.1.aar\\f566bfd8a4a7719afecb0ecdc211cae0\\res\\drawable-v21\\avd_hide_password.xml"
     },
     {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_ic_star_black_48dp.png.flat",
@@ -448,12 +448,12 @@
         "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.1.aar\\960f789efdca2387da005ce963857841\\res\\drawable-xxhdpi-v4\\abc_list_divider_mtrl_alpha.9.png"
     },
     {
-        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable_navigation_empty_icon.xml.flat",
-        "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\design-26.0.1.aar\\f566bfd8a4a7719afecb0ecdc211cae0\\res\\drawable\\navigation_empty_icon.xml"
-    },
-    {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_common_google_signin_btn_text_light_focused.9.png.flat",
         "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\play-services-base-8.4.0.aar\\853e754b8f8b70942bd41027979afe2f\\res\\drawable-xhdpi\\common_google_signin_btn_text_light_focused.9.png"
+    },
+    {
+        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable_navigation_empty_icon.xml.flat",
+        "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\design-26.0.1.aar\\f566bfd8a4a7719afecb0ecdc211cae0\\res\\drawable\\navigation_empty_icon.xml"
     },
     {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_scrubber_control_to_pressed_mtrl_005.png.flat",
@@ -464,12 +464,12 @@
         "source": "G:\\OKWeather\\app\\src\\main\\res\\drawable-xxhdpi\\upsdk_cancel_normal.png"
     },
     {
-        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_notification_bg_normal.9.png.flat",
-        "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\support-compat-26.0.1.aar\\ecd1ecb14ab02f1b4c529d3acf193689\\res\\drawable-xhdpi-v4\\notification_bg_normal.9.png"
-    },
-    {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_mycity_delete_city.png.flat",
         "source": "G:\\OKWeather\\app\\src\\main\\res\\mipmap-xhdpi\\mycity_delete_city.png"
+    },
+    {
+        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_notification_bg_normal.9.png.flat",
+        "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\support-compat-26.0.1.aar\\ecd1ecb14ab02f1b4c529d3acf193689\\res\\drawable-xhdpi-v4\\notification_bg_normal.9.png"
     },
     {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21_notification_action_tombstone.xml.flat",
@@ -480,12 +480,12 @@
         "source": "G:\\OKWeather\\app\\src\\main\\res\\layout\\view_label_layout.xml"
     },
     {
-        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_template_icon_group.xml.flat",
-        "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\support-compat-26.0.1.aar\\ecd1ecb14ab02f1b4c529d3acf193689\\res\\layout\\notification_template_icon_group.xml"
-    },
-    {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_new_crop.xml.flat",
         "source": "G:\\OKWeather\\app\\src\\main\\res\\layout\\activity_new_crop.xml"
+    },
+    {
+        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_template_icon_group.xml.flat",
+        "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\support-compat-26.0.1.aar\\ecd1ecb14ab02f1b4c529d3acf193689\\res\\layout\\notification_template_icon_group.xml"
     },
     {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\anim_hide_to_bottom.xml.flat",
@@ -536,12 +536,12 @@
         "source": "G:\\OKWeather\\app\\src\\main\\res\\mipmap-xhdpi\\w17.png"
     },
     {
-        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_vector_test.xml.flat",
-        "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.1.aar\\960f789efdca2387da005ce963857841\\res\\drawable\\abc_vector_test.xml"
-    },
-    {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_ic_star_black_16dp.png.flat",
         "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.1.aar\\960f789efdca2387da005ce963857841\\res\\drawable-mdpi-v4\\abc_ic_star_black_16dp.png"
+    },
+    {
+        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_vector_test.xml.flat",
+        "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.1.aar\\960f789efdca2387da005ce963857841\\res\\drawable\\abc_vector_test.xml"
     },
     {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_alert_dialog_button_bar_material.xml.flat",
@@ -716,16 +716,16 @@
         "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\play-services-base-8.4.0.aar\\853e754b8f8b70942bd41027979afe2f\\res\\drawable-xxhdpi\\common_google_signin_btn_icon_dark_pressed.9.png"
     },
     {
-        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_common_google_signin_btn_icon_dark_pressed.9.png.flat",
-        "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\play-services-base-8.4.0.aar\\853e754b8f8b70942bd41027979afe2f\\res\\drawable-mdpi\\common_google_signin_btn_icon_dark_pressed.9.png"
+        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\layout_design_navigation_menu_item.xml.flat",
+        "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\design-26.0.1.aar\\f566bfd8a4a7719afecb0ecdc211cae0\\res\\layout\\design_navigation_menu_item.xml"
     },
     {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_common_google_signin_btn_icon_light_focused.9.png.flat",
         "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\play-services-base-8.4.0.aar\\853e754b8f8b70942bd41027979afe2f\\res\\drawable-mdpi\\common_google_signin_btn_icon_light_focused.9.png"
     },
     {
-        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\layout_design_navigation_menu_item.xml.flat",
-        "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\design-26.0.1.aar\\f566bfd8a4a7719afecb0ecdc211cae0\\res\\layout\\design_navigation_menu_item.xml"
+        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_common_google_signin_btn_icon_dark_pressed.9.png.flat",
+        "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\play-services-base-8.4.0.aar\\853e754b8f8b70942bd41027979afe2f\\res\\drawable-mdpi\\common_google_signin_btn_icon_dark_pressed.9.png"
     },
     {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable_shape_dialog_edittext.xml.flat",
@@ -828,12 +828,12 @@
         "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\play-services-base-8.4.0.aar\\853e754b8f8b70942bd41027979afe2f\\res\\drawable-xxhdpi\\common_plus_signin_btn_text_light_pressed.9.png"
     },
     {
-        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_w14.png.flat",
-        "source": "G:\\OKWeather\\app\\src\\main\\res\\mipmap-xhdpi\\w14.png"
-    },
-    {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\layout_umeng_socialize_share.xml.flat",
         "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\share-core-6.9.1.aar\\f6735a5d0de13e1cb159f2ecf1014a3c\\res\\layout\\umeng_socialize_share.xml"
+    },
+    {
+        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_w14.png.flat",
+        "source": "G:\\OKWeather\\app\\src\\main\\res\\mipmap-xhdpi\\w14.png"
     },
     {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_arrow_back.xml.flat",
@@ -864,12 +864,12 @@
         "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.1.aar\\960f789efdca2387da005ce963857841\\res\\drawable-xhdpi-v4\\abc_btn_check_to_on_mtrl_000.png"
     },
     {
-        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_notice_main1_fragment1_top.xml.flat",
-        "source": "G:\\OKWeather\\app\\src\\main\\res\\layout\\item_notice_main1_fragment1_top.xml"
-    },
-    {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_aviary_resize_knob.png.flat",
         "source": "G:\\OKWeather\\app\\src\\main\\res\\drawable-xhdpi\\aviary_resize_knob.png"
+    },
+    {
+        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_notice_main1_fragment1_top.xml.flat",
+        "source": "G:\\OKWeather\\app\\src\\main\\res\\layout\\item_notice_main1_fragment1_top.xml"
     },
     {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\anim_pickerview_dialog_scale_in.xml.flat",
@@ -952,12 +952,12 @@
         "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.1.aar\\960f789efdca2387da005ce963857841\\res\\drawable\\abc_ic_go_search_api_material.xml"
     },
     {
-        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_common_google_signin_btn_text_dark_normal.9.png.flat",
-        "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\play-services-base-8.4.0.aar\\853e754b8f8b70942bd41027979afe2f\\res\\drawable-xxhdpi\\common_google_signin_btn_text_dark_normal.9.png"
-    },
-    {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_abc_ic_menu_paste_mtrl_am_alpha.png.flat",
         "source": "G:\\OKWeather\\app\\src\\main\\res\\drawable-xxhdpi\\abc_ic_menu_paste_mtrl_am_alpha.png"
+    },
+    {
+        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_common_google_signin_btn_text_dark_normal.9.png.flat",
+        "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\play-services-base-8.4.0.aar\\853e754b8f8b70942bd41027979afe2f\\res\\drawable-xxhdpi\\common_google_signin_btn_text_dark_normal.9.png"
     },
     {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_life_suggest4.png.flat",
@@ -2084,6 +2084,10 @@
         "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\play-services-base-8.4.0.aar\\853e754b8f8b70942bd41027979afe2f\\res\\drawable-mdpi\\common_google_signin_btn_icon_dark_normal.9.png"
     },
     {
+        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable_shape_login_3.xml.flat",
+        "source": "G:\\OKWeather\\app\\src\\main\\res\\drawable\\shape_login_3.xml"
+    },
+    {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_main_bg1.jpeg.flat",
         "source": "G:\\OKWeather\\app\\src\\main\\res\\mipmap-xhdpi\\main_bg1.jpeg"
     },
@@ -2528,12 +2532,12 @@
         "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\zz-weather-view-1.0.2.aar\\c3f1ab519a2f4c8d5eeb97e9c45214cf\\res\\drawable-xhdpi-v4\\w17.png"
     },
     {
-        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_common_plus_signin_btn_text_dark_disabled.9.png.flat",
-        "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\play-services-base-8.4.0.aar\\853e754b8f8b70942bd41027979afe2f\\res\\drawable-xxhdpi\\common_plus_signin_btn_text_dark_disabled.9.png"
-    },
-    {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_screen_content_include.xml.flat",
         "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.1.aar\\960f789efdca2387da005ce963857841\\res\\layout\\abc_screen_content_include.xml"
+    },
+    {
+        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_common_plus_signin_btn_text_dark_disabled.9.png.flat",
+        "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\play-services-base-8.4.0.aar\\853e754b8f8b70942bd41027979afe2f\\res\\drawable-xxhdpi\\common_plus_signin_btn_text_dark_disabled.9.png"
     },
     {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable_selector_back_press.xml.flat",
@@ -3100,6 +3104,10 @@
         "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\play-services-base-8.4.0.aar\\853e754b8f8b70942bd41027979afe2f\\res\\drawable\\common_google_signin_btn_text_light.xml"
     },
     {
+        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable_shape_login_2.xml.flat",
+        "source": "G:\\OKWeather\\app\\src\\main\\res\\drawable\\shape_login_2.xml"
+    },
+    {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_list_selector_holo_dark.xml.flat",
         "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.1.aar\\960f789efdca2387da005ce963857841\\res\\drawable\\abc_list_selector_holo_dark.xml"
     },
@@ -3522,6 +3530,10 @@
     {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_btn_switch_to_on_mtrl_00012.9.png.flat",
         "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.1.aar\\960f789efdca2387da005ce963857841\\res\\drawable-xhdpi-v4\\abc_btn_switch_to_on_mtrl_00012.9.png"
+    },
+    {
+        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable_shape_login_4.xml.flat",
+        "source": "G:\\OKWeather\\app\\src\\main\\res\\drawable\\shape_login_4.xml"
     },
     {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-tvdpi_common_plus_signin_btn_text_light_pressed.9.png.flat",
@@ -4150,6 +4162,10 @@
     {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_news_close.png.flat",
         "source": "G:\\OKWeather\\app\\src\\main\\res\\drawable-xxhdpi\\news_close.png"
+    },
+    {
+        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable_shape_login_1.xml.flat",
+        "source": "G:\\OKWeather\\app\\src\\main\\res\\drawable\\shape_login_1.xml"
     },
     {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_sticker2.png.flat",

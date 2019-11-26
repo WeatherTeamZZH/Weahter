@@ -19,36 +19,36 @@ public final class R {
         public static final int mid_level_shape = 0x7f0700d5;
         public static final int poison_level_shape = 0x7f0700ea;
         public static final int scroll_bar_thumb = 0x7f0700f1;
-        public static final int small_level_shape = 0x7f07010e;
-        public static final int w0 = 0x7f070135;
-        public static final int w1 = 0x7f070136;
-        public static final int w10 = 0x7f070137;
-        public static final int w13 = 0x7f070138;
-        public static final int w14 = 0x7f070139;
-        public static final int w15 = 0x7f07013a;
-        public static final int w16 = 0x7f07013b;
-        public static final int w17 = 0x7f07013c;
-        public static final int w18 = 0x7f07013d;
-        public static final int w19 = 0x7f07013e;
-        public static final int w2 = 0x7f07013f;
-        public static final int w20 = 0x7f070140;
-        public static final int w21 = 0x7f070141;
-        public static final int w29 = 0x7f070142;
-        public static final int w3 = 0x7f070143;
-        public static final int w30 = 0x7f070144;
-        public static final int w31 = 0x7f070145;
-        public static final int w32 = 0x7f070146;
-        public static final int w33 = 0x7f070147;
-        public static final int w34 = 0x7f070148;
-        public static final int w35 = 0x7f070149;
-        public static final int w36 = 0x7f07014a;
-        public static final int w4 = 0x7f07014b;
-        public static final int w45 = 0x7f07014c;
-        public static final int w5 = 0x7f07014d;
-        public static final int w6 = 0x7f07014e;
-        public static final int w7 = 0x7f07014f;
-        public static final int w8 = 0x7f070150;
-        public static final int w9 = 0x7f070151;
+        public static final int small_level_shape = 0x7f070112;
+        public static final int w0 = 0x7f070139;
+        public static final int w1 = 0x7f07013a;
+        public static final int w10 = 0x7f07013b;
+        public static final int w13 = 0x7f07013c;
+        public static final int w14 = 0x7f07013d;
+        public static final int w15 = 0x7f07013e;
+        public static final int w16 = 0x7f07013f;
+        public static final int w17 = 0x7f070140;
+        public static final int w18 = 0x7f070141;
+        public static final int w19 = 0x7f070142;
+        public static final int w2 = 0x7f070143;
+        public static final int w20 = 0x7f070144;
+        public static final int w21 = 0x7f070145;
+        public static final int w29 = 0x7f070146;
+        public static final int w3 = 0x7f070147;
+        public static final int w30 = 0x7f070148;
+        public static final int w31 = 0x7f070149;
+        public static final int w32 = 0x7f07014a;
+        public static final int w33 = 0x7f07014b;
+        public static final int w34 = 0x7f07014c;
+        public static final int w35 = 0x7f07014d;
+        public static final int w36 = 0x7f07014e;
+        public static final int w4 = 0x7f07014f;
+        public static final int w45 = 0x7f070150;
+        public static final int w5 = 0x7f070151;
+        public static final int w6 = 0x7f070152;
+        public static final int w7 = 0x7f070153;
+        public static final int w8 = 0x7f070154;
+        public static final int w9 = 0x7f070155;
     }
     public static final class id {
         private id() {}
@@ -62,9 +62,9 @@ public final class R {
         public static final int tv_date = 0x7f0801cb;
         public static final int tv_day_weather = 0x7f0801cd;
         public static final int tv_night_weather = 0x7f0801e4;
-        public static final int tv_week = 0x7f080211;
-        public static final int tv_wind_level = 0x7f080212;
-        public static final int tv_wind_ori = 0x7f080213;
+        public static final int tv_week = 0x7f080212;
+        public static final int tv_wind_level = 0x7f080213;
+        public static final int tv_wind_ori = 0x7f080214;
     }
     public static final class layout {
         private layout() {}

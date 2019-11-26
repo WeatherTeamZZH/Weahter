@@ -31,7 +31,7 @@
         android:theme="@style/AppTheme.StatusBarWhite.NoActionBar"
         tools:replace="android:icon, android:label, android:theme">
         <activity android:name=".activity.LoginActivity"></activity>
-        <activity android:name=".MainActivity" />
+       <!-- <activity android:name=".MainActivity" />-->
         <activity android:name=".activity.ZhutiImgeActivity" />
         <activity android:name=".activity.ShareMainActivity" />
         <activity android:name=".activity.NoticeCenterActivity" />
@@ -40,7 +40,7 @@
         <activity android:name=".activity.UserInofActivity" />
         <activity android:name=".activity.NoticeDetatilActivity" />
         <activity android:name=".gh.GH_MapActivity" />
-        <activity android:name=".activity.WelcomeActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

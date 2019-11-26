@@ -98,7 +98,6 @@ public class MineCenterActivity extends BaseActivity {
 
     public static void access(Context context) {
         Intent intent = new Intent(context, MineCenterActivity.class);
-
         context.startActivity(intent);
     }
 
@@ -192,6 +191,8 @@ public class MineCenterActivity extends BaseActivity {
                 spObj.setObject("sex",null);
                 spObj.setObject("phone",null);
                 spObj.setObject("wechat",null);
+                spObj.setObject( "isLogin", false);
+                finish();
                 break;
         }
     }

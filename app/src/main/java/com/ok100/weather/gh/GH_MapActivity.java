@@ -47,6 +47,7 @@ import com.ok100.weather.adapter.NoticeMainFragmentItemAdapter;
 import com.ok100.weather.base.BaseActivity;
 import com.ok100.weather.bean.DataBean;
 import com.ok100.weather.bean.DepartmentListBean;
+import com.ok100.weather.bean.EventTitleMessage;
 import com.ok100.weather.bean.NoticeMainChooseBean;
 import com.ok100.weather.bean.WeatherTotalBean;
 import com.ok100.weather.fragment.MainFragment;
@@ -55,6 +56,8 @@ import com.ok100.weather.utils.ChooseTypeUtils;
 import com.ok100.weather.utils.DPUtils;
 import com.ok100.weather.view.MySwipeRefreshLayout;
 import com.ok100.weather.view.MyViewPager;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -363,8 +366,11 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
 
                 break;
             case R.id.iv_title_back_weather:
-                setBottomVisible(false);
                 setAllGoneViewVisible(true);
+                setBottomVisible(false);
+
+//                EventTitleMessage msg = new EventTitleMessage(true,"messsage");
+//                EventBus.getDefault().post(msg);
                 break;
         }
     }

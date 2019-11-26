@@ -17,8 +17,8 @@ public final class R {
         public static final int notification_large_icon2 = 0x7f080119;
         public static final int notification_text = 0x7f08011c;
         public static final int notification_title = 0x7f08011d;
-        public static final int upush_notification1 = 0x7f08022a;
-        public static final int upush_notification2 = 0x7f08022b;
+        public static final int upush_notification1 = 0x7f08022b;
+        public static final int upush_notification2 = 0x7f08022c;
     }
     public static final class layout {
         private layout() {}

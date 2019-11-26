@@ -3357,6 +3357,10 @@ drawable shape_gray_16_bg
 drawable shape_gray_24
 drawable shape_gray_yuan
 drawable shape_jv_banyue
+drawable shape_login_1
+drawable shape_login_2
+drawable shape_login_3
+drawable shape_login_4
 drawable shape_notice_16
 drawable shape_red_8
 drawable shape_touming
@@ -3946,6 +3950,7 @@ id tv_qiya
 id tv_qushi
 id tv_richu_time
 id tv_riluo_time
+id tv_score
 id tv_sex
 id tv_shidu
 id tv_shidu_xiao

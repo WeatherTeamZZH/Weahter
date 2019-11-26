@@ -47,7 +47,7 @@
         android:testOnly="true"
         android:theme="@style/AppTheme.StatusBarWhite.NoActionBar" >
         <activity android:name="com.ok100.weather.activity.LoginActivity" />
-        <activity android:name="com.ok100.weather.MainActivity" />
+        <!-- <activity android:name=".MainActivity" /> -->
         <activity android:name="com.ok100.weather.activity.ZhutiImgeActivity" />
         <activity android:name="com.ok100.weather.activity.ShareMainActivity" />
         <activity android:name="com.ok100.weather.activity.NoticeCenterActivity" />
@@ -56,7 +56,7 @@
         <activity android:name="com.ok100.weather.activity.UserInofActivity" />
         <activity android:name="com.ok100.weather.activity.NoticeDetatilActivity" />
         <activity android:name="com.ok100.weather.gh.GH_MapActivity" />
-        <activity android:name="com.ok100.weather.activity.WelcomeActivity" >
+        <activity android:name="com.ok100.weather.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -152,15 +152,6 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-
-        <receiver
-            android:name="com.ok100.weather.MyReceiver"
-            android:enabled="true"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="net.deniro.android.MY_BROADCAST" />
-            </intent-filter>
-        </receiver>
 
         <meta-data
             android:name="android.support.VERSION"

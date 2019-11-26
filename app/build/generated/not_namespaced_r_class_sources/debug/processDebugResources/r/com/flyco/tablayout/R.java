@@ -71,7 +71,7 @@ public final class R {
         public static final int iv_tab_icon = 0x7f0800c7;
         public static final int ll_tap = 0x7f0800f4;
         public static final int rtv_msg_tip = 0x7f080152;
-        public static final int tv_tab_title = 0x7f080200;
+        public static final int tv_tab_title = 0x7f080201;
     }
     public static final class layout {
         private layout() {}

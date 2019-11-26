@@ -5,9 +5,8 @@ import android.content.Context;
 import com.google.gson.reflect.TypeToken;
 import com.lzy.okhttputils.OkHttpUtils;
 import com.ok100.weather.bean.LoginBean;
-import com.ok100.weather.bean.NewsListBean;
+import com.ok100.weather.bean.SMSBean;
 import com.ok100.weather.contract.LoginContract;
-import com.ok100.weather.contract.NewsListContract;
 import com.ok100.weather.http.DialogCallback;
 import com.ok100.weather.http.ServiceResult;
 import com.ok100.weather.http.Urls;
@@ -24,11 +23,11 @@ import okhttp3.Response;
 public class LoginModelImpl implements LoginContract.Model {
 
     @Override
-    public void sendSms(Context context, Map<String, String> map, ServiceResult<LoginBean> serviceResult) {
-        OkHttpUtils.post(Urls.sendSms).params(map).execute(new DialogCallback<LoginBean>(context, new TypeToken<LoginBean>() {
+    public void sendSms(Context context, Map<String, String> map, ServiceResult<SMSBean> serviceResult) {
+        OkHttpUtils.post(Urls.sendSms).params(map).execute(new DialogCallback<SMSBean>(context, new TypeToken<SMSBean>() {
         }.getType()) {
             @Override
-            public void onSuccess(LoginBean newsListBean, Call call, Response response) {
+            public void onSuccess(SMSBean newsListBean, Call call, Response response) {
                 serviceResult.onSuccess(newsListBean);
             }
         }.showErrorMsg());

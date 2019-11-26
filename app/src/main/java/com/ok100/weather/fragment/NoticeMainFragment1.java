@@ -1,5 +1,6 @@
 package com.ok100.weather.fragment;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -174,12 +175,18 @@ public class NoticeMainFragment1 extends BaseFragment implements BaseQuickAdapte
                             return;
                         }
 
-//                            bootomVisibleListener.setBootomVisible(true);
+//
+                        Activity activity = (Activity) getActivity();
+                        if(activity instanceof MainActivity){
+                            MainActivity mainActivity = (MainActivity) activity;
+                            mainActivity.hitiTitle(false);
+                            mainActivity.appBarView(false);
+                            mainActivity.bottomView(true);
+                        }else {
+                            bootomVisibleListener.setBootomVisible(true);
 //                            taybarVisibleListener.setTaybarVisible(false);
-                        MainActivity activity = (MainActivity) getActivity();
-                        activity.hitiTitle(false);
-                        activity.appBarView(false);
-                        activity.bottomView(true);
+                        }
+
                         xiaoyulin = false;
                     }
 

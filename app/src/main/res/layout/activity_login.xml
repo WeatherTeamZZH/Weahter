@@ -4,32 +4,104 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="#1fa2c2"
     android:fitsSystemWindows="true"
+    android:orientation="vertical"
     tools:context=".activity.LoginActivity">
+
     <include layout="@layout/title" />
 
-    <EditText
-        android:id="@+id/edittext1"
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="100dp" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="center_horizontal"
+        android:text="欢迎使用天气预报"
+        android:textColor="@color/white"
+        android:textSize="30sp" />
 
     <TextView
-        android:id="@+id/textview1"
         android:layout_width="match_parent"
-        android:text="textview1"
-        android:background="@color/red"
-        android:layout_height="50dp" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal"
+        android:text="精准天气,始于权威"
+        android:textColor="#cccccc"
+        android:textSize="15sp" />
 
-    <EditText
-        android:id="@+id/edittext2"
+    <LinearLayout
+        android:layout_marginTop="40dp"
         android:layout_width="match_parent"
-        android:layout_height="100dp" />
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="20dp"
+        android:background="@drawable/shape_login_1"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+86"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/edittext1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:background="@null"
+            android:hint="输入手机号码"
+            android:textColor="@color/white"
+            android:textColorHint="#cccccc"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="20dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/edittext2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:background="@drawable/shape_login_2"
+            android:hint="输入短信验证码"
+            android:paddingHorizontal="10dp"
+            android:textColor="@color/white"
+            android:textColorHint="#cccccc"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:id="@+id/textview1"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="2"
+            android:background="@drawable/shape_login_3"
+            android:gravity="center"
+            android:paddingHorizontal="10dp"
+            android:text="获取验证码"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+    </LinearLayout>
 
     <TextView
+        android:layout_marginTop="20dp"
         android:id="@+id/textview2"
-        android:text="textview2"
         android:layout_width="match_parent"
-        android:background="@color/red"
-        android:layout_height="50dp" />
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="20dp"
+        android:background="@drawable/shape_login_4"
+        android:gravity="center"
+        android:text="登录"
+        android:textColor="#1fa2c2" />
 </LinearLayout>

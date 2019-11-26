@@ -1042,22 +1042,4 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
         return weatherModels;
     }
 
-    @Override
-    public void onDestroy() {
-        Log.e("onDestroy", "mainfragmet++onDestroy++"+city+"+++"+area);
-        super.onDestroy();
-    }
-
-    @Override
-    public void onDestroyView() {
-        Log.e("onDestroy", "mainfragmet++onDestroyView++"+city+"+++"+area);
-        super.onDestroyView();
-
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        Log.e("onDestroy", "mainfragmetn++onCreate++"+city+"+++"+area);
-        super.onCreate(savedInstanceState);
-    }
 }
