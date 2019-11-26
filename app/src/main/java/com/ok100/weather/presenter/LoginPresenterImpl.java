@@ -4,13 +4,11 @@ import android.content.Context;
 import android.util.Log;
 
 import com.ok100.weather.bean.LoginBean;
-import com.ok100.weather.bean.NewsListBean;
+import com.ok100.weather.bean.SMSBean;
 import com.ok100.weather.contract.LoginContract;
-import com.ok100.weather.contract.NewsListContract;
 import com.ok100.weather.http.ReturnDataView;
 import com.ok100.weather.http.ServiceResult;
 import com.ok100.weather.model.LoginModelImpl;
-import com.ok100.weather.model.NewsListModelImpl;
 
 import java.util.Map;
 
@@ -31,9 +29,9 @@ public class LoginPresenterImpl implements LoginContract.Presenter {
 
     @Override
     public void sendSms(Context context, Map<String, String> map) {
-        model.sendSms(context, map, new ServiceResult<LoginBean>() {
+        model.sendSms(context, map, new ServiceResult<SMSBean>() {
             @Override
-            public void onSuccess(LoginBean loginBean) {
+            public void onSuccess(SMSBean loginBean) {
                 returnDataView.returnData("sendSms", loginBean);
             }
 

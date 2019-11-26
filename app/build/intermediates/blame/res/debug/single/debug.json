@@ -360,6 +360,10 @@
         "source": "/Users/gh/Desktop/android/android_projects/my/Weahter/app/src/main/res/mipmap-xhdpi/back_left_hei.png"
     },
     {
+        "merged": "/Users/gh/Desktop/android/android_projects/my/Weahter/app/build/intermediates/res/merged/debug/drawable_shape_login_3.xml.flat",
+        "source": "/Users/gh/Desktop/android/android_projects/my/Weahter/app/src/main/res/drawable/shape_login_3.xml"
+    },
+    {
         "merged": "/Users/gh/Desktop/android/android_projects/my/Weahter/app/build/intermediates/res/merged/debug/mipmap-xhdpi_w13.png.flat",
         "source": "/Users/gh/Desktop/android/android_projects/my/Weahter/app/src/main/res/mipmap-xhdpi/w13.png"
     },
@@ -1212,6 +1216,10 @@
         "source": "/Users/gh/Desktop/android/android_projects/my/Weahter/app/src/main/res/drawable-xxhdpi/loading.png"
     },
     {
+        "merged": "/Users/gh/Desktop/android/android_projects/my/Weahter/app/build/intermediates/res/merged/debug/drawable_shape_login_4.xml.flat",
+        "source": "/Users/gh/Desktop/android/android_projects/my/Weahter/app/src/main/res/drawable/shape_login_4.xml"
+    },
+    {
         "merged": "/Users/gh/Desktop/android/android_projects/my/Weahter/app/build/intermediates/res/merged/debug/raw_nuanxin.acv.flat",
         "source": "/Users/gh/Desktop/android/android_projects/my/Weahter/app/src/main/res/raw/nuanxin.acv"
     },
@@ -1318,6 +1326,10 @@
     {
         "merged": "/Users/gh/Desktop/android/android_projects/my/Weahter/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_btn_radio_to_on_mtrl_015.png.flat",
         "source": "/Users/gh/Android/gradle-4.4/caches/transforms-1/files-1.1/appcompat-v7-26.0.1.aar/bad7d8231e4737a034648a32f43ff13d/res/drawable-mdpi-v4/abc_btn_radio_to_on_mtrl_015.png"
+    },
+    {
+        "merged": "/Users/gh/Desktop/android/android_projects/my/Weahter/app/build/intermediates/res/merged/debug/drawable_shape_login_2.xml.flat",
+        "source": "/Users/gh/Desktop/android/android_projects/my/Weahter/app/src/main/res/drawable/shape_login_2.xml"
     },
     {
         "merged": "/Users/gh/Desktop/android/android_projects/my/Weahter/app/build/intermediates/res/merged/debug/drawable_brvah_sample_footer_loading_progress.xml.flat",
@@ -2418,6 +2430,10 @@
     {
         "merged": "/Users/gh/Desktop/android/android_projects/my/Weahter/app/build/intermediates/res/merged/debug/drawable-tvdpi_common_google_signin_btn_icon_light_pressed.9.png.flat",
         "source": "/Users/gh/Android/gradle-4.4/caches/transforms-1/files-1.1/play-services-base-8.4.0.aar/04bbcf3d33738ffae9f30f3885718125/res/drawable-tvdpi/common_google_signin_btn_icon_light_pressed.9.png"
+    },
+    {
+        "merged": "/Users/gh/Desktop/android/android_projects/my/Weahter/app/build/intermediates/res/merged/debug/drawable_shape_login_1.xml.flat",
+        "source": "/Users/gh/Desktop/android/android_projects/my/Weahter/app/src/main/res/drawable/shape_login_1.xml"
     },
     {
         "merged": "/Users/gh/Desktop/android/android_projects/my/Weahter/app/build/intermediates/res/merged/debug/drawable_navigation_empty_icon.xml.flat",

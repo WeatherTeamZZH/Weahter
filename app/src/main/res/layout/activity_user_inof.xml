@@ -92,12 +92,14 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/tv_phone"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="13800000000"
                             android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/tv_score"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="我的积分:79"

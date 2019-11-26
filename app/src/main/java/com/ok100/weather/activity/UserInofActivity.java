@@ -7,17 +7,18 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.ok100.weather.R;
 import com.ok100.weather.adapter.SmallToolsAdapter;
 import com.ok100.weather.base.BaseActivity;
 import com.ok100.weather.bean.DataBean;
-import com.ok100.weather.bean.DefultGridViewBean;
+import com.ok100.weather.gh.GlideCircleTransform;
 import com.ok100.weather.gh.MineCenterActivity;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.ok100.weather.utils.EmptyUtils;
+import com.ok100.weather.utils.SPObj;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -45,6 +46,20 @@ public class UserInofActivity extends BaseActivity {
     LinearLayout mLlNoticeMore;
     @BindView(R.id.iv_goto_maincenter)
     ImageView mIvGotoMaincenter;
+    @BindView(R.id.relativeLayout1)
+    RelativeLayout relativeLayout1;
+    @BindView(R.id.tv_phone)
+    TextView tvPhone;
+    @BindView(R.id.tv_score)
+    TextView tvScore;
+    @BindView(R.id.llnearlayout1)
+    LinearLayout llnearlayout1;
+    @BindView(R.id.llnearlayout3)
+    LinearLayout llnearlayout3;
+    @BindView(R.id.llnearlayout2)
+    LinearLayout llnearlayout2;
+
+    private SPObj spObj;
 
     @Override
     public int getLayoutID() {
@@ -53,7 +68,24 @@ public class UserInofActivity extends BaseActivity {
 
     @Override
     public void InitView() {
+        spObj = new SPObj(getContext(), "gh");
 
+
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (spObj.getObject("isLogin", Boolean.class) != null && spObj.getObject("isLogin", Boolean.class)) {
+            Glide.with(getContext()).load(spObj.getObject("imgurl", String.class)).transform(new GlideCircleTransform(getContext())).into(mIvGotoMaincenter);
+            tvPhone.setText(EmptyUtils.EmptyString(spObj.getObject("phone", String.class), "未绑定"));
+            tvScore.setText("");
+        } else {
+            tvPhone.setText("点击登录");
+            tvScore.setText("只差一步我们就能更亲近");
+        }
     }
 
     @Override
@@ -83,7 +115,6 @@ public class UserInofActivity extends BaseActivity {
         mRecycleview1.setAdapter(myPindaoAdapter);
         mRecycleview1.setNestedScrollingEnabled(false);//禁止滑动
     }
-
 
 
     @Override
@@ -116,9 +147,13 @@ public class UserInofActivity extends BaseActivity {
                 startActivity(intent);
                 break;
             case R.id.iv_goto_maincenter:
-//                intent = new Intent(UserInofActivity.this, MineCenterActivity.class);
-                intent = new Intent(UserInofActivity.this, LoginActivity.class);
-                startActivity(intent);
+                if (spObj.getObject("isLogin", Boolean.class) != null && spObj.getObject("isLogin", Boolean.class)) {
+                    MineCenterActivity.access(getContext());
+                } else {
+                    intent = new Intent(UserInofActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                }
+
                 break;
         }
     }

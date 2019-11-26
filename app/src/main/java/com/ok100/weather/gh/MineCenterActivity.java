@@ -192,6 +192,8 @@ public class MineCenterActivity extends BaseActivity {
                 spObj.setObject("sex",null);
                 spObj.setObject("phone",null);
                 spObj.setObject("wechat",null);
+                spObj.setObject( "isLogin", false);
+                finish();
                 break;
         }
     }
