@@ -3,10 +3,7 @@ package com.ok100.weather.activity;
 import android.Manifest;
 import android.content.Intent;
 import android.location.Location;
-import android.os.Handler;
-
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -22,10 +19,8 @@ import com.ok100.weather.utils.SharePreferencesUtil;
 
 import java.util.List;
 
-import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.AppSettingsDialog;
 import pub.devrel.easypermissions.EasyPermissions;
-import pub.devrel.easypermissions.PermissionRequest;
 
 public class WelcomeActivity extends BaseActivity  implements EasyPermissions.RationaleCallbacks ,EasyPermissions.PermissionCallbacks{
     private static final String TAG = "WelcomeActivity";
@@ -187,6 +182,7 @@ public class WelcomeActivity extends BaseActivity  implements EasyPermissions.Ra
             // Do something after user returned from app settings screen, like showing a Toast.
             // 当用户从应用设置界面返回的时候，可以做一些事情，比如弹出一个土司。
             Toast.makeText(this, "权限设置界面返回" , Toast.LENGTH_SHORT).show();
+            startHome();
         }
 
     }
@@ -198,7 +194,7 @@ public class WelcomeActivity extends BaseActivity  implements EasyPermissions.Ra
 
     @Override
     public void onRationaleDenied(int requestCode) {
-        Log.e(TAG , "引导设置 申请权限"+requestCode );
+        startHome();
     }
 
     @Override
