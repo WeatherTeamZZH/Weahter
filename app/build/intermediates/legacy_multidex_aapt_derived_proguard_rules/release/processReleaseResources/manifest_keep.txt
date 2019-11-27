@@ -1,0 +1,2 @@
+# Referenced at G:\OKWeather\app\build\intermediates\merged_manifests\release\processReleaseManifest\merged\AndroidManifest.xml:43
+-keep class com.ok100.weather.gb.stickercamera.App { <init>(...); }

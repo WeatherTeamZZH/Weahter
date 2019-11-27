@@ -46,6 +46,22 @@ public class NoticeMainListPresenterImpl implements NoticeMainListContract.Prese
     }
 
     @Override
+    public void getTotalWeatherGPS(Context context, Map<String, String> map) {
+        model.getTotalWeatherGPS(context, map, new ServiceResult<WeatherTotalBean>() {
+            @Override
+            public void onSuccess(WeatherTotalBean weatherTotalBean) {
+                returnDataView.returnData("getTotalWeatherGPS", weatherTotalBean);
+            }
+
+            @Override
+            public void onFailed(String msg) {
+                Log.e("onFailed",msg);
+            }
+        });
+    }
+
+
+    @Override
     public void getTotalWeather(Context context, Map<String, String> map) {
         model.getTotalWeather(context, map, new ServiceResult<WeatherTotalBean>() {
             @Override

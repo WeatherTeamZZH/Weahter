@@ -6,6 +6,7 @@ import android.location.Location;
 import android.os.Handler;
 
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +14,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.amap.api.location.AMapLocation;
+import com.amap.api.location.AMapLocationClient;
+import com.amap.api.location.AMapLocationClientOption;
+import com.amap.api.location.AMapLocationListener;
 import com.ok100.weather.MainActivity;
 import com.ok100.weather.R;
 import com.ok100.weather.base.BaseActivity;
@@ -20,14 +25,18 @@ import com.ok100.weather.location.LocationUtils;
 import com.ok100.weather.utils.AppUtils;
 import com.ok100.weather.utils.SharePreferencesUtil;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.AppSettingsDialog;
 import pub.devrel.easypermissions.EasyPermissions;
 import pub.devrel.easypermissions.PermissionRequest;
 
-public class WelcomeActivity extends BaseActivity  implements EasyPermissions.RationaleCallbacks ,EasyPermissions.PermissionCallbacks{
+public class WelcomeActivity extends BaseActivity  implements EasyPermissions.RationaleCallbacks ,EasyPermissions.PermissionCallbacks , AMapLocationListener {
     private static final String TAG = "WelcomeActivity";
     //    private TextView welcome_tv_version, welcome_tv_load;
 //    private List<String> strs = new ArrayList<>();
@@ -37,9 +46,9 @@ public class WelcomeActivity extends BaseActivity  implements EasyPermissions.Ra
     private TextView tv_app_version;
     private TextView tv_app_name;
    public static final String[] perms = { Manifest.permission.ACCESS_FINE_LOCATION , Manifest.permission.ACCESS_COARSE_LOCATION };
-   public String locationX = "";
-   public String locationY = "";
-   public String locationCiyt = "";
+   public String locationX = "39.805501";
+   public String locationY = "116.459379";
+   public String locationCiyt = "北京市";
 
     public static final int PERMISSIONS_ACCESS_LOCATION = 1001;
     @Override
@@ -66,15 +75,18 @@ public class WelcomeActivity extends BaseActivity  implements EasyPermissions.Ra
 
     @Override
     public void initData(Bundle savedInstanceState, View contentView) {
-        if (EasyPermissions.hasPermissions( WelcomeActivity.this , perms)) {
-            // Already have permission, do the thing
-            getXY();
-            Log.e(TAG , "Already have permission, do the thing" );
-        } else {
-            // Do not have permissions, request them now
-            Log.e(TAG , "需要定位权限" );
-            EasyPermissions.requestPermissions(WelcomeActivity.this, "需要定位权限", PERMISSIONS_ACCESS_LOCATION, perms);
-        }
+//        if (EasyPermissions.hasPermissions( WelcomeActivity.this , perms)) {
+//            // Already have permission, do the thing
+//            getXY();
+//            Log.e(TAG , "Already have permission, do the thing" );
+//        } else {
+//            // Do not have permissions, request them now
+//            Log.e(TAG , "需要定位权限" );
+//            EasyPermissions.requestPermissions(WelcomeActivity.this, "需要定位权限", PERMISSIONS_ACCESS_LOCATION, perms);
+//        }
+
+        locationGD();
+
 //        EasyPermissions.requestPermissions(
 //                new PermissionRequest.Builder(this, Manifest.permission.ACCESS_COARSE_LOCATION, perms)
 //                        .setRationale(R.string.camera_and_location_rationale)
@@ -104,13 +116,14 @@ public class WelcomeActivity extends BaseActivity  implements EasyPermissions.Ra
                 Log.e(TAG, "获取地理位置：" + LocationUtils.getAddress(WelcomeActivity.this, location.getLatitude(), location.getLongitude()));
                 Log.e(TAG, "所在地：" + LocationUtils.getLocality(WelcomeActivity.this, location.getLatitude(), location.getLongitude()));
                 Log.e(TAG, "所在街道：" + LocationUtils.getStreet(WelcomeActivity.this, location.getLatitude(), location.getLongitude()));
-                locationX = location.getLatitude()+"";
-                locationY = location.getLongitude()+"";
+                locationX = location.getLongitude()+"";
+                locationY = location.getLatitude()+"";
                 locationCiyt = LocationUtils.getLocality(WelcomeActivity.this, location.getLatitude(), location.getLongitude());
 //                if(!(TextUtils.isEmpty(locationX)||TextUtils.isEmpty(locationX))){
 ////                    startHome();
 ////                }
-                startHome();
+
+                    startHome();
             }
 
             @Override
@@ -186,7 +199,7 @@ public class WelcomeActivity extends BaseActivity  implements EasyPermissions.Ra
         if (requestCode == AppSettingsDialog.DEFAULT_SETTINGS_REQ_CODE) {
             // Do something after user returned from app settings screen, like showing a Toast.
             // 当用户从应用设置界面返回的时候，可以做一些事情，比如弹出一个土司。
-            Toast.makeText(this, "权限设置界面返回" , Toast.LENGTH_SHORT).show();
+            request();
         }
 
     }
@@ -206,4 +219,64 @@ public class WelcomeActivity extends BaseActivity  implements EasyPermissions.Ra
         super.onDestroy();
         LocationUtils.unregister();
     }
+
+    //声明mlocationClient对象
+    public AMapLocationClient mlocationClient;
+    //声明mLocationOption对象
+    public AMapLocationClientOption mLocationOption = null;
+    public void locationGD(){
+
+        mlocationClient = new AMapLocationClient(this);
+//初始化定位参数
+        mLocationOption = new AMapLocationClientOption();
+        //单次定位
+        mLocationOption.setOnceLocation(true);
+//设置定位监听
+        mlocationClient.setLocationListener(this);
+//设置定位模式为高精度模式，Battery_Saving为低功耗模式，Device_Sensors是仅设备模式
+        mLocationOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
+//设置定位间隔,单位毫秒,默认为2000ms
+//        mLocationOption.setInterval(2000);
+        mLocationOption.setNeedAddress(true);
+//设置定位参数
+        mlocationClient.setLocationOption(mLocationOption);
+// 此方法为每隔固定时间会发起一次定位请求，为了减少电量消耗或网络流量消耗，
+// 注意设置合适的定位时间的间隔（最小间隔支持为1000ms），并且在合适时间调用stopLocation()方法来取消定位请求
+// 在定位结束后，在合适的生命周期调用onDestroy()方法
+// 在单次定位情况下，定位无论成功与否，都无需调用stopLocation()方法移除请求，定位sdk内部会移除
+//启动定位
+        mlocationClient.startLocation();
+
+    }
+
+    @Override
+    public void onLocationChanged(AMapLocation amapLocation) {
+        if (amapLocation != null) {
+            if (amapLocation.getErrorCode() == 0) {
+                //定位成功回调信息，设置相关消息
+                amapLocation.getLocationType();//获取当前定位结果来源，如网络定位结果，详见定位类型表
+                amapLocation.getLatitude();//获取纬度
+                amapLocation.getLongitude();//获取经度
+                amapLocation.getAccuracy();//获取精度信息
+                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                Date date = new Date(amapLocation.getTime());
+                df.format(date);//定位时间
+                //显示错误信息ErrCode是错误码，errInfo是错误信息，详见错误码表。
+                Log.e("AmapError",amapLocation.getLatitude()
+                        + amapLocation.getLatitude() + ", errInfo:"
+                        + amapLocation.getDistrict()+amapLocation.getCity());
+                locationX = amapLocation.getLatitude()+"";
+                locationY = amapLocation.getLongitude()+"";
+
+            } else {
+                //显示错误信息ErrCode是错误码，errInfo是错误信息，详见错误码表。
+                Log.e("AmapError","location Error, ErrCode:"
+                        + amapLocation.getErrorCode() + ", errInfo:"
+                        + amapLocation.getErrorInfo());
+            }
+            SystemClock.sleep(2000);
+            startHome();
+        }
+    }
+
 }

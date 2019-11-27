@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Wed Nov 27 10:00:57 CST 2019
+#Wed Nov 27 15:04:16 CST 2019
 5.base=G\:\\OKWeather\\app\\build\\intermediates\\transforms\\stripDebugSymbol\\debug\\0
 42.base=G\:\\OKWeather\\app\\build\\intermediates\\transforms\\stripDebugSymbol\\debug\\0
 22.path=lib/armeabi-v7a/libimagepipeline.so

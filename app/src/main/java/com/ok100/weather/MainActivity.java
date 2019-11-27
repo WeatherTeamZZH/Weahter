@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Message;
 import android.os.SystemClock;
 import android.support.annotation.RequiresApi;
 import android.support.v4.view.ViewPager;
@@ -39,11 +40,14 @@ import com.ok100.weather.bean.DepartmentListBean;
 import com.ok100.weather.bean.EventTitleMessage;
 import com.ok100.weather.bean.MainSpotClickBean;
 import com.ok100.weather.bean.WeatherBean;
+import com.ok100.weather.bean.WeatherTotalBean;
 import com.ok100.weather.fragment.MainFragment;
 import com.ok100.weather.fragment.NoticeMainFragment1;
 import com.ok100.weather.gb.view.HomeActivity;
 import com.ok100.weather.http.ReturnDataView;
 import com.ok100.weather.myviewpager.TextPagerAdapter;
+import com.ok100.weather.presenter.NewsListPresenterImpl;
+import com.ok100.weather.presenter.NoticeMainListPresenterImpl;
 import com.ok100.weather.utils.DataUtils;
 import com.ok100.weather.utils.ListDataSave;
 import com.ok100.weather.view.MainViewPager;
@@ -59,7 +63,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -369,12 +376,24 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         }
 //        }
     }
+    WeatherTotalBean  weatherTotalBean ;
 
     @Override
     public void returnData(String responseCode, Object o) {
-        List<DepartmentListBean> departmentListBean = (List<DepartmentListBean>) o;
-//        initPop();
-//        setNewArraylist(departmentListBean);
+        switch (responseCode) {
+            case "getTotalWeatherGPS":
+                weatherTotalBean = (WeatherTotalBean) o;
+                if(weatherTotalBean!=null){
+                    Log.e("weatherTotalBean", weatherTotalBean.toString());
+                    String area = weatherTotalBean.getData().getCityinfo().getArea();
+                    if(!TextUtils.isEmpty(area)){
+                        mTvCity.setText(area);
+                        addCity(area);
+                    }
+                }
+
+                break;
+        }
     }
 
 
@@ -531,8 +550,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             public void run() {
                 if(cityGreenDaoBeanList.size()==0){
                     try{
-                        if(!TextUtils.isEmpty(locationCiyt)){
-                            addCity(locationCiyt.substring(0,locationCiyt.length()-1));
+                        if(!(TextUtils.isEmpty(locationX)||TextUtils.isEmpty(locationY))){
+                            NoticeMainListPresenterImpl noticeMainListPresenter = new NoticeMainListPresenterImpl(MainActivity.this);
+                            HashMap<String, String> hashMap = new HashMap<>();
+                            hashMap.put("from", "autonavi");
+                            hashMap.put("lat", locationX);
+                            hashMap.put("lng", locationY);
+                            hashMap.put("needday", "1");
+                            noticeMainListPresenter.getTotalWeatherGPS(MainActivity.this, hashMap);
+
                         }
                     }catch (Exception e){
 
@@ -627,5 +653,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         }
         return super.onKeyDown(keyCode, event);
     }
+
+
 
 }

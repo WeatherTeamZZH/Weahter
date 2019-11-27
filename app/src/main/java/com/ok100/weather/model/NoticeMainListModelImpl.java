@@ -51,6 +51,17 @@ public class NoticeMainListModelImpl implements NoticeMainListContract.Model {
     }
 
     @Override
+    public void getTotalWeatherGPS(Context context, Map<String, String> map, ServiceResult<WeatherTotalBean> serviceResult) {
+        OkHttpUtils.get(Urls.httpWeatherGps).params(map).headers(UserId,UserKey).execute(new DialogCallback<WeatherTotalBean>(context, new TypeToken<WeatherTotalBean>() {
+        }.getType()) {
+            @Override
+            public void onSuccess(WeatherTotalBean noticeMainListBean, Call call, Response response) {
+                serviceResult.onSuccess(noticeMainListBean);
+            }
+        }.showErrorMsg());
+    }
+
+    @Override
     public void getTotalWeather7(Context context, Map<String, String> map, ServiceResult<WeatherTotal7Bean> serviceResult) {
         OkHttpUtils.get(Urls.httpWeather).params(map).headers(UserId,UserKey).execute(new DialogCallback<WeatherTotal7Bean>(context, new TypeToken<WeatherTotal7Bean>() {
         }.getType()) {
