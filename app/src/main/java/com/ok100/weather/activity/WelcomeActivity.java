@@ -122,8 +122,7 @@ public class WelcomeActivity extends BaseActivity  implements EasyPermissions.Ra
 //                if(!(TextUtils.isEmpty(locationX)||TextUtils.isEmpty(locationX))){
 ////                    startHome();
 ////                }
-
-                    startHome();
+                startHome();
             }
 
             @Override
@@ -211,7 +210,7 @@ public class WelcomeActivity extends BaseActivity  implements EasyPermissions.Ra
 
     @Override
     public void onRationaleDenied(int requestCode) {
-        Log.e(TAG , "引导设置 申请权限"+requestCode );
+        startHome();
     }
 
     @Override
