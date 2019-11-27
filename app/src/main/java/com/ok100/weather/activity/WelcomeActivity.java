@@ -3,11 +3,8 @@ package com.ok100.weather.activity;
 import android.Manifest;
 import android.content.Intent;
 import android.location.Location;
-import android.os.Handler;
-
 import android.os.Bundle;
 import android.os.SystemClock;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -28,15 +25,11 @@ import com.ok100.weather.utils.SharePreferencesUtil;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
-import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.AppSettingsDialog;
 import pub.devrel.easypermissions.EasyPermissions;
-import pub.devrel.easypermissions.PermissionRequest;
 
-public class WelcomeActivity extends BaseActivity  implements EasyPermissions.RationaleCallbacks ,EasyPermissions.PermissionCallbacks , AMapLocationListener {
+public class WelcomeActivity extends BaseActivity  implements EasyPermissions.RationaleCallbacks ,EasyPermissions.PermissionCallbacks, AMapLocationListener {
     private static final String TAG = "WelcomeActivity";
     //    private TextView welcome_tv_version, welcome_tv_load;
 //    private List<String> strs = new ArrayList<>();
@@ -45,10 +38,10 @@ public class WelcomeActivity extends BaseActivity  implements EasyPermissions.Ra
     private ImageView iv_welcome;
     private TextView tv_app_version;
     private TextView tv_app_name;
-   public static final String[] perms = { Manifest.permission.ACCESS_FINE_LOCATION , Manifest.permission.ACCESS_COARSE_LOCATION };
-   public String locationX = "39.805501";
-   public String locationY = "116.459379";
-   public String locationCiyt = "北京市";
+    public static final String[] perms = { Manifest.permission.ACCESS_FINE_LOCATION , Manifest.permission.ACCESS_COARSE_LOCATION };
+    public String locationX = "";
+    public String locationY = "";
+    public String locationCiyt = "";
 
     public static final int PERMISSIONS_ACCESS_LOCATION = 1001;
     @Override
@@ -75,18 +68,16 @@ public class WelcomeActivity extends BaseActivity  implements EasyPermissions.Ra
 
     @Override
     public void initData(Bundle savedInstanceState, View contentView) {
-//        if (EasyPermissions.hasPermissions( WelcomeActivity.this , perms)) {
-//            // Already have permission, do the thing
+        if (EasyPermissions.hasPermissions( WelcomeActivity.this , perms)) {
+            // Already have permission, do the thing
 //            getXY();
-//            Log.e(TAG , "Already have permission, do the thing" );
-//        } else {
-//            // Do not have permissions, request them now
-//            Log.e(TAG , "需要定位权限" );
-//            EasyPermissions.requestPermissions(WelcomeActivity.this, "需要定位权限", PERMISSIONS_ACCESS_LOCATION, perms);
-//        }
-
-        locationGD();
-
+            locationGD();
+            Log.e(TAG , "Already have permission, do the thing" );
+        } else {
+            // Do not have permissions, request them now
+            Log.e(TAG , "需要定位权限" );
+            EasyPermissions.requestPermissions(WelcomeActivity.this, "需要定位权限", PERMISSIONS_ACCESS_LOCATION, perms);
+        }
 //        EasyPermissions.requestPermissions(
 //                new PermissionRequest.Builder(this, Manifest.permission.ACCESS_COARSE_LOCATION, perms)
 //                        .setRationale(R.string.camera_and_location_rationale)
@@ -116,8 +107,8 @@ public class WelcomeActivity extends BaseActivity  implements EasyPermissions.Ra
                 Log.e(TAG, "获取地理位置：" + LocationUtils.getAddress(WelcomeActivity.this, location.getLatitude(), location.getLongitude()));
                 Log.e(TAG, "所在地：" + LocationUtils.getLocality(WelcomeActivity.this, location.getLatitude(), location.getLongitude()));
                 Log.e(TAG, "所在街道：" + LocationUtils.getStreet(WelcomeActivity.this, location.getLatitude(), location.getLongitude()));
-                locationX = location.getLongitude()+"";
-                locationY = location.getLatitude()+"";
+                locationX = location.getLatitude()+"";
+                locationY = location.getLongitude()+"";
                 locationCiyt = LocationUtils.getLocality(WelcomeActivity.this, location.getLatitude(), location.getLongitude());
 //                if(!(TextUtils.isEmpty(locationX)||TextUtils.isEmpty(locationX))){
 ////                    startHome();
@@ -166,7 +157,8 @@ public class WelcomeActivity extends BaseActivity  implements EasyPermissions.Ra
     public void onPermissionsGranted(int requestCode, List<String> perms) {
         // 此处表示权限申请已经成功，可以使用该权限完成app的相应的操作了
         Log.e(TAG , "同意了 权限申请" );
-        getXY();
+//        getXY();
+        locationGD();
     }
 
     @Override
@@ -198,7 +190,8 @@ public class WelcomeActivity extends BaseActivity  implements EasyPermissions.Ra
         if (requestCode == AppSettingsDialog.DEFAULT_SETTINGS_REQ_CODE) {
             // Do something after user returned from app settings screen, like showing a Toast.
             // 当用户从应用设置界面返回的时候，可以做一些事情，比如弹出一个土司。
-            request();
+            Toast.makeText(this, "权限设置界面返回" , Toast.LENGTH_SHORT).show();
+            startHome();
         }
 
     }
@@ -277,5 +270,4 @@ public class WelcomeActivity extends BaseActivity  implements EasyPermissions.Ra
             startHome();
         }
     }
-
 }
