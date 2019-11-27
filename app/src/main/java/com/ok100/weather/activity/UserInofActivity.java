@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.ok100.weather.R;
@@ -139,8 +140,9 @@ public class UserInofActivity extends BaseActivity {
                 startActivity(intent);
                 break;
             case R.id.tv_yijian:
-                intent = new Intent(UserInofActivity.this, NoticeCenterActivity.class);
-                startActivity(intent);
+                Toast.makeText(UserInofActivity.this,"暂未开通",Toast.LENGTH_SHORT).show();
+//                intent = new Intent(UserInofActivity.this, NoticeCenterActivity.class);
+//                startActivity(intent);
                 break;
             case R.id.ll_notice_more:
                 intent = new Intent(UserInofActivity.this, NoticeCenterActivity.class);

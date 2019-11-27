@@ -77,7 +77,7 @@ public final class R {
         public static final int second = 0x7f080169;
         public static final int timepicker = 0x7f0801a0;
         public static final int tvTitle = 0x7f0801b9;
-        public static final int year = 0x7f080240;
+        public static final int year = 0x7f080241;
     }
     public static final class integer {
         private integer() {}
@@ -87,10 +87,10 @@ public final class R {
     public static final class layout {
         private layout() {}
 
-        public static final int include_pickerview_topbar = 0x7f0a004f;
-        public static final int layout_basepickerview = 0x7f0a005e;
-        public static final int pickerview_options = 0x7f0a0080;
-        public static final int pickerview_time = 0x7f0a0081;
+        public static final int include_pickerview_topbar = 0x7f0a0050;
+        public static final int layout_basepickerview = 0x7f0a005f;
+        public static final int pickerview_options = 0x7f0a0081;
+        public static final int pickerview_time = 0x7f0a0082;
     }
     public static final class string {
         private string() {}

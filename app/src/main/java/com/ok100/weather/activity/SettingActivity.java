@@ -1,10 +1,12 @@
 package com.ok100.weather.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.ok100.weather.MainActivity;
 import com.ok100.weather.R;
 import com.ok100.weather.adapter.MianSpotAdapter;
@@ -12,6 +14,7 @@ import com.ok100.weather.adapter.SettingAdapter;
 import com.ok100.weather.base.BaseActivity;
 import com.ok100.weather.bean.DataBean;
 import com.ok100.weather.bean.SettingBean;
+import com.ok100.weather.gh.MineCenterActivity;
 import com.ok100.weather.utils.ActivityBarSettingUtils;
 
 import java.util.ArrayList;
@@ -44,6 +47,40 @@ public class SettingActivity extends BaseActivity {
         settingAdapter.setNewData(DataBean.getSettingData());
         mRecycleview.setAdapter(settingAdapter);
         ActivityBarSettingUtils.setAndroidNativeLightStatusBar(SettingActivity.this ,true);
+        settingAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                Intent intent ;
+                SettingBean bean ;
+                switch (position){
+                    case 1:
+                        intent =  new Intent(SettingActivity.this, MineCenterActivity.class);
+                        startActivity(intent);
+                        break;
+                    case 3:
+                        bean = (SettingBean) adapter.getData().get(position);
+                        intent =  new Intent(SettingActivity.this, AboutOursActivity.class);
+                        intent.putExtra("title",bean.getTitle());
+                        intent.putExtra("url",bean.getUrl());
+                        startActivity(intent);
+                        break;
+                    case 4:
+                        bean = (SettingBean) adapter.getData().get(position);
+                        intent =  new Intent(SettingActivity.this, AboutOursActivity.class);
+                        intent.putExtra("title",bean.getTitle());
+                        intent.putExtra("url",bean.getUrl());
+                        startActivity(intent);
+                        break;
+                    case 5:
+                        bean = (SettingBean) adapter.getData().get(position);
+                        intent =  new Intent(SettingActivity.this, AboutOursActivity.class);
+                        intent.putExtra("title",bean.getTitle());
+                        intent.putExtra("url",bean.getUrl());
+                        startActivity(intent);
+                        break;
+                }
+            }
+        });
     }
 
 

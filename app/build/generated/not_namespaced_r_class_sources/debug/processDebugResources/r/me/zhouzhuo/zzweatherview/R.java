@@ -59,17 +59,17 @@ public final class R {
         public static final int line_two = 0x7f0800df;
         public static final int ttv_day = 0x7f0801b8;
         public static final int tv_air_level = 0x7f0801ba;
-        public static final int tv_date = 0x7f0801cb;
-        public static final int tv_day_weather = 0x7f0801cd;
-        public static final int tv_night_weather = 0x7f0801e4;
-        public static final int tv_week = 0x7f080212;
-        public static final int tv_wind_level = 0x7f080213;
-        public static final int tv_wind_ori = 0x7f080214;
+        public static final int tv_date = 0x7f0801cc;
+        public static final int tv_day_weather = 0x7f0801ce;
+        public static final int tv_night_weather = 0x7f0801e5;
+        public static final int tv_week = 0x7f080213;
+        public static final int tv_wind_level = 0x7f080214;
+        public static final int tv_wind_ori = 0x7f080215;
     }
     public static final class layout {
         private layout() {}
 
-        public static final int weather_item = 0x7f0a009f;
+        public static final int weather_item = 0x7f0a00a0;
     }
     public static final class string {
         private string() {}

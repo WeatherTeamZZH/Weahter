@@ -13,8 +13,8 @@ public class AirAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
     @Override
     protected void convert(BaseViewHolder helper, String item) {
         helper.setText(R.id.tv_position, helper.getAdapterPosition() + "")
-                .setText(R.id.tv_title, "重庆")
-                .setText(R.id.tv_no, "19")
+                .setText(R.id.tv_title, "--")
+                .setText(R.id.tv_no, "0°")
                 .setText(R.id.tv_level, "优");
     }
 }

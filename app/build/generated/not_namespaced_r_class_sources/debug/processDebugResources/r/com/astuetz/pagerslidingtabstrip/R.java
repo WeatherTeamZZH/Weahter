@@ -53,7 +53,7 @@ public final class R {
     public static final class layout {
         private layout() {}
 
-        public static final int psts_tab = 0x7f0a0083;
+        public static final int psts_tab = 0x7f0a0084;
     }
     public static final class styleable {
         private styleable() {}

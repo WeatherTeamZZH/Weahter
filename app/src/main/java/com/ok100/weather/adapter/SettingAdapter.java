@@ -1,5 +1,6 @@
 package com.ok100.weather.adapter;
 import android.content.Context;
+import android.text.TextUtils;
 import android.widget.ImageView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -43,6 +44,15 @@ public class SettingAdapter extends BaseQuickAdapter<SettingBean, BaseViewHolder
 
         } else if (plateType == 2) {
             helper.setText(R.id.tv_name,item.getTitle());
+            helper.setVisible(R.id.switchView,false);
+            if(TextUtils.isEmpty(item.getContent())){
+                helper.setVisible(R.id.tv_content,false);
+            }else {
+                helper.setVisible(R.id.tv_content,true);
+                helper.setText(R.id.tv_content,item.getContent());
+            }
+
+
         }
 //        helper.setVisible(R.id.tv_subhead_pop_project_item, isSubhead);
 //        ImageView textView = helper.getView(R.id.tv_name);

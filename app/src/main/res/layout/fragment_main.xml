@@ -547,7 +547,8 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:layout_marginTop="@dimen/x30"
-                        android:background="@drawable/shape_white_bantou33">
+                        android:background="@drawable/shape_white_bantou33"
+                        android:visibility="gone">
 
 
                     <TextView

@@ -36,12 +36,12 @@ public final class R {
         public static final int load_more_loading_view = 0x7f0800fe;
         public static final int loading_progress = 0x7f0800ff;
         public static final int loading_text = 0x7f080100;
-        public static final int tv_prompt = 0x7f0801f5;
+        public static final int tv_prompt = 0x7f0801f6;
     }
     public static final class layout {
         private layout() {}
 
-        public static final int brvah_quick_view_load_more = 0x7f0a0032;
+        public static final int brvah_quick_view_load_more = 0x7f0a0033;
     }
     public static final class string {
         private string() {}

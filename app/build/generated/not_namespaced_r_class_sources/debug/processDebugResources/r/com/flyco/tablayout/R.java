@@ -71,17 +71,17 @@ public final class R {
         public static final int iv_tab_icon = 0x7f0800c7;
         public static final int ll_tap = 0x7f0800f4;
         public static final int rtv_msg_tip = 0x7f080152;
-        public static final int tv_tab_title = 0x7f080201;
+        public static final int tv_tab_title = 0x7f080202;
     }
     public static final class layout {
         private layout() {}
 
-        public static final int layout_tab = 0x7f0a005f;
-        public static final int layout_tab_bottom = 0x7f0a0060;
-        public static final int layout_tab_left = 0x7f0a0061;
-        public static final int layout_tab_right = 0x7f0a0062;
-        public static final int layout_tab_segment = 0x7f0a0063;
-        public static final int layout_tab_top = 0x7f0a0064;
+        public static final int layout_tab = 0x7f0a0060;
+        public static final int layout_tab_bottom = 0x7f0a0061;
+        public static final int layout_tab_left = 0x7f0a0062;
+        public static final int layout_tab_right = 0x7f0a0063;
+        public static final int layout_tab_segment = 0x7f0a0064;
+        public static final int layout_tab_top = 0x7f0a0065;
     }
     public static final class styleable {
         private styleable() {}

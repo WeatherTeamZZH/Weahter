@@ -3900,6 +3900,7 @@ id tv_bottom_tomorrow_wendu
 id tv_city
 id tv_co
 id tv_co2
+id tv_content
 id tv_content_toast
 id tv_content_toast_comment
 id tv_data
@@ -4060,6 +4061,7 @@ layout abc_screen_toolbar
 layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
+layout activity_about_ours
 layout activity_album
 layout activity_camera
 layout activity_edit_text

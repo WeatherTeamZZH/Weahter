@@ -107,9 +107,10 @@ public class WelcomeActivity extends BaseActivity  implements EasyPermissions.Ra
                 locationX = location.getLatitude()+"";
                 locationY = location.getLongitude()+"";
                 locationCiyt = LocationUtils.getLocality(WelcomeActivity.this, location.getLatitude(), location.getLongitude());
-                if(!(TextUtils.isEmpty(locationX)||TextUtils.isEmpty(locationX))){
-                    startHome();
-                }
+//                if(!(TextUtils.isEmpty(locationX)||TextUtils.isEmpty(locationX))){
+////                    startHome();
+////                }
+                startHome();
             }
 
             @Override

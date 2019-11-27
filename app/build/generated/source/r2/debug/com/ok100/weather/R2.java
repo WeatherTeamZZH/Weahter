@@ -11730,367 +11730,370 @@ public final class R2 {
     public static final int tv_co2 = 0x7f0801c7;
 
     @IdRes
-    public static final int tv_content_toast = 0x7f0801c8;
+    public static final int tv_content = 0x7f0801c8;
 
     @IdRes
-    public static final int tv_content_toast_comment = 0x7f0801c9;
+    public static final int tv_content_toast = 0x7f0801c9;
 
     @IdRes
-    public static final int tv_data = 0x7f0801ca;
+    public static final int tv_content_toast_comment = 0x7f0801ca;
 
     @IdRes
-    public static final int tv_date = 0x7f0801cb;
+    public static final int tv_data = 0x7f0801cb;
 
     @IdRes
-    public static final int tv_day_temperature = 0x7f0801cc;
+    public static final int tv_date = 0x7f0801cc;
 
     @IdRes
-    public static final int tv_day_weather = 0x7f0801cd;
+    public static final int tv_day_temperature = 0x7f0801cd;
 
     @IdRes
-    public static final int tv_des = 0x7f0801ce;
+    public static final int tv_day_weather = 0x7f0801ce;
 
     @IdRes
-    public static final int tv_desc = 0x7f0801cf;
+    public static final int tv_des = 0x7f0801cf;
 
     @IdRes
-    public static final int tv_dir = 0x7f0801d0;
+    public static final int tv_desc = 0x7f0801d0;
 
     @IdRes
-    public static final int tv_edit = 0x7f0801d1;
+    public static final int tv_dir = 0x7f0801d1;
 
     @IdRes
-    public static final int tv_feng = 0x7f0801d2;
+    public static final int tv_edit = 0x7f0801d2;
 
     @IdRes
-    public static final int tv_fenglevel = 0x7f0801d3;
+    public static final int tv_feng = 0x7f0801d3;
 
     @IdRes
-    public static final int tv_folder_name = 0x7f0801d4;
+    public static final int tv_fenglevel = 0x7f0801d4;
 
     @IdRes
-    public static final int tv_goin_pindao = 0x7f0801d5;
+    public static final int tv_folder_name = 0x7f0801d5;
 
     @IdRes
-    public static final int tv_goin_pindao2 = 0x7f0801d6;
+    public static final int tv_goin_pindao = 0x7f0801d6;
 
     @IdRes
-    public static final int tv_home = 0x7f0801d7;
+    public static final int tv_goin_pindao2 = 0x7f0801d7;
 
     @IdRes
-    public static final int tv_image_count = 0x7f0801d8;
+    public static final int tv_home = 0x7f0801d8;
 
     @IdRes
-    public static final int tv_kongqizhiliang = 0x7f0801d9;
+    public static final int tv_image_count = 0x7f0801d9;
 
     @IdRes
-    public static final int tv_level = 0x7f0801da;
+    public static final int tv_kongqizhiliang = 0x7f0801da;
 
     @IdRes
-    public static final int tv_liebiao = 0x7f0801db;
+    public static final int tv_level = 0x7f0801db;
 
     @IdRes
-    public static final int tv_logout = 0x7f0801dc;
+    public static final int tv_liebiao = 0x7f0801dc;
 
     @IdRes
-    public static final int tv_my_city = 0x7f0801dd;
+    public static final int tv_logout = 0x7f0801dd;
 
     @IdRes
-    public static final int tv_name = 0x7f0801de;
+    public static final int tv_my_city = 0x7f0801de;
 
     @IdRes
-    public static final int tv_name1 = 0x7f0801df;
+    public static final int tv_name = 0x7f0801df;
 
     @IdRes
-    public static final int tv_name2 = 0x7f0801e0;
+    public static final int tv_name1 = 0x7f0801e0;
 
     @IdRes
-    public static final int tv_nengjiandu = 0x7f0801e1;
+    public static final int tv_name2 = 0x7f0801e1;
 
     @IdRes
-    public static final int tv_nick = 0x7f0801e2;
+    public static final int tv_nengjiandu = 0x7f0801e2;
 
     @IdRes
-    public static final int tv_night_temperature = 0x7f0801e3;
+    public static final int tv_nick = 0x7f0801e3;
 
     @IdRes
-    public static final int tv_night_weather = 0x7f0801e4;
+    public static final int tv_night_temperature = 0x7f0801e4;
 
     @IdRes
-    public static final int tv_no = 0x7f0801e5;
+    public static final int tv_night_weather = 0x7f0801e5;
 
     @IdRes
-    public static final int tv_notice_main_choose_name = 0x7f0801e6;
+    public static final int tv_no = 0x7f0801e6;
 
     @IdRes
-    public static final int tv_notice_main_list_content = 0x7f0801e7;
+    public static final int tv_notice_main_choose_name = 0x7f0801e7;
 
     @IdRes
-    public static final int tv_notice_main_list_fujian = 0x7f0801e8;
+    public static final int tv_notice_main_list_content = 0x7f0801e8;
 
     @IdRes
-    public static final int tv_notice_main_list_isread = 0x7f0801e9;
+    public static final int tv_notice_main_list_fujian = 0x7f0801e9;
 
     @IdRes
-    public static final int tv_notice_main_list_owner = 0x7f0801ea;
+    public static final int tv_notice_main_list_isread = 0x7f0801ea;
 
     @IdRes
-    public static final int tv_notice_main_list_readnumber = 0x7f0801eb;
+    public static final int tv_notice_main_list_owner = 0x7f0801eb;
 
     @IdRes
-    public static final int tv_notice_main_list_time = 0x7f0801ec;
+    public static final int tv_notice_main_list_readnumber = 0x7f0801ec;
 
     @IdRes
-    public static final int tv_notice_main_list_title = 0x7f0801ed;
+    public static final int tv_notice_main_list_time = 0x7f0801ed;
 
     @IdRes
-    public static final int tv_notice_main_list_top = 0x7f0801ee;
+    public static final int tv_notice_main_list_title = 0x7f0801ee;
 
     @IdRes
-    public static final int tv_o3 = 0x7f0801ef;
+    public static final int tv_notice_main_list_top = 0x7f0801ef;
 
     @IdRes
-    public static final int tv_ok = 0x7f0801f0;
+    public static final int tv_o3 = 0x7f0801f0;
 
     @IdRes
-    public static final int tv_phone = 0x7f0801f1;
+    public static final int tv_ok = 0x7f0801f1;
 
     @IdRes
-    public static final int tv_pm10 = 0x7f0801f2;
+    public static final int tv_phone = 0x7f0801f2;
 
     @IdRes
-    public static final int tv_pm25 = 0x7f0801f3;
+    public static final int tv_pm10 = 0x7f0801f3;
 
     @IdRes
-    public static final int tv_position = 0x7f0801f4;
+    public static final int tv_pm25 = 0x7f0801f4;
 
     @IdRes
-    public static final int tv_prompt = 0x7f0801f5;
+    public static final int tv_position = 0x7f0801f5;
 
     @IdRes
-    public static final int tv_qiya = 0x7f0801f6;
+    public static final int tv_prompt = 0x7f0801f6;
 
     @IdRes
-    public static final int tv_qushi = 0x7f0801f7;
+    public static final int tv_qiya = 0x7f0801f7;
 
     @IdRes
-    public static final int tv_richu_time = 0x7f0801f8;
+    public static final int tv_qushi = 0x7f0801f8;
 
     @IdRes
-    public static final int tv_riluo_time = 0x7f0801f9;
+    public static final int tv_richu_time = 0x7f0801f9;
 
     @IdRes
-    public static final int tv_score = 0x7f0801fa;
+    public static final int tv_riluo_time = 0x7f0801fa;
 
     @IdRes
-    public static final int tv_sex = 0x7f0801fb;
+    public static final int tv_score = 0x7f0801fb;
 
     @IdRes
-    public static final int tv_shidu = 0x7f0801fc;
+    public static final int tv_sex = 0x7f0801fc;
 
     @IdRes
-    public static final int tv_shidu_xiao = 0x7f0801fd;
+    public static final int tv_shidu = 0x7f0801fd;
 
     @IdRes
-    public static final int tv_so2 = 0x7f0801fe;
+    public static final int tv_shidu_xiao = 0x7f0801fe;
 
     @IdRes
-    public static final int tv_switch_1 = 0x7f0801ff;
+    public static final int tv_so2 = 0x7f0801ff;
 
     @IdRes
-    public static final int tv_switch_2 = 0x7f080200;
+    public static final int tv_switch_1 = 0x7f080200;
 
     @IdRes
-    public static final int tv_tab_title = 0x7f080201;
+    public static final int tv_switch_2 = 0x7f080201;
 
     @IdRes
-    public static final int tv_temp = 0x7f080202;
+    public static final int tv_tab_title = 0x7f080202;
 
     @IdRes
-    public static final int tv_tempater = 0x7f080203;
+    public static final int tv_temp = 0x7f080203;
 
     @IdRes
-    public static final int tv_tigan = 0x7f080204;
+    public static final int tv_tempater = 0x7f080204;
 
     @IdRes
-    public static final int tv_time = 0x7f080205;
+    public static final int tv_tigan = 0x7f080205;
 
     @IdRes
-    public static final int tv_title = 0x7f080206;
+    public static final int tv_time = 0x7f080206;
 
     @IdRes
-    public static final int tv_title_city = 0x7f080207;
+    public static final int tv_title = 0x7f080207;
 
     @IdRes
-    public static final int tv_title_left = 0x7f080208;
+    public static final int tv_title_city = 0x7f080208;
 
     @IdRes
-    public static final int tv_title_position = 0x7f080209;
+    public static final int tv_title_left = 0x7f080209;
 
     @IdRes
-    public static final int tv_title_right = 0x7f08020a;
+    public static final int tv_title_position = 0x7f08020a;
 
     @IdRes
-    public static final int tv_tongzhilan = 0x7f08020b;
+    public static final int tv_title_right = 0x7f08020b;
 
     @IdRes
-    public static final int tv_tuisong = 0x7f08020c;
+    public static final int tv_tongzhilan = 0x7f08020c;
 
     @IdRes
-    public static final int tv_updata = 0x7f08020d;
+    public static final int tv_tuisong = 0x7f08020d;
 
     @IdRes
-    public static final int tv_weater_xiao = 0x7f08020e;
+    public static final int tv_updata = 0x7f08020e;
 
     @IdRes
-    public static final int tv_weather = 0x7f08020f;
+    public static final int tv_weater_xiao = 0x7f08020f;
 
     @IdRes
-    public static final int tv_weather_temp = 0x7f080210;
+    public static final int tv_weather = 0x7f080210;
 
     @IdRes
-    public static final int tv_wechat = 0x7f080211;
+    public static final int tv_weather_temp = 0x7f080211;
 
     @IdRes
-    public static final int tv_week = 0x7f080212;
+    public static final int tv_wechat = 0x7f080212;
 
     @IdRes
-    public static final int tv_wind_level = 0x7f080213;
+    public static final int tv_week = 0x7f080213;
 
     @IdRes
-    public static final int tv_wind_ori = 0x7f080214;
+    public static final int tv_wind_level = 0x7f080214;
 
     @IdRes
-    public static final int tv_wodepindao = 0x7f080215;
+    public static final int tv_wind_ori = 0x7f080215;
 
     @IdRes
-    public static final int tv_wodepindao2 = 0x7f080216;
+    public static final int tv_wodepindao = 0x7f080216;
 
     @IdRes
-    public static final int tv_xiaoxi = 0x7f080217;
+    public static final int tv_wodepindao2 = 0x7f080217;
 
     @IdRes
-    public static final int tv_xingqi = 0x7f080218;
+    public static final int tv_xiaoxi = 0x7f080218;
 
     @IdRes
-    public static final int tv_yijian = 0x7f080219;
+    public static final int tv_xingqi = 0x7f080219;
 
     @IdRes
-    public static final int tv_zhuti = 0x7f08021a;
+    public static final int tv_yijian = 0x7f08021a;
 
     @IdRes
-    public static final int umeng_back = 0x7f08021b;
+    public static final int tv_zhuti = 0x7f08021b;
 
     @IdRes
-    public static final int umeng_del = 0x7f08021c;
+    public static final int umeng_back = 0x7f08021c;
 
     @IdRes
-    public static final int umeng_image_edge = 0x7f08021d;
+    public static final int umeng_del = 0x7f08021d;
 
     @IdRes
-    public static final int umeng_share_btn = 0x7f08021e;
+    public static final int umeng_image_edge = 0x7f08021e;
 
     @IdRes
-    public static final int umeng_share_icon = 0x7f08021f;
+    public static final int umeng_share_btn = 0x7f08021f;
 
     @IdRes
-    public static final int umeng_socialize_follow = 0x7f080220;
+    public static final int umeng_share_icon = 0x7f080220;
 
     @IdRes
-    public static final int umeng_socialize_follow_check = 0x7f080221;
+    public static final int umeng_socialize_follow = 0x7f080221;
 
     @IdRes
-    public static final int umeng_socialize_share_bottom_area = 0x7f080222;
+    public static final int umeng_socialize_follow_check = 0x7f080222;
 
     @IdRes
-    public static final int umeng_socialize_share_edittext = 0x7f080223;
+    public static final int umeng_socialize_share_bottom_area = 0x7f080223;
 
     @IdRes
-    public static final int umeng_socialize_share_titlebar = 0x7f080224;
+    public static final int umeng_socialize_share_edittext = 0x7f080224;
 
     @IdRes
-    public static final int umeng_socialize_share_word_num = 0x7f080225;
+    public static final int umeng_socialize_share_titlebar = 0x7f080225;
 
     @IdRes
-    public static final int umeng_socialize_titlebar = 0x7f080226;
+    public static final int umeng_socialize_share_word_num = 0x7f080226;
 
     @IdRes
-    public static final int umeng_title = 0x7f080227;
+    public static final int umeng_socialize_titlebar = 0x7f080227;
 
     @IdRes
-    public static final int umeng_web_title = 0x7f080228;
+    public static final int umeng_title = 0x7f080228;
 
     @IdRes
-    public static final int uniform = 0x7f080229;
+    public static final int umeng_web_title = 0x7f080229;
 
     @IdRes
-    public static final int up = 0x7f08022a;
+    public static final int uniform = 0x7f08022a;
 
     @IdRes
-    public static final int upush_notification1 = 0x7f08022b;
+    public static final int up = 0x7f08022b;
 
     @IdRes
-    public static final int upush_notification2 = 0x7f08022c;
+    public static final int upush_notification1 = 0x7f08022c;
 
     @IdRes
-    public static final int useLogo = 0x7f08022d;
+    public static final int upush_notification2 = 0x7f08022d;
 
     @IdRes
-    public static final int viewPager = 0x7f08022e;
+    public static final int useLogo = 0x7f08022e;
 
     @IdRes
-    public static final int view_line = 0x7f08022f;
+    public static final int viewPager = 0x7f08022f;
 
     @IdRes
-    public static final int view_offset_helper = 0x7f080230;
+    public static final int view_line = 0x7f080230;
 
     @IdRes
-    public static final int view_preview_img = 0x7f080231;
+    public static final int view_offset_helper = 0x7f080231;
 
     @IdRes
-    public static final int viewpager = 0x7f080232;
+    public static final int view_preview_img = 0x7f080232;
 
     @IdRes
-    public static final int visible = 0x7f080233;
+    public static final int viewpager = 0x7f080233;
 
     @IdRes
-    public static final int wb_img = 0x7f080234;
+    public static final int visible = 0x7f080234;
 
     @IdRes
-    public static final int weather_view = 0x7f080235;
+    public static final int wb_img = 0x7f080235;
 
     @IdRes
-    public static final int webView = 0x7f080236;
+    public static final int weather_view = 0x7f080236;
 
     @IdRes
-    public static final int webview = 0x7f080237;
+    public static final int webView = 0x7f080237;
 
     @IdRes
-    public static final int white = 0x7f080238;
+    public static final int webview = 0x7f080238;
 
     @IdRes
-    public static final int wide = 0x7f080239;
+    public static final int white = 0x7f080239;
 
     @IdRes
-    public static final int withText = 0x7f08023a;
+    public static final int wide = 0x7f08023a;
 
     @IdRes
-    public static final int wrap = 0x7f08023b;
+    public static final int withText = 0x7f08023b;
 
     @IdRes
-    public static final int wrap_content = 0x7f08023c;
+    public static final int wrap = 0x7f08023c;
 
     @IdRes
-    public static final int wrap_image = 0x7f08023d;
+    public static final int wrap_content = 0x7f08023d;
 
     @IdRes
-    public static final int wx_friend_img = 0x7f08023e;
+    public static final int wrap_image = 0x7f08023e;
 
     @IdRes
-    public static final int wx_img = 0x7f08023f;
+    public static final int wx_friend_img = 0x7f08023f;
 
     @IdRes
-    public static final int year = 0x7f080240;
+    public static final int wx_img = 0x7f080240;
+
+    @IdRes
+    public static final int year = 0x7f080241;
   }
 
   public static final class integer {
@@ -12214,406 +12217,409 @@ public final class R2 {
     public static final int abc_select_dialog_material = 0x7f0a001a;
 
     @LayoutRes
-    public static final int activity_album = 0x7f0a001b;
+    public static final int activity_about_ours = 0x7f0a001b;
 
     @LayoutRes
-    public static final int activity_camera = 0x7f0a001c;
+    public static final int activity_album = 0x7f0a001c;
 
     @LayoutRes
-    public static final int activity_edit_text = 0x7f0a001d;
+    public static final int activity_camera = 0x7f0a001d;
 
     @LayoutRes
-    public static final int activity_home = 0x7f0a001e;
+    public static final int activity_edit_text = 0x7f0a001e;
 
     @LayoutRes
-    public static final int activity_image_crop = 0x7f0a001f;
+    public static final int activity_home = 0x7f0a001f;
 
     @LayoutRes
-    public static final int activity_image_grid = 0x7f0a0020;
+    public static final int activity_image_crop = 0x7f0a0020;
 
     @LayoutRes
-    public static final int activity_image_preview = 0x7f0a0021;
+    public static final int activity_image_grid = 0x7f0a0021;
 
     @LayoutRes
-    public static final int activity_image_process = 0x7f0a0022;
+    public static final int activity_image_preview = 0x7f0a0022;
 
     @LayoutRes
-    public static final int activity_login = 0x7f0a0023;
+    public static final int activity_image_process = 0x7f0a0023;
 
     @LayoutRes
-    public static final int activity_main = 0x7f0a0024;
+    public static final int activity_login = 0x7f0a0024;
 
     @LayoutRes
-    public static final int activity_minecenter = 0x7f0a0025;
+    public static final int activity_main = 0x7f0a0025;
 
     @LayoutRes
-    public static final int activity_my_city = 0x7f0a0026;
+    public static final int activity_minecenter = 0x7f0a0026;
 
     @LayoutRes
-    public static final int activity_new_crop = 0x7f0a0027;
+    public static final int activity_my_city = 0x7f0a0027;
 
     @LayoutRes
-    public static final int activity_notice_center = 0x7f0a0028;
+    public static final int activity_new_crop = 0x7f0a0028;
 
     @LayoutRes
-    public static final int activity_notice_detatil = 0x7f0a0029;
+    public static final int activity_notice_center = 0x7f0a0029;
 
     @LayoutRes
-    public static final int activity_setting = 0x7f0a002a;
+    public static final int activity_notice_detatil = 0x7f0a002a;
 
     @LayoutRes
-    public static final int activity_share_main = 0x7f0a002b;
+    public static final int activity_setting = 0x7f0a002b;
 
     @LayoutRes
-    public static final int activity_user_inof = 0x7f0a002c;
+    public static final int activity_share_main = 0x7f0a002c;
 
     @LayoutRes
-    public static final int activity_welcome = 0x7f0a002d;
+    public static final int activity_user_inof = 0x7f0a002d;
 
     @LayoutRes
-    public static final int activity_zhuti_imge = 0x7f0a002e;
+    public static final int activity_welcome = 0x7f0a002e;
 
     @LayoutRes
-    public static final int adapter_camera_item = 0x7f0a002f;
+    public static final int activity_zhuti_imge = 0x7f0a002f;
 
     @LayoutRes
-    public static final int adapter_folder_list_item = 0x7f0a0030;
+    public static final int adapter_camera_item = 0x7f0a0030;
 
     @LayoutRes
-    public static final int adapter_image_list_item = 0x7f0a0031;
+    public static final int adapter_folder_list_item = 0x7f0a0031;
 
     @LayoutRes
-    public static final int brvah_quick_view_load_more = 0x7f0a0032;
+    public static final int adapter_image_list_item = 0x7f0a0032;
 
     @LayoutRes
-    public static final int design_bottom_navigation_item = 0x7f0a0033;
+    public static final int brvah_quick_view_load_more = 0x7f0a0033;
 
     @LayoutRes
-    public static final int design_bottom_sheet_dialog = 0x7f0a0034;
+    public static final int design_bottom_navigation_item = 0x7f0a0034;
 
     @LayoutRes
-    public static final int design_layout_snackbar = 0x7f0a0035;
+    public static final int design_bottom_sheet_dialog = 0x7f0a0035;
 
     @LayoutRes
-    public static final int design_layout_snackbar_include = 0x7f0a0036;
+    public static final int design_layout_snackbar = 0x7f0a0036;
 
     @LayoutRes
-    public static final int design_layout_tab_icon = 0x7f0a0037;
+    public static final int design_layout_snackbar_include = 0x7f0a0037;
 
     @LayoutRes
-    public static final int design_layout_tab_text = 0x7f0a0038;
+    public static final int design_layout_tab_icon = 0x7f0a0038;
 
     @LayoutRes
-    public static final int design_menu_item_action_area = 0x7f0a0039;
+    public static final int design_layout_tab_text = 0x7f0a0039;
 
     @LayoutRes
-    public static final int design_navigation_item = 0x7f0a003a;
+    public static final int design_menu_item_action_area = 0x7f0a003a;
 
     @LayoutRes
-    public static final int design_navigation_item_header = 0x7f0a003b;
+    public static final int design_navigation_item = 0x7f0a003b;
 
     @LayoutRes
-    public static final int design_navigation_item_separator = 0x7f0a003c;
+    public static final int design_navigation_item_header = 0x7f0a003c;
 
     @LayoutRes
-    public static final int design_navigation_item_subheader = 0x7f0a003d;
+    public static final int design_navigation_item_separator = 0x7f0a003d;
 
     @LayoutRes
-    public static final int design_navigation_menu = 0x7f0a003e;
+    public static final int design_navigation_item_subheader = 0x7f0a003e;
 
     @LayoutRes
-    public static final int design_navigation_menu_item = 0x7f0a003f;
+    public static final int design_navigation_menu = 0x7f0a003f;
 
     @LayoutRes
-    public static final int design_text_input_password_icon = 0x7f0a0040;
+    public static final int design_navigation_menu_item = 0x7f0a0040;
 
     @LayoutRes
-    public static final int dialog_nickname = 0x7f0a0041;
+    public static final int design_text_input_password_icon = 0x7f0a0041;
 
     @LayoutRes
-    public static final int fragment_album = 0x7f0a0042;
+    public static final int dialog_nickname = 0x7f0a0042;
 
     @LayoutRes
-    public static final int fragment_main = 0x7f0a0043;
+    public static final int fragment_album = 0x7f0a0043;
 
     @LayoutRes
-    public static final int fragment_news_vanlian = 0x7f0a0044;
+    public static final int fragment_main = 0x7f0a0044;
 
     @LayoutRes
-    public static final int fragment_postassistant = 0x7f0a0045;
+    public static final int fragment_news_vanlian = 0x7f0a0045;
 
     @LayoutRes
-    public static final int fragment_weather_banner_layout = 0x7f0a0046;
+    public static final int fragment_postassistant = 0x7f0a0046;
 
     @LayoutRes
-    public static final int gh_activity_map = 0x7f0a0047;
+    public static final int fragment_weather_banner_layout = 0x7f0a0047;
 
     @LayoutRes
-    public static final int gh_dialogfragment_air = 0x7f0a0048;
+    public static final int gh_activity_map = 0x7f0a0048;
 
     @LayoutRes
-    public static final int gh_dialogfragment_default = 0x7f0a0049;
+    public static final int gh_dialogfragment_air = 0x7f0a0049;
 
     @LayoutRes
-    public static final int gh_fragment_air = 0x7f0a004a;
+    public static final int gh_dialogfragment_default = 0x7f0a004a;
 
     @LayoutRes
-    public static final int gh_fragment_air_item = 0x7f0a004b;
+    public static final int gh_fragment_air = 0x7f0a004b;
 
     @LayoutRes
-    public static final int gh_fragment_rank = 0x7f0a004c;
+    public static final int gh_fragment_air_item = 0x7f0a004c;
 
     @LayoutRes
-    public static final int gh_item_air = 0x7f0a004d;
+    public static final int gh_fragment_rank = 0x7f0a004d;
 
     @LayoutRes
-    public static final int gh_tablayou_view_air = 0x7f0a004e;
+    public static final int gh_item_air = 0x7f0a004e;
 
     @LayoutRes
-    public static final int include_pickerview_topbar = 0x7f0a004f;
+    public static final int gh_tablayou_view_air = 0x7f0a004f;
 
     @LayoutRes
-    public static final int include_top_bar = 0x7f0a0050;
+    public static final int include_pickerview_topbar = 0x7f0a0050;
 
     @LayoutRes
-    public static final int item_bottom_filter = 0x7f0a0051;
+    public static final int include_top_bar = 0x7f0a0051;
 
     @LayoutRes
-    public static final int item_bottom_tool = 0x7f0a0052;
+    public static final int item_bottom_filter = 0x7f0a0052;
 
     @LayoutRes
-    public static final int item_gallery = 0x7f0a0053;
+    public static final int item_bottom_tool = 0x7f0a0053;
 
     @LayoutRes
-    public static final int item_load_end_view_news = 0x7f0a0054;
+    public static final int item_gallery = 0x7f0a0054;
 
     @LayoutRes
-    public static final int item_notice_main1_fragment1 = 0x7f0a0055;
+    public static final int item_load_end_view_news = 0x7f0a0055;
 
     @LayoutRes
-    public static final int item_notice_main1_fragment1_top = 0x7f0a0056;
+    public static final int item_notice_main1_fragment1 = 0x7f0a0056;
 
     @LayoutRes
-    public static final int item_notice_main1_fragment2 = 0x7f0a0057;
+    public static final int item_notice_main1_fragment1_top = 0x7f0a0057;
 
     @LayoutRes
-    public static final int item_notice_main1_fragment3 = 0x7f0a0058;
+    public static final int item_notice_main1_fragment2 = 0x7f0a0058;
 
     @LayoutRes
-    public static final int item_notice_main1_fragment3_top = 0x7f0a0059;
+    public static final int item_notice_main1_fragment3 = 0x7f0a0059;
 
     @LayoutRes
-    public static final int item_notice_main_chooset = 0x7f0a005a;
+    public static final int item_notice_main1_fragment3_top = 0x7f0a005a;
 
     @LayoutRes
-    public static final int item_picture = 0x7f0a005b;
+    public static final int item_notice_main_chooset = 0x7f0a005b;
 
     @LayoutRes
-    public static final int item_setting_list1 = 0x7f0a005c;
+    public static final int item_picture = 0x7f0a005c;
 
     @LayoutRes
-    public static final int item_setting_list2 = 0x7f0a005d;
+    public static final int item_setting_list1 = 0x7f0a005d;
 
     @LayoutRes
-    public static final int layout_basepickerview = 0x7f0a005e;
+    public static final int item_setting_list2 = 0x7f0a005e;
 
     @LayoutRes
-    public static final int layout_tab = 0x7f0a005f;
+    public static final int layout_basepickerview = 0x7f0a005f;
 
     @LayoutRes
-    public static final int layout_tab_bottom = 0x7f0a0060;
+    public static final int layout_tab = 0x7f0a0060;
 
     @LayoutRes
-    public static final int layout_tab_left = 0x7f0a0061;
+    public static final int layout_tab_bottom = 0x7f0a0061;
 
     @LayoutRes
-    public static final int layout_tab_right = 0x7f0a0062;
+    public static final int layout_tab_left = 0x7f0a0062;
 
     @LayoutRes
-    public static final int layout_tab_segment = 0x7f0a0063;
+    public static final int layout_tab_right = 0x7f0a0063;
 
     @LayoutRes
-    public static final int layout_tab_top = 0x7f0a0064;
+    public static final int layout_tab_segment = 0x7f0a0064;
 
     @LayoutRes
-    public static final int ll_bitmap = 0x7f0a0065;
+    public static final int layout_tab_top = 0x7f0a0065;
 
     @LayoutRes
-    public static final int main_spot_list = 0x7f0a0066;
+    public static final int ll_bitmap = 0x7f0a0066;
 
     @LayoutRes
-    public static final int main_tianqi_list_include = 0x7f0a0067;
+    public static final int main_spot_list = 0x7f0a0067;
 
     @LayoutRes
-    public static final int main_today_fuwu_list = 0x7f0a0068;
+    public static final int main_tianqi_list_include = 0x7f0a0068;
 
     @LayoutRes
-    public static final int main_today_suggest_list = 0x7f0a0069;
+    public static final int main_today_fuwu_list = 0x7f0a0069;
 
     @LayoutRes
-    public static final int my_city_list1 = 0x7f0a006a;
+    public static final int main_today_suggest_list = 0x7f0a006a;
 
     @LayoutRes
-    public static final int my_city_list2 = 0x7f0a006b;
+    public static final int my_city_list1 = 0x7f0a006b;
 
     @LayoutRes
-    public static final int my_city_list4 = 0x7f0a006c;
+    public static final int my_city_list2 = 0x7f0a006c;
 
     @LayoutRes
-    public static final int my_pindao_list = 0x7f0a006d;
+    public static final int my_city_list4 = 0x7f0a006d;
 
     @LayoutRes
-    public static final int notice_center_list1 = 0x7f0a006e;
+    public static final int my_pindao_list = 0x7f0a006e;
 
     @LayoutRes
-    public static final int notice_center_list2 = 0x7f0a006f;
+    public static final int notice_center_list1 = 0x7f0a006f;
 
     @LayoutRes
-    public static final int notification_action = 0x7f0a0070;
+    public static final int notice_center_list2 = 0x7f0a0070;
 
     @LayoutRes
-    public static final int notification_action_tombstone = 0x7f0a0071;
+    public static final int notification_action = 0x7f0a0071;
 
     @LayoutRes
-    public static final int notification_media_action = 0x7f0a0072;
+    public static final int notification_action_tombstone = 0x7f0a0072;
 
     @LayoutRes
-    public static final int notification_media_cancel_action = 0x7f0a0073;
+    public static final int notification_media_action = 0x7f0a0073;
 
     @LayoutRes
-    public static final int notification_template_big_media = 0x7f0a0074;
+    public static final int notification_media_cancel_action = 0x7f0a0074;
 
     @LayoutRes
-    public static final int notification_template_big_media_custom = 0x7f0a0075;
+    public static final int notification_template_big_media = 0x7f0a0075;
 
     @LayoutRes
-    public static final int notification_template_big_media_narrow = 0x7f0a0076;
+    public static final int notification_template_big_media_custom = 0x7f0a0076;
 
     @LayoutRes
-    public static final int notification_template_big_media_narrow_custom = 0x7f0a0077;
+    public static final int notification_template_big_media_narrow = 0x7f0a0077;
 
     @LayoutRes
-    public static final int notification_template_custom_big = 0x7f0a0078;
+    public static final int notification_template_big_media_narrow_custom = 0x7f0a0078;
 
     @LayoutRes
-    public static final int notification_template_icon_group = 0x7f0a0079;
+    public static final int notification_template_custom_big = 0x7f0a0079;
 
     @LayoutRes
-    public static final int notification_template_lines_media = 0x7f0a007a;
+    public static final int notification_template_icon_group = 0x7f0a007a;
 
     @LayoutRes
-    public static final int notification_template_media = 0x7f0a007b;
+    public static final int notification_template_lines_media = 0x7f0a007b;
 
     @LayoutRes
-    public static final int notification_template_media_custom = 0x7f0a007c;
+    public static final int notification_template_media = 0x7f0a007c;
 
     @LayoutRes
-    public static final int notification_template_part_chronometer = 0x7f0a007d;
+    public static final int notification_template_media_custom = 0x7f0a007d;
 
     @LayoutRes
-    public static final int notification_template_part_time = 0x7f0a007e;
+    public static final int notification_template_part_chronometer = 0x7f0a007e;
 
     @LayoutRes
-    public static final int personalinfophoto = 0x7f0a007f;
+    public static final int notification_template_part_time = 0x7f0a007f;
 
     @LayoutRes
-    public static final int pickerview_options = 0x7f0a0080;
+    public static final int personalinfophoto = 0x7f0a0080;
 
     @LayoutRes
-    public static final int pickerview_time = 0x7f0a0081;
+    public static final int pickerview_options = 0x7f0a0081;
 
     @LayoutRes
-    public static final int pop_folder = 0x7f0a0082;
+    public static final int pickerview_time = 0x7f0a0082;
 
     @LayoutRes
-    public static final int psts_tab = 0x7f0a0083;
+    public static final int pop_folder = 0x7f0a0083;
 
     @LayoutRes
-    public static final int select_dialog_item_material = 0x7f0a0084;
+    public static final int psts_tab = 0x7f0a0084;
 
     @LayoutRes
-    public static final int select_dialog_multichoice_material = 0x7f0a0085;
+    public static final int select_dialog_item_material = 0x7f0a0085;
 
     @LayoutRes
-    public static final int select_dialog_singlechoice_material = 0x7f0a0086;
+    public static final int select_dialog_multichoice_material = 0x7f0a0086;
 
     @LayoutRes
-    public static final int select_pic_pop_dialog = 0x7f0a0087;
+    public static final int select_dialog_singlechoice_material = 0x7f0a0087;
 
     @LayoutRes
-    public static final int small_tools_list = 0x7f0a0088;
+    public static final int select_pic_pop_dialog = 0x7f0a0088;
 
     @LayoutRes
-    public static final int socialize_share_menu_item = 0x7f0a0089;
+    public static final int small_tools_list = 0x7f0a0089;
 
     @LayoutRes
-    public static final int support_simple_spinner_dropdown_item = 0x7f0a008a;
+    public static final int socialize_share_menu_item = 0x7f0a008a;
 
     @LayoutRes
-    public static final int tablayou_view_housepk_left = 0x7f0a008b;
+    public static final int support_simple_spinner_dropdown_item = 0x7f0a008b;
 
     @LayoutRes
-    public static final int tablayou_view_housepk_right = 0x7f0a008c;
+    public static final int tablayou_view_housepk_left = 0x7f0a008c;
 
     @LayoutRes
-    public static final int title = 0x7f0a008d;
+    public static final int tablayou_view_housepk_right = 0x7f0a008d;
 
     @LayoutRes
-    public static final int toast_comment = 0x7f0a008e;
+    public static final int title = 0x7f0a008e;
 
     @LayoutRes
-    public static final int toast_worker = 0x7f0a008f;
+    public static final int toast_comment = 0x7f0a008f;
 
     @LayoutRes
-    public static final int toolbar_shadow_layout = 0x7f0a0090;
+    public static final int toast_worker = 0x7f0a0090;
 
     @LayoutRes
-    public static final int tooltip = 0x7f0a0091;
+    public static final int toolbar_shadow_layout = 0x7f0a0091;
 
     @LayoutRes
-    public static final int umeng_socialize_oauth_dialog = 0x7f0a0092;
+    public static final int tooltip = 0x7f0a0092;
 
     @LayoutRes
-    public static final int umeng_socialize_share = 0x7f0a0093;
+    public static final int umeng_socialize_oauth_dialog = 0x7f0a0093;
 
     @LayoutRes
-    public static final int upush_bar_image_notification = 0x7f0a0094;
+    public static final int umeng_socialize_share = 0x7f0a0094;
 
     @LayoutRes
-    public static final int upush_notification = 0x7f0a0095;
+    public static final int upush_bar_image_notification = 0x7f0a0095;
 
     @LayoutRes
-    public static final int view_drawable_overlay = 0x7f0a0096;
+    public static final int upush_notification = 0x7f0a0096;
 
     @LayoutRes
-    public static final int view_label = 0x7f0a0097;
+    public static final int view_drawable_overlay = 0x7f0a0097;
 
     @LayoutRes
-    public static final int view_label_bottom = 0x7f0a0098;
+    public static final int view_label = 0x7f0a0098;
 
     @LayoutRes
-    public static final int view_label_layout = 0x7f0a0099;
+    public static final int view_label_bottom = 0x7f0a0099;
 
     @LayoutRes
-    public static final int view_null = 0x7f0a009a;
+    public static final int view_label_layout = 0x7f0a009a;
 
     @LayoutRes
-    public static final int view_progress_dialog = 0x7f0a009b;
+    public static final int view_null = 0x7f0a009b;
 
     @LayoutRes
-    public static final int view_title_bar = 0x7f0a009c;
+    public static final int view_progress_dialog = 0x7f0a009c;
 
     @LayoutRes
-    public static final int view_transient_notification = 0x7f0a009d;
+    public static final int view_title_bar = 0x7f0a009d;
 
     @LayoutRes
-    public static final int weather15_list = 0x7f0a009e;
+    public static final int view_transient_notification = 0x7f0a009e;
 
     @LayoutRes
-    public static final int weather_item = 0x7f0a009f;
+    public static final int weather15_list = 0x7f0a009f;
 
     @LayoutRes
-    public static final int zhuti_image_adapter = 0x7f0a00a0;
+    public static final int weather_item = 0x7f0a00a0;
+
+    @LayoutRes
+    public static final int zhuti_image_adapter = 0x7f0a00a1;
   }
 
   public static final class menu {

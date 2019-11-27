@@ -1304,6 +1304,10 @@
         "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\play-services-base-8.4.0.aar\\853e754b8f8b70942bd41027979afe2f\\res\\drawable-mdpi\\common_google_signin_btn_text_dark_pressed.9.png"
     },
     {
+        "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_about_ours.xml.flat",
+        "source": "G:\\OKWeather\\app\\src\\main\\res\\layout\\activity_about_ours.xml"
+    },
+    {
         "merged": "G:\\OKWeather\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_design_ic_visibility_off.png.flat",
         "source": "D:\\gradleNew\\gradle-4.10.1\\caches\\transforms-1\\files-1.1\\design-26.0.1.aar\\f566bfd8a4a7719afecb0ecdc211cae0\\res\\drawable-xxxhdpi-v4\\design_ic_visibility_off.png"
     },

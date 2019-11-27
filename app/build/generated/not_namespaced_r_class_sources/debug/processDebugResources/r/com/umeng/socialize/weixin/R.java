@@ -34,28 +34,28 @@ public final class R {
         public static final int root = 0x7f080150;
         public static final int socialize_image_view = 0x7f080177;
         public static final int socialize_text_view = 0x7f080178;
-        public static final int umeng_back = 0x7f08021b;
-        public static final int umeng_del = 0x7f08021c;
-        public static final int umeng_image_edge = 0x7f08021d;
-        public static final int umeng_share_btn = 0x7f08021e;
-        public static final int umeng_share_icon = 0x7f08021f;
-        public static final int umeng_socialize_follow = 0x7f080220;
-        public static final int umeng_socialize_follow_check = 0x7f080221;
-        public static final int umeng_socialize_share_bottom_area = 0x7f080222;
-        public static final int umeng_socialize_share_edittext = 0x7f080223;
-        public static final int umeng_socialize_share_titlebar = 0x7f080224;
-        public static final int umeng_socialize_share_word_num = 0x7f080225;
-        public static final int umeng_socialize_titlebar = 0x7f080226;
-        public static final int umeng_title = 0x7f080227;
-        public static final int umeng_web_title = 0x7f080228;
-        public static final int webView = 0x7f080236;
+        public static final int umeng_back = 0x7f08021c;
+        public static final int umeng_del = 0x7f08021d;
+        public static final int umeng_image_edge = 0x7f08021e;
+        public static final int umeng_share_btn = 0x7f08021f;
+        public static final int umeng_share_icon = 0x7f080220;
+        public static final int umeng_socialize_follow = 0x7f080221;
+        public static final int umeng_socialize_follow_check = 0x7f080222;
+        public static final int umeng_socialize_share_bottom_area = 0x7f080223;
+        public static final int umeng_socialize_share_edittext = 0x7f080224;
+        public static final int umeng_socialize_share_titlebar = 0x7f080225;
+        public static final int umeng_socialize_share_word_num = 0x7f080226;
+        public static final int umeng_socialize_titlebar = 0x7f080227;
+        public static final int umeng_title = 0x7f080228;
+        public static final int umeng_web_title = 0x7f080229;
+        public static final int webView = 0x7f080237;
     }
     public static final class layout {
         private layout() {}
 
-        public static final int socialize_share_menu_item = 0x7f0a0089;
-        public static final int umeng_socialize_oauth_dialog = 0x7f0a0092;
-        public static final int umeng_socialize_share = 0x7f0a0093;
+        public static final int socialize_share_menu_item = 0x7f0a008a;
+        public static final int umeng_socialize_oauth_dialog = 0x7f0a0093;
+        public static final int umeng_socialize_share = 0x7f0a0094;
     }
     public static final class string {
         private string() {}

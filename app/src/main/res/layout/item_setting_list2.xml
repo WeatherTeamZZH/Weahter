@@ -34,7 +34,18 @@
             android:background="@mipmap/ic_launcher"
             android:visibility="gone"
             />
+
+
+
+        <com.ok100.weather.view.SwitchView
+            android:id="@+id/switchView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/x10"
+            android:layout_marginBottom="@dimen/x10"
+            />
         <TextView
+            android:id="@+id/tv_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="13800000000"
@@ -45,18 +56,10 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@mipmap/back_left"
+            android:background="@mipmap/back_right"
             android:layout_marginLeft="@dimen/x20"
             android:layout_marginRight="@dimen/x30"
             />
-        <com.ok100.weather.view.SwitchView
-            android:id="@+id/switchView"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/x10"
-            android:layout_marginBottom="@dimen/x10"
-            />
-
 
     </LinearLayout>
     </RelativeLayout>

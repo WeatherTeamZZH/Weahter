@@ -1,7 +1,10 @@
 package com.ok100.weather;
 
+import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.Person;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -10,9 +13,11 @@ import android.support.annotation.RequiresApi;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.util.LongSparseArray;
 import android.util.SparseArray;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -525,7 +530,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             @Override
             public void run() {
                 if(cityGreenDaoBeanList.size()==0){
-                    addCity(locationCiyt.substring(0,locationCiyt.length()-1));
+                    try{
+                        if(!TextUtils.isEmpty(locationCiyt)){
+                            addCity(locationCiyt.substring(0,locationCiyt.length()-1));
+                        }
+                    }catch (Exception e){
+
+                    }
+
                 }
             }
         });
@@ -592,6 +604,28 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         MainFragment mainFragment = (MainFragment) mTestFragments.get(getFragmentId());
         mainFragment.setAllGoneViewVisible(visible);
         hitiTitle(visible);
+    }
+    private long exitTime = 0;
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
+            if ((System.currentTimeMillis() - exitTime) > 2000) {
+                Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
+                exitTime = System.currentTimeMillis();
+            } else {
+                List<Activity> list = ((BaseApplication) getApplication()).getActivities();
+                for (int i = 0; i < list.size(); i++) {
+                    Activity activity = (Activity) list.get(i);
+                    activity.finish();
+                }
+                this.finish();
+                ActivityManager activityMgr = (ActivityManager) this.getSystemService(Context.ACTIVITY_SERVICE);
+                activityMgr.restartPackage(this.getPackageName());
+//                System.exit(0);//退出应用
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
 }

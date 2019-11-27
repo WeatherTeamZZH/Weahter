@@ -19,9 +19,9 @@ import java.lang.Override;
 public class AirFragment_ViewBinding implements Unbinder {
   private AirFragment target;
 
-  private View view7f0801ff;
-
   private View view7f080200;
+
+  private View view7f080201;
 
   @UiThread
   public AirFragment_ViewBinding(final AirFragment target, View source) {
@@ -33,7 +33,7 @@ public class AirFragment_ViewBinding implements Unbinder {
     target.llNational = Utils.findRequiredViewAsType(source, R.id.ll_national, "field 'llNational'", LinearLayout.class);
     view = Utils.findRequiredView(source, R.id.tv_switch_1, "field 'tvSwitch1' and method 'onViewClicked'");
     target.tvSwitch1 = Utils.castView(view, R.id.tv_switch_1, "field 'tvSwitch1'", TextView.class);
-    view7f0801ff = view;
+    view7f080200 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -42,7 +42,7 @@ public class AirFragment_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.tv_switch_2, "field 'tvSwitch2' and method 'onViewClicked'");
     target.tvSwitch2 = Utils.castView(view, R.id.tv_switch_2, "field 'tvSwitch2'", TextView.class);
-    view7f080200 = view;
+    view7f080201 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -66,9 +66,9 @@ public class AirFragment_ViewBinding implements Unbinder {
     target.tvSwitch2 = null;
     target.rvList = null;
 
-    view7f0801ff.setOnClickListener(null);
-    view7f0801ff = null;
     view7f080200.setOnClickListener(null);
     view7f080200 = null;
+    view7f080201.setOnClickListener(null);
+    view7f080201 = null;
   }
 }

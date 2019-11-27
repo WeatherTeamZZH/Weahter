@@ -29,7 +29,7 @@ public class MineCenterActivity_ViewBinding implements Unbinder {
 
   private View view7f0800f8;
 
-  private View view7f0801dc;
+  private View view7f0801dd;
 
   @UiThread
   public MineCenterActivity_ViewBinding(MineCenterActivity target) {
@@ -103,7 +103,7 @@ public class MineCenterActivity_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.tv_logout, "field 'tvLogout' and method 'onViewClicked'");
     target.tvLogout = Utils.castView(view, R.id.tv_logout, "field 'tvLogout'", TextView.class);
-    view7f0801dc = view;
+    view7f0801dd = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -145,7 +145,7 @@ public class MineCenterActivity_ViewBinding implements Unbinder {
     view7f0800ef = null;
     view7f0800f8.setOnClickListener(null);
     view7f0800f8 = null;
-    view7f0801dc.setOnClickListener(null);
-    view7f0801dc = null;
+    view7f0801dd.setOnClickListener(null);
+    view7f0801dd = null;
   }
 }
