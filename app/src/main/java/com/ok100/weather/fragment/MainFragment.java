@@ -1066,9 +1066,9 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
         if(isVisible){
             mTabLayout.getTabAt(0).select();
 //            String title = message.getTitle();
-//            if(!(mCoordinatorLayout==null||mTabLayout==null)){
-//                scrollToTop(false);
-//            }
+            if(!(mCoordinatorLayout==null||mTabLayout==null)){
+                scrollToTop(false);
+            }
         }
     }
 
@@ -1080,8 +1080,9 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
             if (flag) {
                 appBarLayoutBehavior.setTopAndBottomOffset(0); //快熟滑动到顶部
             } else {
+                Log.e("getTopAndBottomOffset", "getTopAndBottomOffset:"+appBarLayoutBehavior.getTopAndBottomOffset());
                 int hight = mAppBarLayout.getHeight();
-                appBarLayoutBehavior.setTopAndBottomOffset(hight);//快速滑动实现吸顶效果
+                appBarLayoutBehavior.setTopAndBottomOffset(-mAppBarLayout.getHeight());//快速滑动实现吸顶效果
             }
         }
     }

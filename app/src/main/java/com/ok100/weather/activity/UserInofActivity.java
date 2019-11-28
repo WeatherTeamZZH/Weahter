@@ -140,7 +140,8 @@ public class UserInofActivity extends BaseActivity {
                         startActivity(intent);
                         break;
                     case 4:
-
+                        intent = new Intent(UserInofActivity.this, SuggestionActivity.class);
+                        startActivity(intent);
                         break;
                     case 5:
 
@@ -193,11 +194,4 @@ public class UserInofActivity extends BaseActivity {
         }
     }
 
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
 }

@@ -3200,6 +3200,7 @@ drawable best_level_shape
 drawable bg_btn_dis
 drawable bg_btn_nor
 drawable bg_btn_pre
+drawable bg_customer_information_add_edittext_v3
 drawable bg_dotted_line
 drawable bg_folder_item
 drawable bg_gray_radius8
@@ -3837,6 +3838,7 @@ id sticker_btn
 id sub_img
 id submenuarrow
 id submit_area
+id suggest_et_input
 id surepicture
 id surfaceView
 id swipeRefreshLayout_vanlian_new
@@ -4081,6 +4083,7 @@ layout activity_notice_center
 layout activity_notice_detatil
 layout activity_setting
 layout activity_share_main
+layout activity_suggestion
 layout activity_user_inof
 layout activity_welcome
 layout activity_zhuti_imge

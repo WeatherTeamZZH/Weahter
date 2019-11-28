@@ -54,18 +54,18 @@
         android:layout_width="match_parent"
         android:layout_below="@+id/relativeLayout1"
         android:focusableInTouchMode="true"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:descendantFocusability="blocksDescendants"
             android:orientation="vertical">
 
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
 
             <LinearLayout
                 android:id="@+id/llnearlayout1"
@@ -111,7 +111,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/x30"
-                    android:layout_marginBottom="@dimen/x100"
+                    android:layout_marginBottom="@dimen/x20"
+                    android:visibility="invisible"
                     android:orientation="horizontal">
 
                     <TextView
@@ -150,7 +151,7 @@
                 android:id="@+id/llnearlayout3"
                 android:layout_below="@+id/llnearlayout1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:background="#E5E5EA"
                 android:orientation="vertical">
 
@@ -161,7 +162,7 @@
                     android:layout_marginLeft="@dimen/x30"
                     android:layout_marginRight="@dimen/x30"
                     android:background="@drawable/shape_white_24"
-                    android:layout_marginTop="@dimen/x130"
+                    android:layout_marginTop="@dimen/x30"
                     android:orientation="vertical">
 
                     <RelativeLayout
@@ -209,8 +210,8 @@
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
                             android:layout_marginLeft="@dimen/x30"
                             android:src="@mipmap/ic_launcher" />
 
@@ -232,7 +233,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/x10"
-                                android:text="开通即可享受永久去除广告"
+                                android:text="查看详情"
                                 android:textSize="14dp" />
                         </LinearLayout>
 
@@ -241,7 +242,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/x30"
                     android:layout_marginTop="@dimen/x30"
                     android:layout_marginRight="@dimen/x30"
@@ -271,9 +272,10 @@
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/recycleview"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_marginTop="@dimen/x30"
-                        android:layout_marginBottom="@dimen/x30"></android.support.v7.widget.RecyclerView>
+                        android:layout_marginBottom="@dimen/x30"
+                        ></android.support.v7.widget.RecyclerView>
 
                 </LinearLayout>
 
@@ -335,7 +337,7 @@
                     android:gravity="center_vertical"
                     android:layout_marginTop="@dimen/x200"
                     android:orientation="horizontal"
-                    android:visibility="visible">
+                    android:visibility="gone">
 
                     <ImageView
                         android:layout_width="@dimen/x100"
@@ -381,6 +383,10 @@
                         android:textColor="@color/white" />
                 </LinearLayout>
         </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x200"
+                android:background="#E5E5EA"/>
 </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 </RelativeLayout>

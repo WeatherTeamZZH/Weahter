@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.SuggestionActivity"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+    <include layout="@layout/title" />
+
+    <EditText
+        android:id="@+id/suggest_et_input"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/y40"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x30"
+        android:layout_marginTop="@dimen/y40"
+        android:background="@drawable/bg_customer_information_add_edittext_v3"
+        android:freezesText="true"
+        android:gravity="top"
+        android:hint="期待收到您在使用过程中的功能建议"
+        android:inputType="textShortMessage|textAutoCorrect|textCapSentences|textMultiLine"
+        android:isScrollContainer="false"
+        android:maxLength="1600"
+        android:minLines="7"
+        android:paddingLeft="@dimen/x30"
+        android:paddingTop="@dimen/y30"
+        android:textColorHint="@color/grayline"
+        android:textCursorDrawable="@null"
+        android:textSize="14sp"/>
+
+</LinearLayout>
