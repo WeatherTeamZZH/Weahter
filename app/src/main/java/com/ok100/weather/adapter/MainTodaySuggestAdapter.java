@@ -1,4 +1,6 @@
 package com.ok100.weather.adapter;
+import android.text.TextUtils;
+
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.ok100.weather.R;
@@ -19,6 +21,10 @@ public class MainTodaySuggestAdapter extends BaseQuickAdapter<SuggestGridViewBea
     protected void convert(BaseViewHolder helper, SuggestGridViewBean item) {
                 helper.setText(R.id.tv_name1,item.getName1());
                 helper.setText(R.id.tv_name2,item.getName2());
+                if(!TextUtils.isEmpty(item.getImageUlrRes()+"")){
+                    helper.setBackgroundRes(R.id.iv_image,item.getImageUlrRes());
+                }
+
 
 //        helper.setVisible(R.id.tv_subhead_pop_project_item, isSubhead);
 //        helper.setBackgroundColor(R.id.tv_subhead_pop_project_item, item.isCheck() ? 0xFFFAFAFA : 0xFFFFFFFF);

@@ -45,6 +45,7 @@ import com.ok100.weather.base.BaseFragment;
 import com.ok100.weather.bean.DataBean;
 import com.ok100.weather.bean.DefultGridViewBean;
 import com.ok100.weather.bean.DepartmentListBean;
+import com.ok100.weather.bean.EventTitleMessage;
 import com.ok100.weather.bean.NewsListBean;
 import com.ok100.weather.bean.NoticeMainChooseBean;
 import com.ok100.weather.bean.SuggestGridViewBean;
@@ -52,6 +53,7 @@ import com.ok100.weather.bean.WeatherTotal15Bean;
 import com.ok100.weather.bean.WeatherTotal24Bean;
 import com.ok100.weather.bean.WeatherTotal7Bean;
 import com.ok100.weather.bean.WeatherTotalBean;
+import com.ok100.weather.event.EventGotoNewsMessage;
 import com.ok100.weather.gh.AirDialogFragment;
 import com.ok100.weather.gh.GH_DefaultDialogFragment;
 import com.ok100.weather.gh.GH_MapActivity;
@@ -64,6 +66,10 @@ import com.ok100.weather.utils.ChooseTypeUtils;
 import com.ok100.weather.utils.DPUtils;
 import com.ok100.weather.view.MySwipeRefreshLayout;
 import com.ok100.weather.view.MyViewPager;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -258,6 +264,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
                 break;
             case R.id.iv_shipin_list:
                 mTabLayout.getTabAt(1).select();
+
                 break;
             case R.id.rl_main_bottom:
 //                mTabLayout.getTabAt(1).select();
@@ -478,23 +485,6 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     }
 
 
-    public void scrollToTop(boolean flag) {
-        CoordinatorLayout.Behavior behavior =
-                ((CoordinatorLayout.LayoutParams) mAppBarLayout.getLayoutParams()).getBehavior();
-        if (behavior instanceof AppBarLayout.Behavior) {
-            AppBarLayout.Behavior appBarLayoutBehavior = (AppBarLayout.Behavior) behavior;
-            if (flag) {
-                appBarLayoutBehavior.setTopAndBottomOffset(0); //快熟滑动到顶部
-            } else {
-                int hight = mAppBarLayout.getHeight();
-                appBarLayoutBehavior.setTopAndBottomOffset(hight);//快速滑动实现吸顶效果
-            }
-        }
-    }
-
-
-
-
     private void initViewPager() {
         viewPager.setOffscreenPageLimit(5);
         viewPager.setAdapter(fragmentPagerAdapter);
@@ -627,7 +617,6 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     @Override
     public void onStart() {
         super.onStart();
-        Log.e("onStart", "onStart");
     }
 
 //    @Override
@@ -718,6 +707,9 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
         switch (responseCode) {
             case "getTotalWeather":
                 weatherTotalBean = (WeatherTotalBean) o;
+                if(weatherTotalBean==null){
+                    return;
+                }
                 Log.e("weatherTotalBean", weatherTotalBean.toString());
                 setWeatherData(weatherTotalBean);
                 mToday24HourView.invalidate();
@@ -726,6 +718,9 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
             case "getTotalWeather15":
                 weather15 = true;
                 weatherTotal15Bean = (WeatherTotal15Bean) o;
+                if(weatherTotal15Bean==null){
+                    return;
+                }
                 if(weather7){
                     List<WeatherModel> arraylist = new ArrayList<WeatherModel>();
                     arraylist.addAll(generateData7(weatherTotal7Bean));
@@ -737,6 +732,9 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
             case "getTotalWeather7":
                 weather7 = true;
                 weatherTotal7Bean = (WeatherTotal7Bean) o;
+                if(weatherTotal7Bean==null){
+                    return;
+                }
                 if(weather15){
                     List<WeatherModel> arraylist = new ArrayList<WeatherModel>();
                     arraylist.addAll(generateData7(weatherTotal7Bean));
@@ -752,6 +750,9 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
 
             case "getTotalWeather24":
                 WeatherTotal24Bean getTotalWeather24 = (WeatherTotal24Bean) o;
+                if(getTotalWeather24==null){
+                    return;
+                }
                 ArrayList<Integer> tempList = new ArrayList<Integer>();
                 ArrayList<Integer> windyList = new ArrayList<Integer>();
                 ArrayList<Integer> resList = new ArrayList<Integer>();
@@ -784,7 +785,6 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
                 }
                 mToday24HourView.setData();
                 mToday24HourView.invalidate();
-
                 break;
         }
     }
@@ -793,13 +793,14 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
         ArrayList<SuggestGridViewBean> suggestGridViewBeanList = new ArrayList<>();
         SuggestGridViewBean suggestGridViewBean ;
         WeatherTotal7Bean.DataBean.Day7Bean.LiveBean live = weatherTotal7Bean.getData().getDay7().get(0).getLive();
-        for (int i= 0 ;i<12;i++){
+        for (int i= 0 ;i<13;i++){
         switch (i){
             case 1:
                 suggestGridViewBean = new SuggestGridViewBean();
                 suggestGridViewBean.setName1(live.getAc().getName());
                 suggestGridViewBean.setName2(live.getAc().getTitle());
                 suggestGridViewBean.setName3(live.getAc().getDesc());
+                suggestGridViewBean.setImageUlrRes(R.mipmap.main_icon_kongtiao);
                 suggestGridViewBeanList.add(suggestGridViewBean);
                 break;
             case 2:
@@ -807,6 +808,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
                 suggestGridViewBean.setName1(live.getAg().getName());
                 suggestGridViewBean.setName2(live.getAg().getTitle());
                 suggestGridViewBean.setName3(live.getAg().getDesc());
+                suggestGridViewBean.setImageUlrRes(R.mipmap.main_icon_guomin);
                 suggestGridViewBeanList.add(suggestGridViewBean);
                 break;
             case 3:
@@ -814,6 +816,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
                 suggestGridViewBean.setName1(live.getBl().getName());
                 suggestGridViewBean.setName2(live.getBl().getTitle());
                 suggestGridViewBean.setName3(live.getBl().getDesc());
+                suggestGridViewBean.setImageUlrRes(R.mipmap.main_icon_xuetang);
                 suggestGridViewBeanList.add(suggestGridViewBean);
                 break;
             case 4:
@@ -821,6 +824,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
                 suggestGridViewBean.setName1(live.getCl().getName());
                 suggestGridViewBean.setName2(live.getCl().getTitle());
                 suggestGridViewBean.setName3(live.getCl().getDesc());
+                suggestGridViewBean.setImageUlrRes(R.mipmap.main_icon_chenlian);
                 suggestGridViewBeanList.add(suggestGridViewBean);
                 break;
             case 5:
@@ -828,6 +832,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
                 suggestGridViewBean.setName1(live.getCo().getName());
                 suggestGridViewBean.setName2(live.getCo().getTitle());
                 suggestGridViewBean.setName3(live.getCo().getDesc());
+                suggestGridViewBean.setImageUlrRes(R.mipmap.main_icon_shushidu);
                 suggestGridViewBeanList.add(suggestGridViewBean);
                 break;
             case 6:
@@ -835,6 +840,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
                 suggestGridViewBean.setName1(live.getDy().getName());
                 suggestGridViewBean.setName2(live.getDy().getTitle());
                 suggestGridViewBean.setName3(live.getDy().getDesc());
+                suggestGridViewBean.setImageUlrRes(R.mipmap.main_icon_diaoyu);
                 suggestGridViewBeanList.add(suggestGridViewBean);
                 break;
             case 7:
@@ -842,6 +848,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
                 suggestGridViewBean.setName1(live.getFs().getName());
                 suggestGridViewBean.setName2(live.getFs().getTitle());
                 suggestGridViewBean.setName3(live.getFs().getDesc());
+                suggestGridViewBean.setImageUlrRes(R.mipmap.main_icon_fangshai);
                 suggestGridViewBeanList.add(suggestGridViewBean);
                 break;
             case 8:
@@ -849,6 +856,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
                 suggestGridViewBean.setName1(live.getGj().getName());
                 suggestGridViewBean.setName2(live.getGj().getTitle());
                 suggestGridViewBean.setName3(live.getGj().getDesc());
+                suggestGridViewBean.setImageUlrRes(R.mipmap.main_icon_guangjie);
                 suggestGridViewBeanList.add(suggestGridViewBean);
                 break;
             case 9:
@@ -856,6 +864,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
                 suggestGridViewBean.setName1(live.getGl().getName());
                 suggestGridViewBean.setName2(live.getGl().getTitle());
                 suggestGridViewBean.setName3(live.getGl().getDesc());
+                suggestGridViewBean.setImageUlrRes(R.mipmap.main_icon_taiyangjing);
                 suggestGridViewBeanList.add(suggestGridViewBean);
                 break;
             case 10:
@@ -863,6 +872,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
                 suggestGridViewBean.setName1(live.getGm().getName());
                 suggestGridViewBean.setName2(live.getGm().getTitle());
                 suggestGridViewBean.setName3(live.getGm().getDesc());
+                suggestGridViewBean.setImageUlrRes(R.mipmap.main_icon_ganmao);
                 suggestGridViewBeanList.add(suggestGridViewBean);
                 break;
             case 11:
@@ -870,6 +880,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
                 suggestGridViewBean.setName1(live.getHc().getName());
                 suggestGridViewBean.setName2(live.getHc().getTitle());
                 suggestGridViewBean.setName3(live.getHc().getDesc());
+                suggestGridViewBean.setImageUlrRes(R.mipmap.main_icon_huachuan);
                 suggestGridViewBeanList.add(suggestGridViewBean);
                 break;
             case 12:
@@ -877,6 +888,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
                 suggestGridViewBean.setName1(live.getJt().getName());
                 suggestGridViewBean.setName2(live.getJt().getTitle());
                 suggestGridViewBean.setName3(live.getJt().getDesc());
+                suggestGridViewBean.setImageUlrRes(R.mipmap.main_icon_huachuan);
                 suggestGridViewBeanList.add(suggestGridViewBean);
                 break;
             case 13:
@@ -1040,6 +1052,52 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
             weatherModels.add(model);
         }
         return weatherModels;
+    }
+
+    public void setScollToList(){
+        if(!(mCoordinatorLayout==null||mTabLayout==null)){
+            mCoordinatorLayout.scrollTo(0,mTabLayout.getHeight());
+        }
+
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onReceiveMsg(EventGotoNewsMessage message) {
+        if(isVisible){
+            mTabLayout.getTabAt(0).select();
+//            String title = message.getTitle();
+//            if(!(mCoordinatorLayout==null||mTabLayout==null)){
+//                scrollToTop(false);
+//            }
+        }
+    }
+
+    public void scrollToTop(boolean flag) {
+        CoordinatorLayout.Behavior behavior =
+                ((CoordinatorLayout.LayoutParams) mAppBarLayout.getLayoutParams()).getBehavior();
+        if (behavior instanceof AppBarLayout.Behavior) {
+            AppBarLayout.Behavior appBarLayoutBehavior = (AppBarLayout.Behavior) behavior;
+            if (flag) {
+                appBarLayoutBehavior.setTopAndBottomOffset(0); //快熟滑动到顶部
+            } else {
+                int hight = mAppBarLayout.getHeight();
+                appBarLayoutBehavior.setTopAndBottomOffset(hight);//快速滑动实现吸顶效果
+            }
+        }
+    }
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
+
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EventBus.getDefault().register(this);
     }
 
 }

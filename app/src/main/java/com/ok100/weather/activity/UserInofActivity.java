@@ -12,14 +12,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.ok100.weather.R;
 import com.ok100.weather.adapter.SmallToolsAdapter;
 import com.ok100.weather.base.BaseActivity;
 import com.ok100.weather.bean.DataBean;
+import com.ok100.weather.bean.EventTitleMessage;
+import com.ok100.weather.event.EventGotoNewsMessage;
 import com.ok100.weather.gh.GlideCircleTransform;
 import com.ok100.weather.gh.MineCenterActivity;
 import com.ok100.weather.utils.EmptyUtils;
 import com.ok100.weather.utils.SPObj;
+
+import org.greenrobot.eventbus.EventBus;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -71,9 +76,6 @@ public class UserInofActivity extends BaseActivity {
     public void InitView() {
         spObj = new SPObj(getContext(), "gh");
 
-
-
-
     }
 
     @Override
@@ -104,7 +106,7 @@ public class UserInofActivity extends BaseActivity {
 
     @Override
     public void initData(Bundle savedInstanceState, View contentView) {
-        mRecycleview.setLayoutManager(new GridLayoutManager(UserInofActivity.this, 4));
+        mRecycleview.setLayoutManager(new GridLayoutManager(UserInofActivity.this, 3));
         SmallToolsAdapter myPindaoAdapter = new SmallToolsAdapter();
         myPindaoAdapter.setNewData(DataBean.getUserAdapter());
         mRecycleview.setAdapter(myPindaoAdapter);
@@ -115,6 +117,37 @@ public class UserInofActivity extends BaseActivity {
         myPindaoAdapter1.setNewData(DataBean.getUserAdapter1());
         mRecycleview1.setAdapter(myPindaoAdapter);
         mRecycleview1.setNestedScrollingEnabled(false);//禁止滑动
+
+        myPindaoAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                Intent intent;
+                switch (position){
+                    case 0:
+                        intent = new Intent(UserInofActivity.this, NoticeCenterActivity.class);
+                        startActivity(intent);
+                        break;
+                    case 1:
+                        EventGotoNewsMessage msg = new EventGotoNewsMessage("头条");
+                        EventBus.getDefault().post(msg);
+                        finish();
+                        break;
+                    case 2:
+
+                        break;
+                    case 3:
+                        intent = new Intent(UserInofActivity.this, ZhutiImgeActivity.class);
+                        startActivity(intent);
+                        break;
+                    case 4:
+
+                        break;
+                    case 5:
+
+                        break;
+                }
+            }
+        });
     }
 
 

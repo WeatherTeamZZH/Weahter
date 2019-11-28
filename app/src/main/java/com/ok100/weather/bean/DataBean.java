@@ -131,19 +131,17 @@ public class DataBean {
     public static List<DefultGridViewBean> getUserAdapter() {
         DefultGridViewBean defultGridViewBean ;
         ArrayList<DefultGridViewBean> defultGridViewBeans = new ArrayList<>();
-        defultGridViewBean = new DefultGridViewBean("冬季专题");
+        defultGridViewBean = new DefultGridViewBean("消息中心",R.mipmap.userinfo_xiaoxi);
         defultGridViewBeans.add(defultGridViewBean);
-        defultGridViewBean = new DefultGridViewBean("天气日报");
+        defultGridViewBean = new DefultGridViewBean("热点新闻",R.mipmap.userinfo_redianxinewn);
         defultGridViewBeans.add(defultGridViewBean);
-        defultGridViewBean = new DefultGridViewBean("地震速报");
+        defultGridViewBean = new DefultGridViewBean("星座运势",R.mipmap.userinfo_xingzuo);
         defultGridViewBeans.add(defultGridViewBean);
-        defultGridViewBean = new DefultGridViewBean("积分好礼");
+        defultGridViewBean = new DefultGridViewBean("主题换肤",R.mipmap.userinfo_zhuti);
         defultGridViewBeans.add(defultGridViewBean);
-        defultGridViewBean = new DefultGridViewBean("星座运势");
+        defultGridViewBean = new DefultGridViewBean("意见反馈",R.mipmap.userinfo_yijian);
         defultGridViewBeans.add(defultGridViewBean);
-        defultGridViewBean = new DefultGridViewBean("万年历");
-        defultGridViewBeans.add(defultGridViewBean);
-        defultGridViewBean = new DefultGridViewBean("台风路径");
+        defultGridViewBean = new DefultGridViewBean("万年历",R.mipmap.userinfo_wannianli);
         defultGridViewBeans.add(defultGridViewBean);
         return defultGridViewBeans;
     }

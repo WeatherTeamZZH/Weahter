@@ -285,7 +285,9 @@
                     android:layout_marginRight="@dimen/x30"
                     android:layout_marginBottom="@dimen/x80"
                     android:background="@drawable/shape_white_24"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    >
 
                     <RelativeLayout
                         android:layout_width="match_parent"
