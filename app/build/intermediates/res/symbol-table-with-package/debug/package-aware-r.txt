@@ -3572,6 +3572,7 @@ id draw_area
 id drawable_overlay
 id drawing_view_container
 id edit_query
+id edittext
 id edittext1
 id edittext2
 id edittext_search
@@ -3616,6 +3617,7 @@ id id_viewpager
 id ifRoom
 id image
 id image_center
+id imageview
 id imageview1
 id imageview2
 id imageview3
@@ -3770,6 +3772,7 @@ id recycleview2
 id recycleview3
 id recycleview4
 id recycleview_pindao
+id recycleview_title
 id relativeLayout1
 id right
 id right_icon
@@ -3956,6 +3959,7 @@ id tv_qushi
 id tv_richu_time
 id tv_riluo_time
 id tv_score
+id tv_search
 id tv_sex
 id tv_shidu
 id tv_shidu_xiao
@@ -4069,6 +4073,7 @@ layout activity_about_ours
 layout activity_album
 layout activity_camera
 layout activity_edit_text
+layout activity_history_today
 layout activity_home
 layout activity_image_crop
 layout activity_image_grid
@@ -4086,6 +4091,8 @@ layout activity_share_main
 layout activity_suggestion
 layout activity_user_inof
 layout activity_welcome
+layout activity_xiaohua
+layout activity_zhougong
 layout activity_zhuti_imge
 layout adapter_camera_item
 layout adapter_folder_list_item
@@ -4119,6 +4126,7 @@ layout gh_fragment_air_item
 layout gh_fragment_rank
 layout gh_item_air
 layout gh_tablayou_view_air
+layout history_today_list
 layout include_pickerview_topbar
 layout include_top_bar
 layout item_bottom_filter
@@ -4200,6 +4208,9 @@ layout view_title_bar
 layout view_transient_notification
 layout weather15_list
 layout weather_item
+layout xiaohua_list
+layout zhougong_list
+layout zhougong_title_list
 layout zhuti_image_adapter
 menu menu_main
 mipmap app_icon_foreground
@@ -4279,11 +4290,14 @@ mipmap sunrise
 mipmap sunset
 mipmap text_indicator
 mipmap user_vip
+mipmap userinfo_lishijintian
 mipmap userinfo_redianxinewn
 mipmap userinfo_wannianli
+mipmap userinfo_xiaohua
 mipmap userinfo_xiaoxi
 mipmap userinfo_xingzuo
 mipmap userinfo_yijian
+mipmap userinfo_zhougong
 mipmap userinfo_zhuti
 mipmap w0
 mipmap w1

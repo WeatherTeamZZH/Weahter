@@ -27,32 +27,32 @@ public final class R {
     public static final class id {
         private id() {}
 
-        public static final int progress_bar_parent = 0x7f080131;
-        public static final int root = 0x7f080151;
-        public static final int socialize_image_view = 0x7f080178;
-        public static final int socialize_text_view = 0x7f080179;
-        public static final int umeng_back = 0x7f08021f;
-        public static final int umeng_del = 0x7f080220;
-        public static final int umeng_image_edge = 0x7f080221;
-        public static final int umeng_share_btn = 0x7f080222;
-        public static final int umeng_share_icon = 0x7f080223;
-        public static final int umeng_socialize_follow = 0x7f080224;
-        public static final int umeng_socialize_follow_check = 0x7f080225;
-        public static final int umeng_socialize_share_bottom_area = 0x7f080226;
-        public static final int umeng_socialize_share_edittext = 0x7f080227;
-        public static final int umeng_socialize_share_titlebar = 0x7f080228;
-        public static final int umeng_socialize_share_word_num = 0x7f080229;
-        public static final int umeng_socialize_titlebar = 0x7f08022a;
-        public static final int umeng_title = 0x7f08022b;
-        public static final int umeng_web_title = 0x7f08022c;
-        public static final int webView = 0x7f08023a;
+        public static final int progress_bar_parent = 0x7f080133;
+        public static final int root = 0x7f080154;
+        public static final int socialize_image_view = 0x7f08017b;
+        public static final int socialize_text_view = 0x7f08017c;
+        public static final int umeng_back = 0x7f080223;
+        public static final int umeng_del = 0x7f080224;
+        public static final int umeng_image_edge = 0x7f080225;
+        public static final int umeng_share_btn = 0x7f080226;
+        public static final int umeng_share_icon = 0x7f080227;
+        public static final int umeng_socialize_follow = 0x7f080228;
+        public static final int umeng_socialize_follow_check = 0x7f080229;
+        public static final int umeng_socialize_share_bottom_area = 0x7f08022a;
+        public static final int umeng_socialize_share_edittext = 0x7f08022b;
+        public static final int umeng_socialize_share_titlebar = 0x7f08022c;
+        public static final int umeng_socialize_share_word_num = 0x7f08022d;
+        public static final int umeng_socialize_titlebar = 0x7f08022e;
+        public static final int umeng_title = 0x7f08022f;
+        public static final int umeng_web_title = 0x7f080230;
+        public static final int webView = 0x7f08023e;
     }
     public static final class layout {
         private layout() {}
 
-        public static final int socialize_share_menu_item = 0x7f0a008b;
-        public static final int umeng_socialize_oauth_dialog = 0x7f0a0094;
-        public static final int umeng_socialize_share = 0x7f0a0095;
+        public static final int socialize_share_menu_item = 0x7f0a008f;
+        public static final int umeng_socialize_oauth_dialog = 0x7f0a0098;
+        public static final int umeng_socialize_share = 0x7f0a0099;
     }
     public static final class string {
         private string() {}

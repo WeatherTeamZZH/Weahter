@@ -49,6 +49,9 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme.StatusBarWhite.NoActionBar" >
+        <activity android:name="com.ok100.weather.activity.ZhougongActivity" />
+        <activity android:name="com.ok100.weather.activity.XiaohuaActivity" />
+        <activity android:name="com.ok100.weather.activity.HistoryTodayActivity" />
         <activity android:name="com.ok100.weather.activity.SuggestionActivity" />
         <activity android:name="com.ok100.weather.activity.AboutOursActivity" />
         <activity android:name="com.ok100.weather.activity.LoginActivity" />

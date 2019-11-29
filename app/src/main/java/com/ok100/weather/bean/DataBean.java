@@ -143,6 +143,12 @@ public class DataBean {
         defultGridViewBeans.add(defultGridViewBean);
         defultGridViewBean = new DefultGridViewBean("万年历",R.mipmap.userinfo_wannianli);
         defultGridViewBeans.add(defultGridViewBean);
+        defultGridViewBean = new DefultGridViewBean("历史上的今天",R.mipmap.userinfo_lishijintian);
+        defultGridViewBeans.add(defultGridViewBean);
+        defultGridViewBean = new DefultGridViewBean("抖乐笑话",R.mipmap.userinfo_xiaohua);
+        defultGridViewBeans.add(defultGridViewBean);
+        defultGridViewBean = new DefultGridViewBean("周公解梦",R.mipmap.userinfo_zhougong);
+        defultGridViewBeans.add(defultGridViewBean);
         return defultGridViewBeans;
     }
 
@@ -252,6 +258,28 @@ public class DataBean {
         strings.add("时尚");
         return strings;
     }
-
+    public static List<DefultGridViewBean> getZhougongDeat() {
+        DefultGridViewBean defultGridViewBean ;
+        ArrayList<DefultGridViewBean> defultGridViewBeans = new ArrayList<>();
+        defultGridViewBean = new DefultGridViewBean("人");
+        defultGridViewBeans.add(defultGridViewBean);
+        defultGridViewBean = new DefultGridViewBean("动物");
+        defultGridViewBeans.add(defultGridViewBean);
+        defultGridViewBean = new DefultGridViewBean("山水");
+        defultGridViewBeans.add(defultGridViewBean);
+        defultGridViewBean = new DefultGridViewBean("宗教");
+        defultGridViewBeans.add(defultGridViewBean);
+        defultGridViewBean = new DefultGridViewBean("建筑");
+        defultGridViewBeans.add(defultGridViewBean);
+        defultGridViewBean = new DefultGridViewBean("爱情");
+        defultGridViewBeans.add(defultGridViewBean);
+        defultGridViewBean = new DefultGridViewBean("植物");
+        defultGridViewBeans.add(defultGridViewBean);
+        defultGridViewBean = new DefultGridViewBean("疾病");
+        defultGridViewBeans.add(defultGridViewBean);
+        defultGridViewBean = new DefultGridViewBean("鬼神");
+        defultGridViewBeans.add(defultGridViewBean);
+        return defultGridViewBeans;
+    }
 
 }
