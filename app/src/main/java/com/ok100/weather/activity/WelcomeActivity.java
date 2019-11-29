@@ -39,8 +39,8 @@ public class WelcomeActivity extends BaseActivity  implements EasyPermissions.Ra
     private TextView tv_app_version;
     private TextView tv_app_name;
     public static final String[] perms = { Manifest.permission.ACCESS_FINE_LOCATION , Manifest.permission.ACCESS_COARSE_LOCATION };
-    public String locationX = "";
-    public String locationY = "";
+    public String locationX = "39.90";
+    public String locationY = "116.38";
     public String locationCiyt = "";
 
     public static final int PERMISSIONS_ACCESS_LOCATION = 1001;

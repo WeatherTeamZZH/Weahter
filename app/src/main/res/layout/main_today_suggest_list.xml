@@ -12,9 +12,10 @@
          android:layout_height="1px"
          android:background="#33ffffff"/>
     <ImageView
+        android:id="@+id/iv_image"
         android:layout_width="@dimen/x100"
         android:layout_height="@dimen/x100"
-        android:src="@mipmap/ic_launcher"
+        android:background="@mipmap/ic_launcher"
         android:layout_marginTop="@dimen/x30"
         />
     <TextView
