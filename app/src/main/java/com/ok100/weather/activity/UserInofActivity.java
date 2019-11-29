@@ -21,6 +21,7 @@ import com.ok100.weather.bean.EventTitleMessage;
 import com.ok100.weather.event.EventGotoNewsMessage;
 import com.ok100.weather.gh.GlideCircleTransform;
 import com.ok100.weather.gh.MineCenterActivity;
+import com.ok100.weather.gh.XingzuoActivity;
 import com.ok100.weather.utils.EmptyUtils;
 import com.ok100.weather.utils.SPObj;
 
@@ -111,6 +112,15 @@ public class UserInofActivity extends BaseActivity {
         myPindaoAdapter.setNewData(DataBean.getUserAdapter());
         mRecycleview.setAdapter(myPindaoAdapter);
         mRecycleview.setNestedScrollingEnabled(false);//禁止滑动
+        myPindaoAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+            @Override
+            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                switch (position) {
+                    case 4:
+                        XingzuoActivity.access(UserInofActivity.this);
+                }
+            }
+        });
 
         mRecycleview1.setLayoutManager(new GridLayoutManager(UserInofActivity.this, 4));
         SmallToolsAdapter myPindaoAdapter1 = new SmallToolsAdapter();

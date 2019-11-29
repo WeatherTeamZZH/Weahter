@@ -79,6 +79,10 @@
             android:name=".gb.stickercamera.app.ui.EditTextActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
+        <activity
+            android:name=".gh.XingzuoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
 
         <provider
             android:name=".gb.util.MyFileProvider"

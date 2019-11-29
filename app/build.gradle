@@ -156,6 +156,9 @@ dependencies {
     implementation 'org.greenrobot:greendao-generator:3.2.2'
 
     implementation 'pub.devrel:easypermissions:2.0.1'
+
+    implementation 'com.github.ome450901:SimpleRatingBar:1.4.3'
+
 //邮件
     implementation 'com.teprinciple:mailsender:1.1.0'
 
