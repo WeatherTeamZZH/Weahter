@@ -80,9 +80,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
         <activity
-            android:name=".gh.XingzuoActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
+            android:name=".gh.XingzuoActivity" />
 
         <provider
             android:name=".gb.util.MyFileProvider"

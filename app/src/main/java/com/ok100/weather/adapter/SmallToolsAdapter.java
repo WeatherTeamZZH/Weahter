@@ -16,8 +16,7 @@ public class SmallToolsAdapter extends BaseQuickAdapter<DefultGridViewBean, Base
 
     @Override
     protected void convert(BaseViewHolder helper, DefultGridViewBean item) {
-        helper.setText(R.id.tv_title ,item.getName())
-        .addOnClickListener(R.id.ll_root);
+        helper.setText(R.id.tv_title ,item.getName());
         helper.setBackgroundRes(R.id.tv_image,item.getImageUlrRes());
 //        helper.setVisible(R.id.tv_subhead_pop_project_item, isSubhead);
 //        helper.setBackgroundColor(R.id.tv_subhead_pop_project_item, item.isCheck() ? 0xFFFAFAFA : 0xFFFFFFFF);

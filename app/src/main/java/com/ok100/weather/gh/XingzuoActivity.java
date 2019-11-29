@@ -16,10 +16,13 @@ import com.bigkoo.pickerview.view.OptionsPickerView;
 import com.google.gson.reflect.TypeToken;
 import com.lzy.okhttputils.OkHttpUtils;
 import com.ok100.weather.R;
+import com.ok100.weather.activity.ZhougongActivity;
 import com.ok100.weather.base.BaseActivity;
 import com.ok100.weather.bean.XingzuoBean;
 import com.ok100.weather.http.DialogCallback;
 import com.ok100.weather.http.Urls;
+import com.ok100.weather.permissions.Utils;
+import com.ok100.weather.utils.ActivityBarSettingUtils;
 import com.willy.ratingbar.ScaleRatingBar;
 
 import java.util.Arrays;
@@ -107,6 +110,9 @@ public class XingzuoActivity extends BaseActivity {
 
     @Override
     public void InitView() {
+        setTitle("星座运势", true, TITLE_TYPE_IMG, R.mipmap.back_left_hei, false, TITLE_TYPE_IMG, R.mipmap.ic_launcher);
+        registerBack();
+        ActivityBarSettingUtils.setAndroidNativeLightStatusBar(XingzuoActivity.this, true);
         initNoLinkOptionsPicker();
 
         tvXingzuo.addTextChangedListener(textWatcher);
