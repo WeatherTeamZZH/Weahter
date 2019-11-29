@@ -21,5 +21,7 @@ public class Urls {
     public static final String sendSms = "http://www.asiaky.top/api/sendSms";
     //注册
     public static final String smslogin = "http://www.asiaky.top/api/smslogin";
+    //星座
+    public static final String xingzuo = "http://web.juhe.cn:8080/constellation/getAll";
 
 }

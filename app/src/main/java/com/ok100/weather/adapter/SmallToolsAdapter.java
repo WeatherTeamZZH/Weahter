@@ -3,7 +3,6 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.ok100.weather.R;
 import com.ok100.weather.bean.DefultGridViewBean;
-import com.ok100.weather.bean.MainSpotClickBean;
 
 public class SmallToolsAdapter extends BaseQuickAdapter<DefultGridViewBean, BaseViewHolder> {
 
@@ -16,7 +15,8 @@ public class SmallToolsAdapter extends BaseQuickAdapter<DefultGridViewBean, Base
 
     @Override
     protected void convert(BaseViewHolder helper, DefultGridViewBean item) {
-        helper.setText(R.id.tv_title ,item.getName());
+        helper.setText(R.id.tv_title ,item.getName())
+        .addOnClickListener(R.id.ll_root);
 //        helper.setVisible(R.id.tv_subhead_pop_project_item, isSubhead);
 //        helper.setBackgroundColor(R.id.tv_subhead_pop_project_item, item.isCheck() ? 0xFFFAFAFA : 0xFFFFFFFF);
 //
