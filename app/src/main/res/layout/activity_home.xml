@@ -87,6 +87,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_weight="1"
+                android:visibility="gone"
                 android:src="@drawable/download_icon" />
 
         </LinearLayout>

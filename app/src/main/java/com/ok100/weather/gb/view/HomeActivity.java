@@ -214,7 +214,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.wb_img://wb
-                request(3);
+                Toast.makeText(HomeActivity.this,"暂未开通",Toast.LENGTH_SHORT).show();
+//                request(3);
                 break;
 
             case R.id.exchange_album_rela:
