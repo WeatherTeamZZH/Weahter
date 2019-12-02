@@ -19,10 +19,10 @@ import com.ok100.weather.fragment.NoticeMainFragment1;
 
 /**
  * @Description: This is MyRecyclerView
- * @Author: QianDongDong
+ * @Author: ZHANGZH
  * @Time: 2019/11/8 16:14
- * @Email: qdd2977@sina.com
- * @org: www.vanlian.cn 万科链家（北京）装饰有限公司
+ * @Email: qq.com
+ * @org: OK100
  */
 public class MyRecyclerView extends RecyclerView {
 

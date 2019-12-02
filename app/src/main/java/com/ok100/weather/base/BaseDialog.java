@@ -10,10 +10,10 @@ import android.view.ViewGroup;
 import android.view.Window;
 
 /**
- * @author QianDongDong
+ * @author ZHANGZH
  * @Description ${类描述}
  * @Time 2016-09-01 15:24
- * @email qdd2977@sina.com
+ * @email qq.com
  */
 public abstract class BaseDialog extends DialogFragment {
     private View mContentView;

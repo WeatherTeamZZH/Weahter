@@ -5,10 +5,10 @@ import android.view.View;
 
 /**
  * @Description: This is ActivityBarSetting
- * @Author: QianDongDong
+ * @Author: ZHANGZH
  * @Time: 2019/11/15 17:40
- * @Email: qdd2977@sina.com
- * @org: www.vanlian.cn 万科链家（北京）装饰有限公司
+ * @Email: qq.com
+ * @org: OK100
  */
 public class ActivityBarSettingUtils {
     public static void setAndroidNativeLightStatusBar(Activity activity, boolean dark) {

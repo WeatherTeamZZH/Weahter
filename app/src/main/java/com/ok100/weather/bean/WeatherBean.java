@@ -4,10 +4,10 @@ import java.io.Serializable;
 
 /**
  * @Description: This is WeatherBean
- * @Author: QianDongDong
+ * @Author: ZHANGZH
  * @Time: 2019/11/12 10:52
- * @Email: qdd2977@sina.com
- * @org: www.vanlian.cn 万科链家（北京）装饰有限公司
+ * @Email: qq.com
+ * @org: OK100
  */
 public class WeatherBean implements Serializable {
     private String name;

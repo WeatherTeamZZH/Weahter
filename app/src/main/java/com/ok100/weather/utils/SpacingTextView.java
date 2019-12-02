@@ -9,10 +9,10 @@ import android.util.AttributeSet;
 
 /**
  * @Description: This is SpacingTextView
- * @Author: QianDongDong
+ * @Author: ZHANGZH
  * @Time: 2018/3/1 15:21
- * @Email: qdd2977@sina.com
- * @org: www.vanlian.cn 万科链家（北京）装饰有限公司
+ * @Email: qq.com
+ * @org: OK100
  */
 public class SpacingTextView extends android.support.v7.widget.AppCompatTextView {
     private float spacing = Spacing.NORMAL;

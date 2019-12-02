@@ -5,7 +5,7 @@ import com.ok100.weather.statistics.umeng.UMengStatisticsImpl;
 
 /**
  * description: 统计管理类
- * @autour: QianDongdong
+ * @autour: ZHANGZH
  * date: 2017-5-8 14:41 
  * update: 2017-5-8
  * version: 1.0

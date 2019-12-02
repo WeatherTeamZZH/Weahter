@@ -10,10 +10,10 @@ import me.zhouzhuo.zzweatherview.WeatherModel;
 
 /**
  * @Description: This is DataBean
- * @Author: QianDongDong
+ * @Author: ZHANGZH
  * @Time: 2019/11/10 15:07
- * @Email: qdd2977@sina.com
- * @org: www.vanlian.cn 万科链家（北京）装饰有限公司
+ * @Email: qq.com
+ * @org: OK100
  */
 public class DataBean {
     public static List<WeatherModel> generateData() {
@@ -131,10 +131,10 @@ public class DataBean {
     public static List<DefultGridViewBean> getUserAdapter() {
         DefultGridViewBean defultGridViewBean ;
         ArrayList<DefultGridViewBean> defultGridViewBeans = new ArrayList<>();
-        defultGridViewBean = new DefultGridViewBean("消息中心",R.mipmap.userinfo_xiaoxi);
-        defultGridViewBeans.add(defultGridViewBean);
-        defultGridViewBean = new DefultGridViewBean("热点新闻",R.mipmap.userinfo_redianxinewn);
-        defultGridViewBeans.add(defultGridViewBean);
+//        defultGridViewBean = new DefultGridViewBean("消息中心",R.mipmap.userinfo_xiaoxi);
+//        defultGridViewBeans.add(defultGridViewBean);
+//        defultGridViewBean = new DefultGridViewBean("热点新闻",R.mipmap.userinfo_redianxinewn);
+//        defultGridViewBeans.add(defultGridViewBean);
         defultGridViewBean = new DefultGridViewBean("星座运势",R.mipmap.userinfo_xingzuo);
         defultGridViewBeans.add(defultGridViewBean);
         defultGridViewBean = new DefultGridViewBean("主题换肤",R.mipmap.userinfo_zhuti);

@@ -2,6 +2,7 @@ package com.ok100.weather.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -76,7 +77,8 @@ public class UserInofActivity extends BaseActivity {
     @Override
     public void InitView() {
         spObj = new SPObj(getContext(), "gh");
-
+        NestedScrollView viewById = findViewById(R.id.nestedScrollView);
+        viewById.setNestedScrollingEnabled(false);
     }
 
     @Override
@@ -124,41 +126,43 @@ public class UserInofActivity extends BaseActivity {
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 Intent intent;
                 switch (position){
+
                     case 0:
-                        intent = new Intent(UserInofActivity.this, NoticeCenterActivity.class);
-                        startActivity(intent);
-                        break;
-                    case 1:
-                        EventGotoNewsMessage msg = new EventGotoNewsMessage("头条");
-                        EventBus.getDefault().post(msg);
-                        finish();
-                        break;
-                    case 2:
                         XingzuoActivity.access(UserInofActivity.this);
                         break;
-                    case 3:
+                    case 1:
                         intent = new Intent(UserInofActivity.this, ZhutiImgeActivity.class);
                         startActivity(intent);
                         break;
-                    case 4:
+                    case 2:
                         intent = new Intent(UserInofActivity.this, SuggestionActivity.class);
                         startActivity(intent);
                         break;
-                    case 5:
+                    case 3:
                         Toast.makeText(UserInofActivity.this,"暂未开通",Toast.LENGTH_SHORT).show();
 
                         break;
-                    case 6:
+                    case 4:
                         intent = new Intent(UserInofActivity.this, HistoryTodayActivity.class);
                         startActivity(intent);
                         break;
-                    case 7:
+                    case 5:
                         intent = new Intent(UserInofActivity.this, XiaohuaActivity.class);
                         startActivity(intent);
                         break;
-                    case 8:
+                    case 6:
                         intent = new Intent(UserInofActivity.this, ZhougongActivity.class);
                         startActivity(intent);
+                        break;
+
+                    case 7:
+                        intent = new Intent(UserInofActivity.this, NoticeCenterActivity.class);
+                        startActivity(intent);
+                        break;
+                    case 8:
+                        EventGotoNewsMessage msg = new EventGotoNewsMessage("头条");
+                        EventBus.getDefault().post(msg);
+                        finish();
                         break;
                 }
             }
