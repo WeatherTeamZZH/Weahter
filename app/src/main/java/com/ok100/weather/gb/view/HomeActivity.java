@@ -154,12 +154,19 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     private void noDataSet() {
         try {
-            Bitmap bmp1 = BitmapFactory.decodeResource(getResources(), R.mipmap.main_bg);
-            Bitmap bmp2 = BitmapFactory.decodeResource(getResources(), R.mipmap.main_bg1);
-            Bitmap bmp3 = BitmapFactory.decodeResource(getResources(), R.mipmap.main_bg2);
+            Bitmap bmp1 = BitmapFactory.decodeResource(getResources(), R.mipmap.share_bg1);
+            Bitmap bmp2 = BitmapFactory.decodeResource(getResources(), R.mipmap.share_bg2);
+            Bitmap bmp3 = BitmapFactory.decodeResource(getResources(), R.mipmap.share_bg3);
+            Bitmap bmp4 = BitmapFactory.decodeResource(getResources(), R.mipmap.share_bg4);
+            Bitmap bmp5 = BitmapFactory.decodeResource(getResources(), R.mipmap.share_bg5);
+            Bitmap bmp6 = BitmapFactory.decodeResource(getResources(), R.mipmap.share_bg6);
+
             bitmaps.add(bmp1);
             bitmaps.add(bmp2);
             bitmaps.add(bmp3);
+            bitmaps.add(bmp4);
+            bitmaps.add(bmp5);
+            bitmaps.add(bmp6);
 
             for (int i = 0; i < bitmaps.size(); i++) {
                 String imagePath = ImageUtils.saveBitmapToFile(FileUtils.getInst().getSystemPhotoPathAdd(), true,

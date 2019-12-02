@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#3288FF"
+    android:background="@mipmap/qidongtu"
     >
 
     <LinearLayout
@@ -12,12 +12,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/y400"
         android:gravity="center_horizontal"
+        android:visibility="gone"
         android:orientation="vertical">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/icon_qing"
-            />
+
 
         <TextView
             android:id="@+id/tv_app_name"
@@ -29,6 +26,7 @@
             android:layout_centerHorizontal="true"
             android:text=""
             android:layout_marginTop="@dimen/y17"
+
             />
 
         <TextView
@@ -45,34 +43,5 @@
     </LinearLayout>
 
 
-
-    <!--<TextView-->
-    <!--android:id="@+id/welcome_tv_load"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_marginTop="@dimen/y450"-->
-    <!--android:text="Vanlian"-->
-    <!--android:textColor="@color/white"-->
-    <!--android:textSize="32sp" />-->
-
-    <!--<View style="@style/view_horizontal_weight1" />-->
-
-    <!--<TextView-->
-    <!--android:id="@+id/welcome_tv_version"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_marginBottom="@dimen/x48"-->
-    <!--android:layout_marginTop="@dimen/x24"-->
-    <!--android:text="beta.V.1.0.0"-->
-    <!--android:textColor="@color/white" />-->
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/x60"
-        android:visibility="gone"
-        />
 
 </RelativeLayout>
