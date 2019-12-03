@@ -293,7 +293,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 });
         if (stringList.size() >= 3) {
-            String wetaher = getIntent().getStringExtra("wetaher");
+            String wetaher = getIntent().getStringExtra("weather");
             String temp = getIntent().getStringExtra("temp");
             String city = getIntent().getStringExtra("city");
             CameraManager.getInst().openCamera(HomeActivity.this,TextUtils.isEmpty(temp)?"":temp,TextUtils.isEmpty(wetaher)?"":wetaher,TextUtils.isEmpty(city)?"":city);

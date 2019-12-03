@@ -123,19 +123,20 @@ public class BitmapUtils {
         View view = View.inflate(activity, R.layout.pro_pic_layout, null);
         ImageView pic_img = view.findViewById(R.id.pic_img);
         pic_img.setImageBitmap(b);
-        Bitmap bmp1 = BitmapUtils.getViewBitmap(view, width, heigth);
         TextView tv_weather = view.findViewById(R.id.tv_weather);
         TextView tv_city = view.findViewById(R.id.tv_city);
         TextView tv_temp = view.findViewById(R.id.tv_temp);
-        if(!TextUtils.isEmpty(weather)){
-            tv_weather.setText(weather);
+        if(!TextUtils.isEmpty(temp)){
+            tv_weather.setText(temp);
         }
         if(!TextUtils.isEmpty(city)){
             tv_city.setText(city);
         }
-        if(!TextUtils.isEmpty(temp)){
-            tv_temp.setText(temp);
+        if(!TextUtils.isEmpty(weather)){
+            tv_temp.setText(weather);
         }
+        Bitmap bmp1 = BitmapUtils.getViewBitmap(view, width, heigth);
+
         return bmp1;
     }
 

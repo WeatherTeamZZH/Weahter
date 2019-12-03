@@ -7,11 +7,10 @@
 
     <LinearLayout
         android:id="@+id/child_ll"
-        android:layout_width="140dp"
-        android:layout_height="180dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="130dp"
-        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="40dp"
         android:orientation="vertical">
 
         <ImageView
@@ -24,34 +23,37 @@
             android:id="@+id/tv_camer_weather"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text=""
+            android:text="0"
             android:textStyle="bold"
-            android:layout_marginTop="3dp"
             android:textColor="@color/white"
-            android:textSize="15sp" />
+            android:textSize="50sp" />
 
-        <TextView
-            android:id="@+id/tv_camer_temp"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text=""
-            android:layout_marginTop="3dp"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:textSize="15sp" />
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tv_camer_city"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text=""
-            android:layout_marginTop="3dp"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:textSize="15sp" />
+            <TextView
+                android:id="@+id/tv_camer_city"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tv_camer_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textStyle="bold"
+                android:layout_marginLeft="@dimen/x30"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+
+        </LinearLayout>
+
 
     </LinearLayout>
 

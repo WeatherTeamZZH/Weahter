@@ -12,11 +12,10 @@
 
     <LinearLayout
         android:id="@+id/child_ll"
-        android:layout_width="140dp"
-        android:layout_height="180dp"
-       android:layout_marginLeft="20dp"
-        android:layout_marginTop="130dp"
-        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="40dp"
         android:orientation="vertical">
 
         <ImageView
@@ -29,35 +28,34 @@
             android:id="@+id/tv_weather"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="白天：晴,西风微风"
+            android:text="0"
             android:textStyle="bold"
-            android:layout_marginTop="3dp"
             android:textColor="@color/white"
-            android:textSize="15sp" />
+            android:textSize="50sp"  />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tv_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_temp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="0~13℃"
-            android:layout_marginTop="3dp"
+            android:text=""
             android:textStyle="bold"
+            android:layout_marginLeft="@dimen/x30"
             android:textColor="@color/white"
-            android:textSize="15sp" />
-
-        <TextView
-            android:id="@+id/tv_city"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="当前地区:福州"
-            android:layout_marginTop="3dp"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:textSize="15sp" />
-
+            android:textSize="15sp"/>
+    </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>

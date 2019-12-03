@@ -53,15 +53,17 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/tv_mouth"
                 android:layout_width="wrap_content"
-                android:text="2019-12-03"
+                android:text=""
                 android:textColor="#333333"
                 android:textStyle="bold"
                 android:layout_height="wrap_content" />
 
             <TextView
+                android:id="@+id/tv_city"
                 android:layout_width="wrap_content"
-                android:text="福州市"
+                android:text=""
                 android:textColor="#333333"
                 android:layout_marginLeft="30dp"
                 android:textStyle="bold"

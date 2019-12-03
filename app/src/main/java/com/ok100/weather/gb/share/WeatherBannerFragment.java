@@ -3,11 +3,14 @@ package com.ok100.weather.gb.share;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Message;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.ok100.weather.R;
+import com.ok100.weather.gb.util.BitmapUtils;
 
 
 public class WeatherBannerFragment extends BaseFragment {
@@ -66,6 +69,10 @@ public class WeatherBannerFragment extends BaseFragment {
         pic_img = view.findViewById(R.id.pic_img);
         content_et = view.findViewById(R.id.content_et);
         write_et = view.findViewById(R.id.write_et);
+        TextView tv_mouth = view.findViewById(R.id.tv_mouth);
+        TextView tv_city = view.findViewById(R.id.tv_city);
+        tv_mouth.setText(TextUtils.isEmpty(BitmapUtils.mouth)?"":BitmapUtils.mouth);
+        tv_city.setText(TextUtils.isEmpty(BitmapUtils.city)?"":BitmapUtils.city);
 
 //        pic_img.setImageBitmap(create(url));
         pic_img.setImageBitmap(bitmap);
