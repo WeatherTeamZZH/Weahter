@@ -163,7 +163,7 @@ public class MineCenterActivity extends BaseActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick({R.id.ll_img, R.id.ll_nick, R.id.ll_birth, R.id.ll_sex, R.id.ll_phone, R.id.ll_wechat, R.id.tv_logout})
+    @OnClick({R.id.ll_img, R.id.ll_nick, R.id.ll_birth, R.id.ll_sex, R.id.ll_phone, R.id.ll_wechat, R.id.tv_cancellation, R.id.tv_logout})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ll_img:
@@ -184,13 +184,17 @@ public class MineCenterActivity extends BaseActivity {
             case R.id.ll_wechat:
                 showDialog("绑定微信号");
                 break;
-            case R.id.tv_logout:
+            case R.id.tv_cancellation:
                 spObj.setObject("imgurl",null);
                 spObj.setObject("nick",null);
                 spObj.setObject("birth",null);
                 spObj.setObject("sex",null);
                 spObj.setObject("phone",null);
                 spObj.setObject("wechat",null);
+                spObj.setObject( "isLogin", false);
+                finish();
+                break;
+            case R.id.tv_logout:
                 spObj.setObject( "isLogin", false);
                 finish();
                 break;
