@@ -33,7 +33,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.StatusBarWhite.NoActionBar"
         tools:replace="android:icon, android:label, android:theme">
-        <activity android:name=".activity.SuggestionActivity"></activity>
+        <activity android:name=".activity.ZhougongActivity"></activity>
+        <activity android:name=".activity.XiaohuaActivity" />
+        <activity android:name=".activity.HistoryTodayActivity" />
+        <activity android:name=".activity.SuggestionActivity" />
         <activity android:name=".activity.AboutOursActivity" />
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".MainActivity" />
@@ -77,9 +80,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
         <activity
-            android:name=".gh.XingzuoActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
+            android:name=".gh.XingzuoActivity" />
 
         <provider
             android:name=".gb.util.MyFileProvider"
@@ -149,7 +150,7 @@
 
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="28e0f85e441a0e6ddc7007e78f2d5ea5"></meta-data>
+            android:value="28e0f85e441a0e6ddc7007e78f2d5ea5" />
     </application>
 
 </manifest>

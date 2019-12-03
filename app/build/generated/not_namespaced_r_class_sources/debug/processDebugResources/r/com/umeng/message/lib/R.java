@@ -12,18 +12,18 @@ public final class R {
     public static final class id {
         private id() {}
 
-        public static final int notification_bar_image = 0x7f080118;
-        public static final int notification_large_icon1 = 0x7f080119;
-        public static final int notification_large_icon2 = 0x7f08011a;
-        public static final int notification_text = 0x7f08011d;
-        public static final int notification_title = 0x7f08011e;
-        public static final int upush_notification1 = 0x7f08022f;
-        public static final int upush_notification2 = 0x7f080230;
+        public static final int notification_bar_image = 0x7f08011a;
+        public static final int notification_large_icon1 = 0x7f08011b;
+        public static final int notification_large_icon2 = 0x7f08011c;
+        public static final int notification_text = 0x7f08011f;
+        public static final int notification_title = 0x7f080120;
+        public static final int upush_notification1 = 0x7f080233;
+        public static final int upush_notification2 = 0x7f080234;
     }
     public static final class layout {
         private layout() {}
 
-        public static final int upush_bar_image_notification = 0x7f0a0096;
-        public static final int upush_notification = 0x7f0a0097;
+        public static final int upush_bar_image_notification = 0x7f0a009a;
+        public static final int upush_notification = 0x7f0a009b;
     }
 }

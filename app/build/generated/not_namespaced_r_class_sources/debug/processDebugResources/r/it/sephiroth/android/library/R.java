@@ -51,15 +51,15 @@ public final class R {
         public static final int clip_horizontal = 0x7f08005f;
         public static final int clip_vertical = 0x7f080060;
         public static final int disabled = 0x7f080079;
-        public static final int end = 0x7f080085;
-        public static final int fill = 0x7f08008d;
-        public static final int fill_horizontal = 0x7f08008e;
-        public static final int fill_vertical = 0x7f08008f;
-        public static final int left = 0x7f0800da;
-        public static final int normal = 0x7f080116;
-        public static final int right = 0x7f080146;
-        public static final int start = 0x7f080183;
-        public static final int top = 0x7f0801b1;
+        public static final int end = 0x7f080086;
+        public static final int fill = 0x7f08008e;
+        public static final int fill_horizontal = 0x7f08008f;
+        public static final int fill_vertical = 0x7f080090;
+        public static final int left = 0x7f0800dc;
+        public static final int normal = 0x7f080118;
+        public static final int right = 0x7f080149;
+        public static final int start = 0x7f080186;
+        public static final int top = 0x7f0801b4;
     }
     public static final class styleable {
         private styleable() {}

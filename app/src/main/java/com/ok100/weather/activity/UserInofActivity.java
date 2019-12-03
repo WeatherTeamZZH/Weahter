@@ -112,15 +112,6 @@ public class UserInofActivity extends BaseActivity {
         myPindaoAdapter.setNewData(DataBean.getUserAdapter());
         mRecycleview.setAdapter(myPindaoAdapter);
         mRecycleview.setNestedScrollingEnabled(false);//禁止滑动
-        myPindaoAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
-            @Override
-            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                switch (position) {
-                    case 4:
-                        XingzuoActivity.access(UserInofActivity.this);
-                }
-            }
-        });
 
         mRecycleview1.setLayoutManager(new GridLayoutManager(UserInofActivity.this, 4));
         SmallToolsAdapter myPindaoAdapter1 = new SmallToolsAdapter();
@@ -143,7 +134,7 @@ public class UserInofActivity extends BaseActivity {
                         finish();
                         break;
                     case 2:
-
+                        XingzuoActivity.access(UserInofActivity.this);
                         break;
                     case 3:
                         intent = new Intent(UserInofActivity.this, ZhutiImgeActivity.class);
@@ -154,7 +145,20 @@ public class UserInofActivity extends BaseActivity {
                         startActivity(intent);
                         break;
                     case 5:
+                        Toast.makeText(UserInofActivity.this,"暂未开通",Toast.LENGTH_SHORT).show();
 
+                        break;
+                    case 6:
+                        intent = new Intent(UserInofActivity.this, HistoryTodayActivity.class);
+                        startActivity(intent);
+                        break;
+                    case 7:
+                        intent = new Intent(UserInofActivity.this, XiaohuaActivity.class);
+                        startActivity(intent);
+                        break;
+                    case 8:
+                        intent = new Intent(UserInofActivity.this, ZhougongActivity.class);
+                        startActivity(intent);
                         break;
                 }
             }

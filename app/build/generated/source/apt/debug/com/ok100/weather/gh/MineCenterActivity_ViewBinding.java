@@ -17,19 +17,19 @@ import java.lang.Override;
 public class MineCenterActivity_ViewBinding implements Unbinder {
   private MineCenterActivity target;
 
-  private View view7f0800eb;
-
   private View view7f0800ed;
 
-  private View view7f0800e8;
+  private View view7f0800ef;
 
-  private View view7f0800f4;
+  private View view7f0800ea;
 
-  private View view7f0800f0;
+  private View view7f0800f6;
 
-  private View view7f0800f9;
+  private View view7f0800f2;
 
-  private View view7f0801e0;
+  private View view7f0800fb;
+
+  private View view7f0801e3;
 
   @UiThread
   public MineCenterActivity_ViewBinding(MineCenterActivity target) {
@@ -44,7 +44,7 @@ public class MineCenterActivity_ViewBinding implements Unbinder {
     target.ivImg = Utils.findRequiredViewAsType(source, R.id.iv_img, "field 'ivImg'", ImageView.class);
     view = Utils.findRequiredView(source, R.id.ll_img, "field 'llImg' and method 'onViewClicked'");
     target.llImg = Utils.castView(view, R.id.ll_img, "field 'llImg'", LinearLayout.class);
-    view7f0800eb = view;
+    view7f0800ed = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -54,7 +54,7 @@ public class MineCenterActivity_ViewBinding implements Unbinder {
     target.tvNick = Utils.findRequiredViewAsType(source, R.id.tv_nick, "field 'tvNick'", TextView.class);
     view = Utils.findRequiredView(source, R.id.ll_nick, "field 'llNick' and method 'onViewClicked'");
     target.llNick = Utils.castView(view, R.id.ll_nick, "field 'llNick'", LinearLayout.class);
-    view7f0800ed = view;
+    view7f0800ef = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -64,7 +64,7 @@ public class MineCenterActivity_ViewBinding implements Unbinder {
     target.tvBirth = Utils.findRequiredViewAsType(source, R.id.tv_birth, "field 'tvBirth'", TextView.class);
     view = Utils.findRequiredView(source, R.id.ll_birth, "field 'llBirth' and method 'onViewClicked'");
     target.llBirth = Utils.castView(view, R.id.ll_birth, "field 'llBirth'", LinearLayout.class);
-    view7f0800e8 = view;
+    view7f0800ea = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -74,7 +74,7 @@ public class MineCenterActivity_ViewBinding implements Unbinder {
     target.tvSex = Utils.findRequiredViewAsType(source, R.id.tv_sex, "field 'tvSex'", TextView.class);
     view = Utils.findRequiredView(source, R.id.ll_sex, "field 'llSex' and method 'onViewClicked'");
     target.llSex = Utils.castView(view, R.id.ll_sex, "field 'llSex'", LinearLayout.class);
-    view7f0800f4 = view;
+    view7f0800f6 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -84,7 +84,7 @@ public class MineCenterActivity_ViewBinding implements Unbinder {
     target.tvPhone = Utils.findRequiredViewAsType(source, R.id.tv_phone, "field 'tvPhone'", TextView.class);
     view = Utils.findRequiredView(source, R.id.ll_phone, "field 'llPhone' and method 'onViewClicked'");
     target.llPhone = Utils.castView(view, R.id.ll_phone, "field 'llPhone'", LinearLayout.class);
-    view7f0800f0 = view;
+    view7f0800f2 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -94,7 +94,7 @@ public class MineCenterActivity_ViewBinding implements Unbinder {
     target.tvWechat = Utils.findRequiredViewAsType(source, R.id.tv_wechat, "field 'tvWechat'", TextView.class);
     view = Utils.findRequiredView(source, R.id.ll_wechat, "field 'llWechat' and method 'onViewClicked'");
     target.llWechat = Utils.castView(view, R.id.ll_wechat, "field 'llWechat'", LinearLayout.class);
-    view7f0800f9 = view;
+    view7f0800fb = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -103,7 +103,7 @@ public class MineCenterActivity_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.tv_logout, "field 'tvLogout' and method 'onViewClicked'");
     target.tvLogout = Utils.castView(view, R.id.tv_logout, "field 'tvLogout'", TextView.class);
-    view7f0801e0 = view;
+    view7f0801e3 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -133,19 +133,19 @@ public class MineCenterActivity_ViewBinding implements Unbinder {
     target.llWechat = null;
     target.tvLogout = null;
 
-    view7f0800eb.setOnClickListener(null);
-    view7f0800eb = null;
     view7f0800ed.setOnClickListener(null);
     view7f0800ed = null;
-    view7f0800e8.setOnClickListener(null);
-    view7f0800e8 = null;
-    view7f0800f4.setOnClickListener(null);
-    view7f0800f4 = null;
-    view7f0800f0.setOnClickListener(null);
-    view7f0800f0 = null;
-    view7f0800f9.setOnClickListener(null);
-    view7f0800f9 = null;
-    view7f0801e0.setOnClickListener(null);
-    view7f0801e0 = null;
+    view7f0800ef.setOnClickListener(null);
+    view7f0800ef = null;
+    view7f0800ea.setOnClickListener(null);
+    view7f0800ea = null;
+    view7f0800f6.setOnClickListener(null);
+    view7f0800f6 = null;
+    view7f0800f2.setOnClickListener(null);
+    view7f0800f2 = null;
+    view7f0800fb.setOnClickListener(null);
+    view7f0800fb = null;
+    view7f0801e3.setOnClickListener(null);
+    view7f0801e3 = null;
   }
 }

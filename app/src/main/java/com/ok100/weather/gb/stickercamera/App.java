@@ -27,7 +27,7 @@ public class App extends BaseApplication {
     private DisplayMetrics displayMetrics = null;
 
     static {
-        PlatformConfig.setWeixin("wxdc1e388c3822c80b", "3baf1193c85774b3fd9d18447d76cab0");
+        PlatformConfig.setWeixin("wxe7d6ecfe19f8763c", "34eca38ca5cd1181d122b9db16ad9cc3");
         PlatformConfig.setSinaWeibo("3921700954", "04b48b094faeb16683c32669824ebdad", "http://sns.whalecloud.com");
         PlatformConfig.setQQZone("100424468", "c7394704798a158208a74ab60104f0ba");
     }
