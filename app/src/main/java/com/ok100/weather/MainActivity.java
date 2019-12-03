@@ -48,6 +48,7 @@ import com.ok100.weather.http.ReturnDataView;
 import com.ok100.weather.myviewpager.TextPagerAdapter;
 import com.ok100.weather.presenter.NewsListPresenterImpl;
 import com.ok100.weather.presenter.NoticeMainListPresenterImpl;
+import com.ok100.weather.utils.ChooseTypeUtils;
 import com.ok100.weather.utils.DataUtils;
 import com.ok100.weather.utils.ListDataSave;
 import com.ok100.weather.view.MainViewPager;
@@ -351,6 +352,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 //                intent = new Intent(MainActivity.this, ShareMainActivity.class);
 //                startActivity(intent);
                 intent = new Intent(MainActivity.this, HomeActivity.class);
+                intent.putExtra("wetaher",weather);
+                intent.putExtra("temp",temp);
+                if(!TextUtils.isEmpty(mTvCity.getText())){
+                    intent.putExtra("city",mTvCity.getText());
+                }
+                intent.putExtra("mouth",mouth);
                 startActivity(intent);
                 break;
         }
@@ -494,15 +501,21 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     }
 
-    public void setTitleDate(String string) {
-        mTvDate.setText(string);
+    public String mouth,week,nongli,weather,temp;
+    public void setTitleDate(String string1,String string2,String string3) {
+        mouth = string1;
+        week = string2;
+        nongli = string3;
+        mTvDate.setText(string1+" 周"+string2+" 农历"+string3);
     }
 
     public void setTitleWeather(String string) {
+        temp = string;
         mTvTitleCity.setText(string);
     }
-    public void setTitleWeatherImage(int string) {
-        mIvTitleBigImage.setBackgroundResource(string);
+    public void setTitleWeatherImage(String string) {
+        weather = string;
+        mIvTitleBigImage.setBackgroundResource(ChooseTypeUtils.getWeatherImgge(string));
     }
 
     public interface TitleDateListener {

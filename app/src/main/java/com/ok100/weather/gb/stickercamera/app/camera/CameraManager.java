@@ -38,8 +38,11 @@ public class CameraManager {
     }
 
     //打开照相界面
-    public void openCamera(Context context) {
+    public void openCamera(Context context,String weather ,String temp ,String city) {
         Intent intent = new Intent(context, CameraActivity.class);
+        intent.putExtra("weather",weather);
+        intent.putExtra("temp",temp);
+        intent.putExtra("city",city);
         context.startActivity(intent);
     }
 

@@ -19,6 +19,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -27,22 +29,26 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.view.animation.ScaleAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
 import com.ok100.weather.R;
 import com.ok100.weather.gb.customview.CameraGrid;
+import com.ok100.weather.gb.share.UIUtil;
 import com.ok100.weather.gb.stickercamera.App;
 import com.ok100.weather.gb.stickercamera.AppConstants;
 import com.ok100.weather.gb.stickercamera.app.camera.CameraBaseActivity;
 import com.ok100.weather.gb.stickercamera.app.camera.CameraManager;
 import com.ok100.weather.gb.stickercamera.app.camera.util.CameraHelper;
 import com.ok100.weather.gb.stickercamera.app.model.PhotoItem;
+import com.ok100.weather.gb.util.BitmapUtils;
 import com.ok100.weather.gb.util.DistanceUtil;
 import com.ok100.weather.gb.util.FileUtils;
 import com.ok100.weather.gb.util.IOUtil;
@@ -129,33 +135,29 @@ public class CameraActivity extends CameraBaseActivity {
     private int type = 0;//0 拍照 1 图库选择
     private Bitmap takeBitmap = null;
 
+    private int heigth, width;
+    private int direction = 0;//0正面照相 1反向照相
 
+    //todo  相机这有3个问题  需要处理  1反向拍照 照片反过来   2 合并的标签 有时放大 或缩小 3 水印布局重复
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
-        EventBus.getDefault().register(this);
-        mCameraHelper = new CameraHelper(this);
         ButterKnife.bind(this);
-        requestLocation();
+        EventBus.getDefault().register(this);
+
+        WindowManager manager = this.getWindowManager();
+        DisplayMetrics outMetrics = new DisplayMetrics();
+        manager.getDefaultDisplay().getMetrics(outMetrics);
+        width = outMetrics.widthPixels;
+        heigth = outMetrics.heightPixels;
+
+        initView();
+        initEvent();
+
+        mCameraHelper = new CameraHelper(this);
         view_preview_img.setImageBitmap(getBitmap());
-    }
 
-    @SuppressLint("CheckResult")
-    private void requestLocation() {
-        RxPermissions rxPermission = new RxPermissions(this);
-        rxPermission.requestEach(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_PHONE_STATE)
-                .subscribe(new Consumer<Permission>() {
-                    @Override
-                    public void accept(Permission permission) {
-                        if (permission.granted) {
-                            initView();
-                            initEvent();
-                        } else {
-
-                        }
-                    }
-                });
     }
 
     private void initView() {
@@ -265,7 +267,6 @@ public class CameraActivity extends CameraBaseActivity {
         galleryBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                toast("暂未开通", 1000);
                 startActivity(new Intent(CameraActivity.this, AlbumActivity.class));
             }
         });
@@ -275,6 +276,7 @@ public class CameraActivity extends CameraBaseActivity {
             public void onClick(View view) {
                 if (type == 1) {//相册
                     type = 0;
+                    direction = 0;
                     takePicture.setVisibility(View.VISIBLE);
                     surepicture.setVisibility(View.GONE);
                     root_view_layout.setVisibility(View.VISIBLE);
@@ -462,7 +464,7 @@ public class CameraActivity extends CameraBaseActivity {
         parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
     }
 
-
+    @SuppressLint("HandlerLeak")
     private Handler handler1 = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -506,10 +508,13 @@ public class CameraActivity extends CameraBaseActivity {
                 @Override
                 public void run() {
                     Bitmap takePitmap = getBitmap(data);
-//                    Bitmap viewBitmap = getViewBitmap(root_view_layout);
-
-                    Bitmap takeRoateBit = rotateImage(takePitmap, 90);//背景图
-                    Bitmap combineBitmap = combineBitmap(takeRoateBit, big(getBitmap()));
+                    Bitmap takeRoateBit = null;
+                    if (direction == 0) {//正向
+                        takeRoateBit = rotateImage(takePitmap, 90);//背景图
+                    } else {//反向
+                        takeRoateBit = rotateImage(takePitmap, -90);//背景图
+                    }
+                    Bitmap combineBitmap = BitmapUtils.productPic(takeRoateBit,CameraActivity.this,width,heigth);
                     Message msg = new Message();
                     msg.what = COMPLETED;
                     msg.obj = combineBitmap;
@@ -529,6 +534,18 @@ public class CameraActivity extends CameraBaseActivity {
         LayoutInflater factorys = LayoutInflater.from(this);
         final View textEntryView = factorys.inflate(R.layout.ll_bitmap, null);
 //        View root_view_layout = textEntryView.findViewById(R.id.root_view_layout);
+        TextView tv_camer_weather = textEntryView.findViewById(R.id.tv_camer_weather);
+        TextView tv_camer_temp = textEntryView.findViewById(R.id.tv_camer_temp);
+        TextView tv_camer_city = textEntryView.findViewById(R.id.tv_camer_city);
+        if(!TextUtils.isEmpty(getIntent().getStringExtra("weather"))){
+            tv_camer_weather.setText(getIntent().getStringExtra("weather"));
+        }
+        if(!TextUtils.isEmpty(getIntent().getStringExtra("temp"))){
+            tv_camer_temp.setText(getIntent().getStringExtra("temp"));
+        }
+        if(!TextUtils.isEmpty(getIntent().getStringExtra("city"))){
+            tv_camer_city.setText(getIntent().getStringExtra("city"));
+        }
 
         textEntryView.setDrawingCacheEnabled(true);
         textEntryView.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
@@ -539,67 +556,10 @@ public class CameraActivity extends CameraBaseActivity {
         return bitmap;
     }
 
-    /*bitmap放大*/
-    private static Bitmap big(Bitmap bitmap) {
-        Matrix matrix = new Matrix();
-        matrix.postScale(1.5f, 1.5f); //长和宽放大缩小的比例
-        Bitmap resizeBmp = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
-        return resizeBmp;
-    }
-
-    private static Bitmap albumbig(Bitmap bitmap) {
-        Matrix matrix = new Matrix();
-        matrix.postScale(1.5f, 1.5f); //长和宽放大缩小的比例
-        Bitmap resizeBmp = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
-        return resizeBmp;
-    }
-
     /**
      * 更具view生成bitmap
      */
 
-
-    //todo 方法2
-    private Bitmap getViewBitmap(View v) {
-        v.clearFocus();
-        v.setPressed(false);
-        boolean willNotCache = v.willNotCacheDrawing();
-        v.setWillNotCacheDrawing(false);
-        int color = v.getDrawingCacheBackgroundColor();
-        v.setDrawingCacheBackgroundColor(0);
-        if (color != 0) {
-            v.destroyDrawingCache();
-        }
-        v.buildDrawingCache();
-        Bitmap cacheBitmap = v.getDrawingCache();
-        if (cacheBitmap == null) {
-            return null;
-        }
-        Bitmap bitmap = Bitmap.createBitmap(cacheBitmap);
-        v.destroyDrawingCache();
-        v.setWillNotCacheDrawing(willNotCache);
-        v.setDrawingCacheBackgroundColor(color);
-        return bitmap;
-    }
-
-    public static Bitmap combineBitmap(Bitmap background, Bitmap foreground) {
-        if (background == null) {
-            return null;
-        }
-        int bgWidth = background.getWidth();
-        int bgHeight = background.getHeight();
-        int fgWidth = foreground.getWidth();
-        int fgHeight = foreground.getHeight();
-        Bitmap newmap = Bitmap
-                .createBitmap(bgWidth, bgHeight, Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(newmap);
-        canvas.drawBitmap(background, 0, 0, null);
-        canvas.drawBitmap(foreground, (bgWidth - fgWidth) / 2,
-                (bgHeight - fgHeight) / 2, null);
-        canvas.save();
-        canvas.restore();
-        return newmap;
-    }
 
     private static Bitmap getBitmap(byte[] data) {
         Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
@@ -1046,6 +1006,11 @@ public class CameraActivity extends CameraBaseActivity {
         mCurrentCameraId = (mCurrentCameraId + 1) % mCameraHelper.getNumberOfCameras();
         releaseCamera();
         Log.d("DDDD", "DDDD----mCurrentCameraId" + mCurrentCameraId);
+        if (mCurrentCameraId == 0) {
+            direction = 0;//正向
+        } else {
+            direction = 1;//反向
+        }
         setUpCamera(mCurrentCameraId);
     }
 
@@ -1092,14 +1057,6 @@ public class CameraActivity extends CameraBaseActivity {
     protected void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
-        if (albumBitmap != null) {
-//            albumBitmap.recycle();
-            albumBitmap = null;
-        }
-        if (takeBitmap != null) {
-//            takeBitmap.recycle();
-            takeBitmap = null;
-        }
     }
 
     /**
@@ -1122,14 +1079,10 @@ public class CameraActivity extends CameraBaseActivity {
         takePicture.setVisibility(View.GONE);
         surepicture.setVisibility(View.VISIBLE);
         sub_img.setVisibility(View.VISIBLE);
-//        sub_img.setImageBitmap(bitmap);
-
         new Thread(new Runnable() {
             @Override
             public void run() {
-                Bitmap viewBitmap = getBitmap();
-//                Bitmap takeRoateBit = rotateImage(bitmap, 90);//背景图
-                Bitmap combineBitmap = combineBitmap(bitmap, albumbig(viewBitmap));
+                Bitmap combineBitmap = BitmapUtils.productPic(bitmap, CameraActivity.this, width, heigth);
                 Message msg = new Message();
                 msg.what = ALBUM_COMPLETED;
                 msg.obj = combineBitmap;
@@ -1138,24 +1091,4 @@ public class CameraActivity extends CameraBaseActivity {
         }).start();
     }
 
-
-    //todo  保存bitmap在本地
-
-    private void saveImageToCache(Bitmap croppedImage) {
-        if (croppedImage != null) {
-            try {
-                ImageUtils.saveToFile(FileUtils.getInst().getCacheDir() + "/100weather",
-                        false, croppedImage);
-                Intent i = new Intent();
-                i.setData(Uri.parse("file://" + FileUtils.getInst().getCacheDir()
-                        + "/100weather"));
-                setResult(RESULT_OK, i);
-                dismissProgressDialog();
-                finish();
-            } catch (Exception e) {
-                e.printStackTrace();
-                toast("裁剪图片异常，请稍后重试", Toast.LENGTH_LONG);
-            }
-        }
-    }
 }

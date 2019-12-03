@@ -967,9 +967,9 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
 
         if(weatherTotalBean!=null&&this.isVisible){
             MainActivity activity = (MainActivity) getActivity();
-            activity.setTitleDate(weatherTotalBean.getData().getNow().getDetail().getDate()+" 周"+weatherTotalBean.getData().getNow().getDetail().getWeek()+" 农历"+weatherTotalBean.getData().getNow().getDetail().getNongli());
+            activity.setTitleDate(weatherTotalBean.getData().getNow().getDetail().getDate(),weatherTotalBean.getData().getNow().getDetail().getWeek(),weatherTotalBean.getData().getNow().getDetail().getNongli());
             activity.setTitleWeather(weatherTotalBean.getData().getNow().getDetail().getTemperature()+"°");
-            activity.setTitleWeatherImage(ChooseTypeUtils.getWeatherImgge(weatherTotalBean.getData().getNow().getDetail().getWeather()));
+            activity.setTitleWeatherImage(weatherTotalBean.getData().getNow().getDetail().getWeather());
         }
     }
 

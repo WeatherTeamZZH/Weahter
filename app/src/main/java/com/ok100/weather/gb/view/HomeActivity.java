@@ -5,7 +5,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
@@ -14,9 +13,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -26,6 +26,7 @@ import com.ok100.weather.gb.share.UIUtil;
 import com.ok100.weather.gb.share.WeatherBannerFragment;
 import com.ok100.weather.gb.share.transformer.ScaleInTransformer;
 import com.ok100.weather.gb.stickercamera.app.camera.CameraManager;
+import com.ok100.weather.gb.util.BitmapUtils;
 import com.ok100.weather.gb.util.FileUtils;
 import com.ok100.weather.gb.util.ImageUtils;
 import com.tbruyelle.rxpermissions2.Permission;
@@ -49,25 +50,38 @@ import io.reactivex.functions.Consumer;
 
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
-    private List<String> urlBeanList = new ArrayList<>();
     private List<Fragment> mFragment = new ArrayList<>();
     private ViewPager share_vp;
     private BitmapFragmentpageAdepter bitmapFragmentpageAdepter = null;
     private DisplayMetrics metric = new DisplayMetrics();
-    private JSONObject jsonObject = new JSONObject();
-    private JSONArray jsonArray = new JSONArray();
     private List<Bitmap> bitmaps = new ArrayList<>();
-    private final static int ALBUM_COMPLETED = 0x12;
-    private final static int SAVE_COMPLETED = 0x13;
+    private int heigth, width;
+
+    private View shareView ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
         EventBus.getDefault().register(this);
+        //天气温度
+        BitmapUtils.weather =  getIntent().getStringExtra("weather");
+        BitmapUtils.temp =getIntent().getStringExtra("temp");
+        BitmapUtils.city =  getIntent().getStringExtra("city");
+        BitmapUtils.week = getIntent().getStringExtra("week");
+        BitmapUtils.mouth = getIntent().getStringExtra("mouth");
+
         getWindowManager().getDefaultDisplay().getMetrics(metric);
         initView();
-        request(-1);
+        WindowManager manager = this.getWindowManager();
+        DisplayMetrics outMetrics = new DisplayMetrics();
+        manager.getDefaultDisplay().getMetrics(outMetrics);
+        width = outMetrics.widthPixels;
+        heigth = outMetrics.heightPixels;
+        getLocalListData();
+
+        shareView = View.inflate(this, R.layout.share_out_layout, null);
 
 
     }
@@ -80,6 +94,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.qq_img).setOnClickListener(this);
         findViewById(R.id.wb_img).setOnClickListener(this);
         share_vp = findViewById(R.id.share_vp);
+
         setPagerMargin(UIUtil.dip2px(this, 35),
                 UIUtil.dip2px(this, 10));
 
@@ -102,84 +117,33 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 });
     }
 
-    private void sethh() {
-        urlBeanList.clear();
-        try {
-            if (!TextUtils.isEmpty(ImageUtils.getLocalListData())) {
-
-                JSONObject jsonObject = new JSONObject(ImageUtils.getLocalListData());
-                String data = jsonObject.getString("data");
-                JSONArray jsonArray = new JSONArray(data);
-                for (int i = 0; i < jsonArray.length(); i++) {
-                    String dataStr = jsonArray.getString(i);
-                    urlBeanList.add(dataStr);
-                }
-
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void initData() {
-        mFragment.clear();
-        sethh();
-        for (String mData : urlBeanList) {
-            mFragment.add(WeatherBannerFragment.getInstance(mData));
-        }
-        bitmapFragmentpageAdepter.notifyDataSetChanged();
-    }
-
     private void getLocalListData() {
 
-        try {
-            if (!TextUtils.isEmpty(ImageUtils.getLocalListData())) {
-                setData();
-            } else {
-                noDataSet();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+        Bitmap bmp1 = BitmapFactory.decodeResource(getResources(), R.mipmap.share_bg1);
+        Bitmap bmp2 = BitmapFactory.decodeResource(getResources(), R.mipmap.share_bg2);
+        Bitmap bmp3 = BitmapFactory.decodeResource(getResources(), R.mipmap.share_bg3);
+        Bitmap bmp4 = BitmapFactory.decodeResource(getResources(), R.mipmap.share_bg4);
+        Bitmap bmp5 = BitmapFactory.decodeResource(getResources(), R.mipmap.share_bg5);
+        Bitmap bmp6 = BitmapFactory.decodeResource(getResources(), R.mipmap.share_bg6);
+        Bitmap bmp7 = BitmapFactory.decodeResource(getResources(), R.mipmap.share_bg7);
+        Bitmap bmp8 = BitmapFactory.decodeResource(getResources(), R.mipmap.share_bg8);
+        Bitmap bmp9 = BitmapFactory.decodeResource(getResources(), R.mipmap.share_bg9);
+
+        bitmaps.add(BitmapUtils.productPic(bmp1, HomeActivity.this, width, heigth));
+        bitmaps.add(BitmapUtils.productPic(bmp2, HomeActivity.this, width, heigth));
+        bitmaps.add(BitmapUtils.productPic(bmp3, HomeActivity.this, width, heigth));
+        bitmaps.add(BitmapUtils.productPic(bmp4, HomeActivity.this, width, heigth));
+        bitmaps.add(BitmapUtils.productPic(bmp5, HomeActivity.this, width, heigth));
+        bitmaps.add(BitmapUtils.productPic(bmp6, HomeActivity.this, width, heigth));
+        bitmaps.add(BitmapUtils.productPic(bmp7, HomeActivity.this, width, heigth));
+        bitmaps.add(BitmapUtils.productPic(bmp8, HomeActivity.this, width, heigth));
+        bitmaps.add(BitmapUtils.productPic(bmp9, HomeActivity.this, width, heigth));
+
+        for (int i = 0; i < bitmaps.size(); i++) {
+            mFragment.add(WeatherBannerFragment.getInstance(bitmaps.get(i)));
         }
-    }
 
-    private void setData() {
-        try {
-            initData();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    private void noDataSet() {
-        try {
-            Bitmap bmp1 = BitmapFactory.decodeResource(getResources(), R.mipmap.share_bg1);
-            Bitmap bmp2 = BitmapFactory.decodeResource(getResources(), R.mipmap.share_bg2);
-            Bitmap bmp3 = BitmapFactory.decodeResource(getResources(), R.mipmap.share_bg3);
-            Bitmap bmp4 = BitmapFactory.decodeResource(getResources(), R.mipmap.share_bg4);
-            Bitmap bmp5 = BitmapFactory.decodeResource(getResources(), R.mipmap.share_bg5);
-            Bitmap bmp6 = BitmapFactory.decodeResource(getResources(), R.mipmap.share_bg6);
-
-            bitmaps.add(bmp1);
-            bitmaps.add(bmp2);
-            bitmaps.add(bmp3);
-            bitmaps.add(bmp4);
-            bitmaps.add(bmp5);
-            bitmaps.add(bmp6);
-
-            for (int i = 0; i < bitmaps.size(); i++) {
-                String imagePath = ImageUtils.saveBitmapToFile(FileUtils.getInst().getSystemPhotoPathAdd(), true,
-                        combineBitmap(bitmaps.get(i), getBitmap()), "wwttrr" + i);
-                Message msg = new Message();
-                msg.what = ALBUM_COMPLETED;
-                msg.obj = imagePath;
-                mHandler.sendMessage(msg);
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        bitmapFragmentpageAdepter.notifyDataSetChanged();
 
     }
 
@@ -187,11 +151,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) share_vp.getLayoutParams();
         layoutParams.setMargins(viewMargin, 0, viewMargin, 0);
         share_vp.setPageMargin(pagerMargin);
-    }
-
-    public static Bitmap create(String path) {
-        Bitmap bitmap = BitmapFactory.decodeFile(path);
-        return bitmap;
     }
 
     @Override
@@ -214,12 +173,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.wb_img://wb
-                Toast.makeText(HomeActivity.this,"暂未开通",Toast.LENGTH_SHORT).show();
-//                request(3);
+                request(3);
                 break;
 
             case R.id.exchange_album_rela:
-                CameraManager.getInst().openCamera(HomeActivity.this);
+                requestLocation();
+
                 break;
         }
     }
@@ -232,37 +191,58 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMoonEvent(Bitmap bitmap) {
-//
-        try {
-            String imagePath = ImageUtils.saveBitmapToFile(FileUtils.getInst().getSystemPhotoPathAdd(), true,
-                    combineBitmap(bitmap, getBitmap()), "wwttrr" + share_vp.getCurrentItem());
-            Message msg = new Message();
-            msg.what = SAVE_COMPLETED;
-            msg.obj = imagePath;
-            mHandler.sendMessage(msg);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
+        mFragment.set(share_vp.getCurrentItem(), WeatherBannerFragment.getInstance(bitmap));
+        bitmapFragmentpageAdepter.notifyDataSetChanged();
     }
 
     //todo 分享
     private void share(int type) {
-        Bitmap bmp1 = BitmapFactory.decodeResource(getResources(), R.mipmap.main_bg);
-        UMImage image = new UMImage(HomeActivity.this, bmp1);//bitmap文件
+
         ShareAction shareAction = new ShareAction(HomeActivity.this);
         if (type == 0) {//微信朋友圈
             shareAction.setPlatform(SHARE_MEDIA.WEIXIN_CIRCLE);//传入平台
+            shareViewBit(shareAction, share_vp.getCurrentItem());
         } else if (type == 1) {//微信
             shareAction.setPlatform(SHARE_MEDIA.WEIXIN);//
+            shareViewBit(shareAction, share_vp.getCurrentItem());
         } else if (type == 2) {//QQ
             shareAction.setPlatform(SHARE_MEDIA.QQ);//
+            shareViewBit(shareAction, share_vp.getCurrentItem());
         } else if (type == -1) {
             getLocalListData();
         } else {//wb
             shareAction.setPlatform(SHARE_MEDIA.SINA);//
+            shareViewBit(shareAction, share_vp.getCurrentItem());
         }
+
+    }
+
+    //todo 分享图片view
+    private void shareViewBit(ShareAction shareAction, int position) {
+
+        WeatherBannerFragment weatherBannerFragment = (WeatherBannerFragment) mFragment.get(position);
+        if (TextUtils.isEmpty(weatherBannerFragment.getContent_et().getText().toString().trim())) {
+            Toast.makeText(this, "内容不能为空", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        ImageView pic_img = shareView.findViewById(R.id.pic_img);
+        EditText content_et = shareView.findViewById(R.id.content_et);
+        EditText write_et = shareView.findViewById(R.id.write_et);
+
+//        String url = weatherBannerFragment.getUrl();
+        Bitmap bitmap = weatherBannerFragment.getBitmap();
+//        pic_img.setImageBitmap(BitmapUtils.create(url));
+        pic_img.setImageBitmap(bitmap);
+
+        String et = weatherBannerFragment.getContent_et().getText().toString().trim();
+        String et1 = weatherBannerFragment.getWrite_et().getText().toString().trim();
+        content_et.setText(et);
+        write_et.setText(et1);
+
+        Bitmap bmp1 = BitmapUtils.getViewBitmap(shareView, width, heigth);
+
+        UMImage image = new UMImage(HomeActivity.this, bmp1);//bitmap文件
         shareAction.withMedia(image);
         shareAction.setCallback(shareListener);//回调监听器
         shareAction.share();
@@ -297,79 +277,28 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
     }
 
-    //todo 根据不可见view生成bitmap
-    private Bitmap getBitmap() {
-        Bitmap bitmap = null;
-        LayoutInflater factorys = LayoutInflater.from(this);
-        final View textEntryView = factorys.inflate(R.layout.ll_bitmap, null);
-        textEntryView.setDrawingCacheEnabled(true);
-        textEntryView.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
-                View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
-        textEntryView.layout(0, 0, textEntryView.getMeasuredWidth(), textEntryView.getMeasuredHeight());
-        bitmap = Bitmap.createBitmap(textEntryView.getDrawingCache());
-        textEntryView.setDrawingCacheEnabled(false);
-        return bitmap;
-    }
+    @SuppressLint("CheckResult")
+    private void requestLocation() {
+        List<String> stringList = new ArrayList<>();
+        RxPermissions rxPermission = new RxPermissions(this);
+        rxPermission.requestEach(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_PHONE_STATE)
+                .subscribe(new Consumer<Permission>() {
+                    @Override
+                    public void accept(Permission permission) {
+                        if (permission.granted) {
+                            stringList.add("1");
+                        } else {
 
-    public static Bitmap combineBitmap(Bitmap background, Bitmap foreground) {
-        if (background == null) {
-            return null;
-        }
-        int bgWidth = background.getWidth();
-        int bgHeight = background.getHeight();
-        int fgWidth = foreground.getWidth();
-        int fgHeight = foreground.getHeight();
-        Bitmap newmap = Bitmap
-                .createBitmap(bgWidth, bgHeight, Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(newmap);
-        canvas.drawBitmap(background, 0, 0, null);
-        canvas.drawBitmap(foreground, (bgWidth - fgWidth) / 2,
-                (bgHeight - fgHeight) / 2, null);
-        canvas.save();
-        canvas.restore();
-        return newmap;
-    }
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (msg.what == ALBUM_COMPLETED) {//拍照处理
-                try {
-                    String mData = (String) msg.obj;
-                    jsonArray.put(mData);
-                    if (jsonArray.length() == 3) {
-                        jsonObject.put("data", jsonArray.toString());
-                        ImageUtils.setLocalBitmapListData(jsonObject.toString());
-                        initData();
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            } else if (msg.what == SAVE_COMPLETED) {
-                urlBeanList.clear();
-                try {
-                    String mData = (String) msg.obj;
-                    mFragment.set(share_vp.getCurrentItem(), WeatherBannerFragment.getInstance(mData));
-                    bitmapFragmentpageAdepter.notifyDataSetChanged();
-                    if (!TextUtils.isEmpty(ImageUtils.getLocalListData())) {
-                        JSONObject jsonObject = new JSONObject(ImageUtils.getLocalListData());
-                        String data = jsonObject.getString("data");
-                        JSONArray jsonArray = new JSONArray(data);
-                        for (int i = 0; i < jsonArray.length(); i++) {
-                            String dataStr = jsonArray.getString(i);
-                            if (dataStr.equals(mData)) {
-                                urlBeanList.add(mData);
-                            } else {
-                                urlBeanList.add(dataStr);
-                            }
                         }
-                        ImageUtils.setLocalBitmapListData(jsonObject.toString());
                     }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
+                });
+        if (stringList.size() >= 3) {
+            String wetaher = getIntent().getStringExtra("wetaher");
+            String temp = getIntent().getStringExtra("temp");
+            String city = getIntent().getStringExtra("city");
+            CameraManager.getInst().openCamera(HomeActivity.this,TextUtils.isEmpty(temp)?"":temp,TextUtils.isEmpty(wetaher)?"":wetaher,TextUtils.isEmpty(city)?"":city);
         }
-    };
+    }
+
 }
 
