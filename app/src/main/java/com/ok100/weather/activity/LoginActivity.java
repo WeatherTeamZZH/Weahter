@@ -61,6 +61,8 @@ public class LoginActivity extends BaseActivity implements ReturnDataView {
     @BindView(R.id.base_rl_title)
     RelativeLayout baseRlTitle;
 
+    private SPObj spObj;
+
     @Override
     public int getLayoutID() {
         return R.layout.activity_login;
@@ -68,6 +70,7 @@ public class LoginActivity extends BaseActivity implements ReturnDataView {
 
     @Override
     public void InitView() {
+        spObj = new SPObj(getContext(), "gh");
         baseRlTitle.setBackgroundColor(getResources().getColor(R.color.transparent));
         setTitle("登录", true, TITLE_TYPE_IMG, R.mipmap.back_left_hei, false, TITLE_TYPE_IMG, R.mipmap.ic_launcher);
         registerBack();
@@ -171,8 +174,17 @@ public class LoginActivity extends BaseActivity implements ReturnDataView {
             case "smslogin":
                 LoginBean loginBean = (LoginBean) o;
                 if ("200".equals(loginBean.getCode())) {
-                    new SPObj(getContext(), "gh").setObject("phone", loginBean.getData().getPhonenum());
-                    new SPObj(getContext(), "gh").setObject("isLogin", true);
+                    //如果登录的手机号与之前存储的不一致,则删除之前存储的信息
+                    if (!loginBean.getData().getPhonenum().equals(new SPObj(getContext(), "gh").getObject("phone", String.class))) {
+                        spObj.setObject("imgurl",null);
+                        spObj.setObject("nick",null);
+                        spObj.setObject("birth",null);
+                        spObj.setObject("sex",null);
+                        spObj.setObject("phone",null);
+                        spObj.setObject("wechat",null);
+                    }
+                    spObj.setObject("phone", loginBean.getData().getPhonenum());
+                    spObj.setObject("isLogin", true);
                     finish();
                 } else {
                     ToastUtil.makeLongText(getContext(),loginBean.getMessage());
