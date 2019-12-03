@@ -192,8 +192,9 @@ public class DataBean {
 //        settingBean2 = new SettingBean(2,"预警提醒");
 //        settingBeans.add(settingBean2);
         settingBeans.add(settingBean1);
-        settingBean2 = new SettingBean(2,"服务协议","","http://www.512kx.top/?act=zyPrivacy");
+        settingBean2 = new SettingBean(2,"注册协议","","http://www.512kx.top/?act=zyPrivacy");
         settingBeans.add(settingBean2);
+        settingBeans.add(new SettingBean(2, "隐私协议", "","http://www.512kx.top/?act=dyPrivacy"));
         settingBean2 = new SettingBean(2,"关于我们","","http://www.512kx.top/?act=about");
         settingBeans.add(settingBean2);
 //        settingBeans.add(settingBean1);

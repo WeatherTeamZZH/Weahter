@@ -1,5 +1,8 @@
 package com.ok100.weather.activity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -19,6 +22,7 @@ import com.ok100.weather.bean.LoginBean;
 import com.ok100.weather.bean.SMSBean;
 import com.ok100.weather.http.ReturnDataView;
 import com.ok100.weather.presenter.LoginPresenterImpl;
+import com.ok100.weather.utils.EmptyUtils;
 import com.ok100.weather.utils.SPObj;
 import com.ok100.weather.utils.ToastUtil;
 
@@ -60,6 +64,8 @@ public class LoginActivity extends BaseActivity implements ReturnDataView {
     View viewLine;
     @BindView(R.id.base_rl_title)
     RelativeLayout baseRlTitle;
+    @BindView(R.id.textview3)
+    TextView textview3;
 
     private SPObj spObj;
 
@@ -88,6 +94,7 @@ public class LoginActivity extends BaseActivity implements ReturnDataView {
     public void initListener() {
         mTextview1.setOnClickListener(this);
         mTextview2.setOnClickListener(this);
+        textview3.setOnClickListener(this);
     }
 
     @Override
@@ -117,19 +124,67 @@ public class LoginActivity extends BaseActivity implements ReturnDataView {
 
                 break;
             case R.id.textview2:
-                string1 = mEdittext1.getText().toString();
-                String string2 = mEdittext2.getText().toString();
-                HashMap<String, String> hashMap2 = new HashMap<>();
-                hashMap2.put("phoneNum", string1);
-                hashMap2.put("codelatedPoints", string2);
-                try {
-                    hashMap2.put("token", getMD5(beas64util("phone=" + string1 + "&secret=weater_128_As")));
-                } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
+                if (!EmptyUtils.isEmpty(mEdittext1.getText().toString())
+                        && mEdittext1.getText().toString().equals(spObj.getObject("phone", String.class))) {
+                    toLogin();
+                } else {
+                    showDialog();
                 }
-                loginPresenter.smslogin(LoginActivity.this, hashMap2);
+                break;
+            case R.id.textview3:
+                Intent intent = new Intent(LoginActivity.this, AboutOursActivity.class);
+                intent.putExtra("title", "注册协议");
+                intent.putExtra("url", "http://www.512kx.top/?act=zyPrivacy");
+                startActivity(intent);
                 break;
         }
+    }
+
+    private void showDialog() {
+        final AlertDialog.Builder alterDiaglog = new AlertDialog.Builder(LoginActivity.this);
+        alterDiaglog.setTitle("提示");//文字
+        alterDiaglog.setMessage("您确认同意《注册协议》吗?");//提示消息
+        //积极的选择
+        alterDiaglog.setPositiveButton("同意", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                toLogin();
+                dialog.dismiss();
+            }
+        });
+        //消极的选择
+        alterDiaglog.setNegativeButton("不同意", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        //中立的选择
+        alterDiaglog.setNeutralButton("查看", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent(LoginActivity.this, AboutOursActivity.class);
+                intent.putExtra("title", "注册协议");
+                intent.putExtra("url", "http://www.512kx.top/?act=zyPrivacy");
+                startActivity(intent);
+            }
+        });
+        alterDiaglog.show();
+    }
+
+    private void toLogin() {
+        String string1 = "";
+        string1 = mEdittext1.getText().toString();
+        String string2 = mEdittext2.getText().toString();
+        HashMap<String, String> hashMap2 = new HashMap<>();
+        hashMap2.put("phoneNum", string1);
+        hashMap2.put("codelatedPoints", string2);
+        try {
+            hashMap2.put("token", getMD5(beas64util("phone=" + string1 + "&secret=weater_128_As")));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        loginPresenter.smslogin(LoginActivity.this, hashMap2);
     }
 
     /**
@@ -168,26 +223,26 @@ public class LoginActivity extends BaseActivity implements ReturnDataView {
                 if ("200".equals(smsBean.getCode())) {
                     timer.start();
                 } else {
-                    ToastUtil.makeLongText(getContext(),smsBean.getMessage());
+                    ToastUtil.makeLongText(getContext(), smsBean.getMessage());
                 }
                 break;
             case "smslogin":
                 LoginBean loginBean = (LoginBean) o;
                 if ("200".equals(loginBean.getCode())) {
                     //如果登录的手机号与之前存储的不一致,则删除之前存储的信息
-                    if (!loginBean.getData().getPhonenum().equals(new SPObj(getContext(), "gh").getObject("phone", String.class))) {
-                        spObj.setObject("imgurl",null);
-                        spObj.setObject("nick",null);
-                        spObj.setObject("birth",null);
-                        spObj.setObject("sex",null);
-                        spObj.setObject("phone",null);
-                        spObj.setObject("wechat",null);
+                    if (!loginBean.getData().getPhonenum().equals(spObj.getObject("phone", String.class))) {
+                        spObj.setObject("imgurl", null);
+                        spObj.setObject("nick", null);
+                        spObj.setObject("birth", null);
+                        spObj.setObject("sex", null);
+                        spObj.setObject("phone", null);
+                        spObj.setObject("wechat", null);
                     }
                     spObj.setObject("phone", loginBean.getData().getPhonenum());
                     spObj.setObject("isLogin", true);
                     finish();
                 } else {
-                    ToastUtil.makeLongText(getContext(),loginBean.getMessage());
+                    ToastUtil.makeLongText(getContext(), loginBean.getMessage());
                 }
                 break;
         }

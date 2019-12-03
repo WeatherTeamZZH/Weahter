@@ -30,10 +30,10 @@
         android:textSize="15sp" />
 
     <LinearLayout
-        android:layout_marginTop="40dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/shape_login_1"
         android:gravity="center_vertical"
         android:orientation="horizontal"
@@ -60,10 +60,10 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -80,10 +80,10 @@
             android:textSize="15sp" />
 
         <TextView
-            android:layout_marginLeft="5dp"
             android:id="@+id/textview1"
             android:layout_width="0dp"
             android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
             android:layout_weight="2"
             android:background="@drawable/shape_login_3"
             android:gravity="center"
@@ -95,13 +95,25 @@
     </LinearLayout>
 
     <TextView
-        android:layout_marginTop="20dp"
         android:id="@+id/textview2"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/shape_login_4"
         android:gravity="center"
         android:text="登录"
         android:textColor="#1fa2c2" />
+
+    <TextView
+        android:id="@+id/textview3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:text="点击登录即表示您同意《注册协议》"
+        android:textColor="@color/white" />
+
+
+
 </LinearLayout>
