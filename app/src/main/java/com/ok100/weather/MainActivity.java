@@ -352,7 +352,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 //                intent = new Intent(MainActivity.this, ShareMainActivity.class);
 //                startActivity(intent);
                 intent = new Intent(MainActivity.this, HomeActivity.class);
-                intent.putExtra("wetaher",weather);
+                intent.putExtra("weather",weather);
                 intent.putExtra("temp",temp);
                 if(!TextUtils.isEmpty(mTvCity.getText())){
                     intent.putExtra("city",mTvCity.getText());
