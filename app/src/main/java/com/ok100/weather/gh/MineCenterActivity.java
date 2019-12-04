@@ -3,6 +3,7 @@ package com.ok100.weather.gh;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -34,6 +35,7 @@ import com.bigkoo.pickerview.view.OptionsPickerView;
 import com.bigkoo.pickerview.view.TimePickerView;
 import com.bumptech.glide.Glide;
 import com.ok100.weather.R;
+import com.ok100.weather.activity.LoginActivity;
 import com.ok100.weather.base.BaseActivity;
 import com.ok100.weather.utils.ActivityBarSettingUtils;
 import com.ok100.weather.utils.EmptyUtils;
@@ -185,14 +187,33 @@ public class MineCenterActivity extends BaseActivity {
                 showDialog("绑定微信号");
                 break;
             case R.id.tv_cancellation:
-                spObj.setObject("imgurl",null);
-                spObj.setObject("nick",null);
-                spObj.setObject("birth",null);
-                spObj.setObject("sex",null);
-                spObj.setObject("phone",null);
-                spObj.setObject("wechat",null);
-                spObj.setObject( "isLogin", false);
-                finish();
+                final AlertDialog.Builder alterDiaglog = new AlertDialog.Builder(MineCenterActivity.this);
+                alterDiaglog.setTitle("提示");//文字
+                alterDiaglog.setMessage("注销账号会删除所有数据,注销后无法恢复.您确认注销吗?");//提示消息
+                //积极的选择
+                alterDiaglog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        spObj.setObject("imgurl",null);
+                        spObj.setObject("nick",null);
+                        spObj.setObject("birth",null);
+                        spObj.setObject("sex",null);
+                        spObj.setObject("phone",null);
+                        spObj.setObject("wechat",null);
+                        spObj.setObject( "isLogin", false);
+                        startActivity(new Intent(MineCenterActivity.this, LoginActivity.class));
+                        finish();
+                        dialog.dismiss();
+                    }
+                });
+                //消极的选择
+                alterDiaglog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                alterDiaglog.show();
                 break;
             case R.id.tv_logout:
                 spObj.setObject( "isLogin", false);
