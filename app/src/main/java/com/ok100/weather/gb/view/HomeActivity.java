@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
@@ -18,10 +19,12 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ok100.weather.R;
 import com.ok100.weather.gb.adepter.BitmapFragmentpageAdepter;
+import com.ok100.weather.gb.share.ImageAdapterHView;
 import com.ok100.weather.gb.share.UIUtil;
 import com.ok100.weather.gb.share.WeatherBannerFragment;
 import com.ok100.weather.gb.share.transformer.ScaleInTransformer;
@@ -226,14 +229,18 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             return;
         }
 
-        ImageView pic_img = shareView.findViewById(R.id.pic_img);
+        ImageAdapterHView pic_img = shareView.findViewById(R.id.pic_img);
         EditText content_et = shareView.findViewById(R.id.content_et);
         EditText write_et = shareView.findViewById(R.id.write_et);
-
+        TextView tv_foot_city = shareView.findViewById(R.id.tv_foot_city);
+        TextView tv_foot_data = shareView.findViewById(R.id.tv_foot_data);
+        tv_foot_city.setText(TextUtils.isEmpty(BitmapUtils.city)?"":BitmapUtils.city);
+        tv_foot_data.setText(TextUtils.isEmpty(BitmapUtils.mouth)?"":BitmapUtils.mouth);
 //        String url = weatherBannerFragment.getUrl();
         Bitmap bitmap = weatherBannerFragment.getBitmap();
 //        pic_img.setImageBitmap(BitmapUtils.create(url));
         pic_img.setImageBitmap(bitmap);
+//        pic_img.setBackground(new BitmapDrawable(bitmap));
 
         String et = weatherBannerFragment.getContent_et().getText().toString().trim();
         String et1 = weatherBannerFragment.getWrite_et().getText().toString().trim();

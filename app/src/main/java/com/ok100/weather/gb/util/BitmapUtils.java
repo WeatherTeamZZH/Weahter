@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ok100.weather.R;
+import com.ok100.weather.gb.share.ImageAdapterHView;
 import com.ok100.weather.gb.share.UIUtil;
 import com.ok100.weather.gb.stickercamera.app.camera.ui.CameraActivity;
 
@@ -121,7 +122,7 @@ public class BitmapUtils {
     //这是一种模板  不需要合并图片   会出现 有些标签大小不一
     public static Bitmap productPic(Bitmap b,Activity activity,int width,int heigth) {
         View view = View.inflate(activity, R.layout.pro_pic_layout, null);
-        ImageView pic_img = view.findViewById(R.id.pic_img);
+        ImageAdapterHView pic_img = view.findViewById(R.id.pic_img);
         pic_img.setImageBitmap(b);
         TextView tv_weather = view.findViewById(R.id.tv_weather);
         TextView tv_city = view.findViewById(R.id.tv_city);

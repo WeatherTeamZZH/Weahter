@@ -2,6 +2,8 @@ package com.ok100.weather.gb.share;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Message;
 import android.text.TextUtils;
 import android.view.View;
@@ -15,7 +17,7 @@ import com.ok100.weather.gb.util.BitmapUtils;
 
 public class WeatherBannerFragment extends BaseFragment {
     private String url;
-    private ImageView pic_img;
+    private ImageAdapterHView pic_img;
     private EditText content_et, write_et;
     private Bitmap bitmap;
 
@@ -76,6 +78,7 @@ public class WeatherBannerFragment extends BaseFragment {
 
 //        pic_img.setImageBitmap(create(url));
         pic_img.setImageBitmap(bitmap);
+//        pic_img.setBackground(new BitmapDrawable(bitmap));
     }
 
     public static Bitmap create(String path) {

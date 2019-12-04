@@ -4,11 +4,11 @@
     android:layout_height="match_parent">
 
 
-    <ImageView
+    <com.ok100.weather.gb.share.ImageAdapterHView
         android:id="@+id/pic_img"
         android:layout_width="match_parent"
-        android:scaleType="centerCrop"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"/>
 
     <LinearLayout
         android:id="@+id/child_ll"
@@ -28,8 +28,9 @@
             android:id="@+id/tv_weather"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0"
+            android:text="02222"
             android:textStyle="bold"
+            android:includeFontPadding="false"
             android:textColor="@color/white"
             android:textSize="50sp"  />
 
@@ -37,24 +38,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <TextView
             android:id="@+id/tv_city"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""
+            android:textStyle="bold"
+
             android:textColor="@color/white"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+            android:textSize="15sp"/>
 
         <TextView
             android:id="@+id/tv_temp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""
-            android:textStyle="bold"
-            android:layout_marginLeft="@dimen/x30"
             android:textColor="@color/white"
-            android:textSize="15sp"/>
+            android:textSize="15sp"
+            android:layout_marginLeft="@dimen/x30"
+            android:textStyle="bold" />
+
     </LinearLayout>
     </LinearLayout>
 
