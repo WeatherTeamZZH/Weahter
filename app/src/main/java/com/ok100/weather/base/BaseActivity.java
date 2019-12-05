@@ -394,4 +394,13 @@ public abstract class BaseActivity extends AppCompatActivity implements NetRecei
         super.onDestroy();
     }
 
+
+    //显示dialog
+    public void showDialog(BaseDialog dialog, String tag) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        if (!dialog.isAdded()) {
+            transaction.add(dialog, tag);
+            transaction.commit();
+        }
+    }
 }

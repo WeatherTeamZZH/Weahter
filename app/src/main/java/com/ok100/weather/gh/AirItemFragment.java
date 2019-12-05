@@ -93,7 +93,15 @@ public class AirItemFragment extends BaseFragment {
         setRefresh(true);
 //        int i = random.nextInt(950 - 351);
 //        sesameView.setSesameValues(i + 351);
-        sesameView.setSesameValues(200,Integer.valueOf(data.getAqi()),  data.getQuality());
+        try{
+            if(data!=null){
+                sesameView.setSesameValues(200,Integer.valueOf(data.getAqi()),  data.getQuality());
+            }
+
+        }catch(Exception e){
+
+        }
+
     }
 
     @Override

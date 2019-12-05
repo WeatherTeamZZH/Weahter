@@ -272,9 +272,15 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
             case R.id.tv_weather_temp:
 //                mTabLayout.getTabAt(1).select();
 //                AirDialogFragment.access(getFragmentManager());
+                if(weatherTotal7Bean!=null){
+                    AirDialogFragment.access(getChildFragmentManager(),weatherTotal7Bean);
+                }
                 break;
             case R.id.tv_shidu_xiao:
+                if(weatherTotalBean!=null){
                 GH_MapActivity.access(getActivity(),departmentListBeansString,weatherTotalBean);
+                }
+
                 break;
 
         }
@@ -915,7 +921,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     }
 
     private void setAirDialogFragment(WeatherTotal7Bean weatherTotal7Bean) {
-        mTvWeatherTemp.setOnClickListener(v -> AirDialogFragment.access(getChildFragmentManager(),weatherTotal7Bean));
+
     }
 
     private void http() {

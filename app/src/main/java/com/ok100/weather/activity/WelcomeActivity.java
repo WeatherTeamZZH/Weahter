@@ -18,6 +18,7 @@ import com.amap.api.location.AMapLocationListener;
 import com.ok100.weather.MainActivity;
 import com.ok100.weather.R;
 import com.ok100.weather.base.BaseActivity;
+import com.ok100.weather.dialog.FastInputCostomerFailDialog;
 import com.ok100.weather.location.LocationUtils;
 import com.ok100.weather.utils.AppUtils;
 import com.ok100.weather.utils.SharePreferencesUtil;
@@ -68,6 +69,34 @@ public class WelcomeActivity extends BaseActivity  implements EasyPermissions.Ra
 
     @Override
     public void initData(Bundle savedInstanceState, View contentView) {
+
+
+        String isFirstAppLogin = (String)SharePreferencesUtil.get(WelcomeActivity.this, "isFirstAppLogin", "0");
+        if(isFirstAppLogin.equals("0")){
+            FastInputCostomerFailDialog fastInputCostomerFailDialog = new FastInputCostomerFailDialog(WelcomeActivity.this);
+            fastInputCostomerFailDialog.setOnOffDialogListener(new FastInputCostomerFailDialog.OffDialogListener() {
+
+                @Override
+                public void offDialog(boolean isagree) {
+                    if(isagree){
+                        initDataAgree();
+                        SharePreferencesUtil.put(WelcomeActivity.this,"isFirstAppLogin","1");
+                        fastInputCostomerFailDialog.dismiss();
+                    }else {
+                        finish();
+                    }
+                }
+            });
+
+            showDialog(fastInputCostomerFailDialog, "fastInputCostomerFailDialog");
+        }else {
+            initDataAgree();
+        }
+
+
+    }
+
+    private void initDataAgree() {
         if (EasyPermissions.hasPermissions( WelcomeActivity.this , perms)) {
             // Already have permission, do the thing
 //            getXY();
