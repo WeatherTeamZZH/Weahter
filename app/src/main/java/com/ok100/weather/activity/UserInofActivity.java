@@ -25,6 +25,7 @@ import com.ok100.weather.gh.MineCenterActivity;
 import com.ok100.weather.gh.XingzuoActivity;
 import com.ok100.weather.utils.EmptyUtils;
 import com.ok100.weather.utils.SPObj;
+import com.umeng.analytics.MobclickAgent;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -207,7 +208,7 @@ public class UserInofActivity extends BaseActivity {
                     intent = new Intent(UserInofActivity.this, LoginActivity.class);
                     startActivity(intent);
                 }
-
+                MobclickAgent.onEvent(UserInofActivity.this, "click_HeaderIcon");
                 break;
         }
     }

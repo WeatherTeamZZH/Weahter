@@ -11,9 +11,11 @@ import com.ok100.weather.R;
 import com.ok100.weather.adapter.MainTodaySuggestAdapter;
 import com.ok100.weather.adapter.Weather15MianAdapter;
 import com.ok100.weather.base.BaseActivity;
+import com.ok100.weather.gh.XingzuoActivity;
 import com.ok100.weather.view.MyLinearLayoutManager;
 import com.ok100.weather.view.MyNestedScrollView;
 import com.ok100.weather.view.RecyclerScrollView;
+import com.umeng.analytics.MobclickAgent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +47,8 @@ public class ShareMainActivity extends BaseActivity {
         mRecycle.setAdapter(mainTodaySuggestAdapter);
 //        mRecycle.setNestedScrollingEnabled(false);
 //        mScrollview.setEnabled(false);
+
+        MobclickAgent.onEvent(ShareMainActivity.this, "ShareMainActivity");
     }
 
 

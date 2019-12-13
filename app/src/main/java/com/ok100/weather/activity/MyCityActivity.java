@@ -42,6 +42,7 @@ import com.ok100.weather.http.ReturnDataView;
 import com.ok100.weather.presenter.NewsListPresenterImpl;
 import com.ok100.weather.presenter.NoticeMainListPresenterImpl;
 import com.ok100.weather.utils.ChooseTypeUtils;
+import com.umeng.analytics.MobclickAgent;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -239,6 +240,7 @@ public class MyCityActivity extends BaseActivity implements BaseQuickAdapter.OnI
 
     @Override
     public void initData(Bundle savedInstanceState, View contentView) {
+        MobclickAgent.onEvent(MyCityActivity.this, "MyCityActivity");
         adapter1BeanList.clear();
         for (int i=0;i<cityGreenDaoBeanList.size();i++){
             MyCityAdapter1Bean myCityAdapter1Bean = new MyCityAdapter1Bean();

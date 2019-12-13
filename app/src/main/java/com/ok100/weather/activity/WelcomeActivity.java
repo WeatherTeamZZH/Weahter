@@ -22,6 +22,7 @@ import com.ok100.weather.dialog.FastInputCostomerFailDialog;
 import com.ok100.weather.location.LocationUtils;
 import com.ok100.weather.utils.AppUtils;
 import com.ok100.weather.utils.SharePreferencesUtil;
+import com.umeng.analytics.MobclickAgent;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -60,6 +61,8 @@ public class WelcomeActivity extends BaseActivity  implements EasyPermissions.Ra
         tv_app_name.setText(appName);
         tv_app_version.setText("V " + versionCode);
         sharePreferenceUtil = new SharePreferencesUtil();
+        MobclickAgent.onEvent(WelcomeActivity.this, "open_weather");
+
     }
 
     @Override
@@ -73,6 +76,7 @@ public class WelcomeActivity extends BaseActivity  implements EasyPermissions.Ra
 
         String isFirstAppLogin = (String)SharePreferencesUtil.get(WelcomeActivity.this, "isFirstAppLogin", "0");
         if(isFirstAppLogin.equals("0")){
+
             FastInputCostomerFailDialog fastInputCostomerFailDialog = new FastInputCostomerFailDialog(WelcomeActivity.this);
             fastInputCostomerFailDialog.setOnOffDialogListener(new FastInputCostomerFailDialog.OffDialogListener() {
 
@@ -82,6 +86,7 @@ public class WelcomeActivity extends BaseActivity  implements EasyPermissions.Ra
                         initDataAgree();
                         SharePreferencesUtil.put(WelcomeActivity.this,"isFirstAppLogin","1");
                         fastInputCostomerFailDialog.dismiss();
+                        MobclickAgent.onEvent(WelcomeActivity.this, "download_app");
                     }else {
                         finish();
                     }

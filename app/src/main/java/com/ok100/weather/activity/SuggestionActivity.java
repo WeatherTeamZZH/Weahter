@@ -12,6 +12,7 @@ import com.ok100.weather.base.BaseActivity;
 import com.ok100.weather.utils.ActivityBarSettingUtils;
 import com.teprinciple.mailsender.Mail;
 import com.teprinciple.mailsender.MailSender;
+import com.umeng.analytics.MobclickAgent;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -45,6 +46,7 @@ public class SuggestionActivity extends BaseActivity {
         ActivityBarSettingUtils.setAndroidNativeLightStatusBar(SuggestionActivity.this, true);
 
 //        sendMessage();
+        MobclickAgent.onEvent(SuggestionActivity.this, "SuggestionActivity");
     }
 
     @Override

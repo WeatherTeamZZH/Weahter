@@ -37,6 +37,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.ok100.weather.MainActivity;
 import com.ok100.weather.R;
 import com.ok100.weather.activity.SelectPicPopupWindowActivity;
+import com.ok100.weather.activity.WelcomeActivity;
 import com.ok100.weather.adapter.MainTodayFuwuAdapter;
 import com.ok100.weather.adapter.MainTodaySuggestAdapter;
 import com.ok100.weather.adapter.NoticeMainFragmentItemAdapter;
@@ -66,6 +67,7 @@ import com.ok100.weather.utils.ChooseTypeUtils;
 import com.ok100.weather.utils.DPUtils;
 import com.ok100.weather.view.MySwipeRefreshLayout;
 import com.ok100.weather.view.MyViewPager;
+import com.umeng.analytics.MobclickAgent;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -274,11 +276,13 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
 //                AirDialogFragment.access(getFragmentManager());
                 if(weatherTotal7Bean!=null){
                     AirDialogFragment.access(getChildFragmentManager(),weatherTotal7Bean);
+                    MobclickAgent.onEvent(getActivity(), "clickTemDetailController");
                 }
                 break;
             case R.id.tv_shidu_xiao:
                 if(weatherTotalBean!=null){
                 GH_MapActivity.access(getActivity(),departmentListBeansString,weatherTotalBean);
+                    MobclickAgent.onEvent(getActivity(), "clickTodayDetailController");
                 }
 
                 break;
@@ -323,6 +327,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
                 SuggestGridViewBean bean  = (SuggestGridViewBean) adapter.getData().get(position);
                 GH_DefaultDialogFragment access = GH_DefaultDialogFragment.access(getChildFragmentManager());
                 access.setTitle(bean.getName1(),bean.getName2(),bean.getName3());
+                MobclickAgent.onEvent(getActivity(), "clickShowTheSuggestView");
             }
         });
 

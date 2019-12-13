@@ -30,6 +30,7 @@ import com.ok100.greendao.gen.AllCityGreenBeanDao;
 import com.ok100.greendao.gen.CityGreenDaoBeanDao;
 import com.ok100.weather.activity.MyCityActivity;
 import com.ok100.weather.activity.UserInofActivity;
+import com.ok100.weather.activity.WelcomeActivity;
 import com.ok100.weather.activity.ZhutiImgeActivity;
 import com.ok100.weather.adapter.MianSpotAdapter;
 import com.ok100.weather.base.BaseActivity;
@@ -52,6 +53,7 @@ import com.ok100.weather.utils.ChooseTypeUtils;
 import com.ok100.weather.utils.DataUtils;
 import com.ok100.weather.utils.ListDataSave;
 import com.ok100.weather.view.MainViewPager;
+import com.umeng.analytics.MobclickAgent;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.greendao.query.QueryBuilder;
@@ -316,12 +318,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             case R.id.iv_weather_user:
                 intent = new Intent(MainActivity.this, UserInofActivity.class);
                 startActivity(intent);
+                MobclickAgent.onEvent(MainActivity.this, "clickMyinfo");
                 break;
             case R.id.iv_add_weather:
                 if(isInitDb){
                     intent = new Intent(MainActivity.this, MyCityActivity.class);
                     startActivityForResult(intent, 10001);
                     overridePendingTransition(R.anim.my_city_activity_in, R.anim.my_city_activity_out);
+                    MobclickAgent.onEvent(MainActivity.this, "clickMyCity");
                 }else {
                     Toast.makeText(MainActivity.this,"正在初始化数据库，请您稍等片刻。。。",Toast.LENGTH_SHORT).show();
                 }
@@ -359,6 +363,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 }
                 intent.putExtra("mouth",mouth);
                 startActivity(intent);
+
+                MobclickAgent.onEvent(MainActivity.this, "clickShareBtn");
                 break;
         }
     }

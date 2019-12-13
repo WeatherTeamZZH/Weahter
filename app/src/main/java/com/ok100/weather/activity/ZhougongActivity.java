@@ -24,6 +24,7 @@ import com.ok100.weather.http.ReturnDataView;
 import com.ok100.weather.http.Urls;
 import com.ok100.weather.presenter.UserInfoIconPresenterImpl;
 import com.ok100.weather.utils.ActivityBarSettingUtils;
+import com.umeng.analytics.MobclickAgent;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -81,7 +82,7 @@ public class ZhougongActivity extends BaseActivity implements ReturnDataView {
                 http();
             }
         });
-
+        MobclickAgent.onEvent(ZhougongActivity.this, "ZhougongActivity");
     }
 
     private void initReycyleviewTilte() {

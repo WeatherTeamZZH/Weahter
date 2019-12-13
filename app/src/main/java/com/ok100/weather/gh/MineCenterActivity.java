@@ -36,10 +36,12 @@ import com.bigkoo.pickerview.view.TimePickerView;
 import com.bumptech.glide.Glide;
 import com.ok100.weather.R;
 import com.ok100.weather.activity.LoginActivity;
+import com.ok100.weather.activity.WelcomeActivity;
 import com.ok100.weather.base.BaseActivity;
 import com.ok100.weather.utils.ActivityBarSettingUtils;
 import com.ok100.weather.utils.EmptyUtils;
 import com.ok100.weather.utils.SPObj;
+import com.umeng.analytics.MobclickAgent;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -137,12 +139,14 @@ public class MineCenterActivity extends BaseActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 spObj.setObject( "nick", s.toString());
+                MobclickAgent.onEvent(MineCenterActivity.this, "click_changeNick");
             }
         });
         tvPhone.addTextChangedListener(new GHTextWather() {
             @Override
             public void afterTextChanged(Editable s) {
                 spObj.setObject( "phone", s.toString());
+                MobclickAgent.onEvent(MineCenterActivity.this, "click_Phone");
             }
         });
         tvWechat.addTextChangedListener(new GHTextWather() {
@@ -258,6 +262,7 @@ public class MineCenterActivity extends BaseActivity {
             public void onTimeSelect(Date date, View v) {
                 tvBirth.setText(getTime(date));
                 spObj.setObject("birth",tvBirth.getText().toString().trim());
+                MobclickAgent.onEvent(MineCenterActivity.this, "click_birthday");
             }
         })
                 .setTimeSelectChangeListener(new OnTimeSelectChangeListener() {
@@ -314,6 +319,7 @@ public class MineCenterActivity extends BaseActivity {
             public void onOptionsSelect(int options1, int options2, int options3, View v) {
                 tvSex.setText(sexList.get(options1));
                 spObj.setObject("sex",tvSex.getText().toString().trim());
+                MobclickAgent.onEvent(MineCenterActivity.this, "click_Sex");
             }
         })
                 .setOptionsSelectChangeListener(new OnOptionsSelectChangeListener() {

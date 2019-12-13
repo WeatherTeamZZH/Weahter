@@ -15,6 +15,7 @@ import com.ok100.weather.base.BaseActivity;
 import com.ok100.weather.bean.DataBean;
 import com.ok100.weather.bean.DefultGridViewBean;
 import com.ok100.weather.utils.ActivityBarSettingUtils;
+import com.umeng.analytics.MobclickAgent;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -52,6 +53,7 @@ public class ZhutiImgeActivity extends BaseActivity {
         });
 
         ActivityBarSettingUtils.setAndroidNativeLightStatusBar(ZhutiImgeActivity.this,true);
+        MobclickAgent.onEvent(ZhutiImgeActivity.this, "ZhutiImgeActivity");
     }
 
     @Override

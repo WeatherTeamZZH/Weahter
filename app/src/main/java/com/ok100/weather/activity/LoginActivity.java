@@ -25,6 +25,7 @@ import com.ok100.weather.presenter.LoginPresenterImpl;
 import com.ok100.weather.utils.EmptyUtils;
 import com.ok100.weather.utils.SPObj;
 import com.ok100.weather.utils.ToastUtil;
+import com.umeng.analytics.MobclickAgent;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
@@ -81,7 +82,7 @@ public class LoginActivity extends BaseActivity implements ReturnDataView {
         setTitle("登录", true, TITLE_TYPE_IMG, R.mipmap.back_left_hei, false, TITLE_TYPE_IMG, R.mipmap.ic_launcher);
         registerBack();
         loginPresenter = new LoginPresenterImpl(this);
-
+        MobclickAgent.onEvent(LoginActivity.this, "User_login");
     }
 
     public String beas64util(String string) {
@@ -244,6 +245,7 @@ public class LoginActivity extends BaseActivity implements ReturnDataView {
                 } else {
                     ToastUtil.makeLongText(getContext(), loginBean.getMessage());
                 }
+                MobclickAgent.onEvent(LoginActivity.this, "getcode_login");
                 break;
         }
     }

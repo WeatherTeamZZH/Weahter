@@ -16,6 +16,7 @@ import com.ok100.weather.bean.DataBean;
 import com.ok100.weather.bean.SettingBean;
 import com.ok100.weather.gh.MineCenterActivity;
 import com.ok100.weather.utils.ActivityBarSettingUtils;
+import com.umeng.analytics.MobclickAgent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -92,7 +93,7 @@ public class SettingActivity extends BaseActivity {
 
     @Override
     public void initData(Bundle savedInstanceState, View contentView) {
-
+        MobclickAgent.onEvent(SettingActivity.this, "SettingActivity");
     }
 
     @Override

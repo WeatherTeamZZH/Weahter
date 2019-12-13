@@ -22,6 +22,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ok100.weather.MainActivity;
 import com.ok100.weather.R;
 import com.ok100.weather.gb.adepter.BitmapFragmentpageAdepter;
 import com.ok100.weather.gb.share.ImageAdapterHView;
@@ -34,6 +35,7 @@ import com.ok100.weather.gb.util.FileUtils;
 import com.ok100.weather.gb.util.ImageUtils;
 import com.tbruyelle.rxpermissions2.Permission;
 import com.tbruyelle.rxpermissions2.RxPermissions;
+import com.umeng.analytics.MobclickAgent;
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.UMShareListener;
@@ -205,6 +207,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         if (type == 0) {//微信朋友圈
             shareAction.setPlatform(SHARE_MEDIA.WEIXIN_CIRCLE);//传入平台
             shareViewBit(shareAction, share_vp.getCurrentItem());
+            MobclickAgent.onEvent(HomeActivity.this, "clickShare_timeLine");
         } else if (type == 1) {//微信
             shareAction.setPlatform(SHARE_MEDIA.WEIXIN);//
             shareViewBit(shareAction, share_vp.getCurrentItem());
@@ -274,7 +277,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         public void onCancel(SHARE_MEDIA platform) {
             Toast.makeText(HomeActivity.this, "取消分享", Toast.LENGTH_LONG).show();
-
+            MobclickAgent.onEvent(HomeActivity.this, "click_cannel_Share");
         }
     };
 

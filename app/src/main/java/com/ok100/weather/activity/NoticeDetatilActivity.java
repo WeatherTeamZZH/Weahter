@@ -7,6 +7,7 @@ import android.webkit.WebView;
 import com.ok100.weather.R;
 import com.ok100.weather.base.BaseActivity;
 import com.ok100.weather.utils.ActivityBarSettingUtils;
+import com.umeng.analytics.MobclickAgent;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,6 +32,7 @@ public class NoticeDetatilActivity extends BaseActivity {
         registerBack();
         ActivityBarSettingUtils.setAndroidNativeLightStatusBar(NoticeDetatilActivity.this, true);
         mWebview.loadUrl(url);
+        MobclickAgent.onEvent(NoticeDetatilActivity.this, "look_newList");
     }
 
     @Override

@@ -19,6 +19,7 @@ import com.ok100.weather.http.Urls;
 import com.ok100.weather.presenter.UserInfoIconPresenterImpl;
 import com.ok100.weather.utils.ActivityBarSettingUtils;
 import com.ok100.weather.utils.TimeUtils;
+import com.umeng.analytics.MobclickAgent;
 
 import java.util.HashMap;
 
@@ -63,6 +64,7 @@ public class XiaohuaActivity extends BaseActivity implements ReturnDataView {
                 }
             }
         });
+        MobclickAgent.onEvent(XiaohuaActivity.this, "XiaohuaActivity");
     }
 
     @Override

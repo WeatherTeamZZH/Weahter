@@ -16,6 +16,7 @@ import com.bigkoo.pickerview.view.OptionsPickerView;
 import com.google.gson.reflect.TypeToken;
 import com.lzy.okhttputils.OkHttpUtils;
 import com.ok100.weather.R;
+import com.ok100.weather.activity.SuggestionActivity;
 import com.ok100.weather.activity.ZhougongActivity;
 import com.ok100.weather.base.BaseActivity;
 import com.ok100.weather.bean.XingzuoBean;
@@ -23,6 +24,7 @@ import com.ok100.weather.http.DialogCallback;
 import com.ok100.weather.http.Urls;
 import com.ok100.weather.permissions.Utils;
 import com.ok100.weather.utils.ActivityBarSettingUtils;
+import com.umeng.analytics.MobclickAgent;
 import com.willy.ratingbar.ScaleRatingBar;
 
 import java.util.Arrays;
@@ -117,7 +119,7 @@ public class XingzuoActivity extends BaseActivity {
 
         tvXingzuo.addTextChangedListener(textWatcher);
         tvDate.addTextChangedListener(textWatcher);
-
+        MobclickAgent.onEvent(XingzuoActivity.this, "XingzuoActivity");
     }
 
     private TextWatcher textWatcher = new TextWatcher() {
