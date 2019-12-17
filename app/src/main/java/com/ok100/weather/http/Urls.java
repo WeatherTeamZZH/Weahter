@@ -11,6 +11,10 @@ public class Urls {
     public static String XiaohuaAppkey = "d4b9fe7964c54137eb4000a54074a51a";
     public static String HistoryTodayAppkey = "b8a54c0eb063e0f12ea7c4bcf27e951d";
 
+    public static String UCAppid = "b92569938b92";
+    public static String UCappsecret = "138b92569938b925";
+
+
     public static String NewUrl = "http://v.juhe.cn/toutiao/index?"+"key="+NewAppkey;
     public static final String httpWeather  = "http://iweather.market.alicloudapi.com/address";
     public static final String httpWeatherGps  = "http://iweather.market.alicloudapi.com/gps";
@@ -32,6 +36,10 @@ public class Urls {
     public static final String zhouGongUrl = "http://v.juhe.cn/dream/query";
     public static final String xiaoHuaUrl = "http://v.juhe.cn/joke/content/list.php";
     public static final String historyTodayUrl = "http://api.juheapi.com/japi/toh";
+
+    public static final String getUcToken = "http://store.yovxru.top/Auth/viptoken";
+    public static final String getChannels = "http://store.yovxru.top/Channels/openapi";
+    public static final String geThomch = "http://store.yovxru.top/Channels/homch";
 
 
 

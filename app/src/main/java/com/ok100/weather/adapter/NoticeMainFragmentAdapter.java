@@ -2,11 +2,7 @@ package com.ok100.weather.adapter;
 
 
 import android.content.Context;
-import android.graphics.Color;
-import android.text.Spannable;
-import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import android.text.style.ForegroundColorSpan;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -15,91 +11,153 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.util.MultiTypeDelegate;
 import com.ok100.weather.R;
-import com.ok100.weather.bean.NewsListBean;
-import com.ok100.weather.bean.NoticeMainListBean;
+import com.ok100.weather.bean.ChannelBean;
+import com.ok100.weather.utils.TimeUtils;
 
 
-public class NoticeMainFragmentAdapter extends BaseQuickAdapter<NewsListBean.ResultBean.DataBean, BaseViewHolder> {
+public class NoticeMainFragmentAdapter extends BaseQuickAdapter<ChannelBean.DataBean, BaseViewHolder> {
 
     private Context context;
 
     public NoticeMainFragmentAdapter(Context context) {
         super(null);
         this.context = context;
-        setMultiTypeDelegate(new MultiTypeDelegate<NewsListBean.ResultBean.DataBean>() {
+        setMultiTypeDelegate(new MultiTypeDelegate<ChannelBean.DataBean>() {
             @Override
-            protected int getItemType(NewsListBean.ResultBean.DataBean itemBean) {
+            protected int getItemType(ChannelBean.DataBean itemBean) {
                 int plateType = 1;
-                if ( !TextUtils.isEmpty(itemBean.getThumbnail_pic_s03())) {
-                    plateType = 1;
-                } else {
-                    plateType = 2;
+                if (!TextUtils.isEmpty(itemBean.getStyle_type())) {
+                    switch (itemBean.getStyle_type()){
+                        case "3361":
+                            plateType = 3361;
+                            break;
+                        case "3362":
+                            plateType = 3362;
+                            break;
+                        case "3363":
+                            plateType = 3363;
+                            break;
+                        case "3364":
+                            plateType = 3364;
+                            break;
+                        case "3365":
+                            plateType = 3365;
+                            break;
+                        case "3366":
+                            plateType = 3366;
+                            break;
+                        case "3367":
+                            plateType = 3367;
+                            break;
+                        case "3368":
+                            plateType = 3368;
+                            break;
+                        case "3369":
+                            plateType = 3369;
+                            break;
+                    }
+
+
                 }
                 return plateType;
             }
         });
 
         getMultiTypeDelegate()
-                .registerItemType(1, R.layout.item_notice_main1_fragment1)
-                .registerItemType(2, R.layout.item_notice_main1_fragment2)
-                .registerItemType(3, R.layout.item_notice_main1_fragment3)
-                .registerItemType(4, R.layout.item_notice_main1_fragment1_top)
-                .registerItemType(5, R.layout.item_notice_main1_fragment3_top);
+                .registerItemType(3361, R.layout.item_news_fragment3361)
+                .registerItemType(3362, R.layout.item_news_fragment3362)
+                .registerItemType(3363, R.layout.item_news_fragment3363)
+                .registerItemType(3364, R.layout.item_news_fragment3364)
+                .registerItemType(3365, R.layout.item_news_fragment3365)
+                .registerItemType(3366, R.layout.item_news_fragment3366)
+                .registerItemType(3367, R.layout.item_news_fragment3367)
+                .registerItemType(3368, R.layout.item_news_fragment3368)
+                .registerItemType(3369, R.layout.item_news_fragment3369);
 
     }
 
     @Override
-    protected void convert(final BaseViewHolder helper, final NewsListBean.ResultBean.DataBean item) {
-
+    protected void convert(final BaseViewHolder helper, final ChannelBean.DataBean item) {
+        ImageView imageview1 ,imageview2,imageview3;
         switch (helper.getItemViewType()) {
-            case 1:
+            case 3361:
+            case 3362:
+            case 3363:
+            case 3364:
                 helper.setText(R.id.tv_title,item.getTitle());
-                ImageView imageview1 = helper.getView(R.id.imageview1);
-                ImageView imageview2 = helper.getView(R.id.imageview2);
-                ImageView imageview3 = helper.getView(R.id.imageview3);
+                helper.setText(R.id.tv_time,TimeUtils.stampToDateMiao(item.getInputtime()));
+                imageview1 = helper.getView(R.id.imageview1);
+                if(item.getImage_type()!=null){
+                    Glide.with(context)
+                            .load(item.getImage_type().get(0).getUrl())
+                            .centerCrop()
+                            .crossFade()
+                            .diskCacheStrategy(DiskCacheStrategy.ALL)
+                            .into(imageview1);
+                }
+                break;
+
+            case 3365:
+                helper.setText(R.id.tv_title,item.getTitle());
+                imageview1 = helper.getView(R.id.imageview1);
+                imageview2 = helper.getView(R.id.imageview2);
                 Glide.with(context)
-                        .load(item.getThumbnail_pic_s())
+                        .load(item.getImage_type().get(0).getUrl())
                         .centerCrop()
                         .crossFade()
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .into(imageview1);
                 Glide.with(context)
-                        .load(item.getThumbnail_pic_s02())
+                        .load(item.getImage_type().get(1).getUrl())
                         .centerCrop()
                         .crossFade()
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .into(imageview2);
-                Glide.with(context)
-                        .load(item.getThumbnail_pic_s03())
-                        .centerCrop()
-                        .crossFade()
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .into(imageview3);
-
                 break;
-            case 2:
-                if(!TextUtils.isEmpty(item.getTitle())){
-                    helper.setText(R.id.tv_title,item.getTitle());
-                    helper.setText(R.id.tv_updata,item.getDate());
+            case 3366:
+                imageview1 = helper.getView(R.id.imageview1);
+                if(item.getImage_type()!=null){
+                    Glide.with(context)
+                            .load(item.getImage_type().get(0).getUrl())
+                            .centerCrop()
+                            .crossFade()
+                            .diskCacheStrategy(DiskCacheStrategy.ALL)
+                            .into(imageview1);
+                }
+                break;
+            case 3367:
+                imageview1 = helper.getView(R.id.imageview1);
+                imageview2 = helper.getView(R.id.imageview2);
+                imageview3 = helper.getView(R.id.imageview3);
+                if(item.getImage_type()!=null){
+                    Glide.with(context)
+                            .load(item.getImage_type().get(0).getUrl())
+                            .centerCrop()
+                            .crossFade()
+                            .diskCacheStrategy(DiskCacheStrategy.ALL)
+                            .into(imageview1);
+                    Glide.with(context)
+                            .load(item.getImage_type().get(1).getUrl())
+                            .centerCrop()
+                            .crossFade()
+                            .diskCacheStrategy(DiskCacheStrategy.ALL)
+                            .into(imageview2);
+                    Glide.with(context)
+                            .load(item.getImage_type().get(2).getUrl())
+                            .centerCrop()
+                            .crossFade()
+                            .diskCacheStrategy(DiskCacheStrategy.ALL)
+                            .into(imageview3);
                 }
 
-                ImageView imageview = helper.getView(R.id.imageview1);
-                Glide.with(context)
-                        .load(item.getThumbnail_pic_s())
-                        .centerCrop()
-                        .crossFade()
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .into(imageview);
                 break;
-            case 3:
-//                setData(helper, item);
-//                helper.setText(R.id.tv_notice_main_list_content, item.getSubtitle());
-                break;
-            case 4:
+            case 3368:
 
                 break;
-            case 5:
-
+            case 3369:
+                helper.setText(R.id.tv_title,item.getTitle());
+                helper.setText(R.id.tv_time,TimeUtils.stampToDateMiao(item.getInputtime()));
+                helper.setText(R.id.tv_content,item.getDescription());
                 break;
         }
     }

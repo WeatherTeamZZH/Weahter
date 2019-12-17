@@ -65,6 +65,7 @@ public class XiaohuaActivity extends BaseActivity implements ReturnDataView {
             }
         });
         MobclickAgent.onEvent(XiaohuaActivity.this, "XiaohuaActivity");
+        MobclickAgent.onEvent(XiaohuaActivity.this, "XiaohuaActivity","XiaohuaActivityLabel");
     }
 
     @Override

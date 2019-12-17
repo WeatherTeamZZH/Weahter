@@ -83,4 +83,7 @@ public class ConstantCode {
 
     //用户头像：
     public final static String USER_PIC = "user_pic";
+
+
+    public final static String GGAPPID = "1110122804";
 }

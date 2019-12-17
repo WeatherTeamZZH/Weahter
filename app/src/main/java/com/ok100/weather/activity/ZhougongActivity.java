@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.ok100.weather.MainActivity;
 import com.ok100.weather.R;
 import com.ok100.weather.adapter.MyCityAdapter2;
 import com.ok100.weather.adapter.ZhougongAdapter;
@@ -83,6 +84,7 @@ public class ZhougongActivity extends BaseActivity implements ReturnDataView {
             }
         });
         MobclickAgent.onEvent(ZhougongActivity.this, "ZhougongActivity");
+        MobclickAgent.onEvent(ZhougongActivity.this, "ZhougongActivity","ZhougongActivityLabel");
     }
 
     private void initReycyleviewTilte() {

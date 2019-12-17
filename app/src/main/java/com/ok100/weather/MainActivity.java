@@ -6,6 +6,8 @@ import android.app.Person;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Message;
@@ -20,6 +22,10 @@ import android.util.LongSparseArray;
 import android.util.SparseArray;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -39,21 +45,36 @@ import com.ok100.weather.bean.AllCityGreenBean;
 import com.ok100.weather.bean.CityGreenDaoBean;
 import com.ok100.weather.bean.DepartmentListBean;
 import com.ok100.weather.bean.EventTitleMessage;
+import com.ok100.weather.bean.GetMyTokenBean;
 import com.ok100.weather.bean.MainSpotClickBean;
+import com.ok100.weather.bean.TokenRuturnBean;
 import com.ok100.weather.bean.WeatherBean;
 import com.ok100.weather.bean.WeatherTotalBean;
+import com.ok100.weather.constant.ConstantCode;
+import com.ok100.weather.constant.GGPositionId;
 import com.ok100.weather.fragment.MainFragment;
 import com.ok100.weather.fragment.NoticeMainFragment1;
 import com.ok100.weather.gb.view.HomeActivity;
 import com.ok100.weather.http.ReturnDataView;
+import com.ok100.weather.http.Urls;
 import com.ok100.weather.myviewpager.TextPagerAdapter;
 import com.ok100.weather.presenter.NewsListPresenterImpl;
 import com.ok100.weather.presenter.NoticeMainListPresenterImpl;
+import com.ok100.weather.presenter.UcDataPresenterImpl;
 import com.ok100.weather.utils.ChooseTypeUtils;
 import com.ok100.weather.utils.DataUtils;
 import com.ok100.weather.utils.ListDataSave;
 import com.ok100.weather.view.MainViewPager;
+import com.qq.e.ads.cfg.VideoOption;
+import com.qq.e.ads.interstitial.AbstractInterstitialADListener;
+import com.qq.e.ads.interstitial.InterstitialAD;
+import com.qq.e.ads.interstitial2.UnifiedInterstitialAD;
+import com.qq.e.ads.interstitial2.UnifiedInterstitialADListener;
+import com.qq.e.ads.interstitial2.UnifiedInterstitialMediaListener;
+import com.qq.e.comm.constants.AdPatternType;
+import com.qq.e.comm.util.AdError;
 import com.umeng.analytics.MobclickAgent;
+import com.umeng.commonsdk.statistics.common.DeviceConfig;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.greendao.query.QueryBuilder;
@@ -68,6 +89,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -76,7 +98,7 @@ import butterknife.ButterKnife;
 
 import static com.ok100.weather.activity.MyCityActivity.MyCityResult;
 
-public class MainActivity extends BaseActivity implements View.OnClickListener, ReturnDataView {
+public class MainActivity extends BaseActivity implements View.OnClickListener, ReturnDataView, UnifiedInterstitialADListener, UnifiedInterstitialMediaListener {
 
     @BindView(R.id.iv_add_weather)
     ImageView mIvAddWeather;
@@ -115,6 +137,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     List<MainSpotClickBean> mainSpotClickBeanList = new ArrayList<>();
     public List<CityGreenDaoBean> cityGreenDaoBeanList = new ArrayList<>();
 
+    private static final String TAG = MainActivity.class.getSimpleName();
+
     private List<String> tagList;
     private LongSparseArray<MainFragment> mTestFragments;
     private int key;
@@ -126,6 +150,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     AllCityGreenBeanDao allCityGreenBeanDao ;
 
     public static boolean isInitDb = false;
+    public static String MYTOKEN = "";
+    public static String APDIDP = "";
+    UcDataPresenterImpl ucDataPresenter ;
 
     @Override
     public int getLayoutID() {
@@ -146,9 +173,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         allCityGreenBeanDao = application.getDaoSession().getAllCityGreenBeanDao();
         initAllDbCity();
         initWeatherData();
-        mTestFragments = new LongSparseArray<>();
-        initViewpagerAdapter();
-        initSpotAdapter();
+
+
 
         List<CityGreenDaoBean> cityGreenDaoBeans = cityGreenDaoBeanDao.loadAll();
         if(cityGreenDaoBeans!=null&&cityGreenDaoBeans.size()>0){
@@ -230,10 +256,21 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             }
         };
 
-
+        String[] testDeviceInfo = getTestDeviceInfo(MainActivity.this);
+        Log.e("testDeviceInfo",testDeviceInfo[0]+"---"+testDeviceInfo[1]);
     }
 
-
+    public static String[] getTestDeviceInfo(Context context){
+        String[] deviceInfo = new String[2];
+        try {
+            if(context != null){
+                deviceInfo[0] = DeviceConfig.getDeviceIdForGeneral(context);
+                deviceInfo[1] = DeviceConfig.getMac(context);
+            }
+        } catch (Exception e){
+        }
+        return deviceInfo;
+    }
 
     private void initWeatherData() {
         cityGreenDaoBeanList.clear();
@@ -295,7 +332,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     @Override
     public void initData(Bundle savedInstanceState, View contentView) {
-
+         ucDataPresenter = new UcDataPresenterImpl(this);
+        HashMap<String, String> objectObjectHashMap = new HashMap<>();
+        objectObjectHashMap.put("api_key",Urls.UCAppid);
+        objectObjectHashMap.put("api_secret",Urls.UCappsecret);
+        ucDataPresenter.viptoken(MainActivity.this,objectObjectHashMap);
+        showPopGuanggao();
     }
 
     @Override
@@ -307,7 +349,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     @Override
     public void onDestroy() {
         super.onDestroy();
-
+        if (iad != null) {
+            iad.destroy();
+        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -326,6 +370,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                     startActivityForResult(intent, 10001);
                     overridePendingTransition(R.anim.my_city_activity_in, R.anim.my_city_activity_out);
                     MobclickAgent.onEvent(MainActivity.this, "clickMyCity");
+                    MobclickAgent.onEvent(MainActivity.this, "clickMyCity","clickMyCityLabel");
                 }else {
                     Toast.makeText(MainActivity.this,"正在初始化数据库，请您稍等片刻。。。",Toast.LENGTH_SHORT).show();
                 }
@@ -404,7 +449,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                         addCity(area);
                     }
                 }
-
+                break;
+            case "viptoken":
+                TokenRuturnBean tokenRuturnBean = (TokenRuturnBean) o;
+                if(tokenRuturnBean.getCode().equals("200")){
+                    MYTOKEN =tokenRuturnBean.getData().getToken();
+                    APDIDP =tokenRuturnBean.getData().getApdid();
+                }
+                mTestFragments = new LongSparseArray<>();
+                initViewpagerAdapter();
+                initSpotAdapter();
                 break;
         }
     }
@@ -673,6 +727,219 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         return super.onKeyDown(keyCode, event);
     }
 
+    private void showPopGuanggao() {
+        iad = getIAD();
+        setVideoOption();
+        iad.loadAD();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                SystemClock.sleep(5000);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+//                        showAsPopup();
+                        showAD();
+                    }
+                });
+
+            }
+        }).start();
+
+    }
 
 
+    private UnifiedInterstitialAD iad;
+
+    private void setVideoOption(){
+        VideoOption.Builder builder = new VideoOption.Builder();
+        VideoOption option = builder.build();
+            //不配置VideoOption，使用默认值
+            option = builder.setAutoPlayMuted(true)
+                    //始终自动播放
+                    .setAutoPlayPolicy(1)
+                    //禁音自动播放
+                    .setDetailPageMuted(true)
+                    .build();
+        iad.setVideoOption(option);
+        iad.setMinVideoDuration(getMinVideoDuration());
+        iad.setMaxVideoDuration(getMaxVideoDuration());
+
+        /**
+         * 如果广告位支持视频广告，强烈建议在调用loadData请求广告前调用setVideoPlayPolicy，有助于提高视频广告的eCPM值 <br/>
+         * 如果广告位仅支持图文广告，则无需调用
+         */
+
+        /**
+         * 设置本次拉取的视频广告，从用户角度看到的视频播放策略<p/>
+         *
+         * "用户角度"特指用户看到的情况，并非SDK是否自动播放，与自动播放策略AutoPlayPolicy的取值并非一一对应 <br/>
+         *
+         * 如自动播放策略为AutoPlayPolicy.WIFI，但此时用户网络为4G环境，在用户看来就是手工播放的
+         */
+        iad.setVideoPlayPolicy(getVideoPlayPolicy(option.getAutoPlayPolicy(), this));
+    }
+
+
+    //这个方法别的activity弄过来的
+    public static int getVideoPlayPolicy(int autoPlayPolicy, Context context){
+        if(autoPlayPolicy == VideoOption.AutoPlayPolicy.ALWAYS){
+            return VideoOption.VideoPlayPolicy.AUTO;
+        }else if(autoPlayPolicy == VideoOption.AutoPlayPolicy.WIFI){
+            ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo wifiNetworkInfo = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+            return wifiNetworkInfo != null && wifiNetworkInfo.isConnected() ? VideoOption.VideoPlayPolicy.AUTO
+                    : VideoOption.VideoPlayPolicy.MANUAL;
+        }else if(autoPlayPolicy == VideoOption.AutoPlayPolicy.NEVER){
+            return VideoOption.VideoPlayPolicy.MANUAL;
+        }
+        return VideoOption.VideoPlayPolicy.UNKNOWN;
+    }
+
+
+    private UnifiedInterstitialAD getIAD() {
+        String posId = getPosID();
+        if (this.iad != null) {
+            iad.close();
+            iad.destroy();
+            iad = null;
+        }
+        iad = new UnifiedInterstitialAD(this, ConstantCode.GGAPPID, posId, this);
+        return iad;
+    }
+
+    private void showAD() {
+        if (iad != null) {
+            iad.show();
+        } else {
+//            Toast.makeText(this, "请加载广告后再进行展示 ！ ", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private void showAsPopup() {
+        if (iad != null) {
+            iad.showAsPopupWindow();
+        } else {
+//            Toast.makeText(this, "请加载广告后再进行展示 ！ ", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private void close() {
+        if (iad != null) {
+            iad.close();
+        } else {
+//            Toast.makeText(this, "广告尚未加载 ！ ", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private String getPosID() {
+        return GGPositionId.MAIN_POP_POS_ID;
+    }
+
+    @Override
+    public void onADReceive() {
+//        Toast.makeText(this, "广告加载成功 ！ ", Toast.LENGTH_LONG).show();
+        // onADReceive之后才能调用getAdPatternType()
+        if(iad.getAdPatternType() == AdPatternType.NATIVE_VIDEO){
+            iad.setMediaListener(this);
+        }
+        // onADReceive之后才可调用getECPM()
+        Log.d(TAG, "eCPM = " + iad.getECPM() + " , eCPMLevel = " + iad.getECPMLevel());
+    }
+
+    @Override
+    public void onVideoCached() {
+        // 视频素材加载完成，在此时调用iad.show()或iad.showAsPopupWindow()视频广告不会有进度条。
+        Log.i(TAG, "onVideoCached");
+    }
+
+    @Override
+    public void onNoAD(AdError error) {
+        String msg = String.format(Locale.getDefault(), "onNoAD, error code: %d, error msg: %s",
+                error.getErrorCode(), error.getErrorMsg());
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onADOpened() {
+        Log.i(TAG, "onADOpened");
+    }
+
+    @Override
+    public void onADExposure() {
+        Log.i(TAG, "onADExposure");
+    }
+
+    @Override
+    public void onADClicked() {
+        Log.i(TAG, "onADClicked : " + (iad.getExt() != null? iad.getExt().get("clickUrl") : ""));
+    }
+
+    @Override
+    public void onADLeftApplication() {
+        Log.i(TAG, "onADLeftApplication");
+    }
+
+    @Override
+    public void onADClosed() {
+        Log.i(TAG, "onADClosed");
+    }
+
+    @Override
+    public void onVideoInit() {
+        Log.i(TAG, "onVideoInit");
+    }
+
+    @Override
+    public void onVideoLoading() {
+        Log.i(TAG, "onVideoLoading");
+    }
+
+    @Override
+    public void onVideoReady(long videoDuration) {
+        Log.i(TAG, "onVideoReady, duration = " + videoDuration);
+    }
+
+    @Override
+    public void onVideoStart() {
+        Log.i(TAG, "onVideoStart");
+    }
+
+    @Override
+    public void onVideoPause() {
+        Log.i(TAG, "onVideoPause");
+    }
+
+    @Override
+    public void onVideoComplete() {
+        Log.i(TAG, "onVideoComplete");
+    }
+
+    @Override
+    public void onVideoError(AdError error) {
+        Log.i(TAG, "onVideoError, code = " + error.getErrorCode() + ", msg = " + error.getErrorMsg());
+    }
+
+    @Override
+    public void onVideoPageOpen() {
+        Log.i(TAG, "onVideoPageOpen");
+    }
+
+    @Override
+    public void onVideoPageClose() {
+        Log.i(TAG, "onVideoPageClose");
+    }
+
+
+
+    private int getMinVideoDuration() {
+
+        return 10;
+    }
+
+    private int getMaxVideoDuration() {
+
+        return 60;
+    }
 }

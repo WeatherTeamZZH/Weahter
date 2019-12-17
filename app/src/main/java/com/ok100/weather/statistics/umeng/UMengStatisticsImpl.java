@@ -42,7 +42,7 @@ public class UMengStatisticsImpl implements IStatistics {
 
     @Override
     public void openActivityDurationTrack(boolean b) {
-        MobclickAgent.openActivityDurationTrack(b);
+//        MobclickAgent.openActivityDurationTrack(b);
     }
 
     @Override

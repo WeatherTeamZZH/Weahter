@@ -20,12 +20,15 @@ import com.ok100.weather.R;
 import com.ok100.weather.activity.NoticeDetatilActivity;
 import com.ok100.weather.adapter.NoticeMainFragmentAdapter;
 import com.ok100.weather.base.BaseFragment;
+import com.ok100.weather.bean.ChannelBean;
 import com.ok100.weather.bean.EventTitleMessage;
 import com.ok100.weather.bean.NewsListBean;
 import com.ok100.weather.bean.NoticeMainListBean;
 import com.ok100.weather.http.ReturnDataView;
+import com.ok100.weather.http.Urls;
 import com.ok100.weather.presenter.NewsListPresenterImpl;
 import com.ok100.weather.presenter.NoticeMainListPresenterImpl;
+import com.ok100.weather.presenter.UcDataPresenterImpl;
 import com.ok100.weather.utils.ChooseTypeUtils;
 import com.ok100.weather.view.CustomLoadMoreViewNews;
 import com.ok100.weather.view.MyLinearLayoutManager1;
@@ -89,19 +92,35 @@ public class NoticeMainFragment1 extends BaseFragment implements BaseQuickAdapte
     public void returnData(String responseCode, Object o) {
         switch (responseCode) {
             case "getNewsList":
-                newsListBean = (NewsListBean) o;
-                newsListBean.getResult().getData();
+//                newsListBean = (NewsListBean) o;
+//                newsListBean.getResult().getData();
+//                if (page == 1) {
+//                    noticeMainFragmentAdapter.setNewData(newsListBean.getResult().getData());
+////            listBeenData.addAll(noticeMainListBean.getList());
+////            noticeMainFragmentAdapter.setNewData(listBeenData);
+////            mSwipeRefreshLayout.setRefreshing(false);
+//                } else {
+////            listBeenData.addAll(noticeMainListBean.getList());
+////            noticeMainFragmentAdapter.setNewData(listBeenData);
+//                    noticeMainFragmentAdapter.addData(newsListBean.getResult().getData());
+//                    noticeMainFragmentAdapter.loadMoreComplete();
+//                }
+                break;
+            case "homch":
+                ChannelBean channelBean = (ChannelBean) o;
+
                 if (page == 1) {
-                    noticeMainFragmentAdapter.setNewData(newsListBean.getResult().getData());
+                    noticeMainFragmentAdapter.setNewData(channelBean.getData());
 //            listBeenData.addAll(noticeMainListBean.getList());
 //            noticeMainFragmentAdapter.setNewData(listBeenData);
 //            mSwipeRefreshLayout.setRefreshing(false);
                 } else {
 //            listBeenData.addAll(noticeMainListBean.getList());
 //            noticeMainFragmentAdapter.setNewData(listBeenData);
-                    noticeMainFragmentAdapter.addData(newsListBean.getResult().getData());
+                    noticeMainFragmentAdapter.addData(channelBean.getData());
                     noticeMainFragmentAdapter.loadMoreComplete();
                 }
+
                 break;
         }
 
@@ -121,7 +140,6 @@ public class NoticeMainFragment1 extends BaseFragment implements BaseQuickAdapte
 
     @Override
     protected void init(Bundle savedInstanceState, View contentView) {
-        Log.e("init", "+++"+departmentId+"+++"+type);
         findView();
         initAdapter();
         recyvleViewScrollLister();
@@ -132,10 +150,21 @@ public class NoticeMainFragment1 extends BaseFragment implements BaseQuickAdapte
 
 
     private void http() {
-        newsListPresenterImpl = new NewsListPresenterImpl(this);
-        HashMap<String, String> stringStringHashMap = new HashMap<>();
-        stringStringHashMap.put("type", ChooseTypeUtils.getNewType(type));
-        newsListPresenterImpl.getNewsList(getActivity(), stringStringHashMap);
+//        newsListPresenterImpl = new NewsListPresenterImpl(this);
+//        HashMap<String, String> stringStringHashMap = new HashMap<>();
+//        stringStringHashMap.put("type", ChooseTypeUtils.getNewType(type));
+//        newsListPresenterImpl.getNewsList(getActivity(), stringStringHashMap);
+
+        UcDataPresenterImpl ucDataPresenter = new UcDataPresenterImpl(this);
+//            UCParamUtils ucParamUtils = new UCParamUtils(getContext());
+////            HashMap<String, String> ucParamHashmap = ucParamUtils.getUcParamHashmap();
+        HashMap<String, String> ucParamHashmap = new HashMap<>();
+        ucParamHashmap.put("token",MainActivity.MYTOKEN);
+        ucParamHashmap.put("apdid", MainActivity.APDIDP);
+        ucParamHashmap.put("catid", departmentId);
+        ucParamHashmap.put("pageSize", "10");
+        ucParamHashmap.put("p", page+"");
+        ucDataPresenter.homch(getActivity(),ucParamHashmap);
     }
 
 
@@ -165,7 +194,6 @@ public class NoticeMainFragment1 extends BaseFragment implements BaseQuickAdapte
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 totalDy -= dy;
-                Log.e("totalDy", totalDy + "---"+departmentId+"---"+type);
                 if (totalDy < 0) {
                     if (xiaoyulin) {
                         mRecyclerView.stopScroll();
@@ -216,11 +244,11 @@ public class NoticeMainFragment1 extends BaseFragment implements BaseQuickAdapte
 
         //设置加载
 //        noticeMainFragmentAdapter.setEnableLoadMore(true);
-//        mSwipeRefreshLayout.setOnRefreshListener(this);
+//        noticeMainFragmentAdapter.seton(this);
 //        mSwipeRefreshLayout.setColorSchemeColors(Color.rgb(87, 136, 255));
         noticeMainFragmentAdapter.setOnLoadMoreListener(this, mRecyclerView);
-        noticeMainFragmentAdapter.disableLoadMoreIfNotFullPage();
-        noticeMainFragmentAdapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_BOTTOM);
+//        noticeMainFragmentAdapter.disableLoadMoreIfNotFullPage();
+//        noticeMainFragmentAdapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_BOTTOM);
         noticeMainFragmentAdapter.setOnItemClickListener(this);
         noticeMainFragmentAdapter.setOnItemChildClickListener(this);
         noticeMainFragmentAdapter.setOnItemLongClickListener(this);

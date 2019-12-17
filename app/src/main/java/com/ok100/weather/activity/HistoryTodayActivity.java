@@ -66,6 +66,7 @@ public class HistoryTodayActivity extends BaseActivity implements ReturnDataView
         });
 
         MobclickAgent.onEvent(HistoryTodayActivity.this, "HistoryTodayActivity");
+        MobclickAgent.onEvent(HistoryTodayActivity.this, "HistoryTodayActivity","HistoryTodayActivityLabel");
     }
 
     @Override

@@ -22,6 +22,7 @@ import com.ok100.weather.R;
 import com.ok100.weather.receiver.NetReceiver;
 import com.ok100.weather.statistics.StatisticsManager;
 import com.ok100.weather.utils.ToastUtil;
+import com.umeng.message.PushAgent;
 
 import java.util.Stack;
 
@@ -65,6 +66,7 @@ public abstract class BaseActivity extends AppCompatActivity implements NetRecei
     protected void onCreate(Bundle savedInstanceState) {
 //        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
+        PushAgent.getInstance(BaseActivity.this).onAppStart();
 //        StatusBarCompat.compat(this, ContextCompat.getColor(this, R.color.themecolor));
         BaseApplication application = (BaseApplication)getApplication();
         cityGreenDaoBeanDao = application.getDaoSession().getCityGreenDaoBeanDao();
@@ -370,8 +372,8 @@ public abstract class BaseActivity extends AppCompatActivity implements NetRecei
     protected void onResume() {
         super.onResume();
         //统计全部时长
-        StatisticsManager.getInstance().onResume(this);
-        StatisticsManager.getInstance().onPageStart(title==null?"":title);
+//        StatisticsManager.getInstance().onResume(this);
+//        StatisticsManager.getInstance().onPageStart(title==null?"":title);
     }
 
 
@@ -379,8 +381,8 @@ public abstract class BaseActivity extends AppCompatActivity implements NetRecei
     protected void onPause() {
         super.onPause();
         //统计全部时长
-        StatisticsManager.getInstance().onPause(this);
-        StatisticsManager.getInstance().onPageEnd(title==null?"":title);
+//        StatisticsManager.getInstance().onPause(this);
+//        StatisticsManager.getInstance().onPageEnd(title==null?"":title);
     }
 
     @Override

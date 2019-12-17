@@ -75,55 +75,13 @@ public class BaseApplication extends Application {
         context = this;
         //注册生命周期
 
-
-//        UMConfigure.init(context, "58bfb7bc677baa4a5f000b82", "Umeng", UMConfigure.DEVICE_TYPE_PHONE, "1ee4c477a7c6801989a1ea7684218378");
-        UMConfigure.init(this, UMConfigure.DEVICE_TYPE_PHONE, "1ee4c477a7c6801989a1ea7684218378");
-        UMConfigure.setLogEnabled(true);
         //分享
 
         setDatabase();
 
         initOkhttp();
-        statistics();//统计
+//        statistics();//统计
 
-       PushAgent mPushAgent = PushAgent.getInstance(this);
-        //默认情况下，同一台设备在1分钟内收到同一个应用的多条通知时，不会重复提醒，同时在通知栏里新的通知会替换掉旧的通知。可以通过如下方法来设置冷却时间：
-        mPushAgent.setMuteDurationSeconds(10);
-        //通知栏可以设置最多显示通知的条数，当有新通知到达时，会把旧的通知隐藏。
-        mPushAgent.setDisplayNotificationNumber(10);
-        mPushAgent.setPushIntentServiceClass(null);
-//        mPushAgent.setDebugMode(true);
-        //sdk开启通知声音
-        mPushAgent.setNotificationPlaySound(MsgConstant.NOTIFICATION_PLAY_SDK_ENABLE);
-        mPushAgent.setNotificationPlayLights(MsgConstant.NOTIFICATION_PLAY_SDK_ENABLE);
-        mPushAgent.setNotificationPlayVibrate(MsgConstant.NOTIFICATION_PLAY_SDK_ENABLE);
-        //应用在显示推送
-        mPushAgent.setNotificaitonOnForeground(true);
-//        UmengNotificationClickHandler mUmengNotificationClickHandler = new UmengNotificationClickHandler() {
-//            @Override
-//            public void dealWithCustomAction(Context context, UMessage uMessage) {
-//                super.dealWithCustomAction(context, uMessage);
-//                Log.w(TAG, "点击");
-//            }
-//        };
-//        mPushAgent.setNotificationClickHandler(mUmengNotificationClickHandler);
-
-
-
-        mPushAgent.register(new IUmengRegisterCallback() {
-
-            @Override
-            public void onSuccess(String deviceToken) {
-                //注册成功会返回device token
-                Log.w(TAG, "deviceToken::::::::" + deviceToken);
-            }
-
-            @Override
-            public void onFailure(String s, String s1) {
-                Log.w(TAG, "s::::::::" + s);
-                Log.w(TAG, "s1::::::::" + s1);
-            }
-        });
 
 
     }

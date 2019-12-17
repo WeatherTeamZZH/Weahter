@@ -128,39 +128,39 @@ public class UserInofActivity extends BaseActivity {
                 Intent intent;
                 switch (position){
 
-                    case 0:
+                    case 2:
                         XingzuoActivity.access(UserInofActivity.this);
                         break;
-                    case 1:
+                    case 3:
                         intent = new Intent(UserInofActivity.this, ZhutiImgeActivity.class);
                         startActivity(intent);
                         break;
-                    case 2:
+                    case 4:
                         intent = new Intent(UserInofActivity.this, SuggestionActivity.class);
                         startActivity(intent);
                         break;
-                    case 3:
+                    case 5:
                         Toast.makeText(UserInofActivity.this,"暂未开通",Toast.LENGTH_SHORT).show();
 
                         break;
-                    case 4:
+                    case 6:
                         intent = new Intent(UserInofActivity.this, HistoryTodayActivity.class);
                         startActivity(intent);
                         break;
-                    case 5:
+                    case 7:
                         intent = new Intent(UserInofActivity.this, XiaohuaActivity.class);
                         startActivity(intent);
                         break;
-                    case 6:
+                    case 8:
                         intent = new Intent(UserInofActivity.this, ZhougongActivity.class);
                         startActivity(intent);
                         break;
 
-                    case 7:
+                    case 0:
                         intent = new Intent(UserInofActivity.this, NoticeCenterActivity.class);
                         startActivity(intent);
                         break;
-                    case 8:
+                    case 1:
                         EventGotoNewsMessage msg = new EventGotoNewsMessage("头条");
                         EventBus.getDefault().post(msg);
                         finish();

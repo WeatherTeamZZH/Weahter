@@ -44,6 +44,18 @@ public class TimeUtils {
         return res;
     }
 
+    /*
+     * 将时间戳转换为时间
+     */
+    public static String stampToDateMiao(String s){
+        String res;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        long lt = new Long(s);
+        Date date = new Date(lt*1000);
+        res = simpleDateFormat.format(date);
+        return res;
+    }
+
     public static long getShijianchuo13(){
         long timeStamp = System.currentTimeMillis();
         return timeStamp;

@@ -1,9 +1,16 @@
 package com.ok100.weather.fragment;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Color;
+import android.graphics.Point;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.AppBarLayout;
@@ -25,6 +32,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -43,6 +54,7 @@ import com.ok100.weather.adapter.MainTodaySuggestAdapter;
 import com.ok100.weather.adapter.NoticeMainFragmentItemAdapter;
 import com.ok100.weather.adapter.Weather15MianAdapter;
 import com.ok100.weather.base.BaseFragment;
+import com.ok100.weather.bean.ChannelsBean;
 import com.ok100.weather.bean.DataBean;
 import com.ok100.weather.bean.DefultGridViewBean;
 import com.ok100.weather.bean.DepartmentListBean;
@@ -54,6 +66,8 @@ import com.ok100.weather.bean.WeatherTotal15Bean;
 import com.ok100.weather.bean.WeatherTotal24Bean;
 import com.ok100.weather.bean.WeatherTotal7Bean;
 import com.ok100.weather.bean.WeatherTotalBean;
+import com.ok100.weather.constant.ConstantCode;
+import com.ok100.weather.constant.GGPositionId;
 import com.ok100.weather.event.EventGotoNewsMessage;
 import com.ok100.weather.gh.AirDialogFragment;
 import com.ok100.weather.gh.GH_DefaultDialogFragment;
@@ -61,12 +75,28 @@ import com.ok100.weather.gh.GH_MapActivity;
 import com.ok100.weather.hours24.IndexHorizontalScrollView;
 import com.ok100.weather.hours24.Today24HourView;
 import com.ok100.weather.http.ReturnDataView;
+import com.ok100.weather.http.Urls;
 import com.ok100.weather.presenter.NewsListPresenterImpl;
 import com.ok100.weather.presenter.NoticeMainListPresenterImpl;
+import com.ok100.weather.presenter.UcDataPresenterImpl;
 import com.ok100.weather.utils.ChooseTypeUtils;
 import com.ok100.weather.utils.DPUtils;
+import com.ok100.weather.utils.GGDemoUtil;
+import com.ok100.weather.utils.UCParamUtils;
 import com.ok100.weather.view.MySwipeRefreshLayout;
 import com.ok100.weather.view.MyViewPager;
+import com.qq.e.ads.banner2.UnifiedBannerADListener;
+import com.qq.e.ads.banner2.UnifiedBannerView;
+import com.qq.e.ads.cfg.VideoOption;
+import com.qq.e.ads.interstitial.AbstractInterstitialADListener;
+import com.qq.e.ads.interstitial.InterstitialAD;
+import com.qq.e.ads.nativ.ADSize;
+import com.qq.e.ads.nativ.NativeExpressAD;
+import com.qq.e.ads.nativ.NativeExpressADView;
+import com.qq.e.ads.nativ.NativeExpressMediaListener;
+import com.qq.e.comm.constants.AdPatternType;
+import com.qq.e.comm.pi.AdData;
+import com.qq.e.comm.util.AdError;
 import com.umeng.analytics.MobclickAgent;
 
 import org.greenrobot.eventbus.EventBus;
@@ -88,7 +118,7 @@ import me.zhouzhuo.zzweatherview.WeatherModel;
 import me.zhouzhuo.zzweatherview.ZzWeatherView;
 
 
-public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnItemClickListener, BaseQuickAdapter.OnItemLongClickListener, ReturnDataView<Object>, View.OnClickListener, BaseQuickAdapter.OnItemChildClickListener, SwipeRefreshLayout.OnRefreshListener, BaseQuickAdapter.RequestLoadMoreListener {
+public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnItemClickListener, BaseQuickAdapter.OnItemLongClickListener, ReturnDataView<Object>, View.OnClickListener, BaseQuickAdapter.OnItemChildClickListener, SwipeRefreshLayout.OnRefreshListener, BaseQuickAdapter.RequestLoadMoreListener , NativeExpressAD.NativeExpressADListener ,UnifiedBannerADListener{
 
 
     @BindView(R.id.tv_weather_temp)
@@ -113,8 +143,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     ZzWeatherView weatherView;
     @BindView(R.id.recyclerview_15weather)
     RecyclerView mRecyclerview15weather;
-    @BindView(R.id.iv_guanggao_donghua)
-    ImageView mIvGuanggaoDonghua;
+
     @BindView(R.id.recyclerview_today_suggest)
     RecyclerView mRecyclerviewTodaySuggest;
 
@@ -124,7 +153,10 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     RelativeLayout mRlTitleBar;
     @BindView(R.id.viewPager)
     MyViewPager viewPager;
-
+    @BindView(R.id.container)
+    ViewGroup container;
+    @BindView(R.id.container1)
+    ViewGroup container1;
     @BindView(R.id.today24HourView)
     Today24HourView mToday24HourView;
     @BindView(R.id.indexHorizontalScrollView)
@@ -173,7 +205,11 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     TextView mTvRichuTime;
     @BindView(R.id.tv_riluo_time)
     TextView mTvRiluoTime;
+    @BindView(R.id.bannerContainer)
+    ViewGroup bannerContainer;
 
+
+    private static final String TAG = "MainFragment";
     private LinearLayout ll_notice_main_more_item;
     private List<ViewPagerDataSource> viewPagerDataSourceList = new ArrayList<>();
 
@@ -202,6 +238,8 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     WeatherTotal15Bean weatherTotal15Bean ;
     WeatherTotal7Bean weatherTotal7Bean ;
     MainTodaySuggestAdapter mainTodaySuggestAdapter;
+
+    ChannelsBean channelsBean ;
 
     @Override
     protected int getLayoutID() {
@@ -262,7 +300,9 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
                 };
                 break;
             case R.id.iv_updata_list:
-
+                mSwipeRefreshLayoutVanlianNew.setRefreshing(true);
+                mSwipeRefreshLayoutVanlianNew.setRefreshing(false);
+                selectFragment.onRefresh();
                 break;
             case R.id.iv_shipin_list:
                 mTabLayout.getTabAt(1).select();
@@ -336,9 +376,12 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
         mainTodayFuwuAdapter.setNewData(DataBean.generateData());
         mRecyclerviewTodayFuwu.setAdapter(mainTodayFuwuAdapter);
         mRecyclerviewTodayFuwu.setNestedScrollingEnabled(false);//禁止滑动
-        Glide.with(this).load(R.drawable.guanggaodemo).asGif().diskCacheStrategy(DiskCacheStrategy.SOURCE).into(mIvGuanggaoDonghua);
-
+        //gif圖片
+//        Glide.with(this).load(R.drawable.guanggaodemo).asGif().diskCacheStrategy(DiskCacheStrategy.SOURCE).into(mIvGuanggaoDonghua);
+        refreshAd();
     }
+
+
 
 
     private void initTablayout() {
@@ -382,6 +425,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
         mTvShiduXiao.setOnClickListener(this);
         mRlMainBottom.setOnClickListener(this);
         mTvWeatherTemp.setOnClickListener(this);
+        mIvUpdataList.setOnClickListener(this);
     }
 
 
@@ -425,9 +469,6 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
 
         initData();
 
-
-        setNewArraylist();
-        mTabLayout.setSelectedTabIndicatorColor(Color.BLUE);
         http();
             }
 
@@ -440,6 +481,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     @Override
     public void onRefresh() {
         mSwipeRefreshLayoutVanlianNew.setRefreshing(false);
+        selectFragment.onRefresh();
     }
 
     private void initData() {
@@ -467,6 +509,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
             }
         });
 
+        doRefreshBanner();
     }
 
 
@@ -474,12 +517,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     private void setNewArraylist() {
-        departmentListBeans.clear();
-        for (int i = 0; i < DataBean.getNewTitleList().size(); i++) {
-            DepartmentListBean departmentListBean = new DepartmentListBean(DataBean.getNewTitleList().get(i));
-            departmentListBeans.add(departmentListBean);
-        }
-        getTitleListData(departmentListBeans);
+        getTitleData();
         initFragment();
         initViewPager();
         initTablayout();
@@ -495,7 +533,17 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
         });
     }
 
+    private void getTitleData() {
+        departmentListBeans.clear();
+        for (int i = 0; i < channelsBean.getData().size(); i++) {
+            DepartmentListBean departmentListBean = new DepartmentListBean(channelsBean.getData().get(i).getCatname());
+            departmentListBeans.add(departmentListBean);
+        }
+        getTitleListData(departmentListBeans);
+    }
 
+
+    NoticeMainFragment1 selectFragment ;
     private void initViewPager() {
         viewPager.setOffscreenPageLimit(5);
         viewPager.setAdapter(fragmentPagerAdapter);
@@ -517,7 +565,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
             @Override
             public void onPageSelected(int position) {
                 Log.e("position", position + "");
-                NoticeMainFragment1 getFragment = (NoticeMainFragment1) viewPagerDataSourceList.get(position).getFragment();
+                selectFragment = (NoticeMainFragment1) viewPagerDataSourceList.get(position).getFragment();
 
             }
 
@@ -555,10 +603,10 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
         for (int i = 0; i < departmentListBean.size(); i++) {
             fragment = new NoticeMainFragment1();
             Bundle args = new Bundle();
-            args.putString("departmentId", area);
-            args.putString("type", DataBean.getNewTitleList().get(i));
+            args.putString("departmentId", channelsBean.getData().get(i).getCatid());
+            args.putString("type", channelsBean.getData().get(i).getCatname());
             fragment.setArguments(args);
-            titleListData = new TitleListData(DataBean.getNewTitleList().get(i));
+            titleListData = new TitleListData(channelsBean.getData().get(i).getCatname());
             viewPagerDataSourceList.add(new ViewPagerDataSource(fragment, titleListData));
             ((NoticeMainFragment1) fragment).setBootomVisibleListener(new BootomVisibleListener() {
                 @Override
@@ -713,6 +761,8 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
 
     }
 
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void returnData(String responseCode, Object o) {
         switch (responseCode) {
@@ -796,6 +846,14 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
                 }
                 mToday24HourView.setData();
                 mToday24HourView.invalidate();
+                break;
+            case "channels":
+                channelsBean = (ChannelsBean) o;
+                if(channelsBean.getCode().equals("200")){
+                    setNewArraylist();
+                    mTabLayout.setSelectedTabIndicatorColor(Color.BLUE);
+                }
+
                 break;
         }
     }
@@ -960,6 +1018,15 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
         HashMap<String, String> hashMapNew = new HashMap<>();
         hashMapNew.put("type","top");
 
+        if(!TextUtils.isEmpty(MainActivity.MYTOKEN)){
+            UcDataPresenterImpl ucDataPresenter = new UcDataPresenterImpl(this);
+//            UCParamUtils ucParamUtils = new UCParamUtils(getContext());
+////            HashMap<String, String> ucParamHashmap = ucParamUtils.getUcParamHashmap();
+            HashMap<String, String> ucParamHashmap = new HashMap<>();
+            ucParamHashmap.put("token",MainActivity.MYTOKEN);
+            ucParamHashmap.put("apdid",MainActivity.APDIDP);
+            ucDataPresenter.channels(getActivity(),ucParamHashmap);
+        }
     }
 
 
@@ -1103,6 +1170,9 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     public void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
+        if (bv != null) {
+            bv.destroy();
+        }
     }
 
 
@@ -1110,6 +1180,394 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EventBus.getDefault().register(this);
+    }
+
+    private int adWidth =500, adHeight=500; // 广告宽高
+    private NativeExpressADView nativeExpressADView;
+    private boolean isPreloadVideo;
+    private NativeExpressAD nativeExpressAD;
+    private boolean isAdFullWidth = true, isAdAutoHeight = true; // 是否采用了ADSize.FULL_WIDTH，ADSize.AUTO_HEIGHT
+
+    private void refreshAd() {
+        try {
+
+//            hideSoftInput();
+            /**
+             *  如果选择支持视频的模版样式，请使用{@link PositionId#NATIVE_EXPRESS_SUPPORT_VIDEO_POS_ID}
+             */
+            nativeExpressAD = new NativeExpressAD(getActivity(), getMyADSize(), ConstantCode.GGAPPID, getPosId(), this); // 这里的Context必须为Activity
+            //这里可能有问题
+            VideoOption option = getVideoOption(new Intent());
+            if(option != null){
+                // setVideoOption是可选的，开发者可根据需要选择是否配置
+                nativeExpressAD.setVideoOption(option);
+            }
+            nativeExpressAD.setMinVideoDuration(getMinVideoDuration());
+            nativeExpressAD.setMaxVideoDuration(getMaxVideoDuration());
+            /**
+             * 如果广告位支持视频广告，强烈建议在调用loadData请求广告前调用setVideoPlayPolicy，有助于提高视频广告的eCPM值 <br/>
+             * 如果广告位仅支持图文广告，则无需调用
+             */
+
+            /**
+             * 设置本次拉取的视频广告，从用户角度看到的视频播放策略<p/>
+             *
+             * "用户角度"特指用户看到的情况，并非SDK是否自动播放，与自动播放策略AutoPlayPolicy的取值并非一一对应 <br/>
+             *
+             * 如自动播放策略为AutoPlayPolicy.WIFI，但此时用户网络为4G环境，在用户看来就是手工播放的
+             */
+            nativeExpressAD.setVideoPlayPolicy(getVideoPlayPolicy(VideoOption.AutoPlayPolicy.ALWAYS, getActivity()));  // 本次拉回的视频广告，在用户看来是否为自动播放的
+            nativeExpressAD.loadAD(1);
+        } catch (NumberFormatException e) {
+            Log.w(TAG, "ad size invalid.");
+            Toast.makeText(getActivity(), "请输入合法的宽高数值", Toast.LENGTH_SHORT).show();
+        }
+    }
+    private NativeExpressMediaListener mediaListener = new NativeExpressMediaListener() {
+        @Override
+        public void onVideoInit(NativeExpressADView nativeExpressADView) {
+            Log.i(TAG, "onVideoInit: "
+                    + getVideoInfo(nativeExpressADView.getBoundData().getProperty(AdData.VideoPlayer.class)));
+        }
+
+        @Override
+        public void onVideoLoading(NativeExpressADView nativeExpressADView) {
+            Log.i(TAG, "onVideoLoading");
+        }
+
+        @Override
+        public void onVideoCached(NativeExpressADView adView) {
+            Log.i(TAG, "onVideoCached");
+            // 视频素材加载完成，此时展示视频广告不会有进度条。
+            if(isPreloadVideo) {
+                // 广告可见才会产生曝光，否则将无法产生收益。
+                container.addView(nativeExpressADView);
+                nativeExpressADView.render();
+            }
+        }
+
+        @Override
+        public void onVideoReady(NativeExpressADView nativeExpressADView, long l) {
+            Log.i(TAG, "onVideoReady");
+        }
+
+        @Override
+        public void onVideoStart(NativeExpressADView nativeExpressADView) {
+            Log.i(TAG, "onVideoStart: "
+                    + getVideoInfo(nativeExpressADView.getBoundData().getProperty(AdData.VideoPlayer.class)));
+        }
+
+        @Override
+        public void onVideoPause(NativeExpressADView nativeExpressADView) {
+            Log.i(TAG, "onVideoPause: "
+                    + getVideoInfo(nativeExpressADView.getBoundData().getProperty(AdData.VideoPlayer.class)));
+        }
+
+        @Override
+        public void onVideoComplete(NativeExpressADView nativeExpressADView) {
+            Log.i(TAG, "onVideoComplete: "
+                    + getVideoInfo(nativeExpressADView.getBoundData().getProperty(AdData.VideoPlayer.class)));
+        }
+
+        @Override
+        public void onVideoError(NativeExpressADView nativeExpressADView, AdError adError) {
+            Log.i(TAG, "onVideoError");
+        }
+
+        @Override
+        public void onVideoPageOpen(NativeExpressADView nativeExpressADView) {
+            Log.i(TAG, "onVideoPageOpen");
+        }
+
+        @Override
+        public void onVideoPageClose(NativeExpressADView nativeExpressADView) {
+            Log.i(TAG, "onVideoPageClose");
+        }
+    };
+
+
+    /**
+     * 获取播放器实例
+     *
+     * 仅当视频回调{@link NativeExpressMediaListener#onVideoInit(NativeExpressADView)}调用后才会有返回值
+     *
+     * @param videoPlayer
+     * @return
+     */
+    private String getVideoInfo(AdData.VideoPlayer videoPlayer) {
+        if (videoPlayer != null) {
+            StringBuilder videoBuilder = new StringBuilder();
+            videoBuilder.append("{state:").append(videoPlayer.getVideoState()).append(",")
+                    .append("duration:").append(videoPlayer.getDuration()).append(",")
+                    .append("position:").append(videoPlayer.getCurrentPosition()).append("}");
+            return videoBuilder.toString();
+        }
+        return null;
+    }
+
+    @Override
+    public void onNoAD(AdError adError) {
+        Log.i(
+                TAG,
+                String.format("onNoAD, error code: %d, error msg: %s", adError.getErrorCode(),
+                        adError.getErrorMsg()));
+    }
+
+
+
+    @Override
+    public void onADLoaded(List<NativeExpressADView> adList) {
+        Log.i(TAG, "onADLoaded: " + adList.size());
+        // 释放前一个展示的NativeExpressADView的资源
+        if (nativeExpressADView != null) {
+            nativeExpressADView.destroy();
+        }
+
+        if (container.getVisibility() != View.VISIBLE) {
+            container.setVisibility(View.VISIBLE);
+        }
+
+        if (container.getChildCount() > 0) {
+            container.removeAllViews();
+        }
+
+        nativeExpressADView = adList.get(0);
+        Log.i(TAG, "onADLoaded, video info: " + getAdInfo(nativeExpressADView));
+        if (nativeExpressADView.getBoundData().getAdPatternType() == AdPatternType.NATIVE_VIDEO) {
+            nativeExpressADView.setMediaListener(mediaListener);
+            if(isPreloadVideo) {
+                // 预加载视频素材，加载成功会回调mediaListener的onVideoCached方法，失败的话回调onVideoError方法errorCode为702。
+                nativeExpressADView.preloadVideo();
+            }
+        } else {
+            isPreloadVideo = false;
+        }
+        if(!isPreloadVideo) {
+            // 广告可见才会产生曝光，否则将无法产生收益。
+            container.addView(nativeExpressADView);
+            nativeExpressADView.render();
+        }
+    }
+
+    @Override
+    public void onRenderFail(NativeExpressADView adView) {
+        Log.i(TAG, "onRenderFail");
+    }
+
+    @Override
+    public void onRenderSuccess(NativeExpressADView adView) {
+        Log.i(TAG, "onRenderSuccess");
+    }
+
+    @Override
+    public void onADExposure(NativeExpressADView adView) {
+        Log.i(TAG, "onADExposure");
+    }
+
+    @Override
+    public void onADClicked(NativeExpressADView adView) {
+        Log.i(TAG, "onADClicked" + adView.ext.get("clickUrl"));
+    }
+
+    @Override
+    public void onADClosed(NativeExpressADView adView) {
+        Log.i(TAG, "onADClosed");
+        // 当广告模板中的关闭按钮被点击时，广告将不再展示。NativeExpressADView也会被Destroy，释放资源，不可以再用来展示。
+        if (container != null && container.getChildCount() > 0) {
+            container.removeAllViews();
+            container.setVisibility(View.GONE);
+        }
+    }
+
+    @Override
+    public void onADLeftApplication(NativeExpressADView adView) {
+        Log.i(TAG, "onADLeftApplication");
+    }
+
+    @Override
+    public void onADOpenOverlay(NativeExpressADView adView) {
+        Log.i(TAG, "onADOpenOverlay");
+    }
+
+    @Override
+    public void onADCloseOverlay(NativeExpressADView adView) {
+        Log.i(TAG, "onADCloseOverlay");
+    }
+
+
+    public static int getVideoPlayPolicy(int autoPlayPolicy, Context context){
+        if(autoPlayPolicy == VideoOption.AutoPlayPolicy.ALWAYS){
+            return VideoOption.VideoPlayPolicy.AUTO;
+        }else if(autoPlayPolicy == VideoOption.AutoPlayPolicy.WIFI){
+            ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo wifiNetworkInfo = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+            return wifiNetworkInfo != null && wifiNetworkInfo.isConnected() ? VideoOption.VideoPlayPolicy.AUTO
+                    : VideoOption.VideoPlayPolicy.MANUAL;
+        }else if(autoPlayPolicy == VideoOption.AutoPlayPolicy.NEVER){
+            return VideoOption.VideoPlayPolicy.MANUAL;
+        }
+        return VideoOption.VideoPlayPolicy.UNKNOWN;
+    }
+
+
+    private String getPosId() {
+        return GGPositionId.MAIN_POS_ID;
+    }
+
+    private int getMinVideoDuration() {
+//    return getIntent().getIntExtra(Constants.MIN_VIDEO_DURATION, 0);
+        return 5;
+    }
+
+    private int getMaxVideoDuration() {
+//    return getIntent().getIntExtra(Constants.MAX_VIDEO_DURATION, 0);
+        return 60;
+    }
+
+    private ADSize getMyADSize() {
+        int w = isAdFullWidth ? ADSize.FULL_WIDTH : adWidth;
+        int h = isAdAutoHeight ? ADSize.AUTO_HEIGHT : adHeight;
+        return new ADSize(w, h);
+    }
+
+    //这个方法别的activity弄过来的
+    public static VideoOption getVideoOption(Intent intent) {
+        if(intent == null){
+            return null;
+        }
+
+        VideoOption videoOption = null;
+        boolean noneOption = intent.getBooleanExtra(GGPositionId.NONE_OPTION, false);
+        if (!noneOption) {
+            VideoOption.Builder builder = new VideoOption.Builder();
+
+            builder.setAutoPlayPolicy(intent.getIntExtra(GGPositionId.PLAY_NETWORK, VideoOption.AutoPlayPolicy.ALWAYS));
+            builder.setAutoPlayMuted(intent.getBooleanExtra(GGPositionId.PLAY_MUTE, true));
+            builder.setDetailPageMuted(intent.getBooleanExtra(GGPositionId.DETAIL_PAGE_MUTED,false));
+
+            videoOption = builder.build();
+        }
+        return videoOption;
+    }
+
+    /**
+     * 获取广告数据
+     *
+     * @param nativeExpressADView
+     * @return
+     */
+    private String getAdInfo(NativeExpressADView nativeExpressADView) {
+        AdData adData = nativeExpressADView.getBoundData();
+        if (adData != null) {
+            StringBuilder infoBuilder = new StringBuilder();
+            infoBuilder.append("title:").append(adData.getTitle()).append(",")
+                    .append("desc:").append(adData.getDesc()).append(",")
+                    .append("patternType:").append(adData.getAdPatternType());
+            if (adData.getAdPatternType() == AdPatternType.NATIVE_VIDEO) {
+                infoBuilder.append(", video info: ").append(getVideoInfo(adData.getProperty(AdData.VideoPlayer.class)));
+            }
+            Log.d(TAG, "eCPM = " + adData.getECPM() + " , eCPMLevel = " + adData.getECPMLevel() + " , " +
+                    "videoDuration = " + adData.getVideoDuration());
+            return infoBuilder.toString();
+        }
+        return null;
+    }
+
+
+
+
+
+    @Override
+    public void onADReceive() {
+
+    }
+
+    @Override
+    public void onADExposure() {
+
+    }
+
+    @Override
+    public void onADClosed() {
+
+    }
+
+    @Override
+    public void onADClicked() {
+
+    }
+
+    @Override
+    public void onADLeftApplication() {
+
+    }
+
+    @Override
+    public void onADOpenOverlay() {
+
+    }
+
+    @Override
+    public void onADCloseOverlay() {
+
+    }
+
+
+
+    UnifiedBannerView bv;
+    String posId;
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        if (bv != null) {
+            bv.setLayoutParams(getUnifiedBannerLayoutParams());
+        }
+    }
+
+    private UnifiedBannerView getBanner() {
+        if(this.bv != null){
+            bannerContainer.removeView(bv);
+            bv.destroy();
+        }
+        String posId = getPosID();
+        this.posId = posId;
+        this.bv = new UnifiedBannerView(getActivity(), ConstantCode.GGAPPID, posId, this);
+        bv.setRefresh(5);
+
+        // 不需要传递tags使用下面构造函数
+        // this.bv = new UnifiedBannerView(this, Constants.APPID, posId, this);
+        bannerContainer.addView(bv, getUnifiedBannerLayoutParams());
+        return this.bv;
+    }
+
+    /**
+     * banner2.0规定banner宽高比应该为6.4:1 , 开发者可自行设置符合规定宽高比的具体宽度和高度值
+     *
+     * @return
+     */
+    private FrameLayout.LayoutParams getUnifiedBannerLayoutParams() {
+        Point screenSize = new Point();
+        getActivity().getWindowManager().getDefaultDisplay().getSize(screenSize);
+        return new FrameLayout.LayoutParams(screenSize.x,  Math.round(screenSize.x / 6.4F));
+    }
+
+    private String getPosID() {
+        return GGPositionId.BANNER_POS_ID;
+    }
+
+
+    private void doRefreshBanner() {
+        GGDemoUtil.hideSoftInput(getActivity());
+        getBanner().loadAD();
+    }
+
+    private void doCloseBanner() {
+        bannerContainer.removeAllViews();
+        if (bv != null) {
+            bv.destroy();
+            bv = null;
+        }
     }
 
 }

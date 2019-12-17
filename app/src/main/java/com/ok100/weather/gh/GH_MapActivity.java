@@ -13,6 +13,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -41,10 +42,12 @@ import com.amap.api.services.core.LatLonPoint;
 import com.amap.api.services.geocoder.GeocodeSearch;
 import com.amap.api.services.geocoder.RegeocodeQuery;
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.ok100.weather.MainActivity;
 import com.ok100.weather.R;
 import com.ok100.weather.activity.SelectPicPopupWindowActivity;
 import com.ok100.weather.adapter.NoticeMainFragmentItemAdapter;
 import com.ok100.weather.base.BaseActivity;
+import com.ok100.weather.bean.ChannelsBean;
 import com.ok100.weather.bean.DataBean;
 import com.ok100.weather.bean.DepartmentListBean;
 import com.ok100.weather.bean.EventTitleMessage;
@@ -52,6 +55,8 @@ import com.ok100.weather.bean.NoticeMainChooseBean;
 import com.ok100.weather.bean.WeatherTotalBean;
 import com.ok100.weather.fragment.MainFragment;
 import com.ok100.weather.fragment.NoticeMainFragment1;
+import com.ok100.weather.http.ReturnDataView;
+import com.ok100.weather.presenter.UcDataPresenterImpl;
 import com.ok100.weather.utils.ChooseTypeUtils;
 import com.ok100.weather.utils.DPUtils;
 import com.ok100.weather.view.MySwipeRefreshLayout;
@@ -61,13 +66,14 @@ import org.greenrobot.eventbus.EventBus;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class GH_MapActivity extends BaseActivity implements LocationSource, AMapLocationListener, SwipeRefreshLayout.OnRefreshListener {
+public class GH_MapActivity extends BaseActivity implements LocationSource, AMapLocationListener, SwipeRefreshLayout.OnRefreshListener , ReturnDataView {
 
 
     @BindView(R.id.ll_all_gone_view)
@@ -151,7 +157,7 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
     private AMapLocationClientOption mLocationOption;
 
 
-    List<DepartmentListBean> departmentListBeans = new ArrayList<>();
+
     ArrayList<String> departmentListBeansString = new ArrayList<>();
     private FragmentPagerAdapter fragmentPagerAdapter;
     public int selectposition = 0;
@@ -178,15 +184,6 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
     public void InitView() {
         data = (WeatherTotalBean) getIntent().getSerializableExtra("data");
         departmentListBeansString = (ArrayList<String>) getIntent().getSerializableExtra("listdata");
-
-
-        departmentListBeans.clear();
-        for (int i = 0; i < DataBean.getNewTitleList().size(); i++) {
-            DepartmentListBean departmentListBean = new DepartmentListBean(DataBean.getNewTitleList().get(i));
-            departmentListBeans.add(departmentListBean);
-        }
-        setNewArraylist(departmentListBeans);
-        tabLayout.setSelectedTabIndicatorColor(Color.BLUE);
 
         llNoticeMainMoreItem.setOnClickListener(this);
 
@@ -233,6 +230,7 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
         });
         mapView.onCreate(savedInstanceState);
         init();
+        http();
     }
 
     /**
@@ -339,8 +337,10 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
         switch (v.getId()) {
             case R.id.ll_notice_main_more_item:
                 departmentListBeansString.clear();
-                for (int i = 0; i < departmentListBeans.size(); i++) {
-                    departmentListBeansString.add(departmentListBeans.get(i).getDepartmentName());
+                if(channelsBean!=null){
+                    for(int i=0;i<channelsBean.getData().size();i++){
+                        departmentListBeansString.add(channelsBean.getData().get(i).getCatname());
+                    }
                 }
                 Intent intent = new Intent(getContext(), SelectPicPopupWindowActivity.class);
                 intent.putStringArrayListExtra("listdata", departmentListBeansString);
@@ -369,8 +369,6 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
                 setAllGoneViewVisible(true);
                 setBottomVisible(false);
 
-//                EventTitleMessage msg = new EventTitleMessage(true,"messsage");
-//                EventBus.getDefault().post(msg);
                 break;
         }
     }
@@ -425,7 +423,7 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
             public void onPageSelected(int position) {
                 Log.e("position", position + "");
                 selectposition = position;
-                NoticeMainFragment1 getFragment = (NoticeMainFragment1) viewPagerDataSourceList.get(position).getFragment();
+                selectFragment = (NoticeMainFragment1) viewPagerDataSourceList.get(position).getFragment();
                 ;
 //                mSwipeRefreshLayoutVanlianNew.setRecycleview(getFragment.getRecyclerView());
             }
@@ -437,18 +435,18 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
         });
     }
 
-    private void getTitleListData(List<DepartmentListBean> departmentListBean) {
+    private void getTitleListData() {
 
         Fragment fragment;
         TitleListData titleListData;
         viewPager.setOffscreenPageLimit(0);
-        for (int i = 0; i < departmentListBean.size(); i++) {
+        for (int i = 0; i < channelsBean.getData().size(); i++) {
             fragment = new NoticeMainFragment1();
             Bundle args = new Bundle();
-            args.putString("departmentId", i + "");
-            args.putString("type", DataBean.getNewTitleList().get(i));
+            args.putString("departmentId", channelsBean.getData().get(i).getCatid());
+            args.putString("type", channelsBean.getData().get(i).getCatname());
             fragment.setArguments(args);
-            titleListData = new TitleListData(DataBean.getNewTitleList().get(i));
+            titleListData = new TitleListData(channelsBean.getData().get(i).getCatname());
             viewPagerDataSourceList.add(new ViewPagerDataSource(fragment, titleListData));
             ((NoticeMainFragment1) fragment).setBootomVisibleListener(new MainFragment.BootomVisibleListener() {
                 @Override
@@ -472,29 +470,6 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
         }
     }
 
-    private void initItemAdapter() {
-        noticeMainFragmentItemAdapter = new NoticeMainFragmentItemAdapter();
-        NoticeMainChooseBean noticeMainChooseBean = new NoticeMainChooseBean("111", false);
-        noticeMainChooseBeanList.add(noticeMainChooseBean);
-        noticeMainChooseBeanList.add(noticeMainChooseBean);
-        noticeMainChooseBeanList.add(noticeMainChooseBean);
-        noticeMainChooseBeanList.add(noticeMainChooseBean);
-        noticeMainChooseBeanList.add(noticeMainChooseBean);
-        noticeMainChooseBeanList.add(noticeMainChooseBean);
-        noticeMainChooseBeanList.add(noticeMainChooseBean);
-        noticeMainChooseBeanList.add(noticeMainChooseBean);
-        noticeMainChooseBeanList.add(noticeMainChooseBean);
-        noticeMainChooseBeanList.add(noticeMainChooseBean);
-        noticeMainFragmentItemAdapter.setNewData(noticeMainChooseBeanList);
-        noticeMainFragmentItemAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                viewPager.setCurrentItem(position);
-                changeItemData(position);
-
-            }
-        });
-    }
 
     public void setAllGoneViewVisible(boolean visible) {
         if (visible) {
@@ -521,9 +496,9 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
     }
 
     //    @RequiresApi(api = Build.VERSION_CODES.M)
-    private void setNewArraylist(List<DepartmentListBean> departmentListBean) {
-        initItemAdapter();
-        getTitleListData(departmentListBean);
+    private void setNewArraylist() {
+//        initItemAdapter();
+        getTitleListData();
         initFragment();
         initViewPager();
         initTablayout();
@@ -545,12 +520,6 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
         });
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
 
     @Override
     public void activate(OnLocationChangedListener listener) {
@@ -610,6 +579,28 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
     @Override
     public void onRefresh() {
         swipeRefreshLayoutVanlianNew.setRefreshing(false);
+        selectFragment.onRefresh();
+    }
+
+    ChannelsBean channelsBean ;
+    NoticeMainFragment1 selectFragment ;
+    @Override
+    public void returnData(String responseCode, Object o) {
+        switch (responseCode){
+            case "channels":
+                channelsBean = (ChannelsBean) o;
+                if(channelsBean.getCode().equals("200")){
+                    setNewArraylist();
+                    tabLayout.setSelectedTabIndicatorColor(Color.BLUE);
+                }
+
+                break;
+        }
+    }
+
+    @Override
+    public void showError(String msg) {
+
     }
 
     public interface setItemTabListener {
@@ -729,5 +720,15 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
         mIvTitleBigImage.setBackgroundResource(string);
     }
 
-
+    private void http(){
+        if(!TextUtils.isEmpty(MainActivity.MYTOKEN)){
+            UcDataPresenterImpl ucDataPresenter = new UcDataPresenterImpl(this);
+//            UCParamUtils ucParamUtils = new UCParamUtils(getContext());
+////            HashMap<String, String> ucParamHashmap = ucParamUtils.getUcParamHashmap();
+            HashMap<String, String> ucParamHashmap = new HashMap<>();
+            ucParamHashmap.put("token",MainActivity.MYTOKEN);
+            ucParamHashmap.put("apdid",MainActivity.APDIDP);
+            ucDataPresenter.channels(GH_MapActivity.this,ucParamHashmap);
+        }
+    }
 }

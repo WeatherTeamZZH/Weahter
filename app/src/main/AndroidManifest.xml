@@ -33,6 +33,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.StatusBarWhite.NoActionBar"
         tools:replace="android:icon, android:label, android:theme">
+
+
         <activity android:name=".activity.ZhougongActivity"></activity>
         <activity android:name=".activity.XiaohuaActivity" />
         <activity android:name=".activity.HistoryTodayActivity" />
