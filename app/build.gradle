@@ -154,7 +154,7 @@ dependencies {
 
 
     //PushSDK
-    implementation 'com.umeng.sdk:push:4.1.0'
+//    implementation 'com.umeng.sdk:push:4.1.0'
     implementation files('libs/umeng-share-QQ-simplify-6.9.6.jar')
     //分享面板
 //    implementation 'com.umeng.sdk:shareboard-widget:6.9.1'
@@ -166,12 +166,12 @@ dependencies {
 }
 
     implementation 'com.umeng.sdk:share-sina:6.9.1'
-    implementation 'com.umeng.sdk:common:1.5.1'
+//    implementation 'com.umeng.sdk:common:1.5.1'
 
     //友盟统计
     //PushSDK必须依赖utdid库，所以需要加入对应依赖
     //PushSDK必须依赖基础组件库，所以需要加入对应依赖
-    implementation 'com.umeng.sdk:common:1.5.1'
+//    implementation 'com.umeng.sdk:common:1.5.1'
 //PushSDK必须依赖utdid库，所以需要加入对应依赖
     implementation 'com.umeng.umsdk:utdid:1.1.5.3'
 //PushSDK
@@ -200,6 +200,14 @@ dependencies {
     //mtgbid
     implementation 'com.mintegral.msdk:mtgbid:10.1.31'
     implementation files('aars/ks_adsdk-2.2.4.aar')
+
+
+    //PushSDK必须依赖基础组件库，所以需要加入对应依赖
+    implementation 'com.umeng.sdk:common:1.5.0'
+    //PushSDK必须依赖utdid库，所以需要加入对应依赖
+    implementation 'com.umeng.sdk:utdid:1.1.5.3'
+    //PushSDK
+    implementation 'com.umeng.sdk:push:4.1.0'
 
 //    allprojects {
 //        repositories {
