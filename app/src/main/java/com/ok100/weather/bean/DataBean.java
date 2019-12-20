@@ -131,8 +131,7 @@ public class DataBean {
     public static List<DefultGridViewBean> getUserAdapter() {
         DefultGridViewBean defultGridViewBean ;
         ArrayList<DefultGridViewBean> defultGridViewBeans = new ArrayList<>();
-        defultGridViewBean = new DefultGridViewBean("消息中心",R.mipmap.userinfo_xiaoxi);
-        defultGridViewBeans.add(defultGridViewBean);
+
         defultGridViewBean = new DefultGridViewBean("热点新闻",R.mipmap.userinfo_redianxinewn);
         defultGridViewBeans.add(defultGridViewBean);
         defultGridViewBean = new DefultGridViewBean("星座运势",R.mipmap.userinfo_xingzuo);
@@ -149,6 +148,8 @@ public class DataBean {
         defultGridViewBeans.add(defultGridViewBean);
         defultGridViewBean = new DefultGridViewBean("周公解梦",R.mipmap.userinfo_zhougong);
         defultGridViewBeans.add(defultGridViewBean);
+//        defultGridViewBean = new DefultGridViewBean("消息中心",R.mipmap.userinfo_xiaoxi);
+//        defultGridViewBeans.add(defultGridViewBean);
         return defultGridViewBeans;
     }
 

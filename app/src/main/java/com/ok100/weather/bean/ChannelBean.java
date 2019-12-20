@@ -1,5 +1,7 @@
 package com.ok100.weather.bean;
 
+import com.qq.e.ads.nativ.NativeExpressADView;
+
 import java.util.List;
 
 /**
@@ -85,9 +87,27 @@ public class ChannelBean {
         private String thumb;
         private String description;
         private String inputtime;
+        private String copyfrom;
         private String style_type;
         private String url;
         private List<ImageTypeBean> image_type;
+        private String type;
+
+        public String getType() {
+            return type;
+        }
+
+        public void setType(String type) {
+            this.type = type;
+        }
+
+        public String getCopyfrom() {
+            return copyfrom;
+        }
+
+        public void setCopyfrom(String copyfrom) {
+            this.copyfrom = copyfrom;
+        }
 
         public String getId() {
             return id;

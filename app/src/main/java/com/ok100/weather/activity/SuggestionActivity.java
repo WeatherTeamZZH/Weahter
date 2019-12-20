@@ -14,7 +14,7 @@ import com.teprinciple.mailsender.Mail;
 import com.teprinciple.mailsender.MailSender;
 import com.umeng.analytics.MobclickAgent;
 
-import org.jetbrains.annotations.NotNull;
+import org.greenrobot.greendao.annotation.NotNull;
 
 import java.util.ArrayList;
 

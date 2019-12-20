@@ -91,6 +91,8 @@ import com.qq.e.ads.cfg.VideoOption;
 import com.qq.e.ads.interstitial.AbstractInterstitialADListener;
 import com.qq.e.ads.interstitial.InterstitialAD;
 import com.qq.e.ads.nativ.ADSize;
+import com.qq.e.ads.nativ.NativeAD;
+import com.qq.e.ads.nativ.NativeADDataRef;
 import com.qq.e.ads.nativ.NativeExpressAD;
 import com.qq.e.ads.nativ.NativeExpressADView;
 import com.qq.e.ads.nativ.NativeExpressMediaListener;
@@ -133,8 +135,6 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     LinearLayout mLinearlayout1;
     //    @BindView(R.id.rl_second_view)
 //    RelativeLayout mRlSecondView;
-    @BindView(R.id.ll_guanggao1)
-    LinearLayout mLlGuanggao1;
     @BindView(R.id.tv_liebiao)
     TextView mTvLiebiao;
     @BindView(R.id.tv_qushi)
@@ -155,8 +155,8 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     MyViewPager viewPager;
     @BindView(R.id.container)
     ViewGroup container;
-    @BindView(R.id.container1)
-    ViewGroup container1;
+    @BindView(R.id.container2)
+    ViewGroup container2;
     @BindView(R.id.today24HourView)
     Today24HourView mToday24HourView;
     @BindView(R.id.indexHorizontalScrollView)
@@ -207,6 +207,22 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     TextView mTvRiluoTime;
     @BindView(R.id.bannerContainer)
     ViewGroup bannerContainer;
+
+    @BindView(R.id.ll_guanggao1)
+    LinearLayout ll_guanggao1;
+
+    @BindView(R.id.tv_guanggaol)
+    TextView tv_guanggaol;
+    @BindView(R.id.tv_guanggao2)
+    TextView tv_guanggao2;
+    @BindView(R.id.iv_guanggao2)
+    ImageView iv_guanggao2;
+    @BindView(R.id.iv_guanggao1)
+    ImageView iv_guanggao1;
+    @BindView(R.id.ll_guanggao_left)
+    LinearLayout ll_guanggao_left;
+    @BindView(R.id.ll_guanggao_right)
+    LinearLayout ll_guanggao_right;
 
 
     private static final String TAG = "MainFragment";
@@ -378,7 +394,8 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
         mRecyclerviewTodayFuwu.setNestedScrollingEnabled(false);//禁止滑动
         //gif圖片
 //        Glide.with(this).load(R.drawable.guanggaodemo).asGif().diskCacheStrategy(DiskCacheStrategy.SOURCE).into(mIvGuanggaoDonghua);
-        refreshAd();
+        refreshAd("1");
+
     }
 
 
@@ -555,7 +572,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
 //            }
 //        });
 //        viewPager.setOffscreenPageLimit(fragmentPagerAdapter.getCount());
-
+        selectFragment = (NoticeMainFragment1) viewPagerDataSourceList.get(0).getFragment();
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -1183,41 +1200,48 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     }
 
     private int adWidth =500, adHeight=500; // 广告宽高
-    private NativeExpressADView nativeExpressADView;
+    private NativeExpressADView nativeExpressADView,nativeExpressADView2;
     private boolean isPreloadVideo;
-    private NativeExpressAD nativeExpressAD;
+    private NativeExpressAD nativeExpressAD,nativeExpressAD2;
     private boolean isAdFullWidth = true, isAdAutoHeight = true; // 是否采用了ADSize.FULL_WIDTH，ADSize.AUTO_HEIGHT
 
-    private void refreshAd() {
+    private void refreshAd(String string) {
         try {
 
 //            hideSoftInput();
             /**
              *  如果选择支持视频的模版样式，请使用{@link PositionId#NATIVE_EXPRESS_SUPPORT_VIDEO_POS_ID}
              */
-            nativeExpressAD = new NativeExpressAD(getActivity(), getMyADSize(), ConstantCode.GGAPPID, getPosId(), this); // 这里的Context必须为Activity
-            //这里可能有问题
-            VideoOption option = getVideoOption(new Intent());
-            if(option != null){
-                // setVideoOption是可选的，开发者可根据需要选择是否配置
-                nativeExpressAD.setVideoOption(option);
-            }
-            nativeExpressAD.setMinVideoDuration(getMinVideoDuration());
-            nativeExpressAD.setMaxVideoDuration(getMaxVideoDuration());
-            /**
-             * 如果广告位支持视频广告，强烈建议在调用loadData请求广告前调用setVideoPlayPolicy，有助于提高视频广告的eCPM值 <br/>
-             * 如果广告位仅支持图文广告，则无需调用
-             */
+            if(string.equals("1")){
+                nativeExpressAD = new NativeExpressAD(getActivity(), getMyADSize(), ConstantCode.GGAPPID, GGPositionId.MAIN_POS_ID, this); // 这里的Context必须为Activity
+                //这里可能有问题
+                VideoOption option = getVideoOption(new Intent());
+                if(option != null){
+                    // setVideoOption是可选的，开发者可根据需要选择是否配置
+                    nativeExpressAD.setVideoOption(option);
+                }
+                nativeExpressAD.setMinVideoDuration(getMinVideoDuration());
+                nativeExpressAD.setMaxVideoDuration(getMaxVideoDuration());
+                /**
+                 * 如果广告位支持视频广告，强烈建议在调用loadData请求广告前调用setVideoPlayPolicy，有助于提高视频广告的eCPM值 <br/>
+                 * 如果广告位仅支持图文广告，则无需调用
+                 */
 
-            /**
-             * 设置本次拉取的视频广告，从用户角度看到的视频播放策略<p/>
-             *
-             * "用户角度"特指用户看到的情况，并非SDK是否自动播放，与自动播放策略AutoPlayPolicy的取值并非一一对应 <br/>
-             *
-             * 如自动播放策略为AutoPlayPolicy.WIFI，但此时用户网络为4G环境，在用户看来就是手工播放的
-             */
-            nativeExpressAD.setVideoPlayPolicy(getVideoPlayPolicy(VideoOption.AutoPlayPolicy.ALWAYS, getActivity()));  // 本次拉回的视频广告，在用户看来是否为自动播放的
-            nativeExpressAD.loadAD(1);
+                /**
+                 * 设置本次拉取的视频广告，从用户角度看到的视频播放策略<p/>
+                 *
+                 * "用户角度"特指用户看到的情况，并非SDK是否自动播放，与自动播放策略AutoPlayPolicy的取值并非一一对应 <br/>
+                 *
+                 * 如自动播放策略为AutoPlayPolicy.WIFI，但此时用户网络为4G环境，在用户看来就是手工播放的
+                 */
+                nativeExpressAD.setVideoPlayPolicy(getVideoPlayPolicy(VideoOption.AutoPlayPolicy.ALWAYS, getActivity()));  // 本次拉回的视频广告，在用户看来是否为自动播放的
+                nativeExpressAD.loadAD(1);
+            }else {
+                nativeExpressAD2 = new NativeExpressAD(getActivity(), getMyADSize(), ConstantCode.GGAPPID, GGPositionId.MAIN_RIGHTIMAGE_POS_ID, this); // 这里的Context必须为Activity
+                nativeExpressAD2.loadAD(1);
+            }
+
+
         } catch (NumberFormatException e) {
             Log.w(TAG, "ad size invalid.");
             Toast.makeText(getActivity(), "请输入合法的宽高数值", Toast.LENGTH_SHORT).show();
@@ -1313,41 +1337,70 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
                         adError.getErrorMsg()));
     }
 
-
+    public int guanggaoPosition = 0 ;
 
     @Override
     public void onADLoaded(List<NativeExpressADView> adList) {
-        Log.i(TAG, "onADLoaded: " + adList.size());
+        Log.e("onADLoaded1111", "onADLoaded: " + adList.size());
         // 释放前一个展示的NativeExpressADView的资源
-        if (nativeExpressADView != null) {
-            nativeExpressADView.destroy();
-        }
-
-        if (container.getVisibility() != View.VISIBLE) {
-            container.setVisibility(View.VISIBLE);
-        }
-
-        if (container.getChildCount() > 0) {
-            container.removeAllViews();
-        }
-
-        nativeExpressADView = adList.get(0);
-        Log.i(TAG, "onADLoaded, video info: " + getAdInfo(nativeExpressADView));
-        if (nativeExpressADView.getBoundData().getAdPatternType() == AdPatternType.NATIVE_VIDEO) {
-            nativeExpressADView.setMediaListener(mediaListener);
-            if(isPreloadVideo) {
-                // 预加载视频素材，加载成功会回调mediaListener的onVideoCached方法，失败的话回调onVideoError方法errorCode为702。
-                nativeExpressADView.preloadVideo();
+        if(guanggaoPosition==0){
+            if (this.nativeExpressADView != null) {
+                this.nativeExpressADView.destroy();
             }
-        } else {
-            isPreloadVideo = false;
-        }
-        if(!isPreloadVideo) {
-            // 广告可见才会产生曝光，否则将无法产生收益。
-            container.addView(nativeExpressADView);
-            nativeExpressADView.render();
+            if (container.getVisibility() != View.VISIBLE) {
+                container.setVisibility(View.VISIBLE);
+            }
+            if (container.getChildCount() > 0) {
+                container.removeAllViews();
+            }
+            this.nativeExpressADView = adList.get(0);
+            Log.i(TAG, "onADLoaded, video info: " + getAdInfo(this.nativeExpressADView));
+            if (this.nativeExpressADView.getBoundData().getAdPatternType() == AdPatternType.NATIVE_VIDEO) {
+                this.nativeExpressADView.setMediaListener(mediaListener);
+                if(isPreloadVideo) {
+                    // 预加载视频素材，加载成功会回调mediaListener的onVideoCached方法，失败的话回调onVideoError方法errorCode为702。
+                    this.nativeExpressADView.preloadVideo();
+                }
+            } else {
+                isPreloadVideo = false;
+            }
+            if(!isPreloadVideo) {
+                // 广告可见才会产生曝光，否则将无法产生收益。
+                container.addView(this.nativeExpressADView);
+                this.nativeExpressADView.render();
+            }
+            refreshAd("2");
+            guanggaoPosition = 1;
+        }else {
+            if (nativeExpressADView2 != null) {
+                nativeExpressADView2.destroy();
+            }
+            if (container2.getVisibility() != View.VISIBLE) {
+                container2.setVisibility(View.VISIBLE);
+            }
+            if (container2.getChildCount() > 0) {
+                container2.removeAllViews();
+            }
+            this.nativeExpressADView2 = adList.get(0);
+
+            if (this.nativeExpressADView2.getBoundData().getAdPatternType() == AdPatternType.NATIVE_VIDEO) {
+                this.nativeExpressADView2.setMediaListener(mediaListener);
+                if(isPreloadVideo) {
+                    // 预加载视频素材，加载成功会回调mediaListener的onVideoCached方法，失败的话回调onVideoError方法errorCode为702。
+                    nativeExpressADView2.preloadVideo();
+                }
+            } else {
+                isPreloadVideo = false;
+            }
+            if(!isPreloadVideo) {
+                // 广告可见才会产生曝光，否则将无法产生收益。
+                this.nativeExpressADView2.render();
+                container2.addView(nativeExpressADView2);
+                nativeExpressADView2.render();
+            }
         }
     }
+
 
     @Override
     public void onRenderFail(NativeExpressADView adView) {
@@ -1372,6 +1425,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     @Override
     public void onADClosed(NativeExpressADView adView) {
         Log.i(TAG, "onADClosed");
+
         // 当广告模板中的关闭按钮被点击时，广告将不再展示。NativeExpressADView也会被Destroy，释放资源，不可以再用来展示。
         if (container != null && container.getChildCount() > 0) {
             container.removeAllViews();
@@ -1541,6 +1595,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
         return this.bv;
     }
 
+
     /**
      * banner2.0规定banner宽高比应该为6.4:1 , 开发者可自行设置符合规定宽高比的具体宽度和高度值
      *
@@ -1560,7 +1615,12 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     private void doRefreshBanner() {
         GGDemoUtil.hideSoftInput(getActivity());
         getBanner().loadAD();
+
+        myInterClass myInterClass = new myInterClass();
+        
     }
+
+
 
     private void doCloseBanner() {
         bannerContainer.removeAllViews();
@@ -1569,5 +1629,139 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
             bv = null;
         }
     }
+    List<NativeADDataRef> dataList ;
+    class myInterClass implements NativeAD.NativeAdListener{
+
+
+        private NativeADDataRef adItem;
+        private NativeAD nativeAD;
+
+        UnifiedBannerView bv;
+
+        public myInterClass(){
+            loadAD();
+        }
+
+        @Override
+        public void onADLoaded(List<NativeADDataRef> list) {
+            Log.e("listlistlist",list.toString());
+            dataList = list;
+//            Toast.makeText(getActivity(), "原生广告加载成功"+list.size(), Toast.LENGTH_LONG).show();
+            if(list.size()>0){
+                NativeADDataRef nativeADDataRef = list.get(0);
+            }
+            if(list.size()>1){
+                NativeADDataRef nativeADDataRef = list.get(1);
+                tv_guanggaol.setText(nativeADDataRef.getTitle());
+                Glide.with(getActivity())
+                        .load(nativeADDataRef.getImgUrl())
+                        .centerCrop()
+                        .crossFade()
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .into(iv_guanggao1);
+                nativeADDataRef.onExposured(ll_guanggao_left); // 需要先调用曝光接口
+                ll_guanggao_left.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        adItem = nativeADDataRef;
+                        adItem.onClicked(ll_guanggao_left);
+//                        getADButtonText();
+                    }
+                });
+            }
+            if(list.size()>2){
+                NativeADDataRef nativeADDataRef = list.get(2);
+                tv_guanggao2.setText(nativeADDataRef.getTitle());
+                Glide.with(getActivity())
+                        .load(nativeADDataRef.getImgUrl())
+                        .centerCrop()
+                        .crossFade()
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .into(iv_guanggao2);
+                nativeADDataRef.onExposured(ll_guanggao_right); // 需要先调用曝光接口
+                ll_guanggao_right.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        adItem = nativeADDataRef;
+                        adItem.onClicked(ll_guanggao_right);
+//                        getADButtonText();
+                    }
+                });
+            }
+            if(list.size()>3){
+                NativeADDataRef nativeADDataRef = list.get(3);
+            }
+
+
+        }
+
+        @Override
+        public void onADStatusChanged(NativeADDataRef nativeADDataRef) {
+            String adButtonText = getADButtonText();
+            Log.e("adButtonText",adButtonText);
+        }
+
+        @Override
+        public void onADError(NativeADDataRef nativeADDataRef, AdError adError) {
+
+        }
+
+        @Override
+        public void onNoAD(AdError adError) {
+
+        }
+
+
+        public void loadAD() {
+//        nativeAD = new NativeAD(this, ConstantCode.GGAPPID, posid, this);
+            nativeAD = new NativeAD(getActivity(), "1101152570", "5010320697302671", this);
+            ArrayList<String> categories = new ArrayList<String>();
+            //添加类目信息
+//        for (String s : $.id(R.id.nativeCategories).getText().toString().split(",")) {
+//            if (!TextUtils.isEmpty(s)) {
+//                categories.add(s);
+//            }
+//        }
+            nativeAD.setCategories(categories);
+            int count = 5; // 一次拉取的广告条数：范围1-10
+            nativeAD.loadAD(count);
+            GGDemoUtil.hideSoftInput(getActivity());
+        }
+
+
+        private String getPosID() {
+            return GGPositionId.BANNER_POS_ID;
+        }
+
+        /**
+         * App类广告安装、下载状态的更新（普链广告没有此状态，其值为-1） 返回的AppStatus含义如下： 0：未下载 1：已安装 2：已安装旧版本 4：下载中（可获取下载进度“0-100”）
+         * 8：下载完成 16：下载失败
+         */
+        private String getADButtonText() {
+            if (adItem == null) {
+                return "……";
+            }
+            if (!adItem.isAPP()) {
+                return "查看详情";
+            }
+            switch (adItem.getAPPStatus()) {
+                case 0:
+                    return "点击下载";
+                case 1:
+                    return "点击启动";
+                case 2:
+                    return "点击更新";
+                case 4:
+                    return adItem.getProgress() > 0 ? "下载中" + adItem.getProgress()+ "%" : "下载中"; // 特别注意：当进度小于0时，不要使用进度来渲染界面
+                case 8:
+                    return "下载完成";
+                case 16:
+                    return "下载失败,点击重试";
+                default:
+                    return "查看详情";
+            }
+        }
+    }
+
 
 }

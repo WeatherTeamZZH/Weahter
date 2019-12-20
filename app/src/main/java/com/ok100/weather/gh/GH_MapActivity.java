@@ -17,8 +17,10 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.Interpolator;
 import android.widget.AutoCompleteTextView;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -53,14 +55,20 @@ import com.ok100.weather.bean.DepartmentListBean;
 import com.ok100.weather.bean.EventTitleMessage;
 import com.ok100.weather.bean.NoticeMainChooseBean;
 import com.ok100.weather.bean.WeatherTotalBean;
+import com.ok100.weather.constant.ConstantCode;
+import com.ok100.weather.constant.GGPositionId;
 import com.ok100.weather.fragment.MainFragment;
 import com.ok100.weather.fragment.NoticeMainFragment1;
 import com.ok100.weather.http.ReturnDataView;
 import com.ok100.weather.presenter.UcDataPresenterImpl;
 import com.ok100.weather.utils.ChooseTypeUtils;
 import com.ok100.weather.utils.DPUtils;
+import com.ok100.weather.utils.GGDemoUtil;
 import com.ok100.weather.view.MySwipeRefreshLayout;
 import com.ok100.weather.view.MyViewPager;
+import com.qq.e.ads.banner2.UnifiedBannerADListener;
+import com.qq.e.ads.banner2.UnifiedBannerView;
+import com.qq.e.comm.util.AdError;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -73,7 +81,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class GH_MapActivity extends BaseActivity implements LocationSource, AMapLocationListener, SwipeRefreshLayout.OnRefreshListener , ReturnDataView {
+public class GH_MapActivity extends BaseActivity implements LocationSource, AMapLocationListener, SwipeRefreshLayout.OnRefreshListener , ReturnDataView , UnifiedBannerADListener {
 
 
     @BindView(R.id.ll_all_gone_view)
@@ -144,6 +152,8 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
     ImageView mIvBack;
     @BindView(R.id.rl_title)
     RelativeLayout mRlTitle;
+    @BindView(R.id.bannerContainer)
+    ViewGroup bannerContainer;
     private AMap aMap;
     private boolean isItemClickAction;
     private boolean isInputKeySearch;
@@ -231,6 +241,12 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
         mapView.onCreate(savedInstanceState);
         init();
         http();
+        doRefreshBanner();
+    }
+
+    private void doRefreshBanner() {
+        GGDemoUtil.hideSoftInput(this);
+        getBanner().loadAD();
     }
 
     /**
@@ -603,6 +619,12 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
 
     }
 
+    @Override
+    public void onNoAD(AdError adError) {
+
+    }
+
+
     public interface setItemTabListener {
         void setItemPosition(int position);
     }
@@ -731,4 +753,77 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
             ucDataPresenter.channels(GH_MapActivity.this,ucParamHashmap);
         }
     }
+
+
+
+    @Override
+    public void onADReceive() {
+
+    }
+
+    @Override
+    public void onADExposure() {
+
+    }
+
+    @Override
+    public void onADClosed() {
+
+    }
+
+    @Override
+    public void onADClicked() {
+
+    }
+
+    @Override
+    public void onADLeftApplication() {
+
+    }
+
+    @Override
+    public void onADOpenOverlay() {
+
+    }
+
+    @Override
+    public void onADCloseOverlay() {
+
+    }
+
+
+    UnifiedBannerView bv;
+    String posId;
+
+    private String getPosID() {
+        return GGPositionId.BANNER_POS_ID;
+    }
+
+    private UnifiedBannerView getBanner() {
+        if(this.bv != null){
+            bannerContainer.removeView(bv);
+            bv.destroy();
+        }
+        String posId = getPosID();
+        this.posId = posId;
+        this.bv = new UnifiedBannerView(this, ConstantCode.GGAPPID, posId, this);
+        bv.setRefresh(5);
+
+        // 不需要传递tags使用下面构造函数
+        // this.bv = new UnifiedBannerView(this, Constants.APPID, posId, this);
+        bannerContainer.addView(bv, getUnifiedBannerLayoutParams());
+        return this.bv;
+    }
+
+    /**
+     * banner2.0规定banner宽高比应该为6.4:1 , 开发者可自行设置符合规定宽高比的具体宽度和高度值
+     *
+     * @return
+     */
+    private FrameLayout.LayoutParams getUnifiedBannerLayoutParams() {
+        Point screenSize = new Point();
+        getWindowManager().getDefaultDisplay().getSize(screenSize);
+        return new FrameLayout.LayoutParams(screenSize.x,  Math.round(screenSize.x / 6.4F));
+    }
+
 }

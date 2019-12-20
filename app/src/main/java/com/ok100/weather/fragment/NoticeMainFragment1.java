@@ -13,6 +13,9 @@ import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.ok100.weather.MainActivity;
@@ -24,6 +27,8 @@ import com.ok100.weather.bean.ChannelBean;
 import com.ok100.weather.bean.EventTitleMessage;
 import com.ok100.weather.bean.NewsListBean;
 import com.ok100.weather.bean.NoticeMainListBean;
+import com.ok100.weather.constant.ConstantCode;
+import com.ok100.weather.constant.GGPositionId;
 import com.ok100.weather.http.ReturnDataView;
 import com.ok100.weather.http.Urls;
 import com.ok100.weather.presenter.NewsListPresenterImpl;
@@ -33,6 +38,13 @@ import com.ok100.weather.utils.ChooseTypeUtils;
 import com.ok100.weather.view.CustomLoadMoreViewNews;
 import com.ok100.weather.view.MyLinearLayoutManager1;
 import com.ok100.weather.view.MyRecyclerView;
+import com.qq.e.ads.cfg.VideoOption;
+import com.qq.e.ads.nativ.ADSize;
+import com.qq.e.ads.nativ.NativeExpressAD;
+import com.qq.e.ads.nativ.NativeExpressADView;
+import com.qq.e.ads.nativ.NativeExpressMediaListener;
+import com.qq.e.comm.pi.AdData;
+import com.qq.e.comm.util.AdError;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -40,13 +52,14 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.Unbinder;
 
 
-public class NoticeMainFragment1 extends BaseFragment implements BaseQuickAdapter.OnItemClickListener, BaseQuickAdapter.OnItemLongClickListener, ReturnDataView<Object>, View.OnClickListener, BaseQuickAdapter.OnItemChildClickListener, SwipeRefreshLayout.OnRefreshListener, BaseQuickAdapter.RequestLoadMoreListener, View.OnTouchListener {
-
+public class NoticeMainFragment1 extends BaseFragment implements BaseQuickAdapter.OnItemClickListener, BaseQuickAdapter.OnItemLongClickListener, ReturnDataView<Object>, View.OnClickListener, BaseQuickAdapter.OnItemChildClickListener, SwipeRefreshLayout.OnRefreshListener, BaseQuickAdapter.RequestLoadMoreListener, View.OnTouchListener , NativeExpressAD.NativeExpressADListener {
+    private static final String TAG = NoticeMainFragment1.class.getSimpleName();
     @BindView(R.id.recycle)
     MyRecyclerView mRecyclerView;
     Unbinder unbinder;
@@ -108,9 +121,12 @@ public class NoticeMainFragment1 extends BaseFragment implements BaseQuickAdapte
                 break;
             case "homch":
                 ChannelBean channelBean = (ChannelBean) o;
-
+                List<ChannelBean.DataBean> dataList = channelBean.getData();
+                ChannelBean.DataBean dataBean = new ChannelBean.DataBean();
+                dataBean.setType("1");
+                dataList.add(dataBean);
                 if (page == 1) {
-                    noticeMainFragmentAdapter.setNewData(channelBean.getData());
+                    noticeMainFragmentAdapter.setNewData(dataList);
 //            listBeenData.addAll(noticeMainListBean.getList());
 //            noticeMainFragmentAdapter.setNewData(listBeenData);
 //            mSwipeRefreshLayout.setRefreshing(false);
@@ -162,9 +178,11 @@ public class NoticeMainFragment1 extends BaseFragment implements BaseQuickAdapte
         ucParamHashmap.put("token",MainActivity.MYTOKEN);
         ucParamHashmap.put("apdid", MainActivity.APDIDP);
         ucParamHashmap.put("catid", departmentId);
-        ucParamHashmap.put("pageSize", "10");
+        ucParamHashmap.put("pageSize", "3");
         ucParamHashmap.put("p", page+"");
         ucDataPresenter.homch(getActivity(),ucParamHashmap);
+
+
     }
 
 
@@ -260,7 +278,7 @@ public class NoticeMainFragment1 extends BaseFragment implements BaseQuickAdapte
         noticeMainFragmentAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                NewsListBean.ResultBean.DataBean newsListBean = (NewsListBean.ResultBean.DataBean) adapter.getData().get(position);
+                ChannelBean.DataBean newsListBean = (ChannelBean.DataBean) adapter.getData().get(position);
                 String url = newsListBean.getUrl();
                 Intent intent = new Intent(getActivity(), NoticeDetatilActivity.class);
                 intent.putExtra("url", url);
@@ -297,6 +315,7 @@ public class NoticeMainFragment1 extends BaseFragment implements BaseQuickAdapte
         page = 1;
         http();
 //        mSwipeRefreshLayout.setRefreshing(false);
+        initNativeExpressAD("1");
     }
 
     @Override
@@ -397,5 +416,192 @@ public class NoticeMainFragment1 extends BaseFragment implements BaseQuickAdapte
             mRecyclerView.scrollBy(0, totalDy - 100);
         }
 
+    }
+    public int guanggaoPosition = 0 ;
+    List<NativeExpressADView> listData = new ArrayList<NativeExpressADView>();
+    @Override
+    public void onADLoaded(List<NativeExpressADView> list) {
+        Log.e("onADLoaded", "onADLoaded: " + list.size());
+        if(listData.size()>=20){
+            listData.clear();
+        }
+        if(guanggaoPosition==0){
+            listData.addAll(list);
+            initNativeExpressAD("2");
+            guanggaoPosition = 1;
+        }else {
+            listData.addAll(list);
+            noticeMainFragmentAdapter.setArray(listData);
+            noticeMainFragmentAdapter.notifyDataSetChanged();
+        }
+
+
+    }
+
+    @Override
+    public void onRenderFail(NativeExpressADView nativeExpressADView) {
+
+    }
+
+    @Override
+    public void onRenderSuccess(NativeExpressADView nativeExpressADView) {
+
+    }
+
+    @Override
+    public void onADExposure(NativeExpressADView nativeExpressADView) {
+
+    }
+
+    @Override
+    public void onADClicked(NativeExpressADView nativeExpressADView) {
+
+    }
+
+    @Override
+    public void onADClosed(NativeExpressADView nativeExpressADView) {
+
+    }
+
+    @Override
+    public void onADLeftApplication(NativeExpressADView nativeExpressADView) {
+
+    }
+
+    @Override
+    public void onADOpenOverlay(NativeExpressADView nativeExpressADView) {
+
+    }
+
+    @Override
+    public void onADCloseOverlay(NativeExpressADView nativeExpressADView) {
+
+    }
+
+    @Override
+    public void onNoAD(AdError adError) {
+
+    }
+    private NativeExpressAD mADManager,mADManager2;
+    private List<NativeExpressADView> mAdViewList;
+    public static final int AD_COUNT = 10;
+    /**
+     * 如果选择支持视频的模版样式，请使用{@link PositionId#NATIVE_EXPRESS_SUPPORT_VIDEO_POS_ID}
+     */
+    private void initNativeExpressAD(String string) {
+        ADSize adSize = new ADSize(ADSize.FULL_WIDTH, ADSize.AUTO_HEIGHT);
+        if(string.equals("1")){
+             // 消息流中用AUTO_HEIGHT
+//        mADManager = new NativeExpressAD(getActivity(), adSize, "1101152570", "7030020348049331", this);
+            mADManager = new NativeExpressAD(getActivity(), adSize, ConstantCode.GGAPPID, GGPositionId.MAIN_RIGHTIMAGE_POS_ID, this);
+
+
+            VideoOption option = null;
+            boolean noneOption = false;
+            if (!noneOption) {
+                VideoOption.Builder builder = new VideoOption.Builder();
+
+                builder.setAutoPlayPolicy(VideoOption.AutoPlayPolicy.ALWAYS);
+                builder.setAutoPlayMuted(true);
+                builder.setDetailPageMuted(true);
+
+                option = builder.build();
+            }
+            if(option != null){
+                // setVideoOption是可选的，开发者可根据需要选择是否配置
+                mADManager.setVideoOption(option);
+            }
+
+            mADManager.setMinVideoDuration(10);
+            mADManager.setMaxVideoDuration(50);
+            /**
+             * 如果广告位支持视频广告，强烈建议在调用loadData请求广告前调用setVideoPlayPolicy，有助于提高视频广告的eCPM值 <br/>
+             * 如果广告位仅支持图文广告，则无需调用
+             */
+
+            /**
+             * 设置本次拉取的视频广告，从用户角度看到的视频播放策略<p/>
+             *
+             * "用户角度"特指用户看到的情况，并非SDK是否自动播放，与自动播放策略AutoPlayPolicy的取值并非一一对应 <br/>
+             *
+             * 如自动播放策略为AutoPlayPolicy.WIFI，但此时用户网络为4G环境，在用户看来就是手工播放的
+             */
+            mADManager.setVideoPlayPolicy(1);  // 本次拉回的视频广告，在用户看来是否为自动播放的
+            mADManager.loadAD(AD_COUNT);
+        }else {
+            mADManager2 = new NativeExpressAD(getActivity(), adSize, ConstantCode.GGAPPID, GGPositionId.ZIDINGYI, this); // 这里的Context必须为Activity
+            mADManager2.loadAD(AD_COUNT);
+        }
+
+    }
+
+    private NativeExpressMediaListener mediaListener = new NativeExpressMediaListener() {
+        @Override
+        public void onVideoInit(NativeExpressADView nativeExpressADView) {
+            Log.i(TAG, "onVideoInit: "
+                    + getVideoInfo(nativeExpressADView.getBoundData().getProperty(AdData.VideoPlayer.class)));
+        }
+
+        @Override
+        public void onVideoLoading(NativeExpressADView nativeExpressADView) {
+            Log.i(TAG, "onVideoLoading: "
+                    + getVideoInfo(nativeExpressADView.getBoundData().getProperty(AdData.VideoPlayer.class)));
+        }
+
+        @Override
+        public void onVideoCached(NativeExpressADView nativeExpressADView) {
+            Log.i(TAG, "onVideoCached: "
+                    + getVideoInfo(nativeExpressADView.getBoundData().getProperty(AdData.VideoPlayer.class)));
+        }
+
+        @Override
+        public void onVideoReady(NativeExpressADView nativeExpressADView, long l) {
+            Log.i(TAG, "onVideoReady: "
+                    + getVideoInfo(nativeExpressADView.getBoundData().getProperty(AdData.VideoPlayer.class)));
+        }
+
+        @Override
+        public void onVideoStart(NativeExpressADView nativeExpressADView) {
+            Log.i(TAG, "onVideoStart: "
+                    + getVideoInfo(nativeExpressADView.getBoundData().getProperty(AdData.VideoPlayer.class)));
+        }
+
+        @Override
+        public void onVideoPause(NativeExpressADView nativeExpressADView) {
+            Log.i(TAG, "onVideoPause: "
+                    + getVideoInfo(nativeExpressADView.getBoundData().getProperty(AdData.VideoPlayer.class)));
+        }
+
+        @Override
+        public void onVideoComplete(NativeExpressADView nativeExpressADView) {
+            Log.i(TAG, "onVideoComplete: "
+                    + getVideoInfo(nativeExpressADView.getBoundData().getProperty(AdData.VideoPlayer.class)));
+        }
+
+        @Override
+        public void onVideoError(NativeExpressADView nativeExpressADView, AdError adError) {
+            Log.i(TAG, "onVideoError");
+        }
+
+        @Override
+        public void onVideoPageOpen(NativeExpressADView nativeExpressADView) {
+            Log.i(TAG, "onVideoPageOpen");
+        }
+
+        @Override
+        public void onVideoPageClose(NativeExpressADView nativeExpressADView) {
+            Log.i(TAG, "onVideoPageClose");
+        }
+    };
+
+    private String getVideoInfo(AdData.VideoPlayer videoPlayer) {
+        if (videoPlayer != null) {
+            StringBuilder videoBuilder = new StringBuilder();
+            videoBuilder.append("state:").append(videoPlayer.getVideoState()).append(",")
+                    .append("duration:").append(videoPlayer.getDuration()).append(",")
+                    .append("position:").append(videoPlayer.getCurrentPosition());
+            return videoBuilder.toString();
+        }
+        return null;
     }
 }

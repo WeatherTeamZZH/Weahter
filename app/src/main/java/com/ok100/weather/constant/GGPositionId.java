@@ -44,7 +44,12 @@ public class GGPositionId {
   public static final String SPLASH_POS_ID = "2020891454942054";
   public static final String MAIN_POS_ID = "1090594484618755";
   public static final String MAIN_POP_POS_ID = "8060197494026543";
+  public static final String MAIN_LEFTIMAGE_POS_ID = "9090991469664942";
+  public static final String MAIN_THREEIMAGE_POS_ID = "8000597479661688";
   public static final String BANNER_POS_ID = "8080790484848068";
+  public static final String MAIN_RIGHTIMAGE_POS_ID = "3070997489842753";
+  public static final String MAIN_DOWNIMAGE_POS_ID = "4090697479851506";
+  public static final String ZIDINGYI = "1040691485177094";
 
 
 }

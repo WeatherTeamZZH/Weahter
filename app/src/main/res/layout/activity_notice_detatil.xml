@@ -9,8 +9,20 @@
     android:fitsSystemWindows="true"
     tools:context=".activity.NoticeDetatilActivity">
     <include layout="@layout/title" />
-    <WebView
-        android:id="@+id/webview"
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></WebView>
+        android:layout_height="match_parent">
+        <WebView
+            android:id="@+id/webview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></WebView>
+        <FrameLayout
+            android:id="@+id/bannerContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+             >  </FrameLayout>
+    </RelativeLayout>
+
 </LinearLayout>
