@@ -128,30 +128,7 @@ public class DataBean {
 
     }
 
-    public static List<DefultGridViewBean> getUserAdapter() {
-        DefultGridViewBean defultGridViewBean ;
-        ArrayList<DefultGridViewBean> defultGridViewBeans = new ArrayList<>();
 
-        defultGridViewBean = new DefultGridViewBean("热点新闻",R.mipmap.userinfo_redianxinewn);
-        defultGridViewBeans.add(defultGridViewBean);
-        defultGridViewBean = new DefultGridViewBean("星座运势",R.mipmap.userinfo_xingzuo);
-        defultGridViewBeans.add(defultGridViewBean);
-        defultGridViewBean = new DefultGridViewBean("主题换肤",R.mipmap.userinfo_zhuti);
-        defultGridViewBeans.add(defultGridViewBean);
-        defultGridViewBean = new DefultGridViewBean("意见反馈",R.mipmap.userinfo_yijian);
-        defultGridViewBeans.add(defultGridViewBean);
-        defultGridViewBean = new DefultGridViewBean("万年历",R.mipmap.userinfo_wannianli);
-        defultGridViewBeans.add(defultGridViewBean);
-        defultGridViewBean = new DefultGridViewBean("历史上的今天",R.mipmap.userinfo_lishijintian);
-        defultGridViewBeans.add(defultGridViewBean);
-        defultGridViewBean = new DefultGridViewBean("抖乐笑话",R.mipmap.userinfo_xiaohua);
-        defultGridViewBeans.add(defultGridViewBean);
-        defultGridViewBean = new DefultGridViewBean("周公解梦",R.mipmap.userinfo_zhougong);
-        defultGridViewBeans.add(defultGridViewBean);
-//        defultGridViewBean = new DefultGridViewBean("消息中心",R.mipmap.userinfo_xiaoxi);
-//        defultGridViewBeans.add(defultGridViewBean);
-        return defultGridViewBeans;
-    }
 
     public static List<DefultGridViewBean> getUserAdapter1() {
         DefultGridViewBean defultGridViewBean ;

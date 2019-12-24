@@ -6,6 +6,7 @@ import android.util.Log;
 import com.ok100.weather.bean.ChannelBean;
 import com.ok100.weather.bean.ChannelsBean;
 import com.ok100.weather.bean.GetMyTokenBean;
+import com.ok100.weather.bean.TianqiyubaoBean;
 import com.ok100.weather.bean.TokenRuturnBean;
 import com.ok100.weather.bean.WeatherTotal15Bean;
 import com.ok100.weather.bean.WeatherTotal24Bean;
@@ -95,6 +96,21 @@ public class UcDataPresenterImpl implements UcDataContract.Presenter {
             @Override
             public void onSuccess(GetMyTokenBean getMyTokenBean) {
                 returnDataView.returnData("getMyToken", getMyTokenBean);
+            }
+
+            @Override
+            public void onFailed(String msg) {
+
+            }
+        });
+    }
+
+    @Override
+    public void getTianqiyubao(Context context, Map<String, String> map) {
+        model.getTianqiyubao(context, map, new ServiceResult<TianqiyubaoBean>() {
+            @Override
+            public void onSuccess(TianqiyubaoBean tianqiyubaoBean) {
+                returnDataView.returnData("getTianqiyubao", tianqiyubaoBean);
             }
 
             @Override

@@ -27,6 +27,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -62,6 +63,7 @@ import com.ok100.weather.bean.EventTitleMessage;
 import com.ok100.weather.bean.NewsListBean;
 import com.ok100.weather.bean.NoticeMainChooseBean;
 import com.ok100.weather.bean.SuggestGridViewBean;
+import com.ok100.weather.bean.TianqiyubaoBean;
 import com.ok100.weather.bean.WeatherTotal15Bean;
 import com.ok100.weather.bean.WeatherTotal24Bean;
 import com.ok100.weather.bean.WeatherTotal7Bean;
@@ -223,6 +225,8 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     LinearLayout ll_guanggao_left;
     @BindView(R.id.ll_guanggao_right)
     LinearLayout ll_guanggao_right;
+    @BindView(R.id.ll_recycle_bottom)
+    LinearLayout ll_recycle_bottom;
 
 
     private static final String TAG = "MainFragment";
@@ -365,6 +369,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
         Log.e("onDestroy", "mainfragmetn++init++"+city+"+++"+area);
         findView();
         setMianRelativeHeight();
+        getPhoneHeight();
         mCoordinatorLayout.getBackground().setAlpha(0);
         mSwipeRefreshLayoutVanlianNew.setOnRefreshListener(this);
         weather15MianAdapter = new Weather15MianAdapter();
@@ -396,6 +401,13 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
 //        Glide.with(this).load(R.drawable.guanggaodemo).asGif().diskCacheStrategy(DiskCacheStrategy.SOURCE).into(mIvGuanggaoDonghua);
         refreshAd("1");
 
+    }
+
+    public int phoneHeight = 1280 ;
+    public void getPhoneHeight(){
+        WindowManager wm = (WindowManager) getActivity()
+                .getSystemService(Context.WINDOW_SERVICE);
+        phoneHeight = wm.getDefaultDisplay().getHeight();
     }
 
 
@@ -487,6 +499,7 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
         initData();
 
         http();
+        getHideType();
             }
 
     @Override
@@ -538,10 +551,24 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
         initFragment();
         initViewPager();
         initTablayout();
+//        CoordinatorLayout.LayoutParams linearParams =(CoordinatorLayout.LayoutParams) mAppBarLayout.getLayoutParams();
+//        linearParams.height=5000;
+//        mAppBarLayout.setLayoutParams(linearParams);
+
+        View mAppBarChildAt = mAppBarLayout.getChildAt(0);
+        AppBarLayout.LayoutParams  mAppBarParams = (AppBarLayout.LayoutParams)
+                mAppBarChildAt.getLayoutParams();
+//        mAppBarParams.setScrollFlags(0);
+
+        mAppBarParams.setScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL | AppBarLayout.LayoutParams.SCROLL_FLAG_ENTER_ALWAYS);
+        mAppBarChildAt.setLayoutParams(mAppBarParams);
+
+
 
         mAppBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                scrollToBottom(verticalOffset);
                 int jvli = (int) -verticalOffset/2;
                 if(jvli<180){
                     mCoordinatorLayout.getBackground().setAlpha(jvli);
@@ -752,13 +779,14 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
 
     public void setAllGoneViewVisible(boolean visible) {
         if (visible) {
-            Log.e("visible", "mAppBarLayout显示");
+
             mAppBarLayout.setVisibility(View.VISIBLE);
             CoordinatorLayout.Behavior behavior =
                     ((CoordinatorLayout.LayoutParams) mAppBarLayout.getLayoutParams()).getBehavior();
             if (behavior instanceof AppBarLayout.Behavior) {
                 AppBarLayout.Behavior appBarLayoutBehavior = (AppBarLayout.Behavior) behavior;
                 int topAndBottomOffset = appBarLayoutBehavior.getTopAndBottomOffset();
+                Log.e("visible", "mAppBarLayout显示"+topAndBottomOffset);
                 if (topAndBottomOffset != 0) {
                     appBarLayoutBehavior.setTopAndBottomOffset(0);
                 }
@@ -869,6 +897,21 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
                 if(channelsBean.getCode().equals("200")){
                     setNewArraylist();
                     mTabLayout.setSelectedTabIndicatorColor(Color.BLUE);
+                }
+
+                break;
+            case "getTianqiyubao":
+                TianqiyubaoBean tianqiyubaoBean = (TianqiyubaoBean)o;
+                if(tianqiyubaoBean.getCode()==1){
+                    int status = tianqiyubaoBean.getData().getStatus();
+                    //关闭
+                    if(status==0){
+                        ll_recycle_bottom.setVisibility(View.GONE);
+                        isShowNews = false;
+                    }else {
+                        ll_recycle_bottom.setVisibility(View.VISIBLE);
+                        isShowNews = true;
+                    }
                 }
 
                 break;
@@ -1175,12 +1218,29 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
             if (flag) {
                 appBarLayoutBehavior.setTopAndBottomOffset(0); //快熟滑动到顶部
             } else {
-                Log.e("getTopAndBottomOffset", "getTopAndBottomOffset:"+appBarLayoutBehavior.getTopAndBottomOffset());
                 int hight = mAppBarLayout.getHeight();
                 appBarLayoutBehavior.setTopAndBottomOffset(-mAppBarLayout.getHeight());//快速滑动实现吸顶效果
             }
         }
     }
+    public boolean isShowNews = false;
+    //
+    public void scrollToBottom(int verticalOffset) {
+        if(!isShowNews){
+            if(-verticalOffset>mAppBarLayout.getHeight()-phoneHeight){
+                CoordinatorLayout.Behavior behavior =
+                        ((CoordinatorLayout.LayoutParams) mAppBarLayout.getLayoutParams()).getBehavior();
+                if (behavior instanceof AppBarLayout.Behavior) {
+                    AppBarLayout.Behavior appBarLayoutBehavior = (AppBarLayout.Behavior) behavior;
+                    int hight = mAppBarLayout.getHeight();
+
+                    appBarLayoutBehavior.setTopAndBottomOffset(-mAppBarLayout.getHeight()+phoneHeight);//快速滑动实现吸顶效果
+                }
+            }
+
+        }
+    }
+
 
 
     @Override
@@ -1763,5 +1823,9 @@ public class MainFragment extends BaseFragment implements BaseQuickAdapter.OnIte
         }
     }
 
+    public void getHideType(){
+        UcDataPresenterImpl ucDataPresenter = new UcDataPresenterImpl(this);
+        ucDataPresenter.getTianqiyubao(getActivity() ,new HashMap<>());
+    }
 
 }

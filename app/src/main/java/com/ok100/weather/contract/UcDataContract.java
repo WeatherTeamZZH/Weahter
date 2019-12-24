@@ -6,6 +6,7 @@ import com.ok100.weather.bean.ChannelBean;
 import com.ok100.weather.bean.ChannelsBean;
 import com.ok100.weather.bean.GetMyTokenBean;
 import com.ok100.weather.bean.NowCityBean;
+import com.ok100.weather.bean.TianqiyubaoBean;
 import com.ok100.weather.bean.TokenRuturnBean;
 import com.ok100.weather.bean.WeatherTotal15Bean;
 import com.ok100.weather.bean.WeatherTotal24Bean;
@@ -32,6 +33,7 @@ public class UcDataContract {
         void access_token(Context context, Map<String, String> map);
         void cities(Context context, Map<String, String> map);
         void getMyToken(Context context, Map<String, String> map);
+        void getTianqiyubao(Context context, Map<String, String> map);
     }
 
     public interface Model {
@@ -41,6 +43,7 @@ public class UcDataContract {
         void access_token(Context context, Map<String, String> map, ServiceResult<ChannelBean> serviceResult);
         void cities(Context context, Map<String, String> map, ServiceResult<NowCityBean> serviceResult);
         void getMyToken(Context context, Map<String, String> map, ServiceResult<GetMyTokenBean> serviceResult);
+        void getTianqiyubao(Context context, Map<String, String> map, ServiceResult<TianqiyubaoBean> serviceResult);
 
     }
 

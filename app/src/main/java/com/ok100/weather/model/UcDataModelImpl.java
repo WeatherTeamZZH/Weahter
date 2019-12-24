@@ -8,6 +8,7 @@ import com.ok100.weather.bean.ChannelBean;
 import com.ok100.weather.bean.ChannelsBean;
 import com.ok100.weather.bean.GetMyTokenBean;
 import com.ok100.weather.bean.NowCityBean;
+import com.ok100.weather.bean.TianqiyubaoBean;
 import com.ok100.weather.bean.TokenRuturnBean;
 import com.ok100.weather.bean.WeatherTotal15Bean;
 import com.ok100.weather.bean.WeatherTotal24Bean;
@@ -74,7 +75,24 @@ public class UcDataModelImpl implements UcDataContract.Model {
     }
 
     @Override
-    public void getMyToken(Context context, Map<String, String> map, ServiceResult<GetMyTokenBean> serviceResult) {
+    public void getTianqiyubao(Context context, Map<String, String> map, ServiceResult<TianqiyubaoBean> serviceResult) {
+        OkHttpUtils.get(Urls.getTianqiyubao).params(map).execute(new DialogCallback<TianqiyubaoBean>(context, new TypeToken<TianqiyubaoBean>() {
+        }.getType()) {
+            @Override
+            public void onSuccess(TianqiyubaoBean noticeMainListBean, Call call, Response response) {
+                serviceResult.onSuccess(noticeMainListBean);
+            }
+        }.showErrorMsg());
+    }
 
+    @Override
+    public void getMyToken(Context context, Map<String, String> map, ServiceResult<GetMyTokenBean> serviceResult) {
+        OkHttpUtils.post(Urls.getUcToken).params(map).execute(new DialogCallback<GetMyTokenBean>(context, new TypeToken<GetMyTokenBean>() {
+        }.getType()) {
+            @Override
+            public void onSuccess(GetMyTokenBean noticeMainListBean, Call call, Response response) {
+                serviceResult.onSuccess(noticeMainListBean);
+            }
+        }.showErrorMsg());
     }
 }

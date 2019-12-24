@@ -14,6 +14,7 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.utils.StorageUtils;
 import com.ok100.weather.base.BaseApplication;
+import com.umeng.analytics.MobclickAgent;
 import com.umeng.commonsdk.UMConfigure;
 
 import com.umeng.message.IUmengRegisterCallback;
@@ -59,6 +60,8 @@ public class App extends BaseApplication {
         UMConfigure.init(this, "5dd780453fc1956f48000aa7"
                 , "Umeng", UMConfigure.DEVICE_TYPE_PHONE, "be04044ae199c2cea93c81fa238901fb");
         UMConfigure.setLogEnabled(true);
+        MobclickAgent.setDebugMode(true);
+
 //        UMConfigure. setProcessEvent(true);
         //获取消息推送代理示例
         PushAgent mPushAgent = PushAgent.getInstance(this);

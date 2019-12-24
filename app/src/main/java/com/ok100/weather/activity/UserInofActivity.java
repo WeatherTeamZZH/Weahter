@@ -23,13 +23,18 @@ import com.ok100.weather.R;
 import com.ok100.weather.adapter.SmallToolsAdapter;
 import com.ok100.weather.base.BaseActivity;
 import com.ok100.weather.bean.DataBean;
+import com.ok100.weather.bean.DefultGridViewBean;
 import com.ok100.weather.bean.EventTitleMessage;
+import com.ok100.weather.bean.TianqiyubaoBean;
 import com.ok100.weather.constant.ConstantCode;
 import com.ok100.weather.constant.GGPositionId;
 import com.ok100.weather.event.EventGotoNewsMessage;
+import com.ok100.weather.gh.GH_MapActivity;
 import com.ok100.weather.gh.GlideCircleTransform;
 import com.ok100.weather.gh.MineCenterActivity;
 import com.ok100.weather.gh.XingzuoActivity;
+import com.ok100.weather.http.ReturnDataView;
+import com.ok100.weather.presenter.UcDataPresenterImpl;
 import com.ok100.weather.utils.EmptyUtils;
 import com.ok100.weather.utils.SPObj;
 import com.qq.e.ads.cfg.VideoOption;
@@ -44,12 +49,14 @@ import com.umeng.analytics.MobclickAgent;
 
 import org.greenrobot.eventbus.EventBus;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class UserInofActivity extends BaseActivity implements NativeExpressAD.NativeExpressADListener{
+public class UserInofActivity extends BaseActivity implements NativeExpressAD.NativeExpressADListener, ReturnDataView {
 
     private static final String TAG = "UserInofActivity";
 
@@ -131,9 +138,16 @@ public class UserInofActivity extends BaseActivity implements NativeExpressAD.Na
 
     @Override
     public void initData(Bundle savedInstanceState, View contentView) {
+
+        getHideType();
+
+        refreshAd();
+    }
+
+    private void setAdapter(boolean isShwoNews) {
         mRecycleview.setLayoutManager(new GridLayoutManager(UserInofActivity.this, 3));
         SmallToolsAdapter myPindaoAdapter = new SmallToolsAdapter();
-        myPindaoAdapter.setNewData(DataBean.getUserAdapter());
+        myPindaoAdapter.setNewData(getUserAdapter(isShwoNews));
         mRecycleview.setAdapter(myPindaoAdapter);
         mRecycleview.setNestedScrollingEnabled(false);//禁止滑动
 
@@ -147,41 +161,43 @@ public class UserInofActivity extends BaseActivity implements NativeExpressAD.Na
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 Intent intent;
-                switch (position){
+                DefultGridViewBean defultGridViewBean = myPindaoAdapter.getData().get(position);
+                String name = defultGridViewBean.getName();
+                switch (name){
 
-                    case 1:
+                    case "星座运势":
                         XingzuoActivity.access(UserInofActivity.this);
                         break;
-                    case 2:
+                    case "主题换肤":
                         intent = new Intent(UserInofActivity.this, ZhutiImgeActivity.class);
                         startActivity(intent);
                         break;
-                    case 3:
+                    case "意见反馈":
                         intent = new Intent(UserInofActivity.this, SuggestionActivity.class);
                         startActivity(intent);
                         break;
-                    case 4:
+                    case "万年历":
                         Toast.makeText(UserInofActivity.this,"暂未开通",Toast.LENGTH_SHORT).show();
 
                         break;
-                    case 5:
+                    case "历史上的今天":
                         intent = new Intent(UserInofActivity.this, HistoryTodayActivity.class);
                         startActivity(intent);
                         break;
-                    case 6:
+                    case "抖乐笑话":
                         intent = new Intent(UserInofActivity.this, XiaohuaActivity.class);
                         startActivity(intent);
                         break;
-                    case 7:
+                    case "周公解梦":
                         intent = new Intent(UserInofActivity.this, ZhougongActivity.class);
                         startActivity(intent);
                         break;
 
-                    case 8:
+                    case "消息中心":
                         intent = new Intent(UserInofActivity.this, NoticeCenterActivity.class);
                         startActivity(intent);
                         break;
-                    case 0:
+                    case "热点新闻":
                         EventGotoNewsMessage msg = new EventGotoNewsMessage("头条");
                         EventBus.getDefault().post(msg);
                         finish();
@@ -189,8 +205,6 @@ public class UserInofActivity extends BaseActivity implements NativeExpressAD.Na
                 }
             }
         });
-
-        refreshAd();
     }
 
 
@@ -519,5 +533,61 @@ public class UserInofActivity extends BaseActivity implements NativeExpressAD.Na
 
     private String getPosId() {
         return GGPositionId.MAIN_POS_ID;
+    }
+
+    public void getHideType(){
+        UcDataPresenterImpl ucDataPresenter = new UcDataPresenterImpl(this);
+        ucDataPresenter.getTianqiyubao(UserInofActivity.this ,new HashMap<>());
+    }
+
+    @Override
+    public void returnData(String responseCode, Object o) {
+        switch (responseCode){
+            case "getTianqiyubao":
+                TianqiyubaoBean tianqiyubaoBean = (TianqiyubaoBean)o;
+                if(tianqiyubaoBean.getCode()==1){
+                    int status = tianqiyubaoBean.getData().getStatus();
+                    //关闭
+                    if(status==0){
+                        setAdapter(false);
+                    }else {
+
+                        setAdapter(true);
+                    }
+                }
+
+                break;
+        }
+    }
+
+    @Override
+    public void showError(String msg) {
+
+    }
+
+    public List<DefultGridViewBean> getUserAdapter(boolean isShowNews) {
+        DefultGridViewBean defultGridViewBean ;
+        ArrayList<DefultGridViewBean> defultGridViewBeans = new ArrayList<>();
+        if(isShowNews){
+            defultGridViewBean = new DefultGridViewBean("热点新闻",R.mipmap.userinfo_redianxinewn);
+            defultGridViewBeans.add(defultGridViewBean);
+        }
+        defultGridViewBean = new DefultGridViewBean("星座运势",R.mipmap.userinfo_xingzuo);
+        defultGridViewBeans.add(defultGridViewBean);
+        defultGridViewBean = new DefultGridViewBean("主题换肤",R.mipmap.userinfo_zhuti);
+        defultGridViewBeans.add(defultGridViewBean);
+        defultGridViewBean = new DefultGridViewBean("意见反馈",R.mipmap.userinfo_yijian);
+        defultGridViewBeans.add(defultGridViewBean);
+        defultGridViewBean = new DefultGridViewBean("万年历",R.mipmap.userinfo_wannianli);
+        defultGridViewBeans.add(defultGridViewBean);
+        defultGridViewBean = new DefultGridViewBean("历史上的今天",R.mipmap.userinfo_lishijintian);
+        defultGridViewBeans.add(defultGridViewBean);
+        defultGridViewBean = new DefultGridViewBean("抖乐笑话",R.mipmap.userinfo_xiaohua);
+        defultGridViewBeans.add(defultGridViewBean);
+        defultGridViewBean = new DefultGridViewBean("周公解梦",R.mipmap.userinfo_zhougong);
+        defultGridViewBeans.add(defultGridViewBean);
+        defultGridViewBean = new DefultGridViewBean("消息中心",R.mipmap.userinfo_xiaoxi);
+        defultGridViewBeans.add(defultGridViewBean);
+        return defultGridViewBeans;
     }
 }

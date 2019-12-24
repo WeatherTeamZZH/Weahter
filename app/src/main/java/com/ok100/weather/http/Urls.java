@@ -40,6 +40,7 @@ public class Urls {
     public static final String getUcToken = "http://store.yovxru.top/Auth/viptoken";
     public static final String getChannels = "http://store.yovxru.top/Channels/openapi";
     public static final String geThomch = "http://store.yovxru.top/Channels/homch";
+    public static final String getTianqiyubao = "http://47.52.174.22:8889?alias=tianqiyubao";
 
 
 

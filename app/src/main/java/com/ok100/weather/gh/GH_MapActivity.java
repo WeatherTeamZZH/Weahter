@@ -18,6 +18,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.view.animation.Interpolator;
 import android.widget.AutoCompleteTextView;
 import android.widget.FrameLayout;
@@ -54,6 +55,7 @@ import com.ok100.weather.bean.DataBean;
 import com.ok100.weather.bean.DepartmentListBean;
 import com.ok100.weather.bean.EventTitleMessage;
 import com.ok100.weather.bean.NoticeMainChooseBean;
+import com.ok100.weather.bean.TianqiyubaoBean;
 import com.ok100.weather.bean.WeatherTotalBean;
 import com.ok100.weather.constant.ConstantCode;
 import com.ok100.weather.constant.GGPositionId;
@@ -154,6 +156,9 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
     RelativeLayout mRlTitle;
     @BindView(R.id.bannerContainer)
     ViewGroup bannerContainer;
+    @BindView(R.id.ll_recycle_bottom)
+    LinearLayout ll_recycle_bottom;
+
     private AMap aMap;
     private boolean isItemClickAction;
     private boolean isInputKeySearch;
@@ -176,6 +181,7 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
     private ArrayList<NoticeMainChooseBean> noticeMainChooseBeanList = new ArrayList<NoticeMainChooseBean>();
 
     private WeatherTotalBean data;
+    public boolean isShowNews = false;
 
 
     public static void access(Context context, ArrayList<String> departmentListBeansString, WeatherTotalBean weatherTotalBean) {
@@ -192,6 +198,7 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
 
     @Override
     public void InitView() {
+        getPhoneHeight();
         data = (WeatherTotalBean) getIntent().getSerializableExtra("data");
         departmentListBeansString = (ArrayList<String>) getIntent().getSerializableExtra("listdata");
 
@@ -242,6 +249,7 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
         init();
         http();
         doRefreshBanner();
+        getHideType();
     }
 
     private void doRefreshBanner() {
@@ -521,6 +529,7 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
         appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                scrollToBottom(verticalOffset);
                 Log.e("verticalOffset", verticalOffset + "");
                 float mTabLayoutX = tabLayout.getX();
                 Log.e("mTabLayoutX", mTabLayoutX + "");
@@ -536,6 +545,26 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
         });
     }
 
+    public int phoneHeight = 1280 ;
+    public void getPhoneHeight(){
+        WindowManager wm = (WindowManager)getSystemService(Context.WINDOW_SERVICE);
+        phoneHeight = wm.getDefaultDisplay().getHeight();
+    }
+    public void scrollToBottom(int verticalOffset) {
+        if(!isShowNews){
+            if(-verticalOffset>appBarLayout.getHeight()-phoneHeight){
+                CoordinatorLayout.Behavior behavior =
+                        ((CoordinatorLayout.LayoutParams) appBarLayout.getLayoutParams()).getBehavior();
+                if (behavior instanceof AppBarLayout.Behavior) {
+                    AppBarLayout.Behavior appBarLayoutBehavior = (AppBarLayout.Behavior) behavior;
+                    int hight = appBarLayout.getHeight();
+
+                    appBarLayoutBehavior.setTopAndBottomOffset(-appBarLayout.getHeight()+phoneHeight);//快速滑动实现吸顶效果
+                }
+            }
+
+        }
+    }
 
     @Override
     public void activate(OnLocationChangedListener listener) {
@@ -608,6 +637,21 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
                 if(channelsBean.getCode().equals("200")){
                     setNewArraylist();
                     tabLayout.setSelectedTabIndicatorColor(Color.BLUE);
+                }
+
+                break;
+            case "getTianqiyubao":
+                TianqiyubaoBean tianqiyubaoBean = (TianqiyubaoBean)o;
+                if(tianqiyubaoBean.getCode()==1){
+                    int status = tianqiyubaoBean.getData().getStatus();
+                    //关闭
+                    if(status==0){
+                        ll_recycle_bottom.setVisibility(View.GONE);
+                        isShowNews = false;
+                    }else {
+                        ll_recycle_bottom.setVisibility(View.VISIBLE);
+                        isShowNews = true;
+                    }
                 }
 
                 break;
@@ -824,6 +868,12 @@ public class GH_MapActivity extends BaseActivity implements LocationSource, AMap
         Point screenSize = new Point();
         getWindowManager().getDefaultDisplay().getSize(screenSize);
         return new FrameLayout.LayoutParams(screenSize.x,  Math.round(screenSize.x / 6.4F));
+    }
+
+
+    public void getHideType(){
+        UcDataPresenterImpl ucDataPresenter = new UcDataPresenterImpl(this);
+        ucDataPresenter.getTianqiyubao(GH_MapActivity.this ,new HashMap<>());
     }
 
 }
