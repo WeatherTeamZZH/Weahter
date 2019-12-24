@@ -61,6 +61,7 @@ public class App extends BaseApplication {
                 , "Umeng", UMConfigure.DEVICE_TYPE_PHONE, "be04044ae199c2cea93c81fa238901fb");
         UMConfigure.setLogEnabled(true);
         MobclickAgent.setDebugMode(true);
+//        MobclickAgent.setPageCollectionMode(PageMode mode)
 
 //        UMConfigure. setProcessEvent(true);
         //获取消息推送代理示例

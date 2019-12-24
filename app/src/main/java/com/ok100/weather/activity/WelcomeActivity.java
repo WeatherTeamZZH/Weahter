@@ -3,6 +3,7 @@ package com.ok100.weather.activity;
 import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -39,7 +40,9 @@ import com.ok100.weather.utils.SharePreferencesUtil;
 import com.qq.e.ads.splash.SplashAD;
 import com.qq.e.ads.splash.SplashADListener;
 import com.qq.e.comm.util.AdError;
+
 import com.umeng.analytics.MobclickAgent;
+import com.umeng.commonsdk.statistics.common.DeviceConfig;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -106,6 +109,22 @@ public class WelcomeActivity extends BaseActivity implements EasyPermissions.Rat
 //            // 如果是Android6.0以下的机器，建议在manifest中配置相关权限，这里可以直接调用SDK
 //            fetchSplashAD(this, container, skipView, ConstantCode.GGAPPID, getPosId(), this, 0);
 //        }
+        getTestDeviceInfo(WelcomeActivity.this);
+
+    }
+
+    public static String[] getTestDeviceInfo(Context context){
+        String[] deviceInfo = new String[2];
+        try {
+            if(context != null){
+                deviceInfo[0] = DeviceConfig.getDeviceIdForGeneral(context);
+                deviceInfo[1] = DeviceConfig.getMac(context);
+                Log.e("deviceInfo",deviceInfo[0]);
+                Log.e("deviceInfo",deviceInfo[1]);
+            }
+        } catch (Exception e){
+        }
+        return deviceInfo;
     }
 
     @Override

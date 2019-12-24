@@ -47,6 +47,7 @@ import com.qq.e.comm.pi.AdData;
 import com.qq.e.comm.util.AdError;
 import com.umeng.analytics.MobclickAgent;
 
+
 import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
