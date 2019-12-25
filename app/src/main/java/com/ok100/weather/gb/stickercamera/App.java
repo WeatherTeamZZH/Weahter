@@ -1,5 +1,7 @@
 package com.ok100.weather.gb.stickercamera;
 
+import android.app.Notification;
+import android.content.Context;
 import android.util.DisplayMetrics;
 import android.util.Log;
 
@@ -13,12 +15,19 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.utils.StorageUtils;
 import com.ok100.weather.base.BaseApplication;
+import com.ok100.weather.bean.MessageBean;
+import com.ok100.weather.bean.MessageListBean;
+import com.ok100.weather.utils.SPObj;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.commonsdk.UMConfigure;
 import com.umeng.message.IUmengRegisterCallback;
 import com.umeng.message.MsgConstant;
 import com.umeng.message.PushAgent;
+import com.umeng.message.UmengMessageHandler;
+import com.umeng.message.entity.UMessage;
 import com.umeng.socialize.PlatformConfig;
+
+import java.util.ArrayList;
 
 
 /**
