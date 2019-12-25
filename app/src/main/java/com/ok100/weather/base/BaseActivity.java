@@ -22,6 +22,7 @@ import com.ok100.weather.R;
 import com.ok100.weather.receiver.NetReceiver;
 import com.ok100.weather.statistics.StatisticsManager;
 import com.ok100.weather.utils.ToastUtil;
+import com.umeng.analytics.MobclickAgent;
 import com.umeng.message.PushAgent;
 
 import java.util.Stack;
