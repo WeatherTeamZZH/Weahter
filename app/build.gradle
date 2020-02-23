@@ -106,7 +106,7 @@ dependencies {
     api project(':status')
     //RN加
     implementation 'com.facebook.fresco:animated-gif:1.10.0'
-    compile "com.android.support:cardview-v7:${lib.supportVersion}"
+    implementation "com.android.support:cardview-v7:${lib.supportVersion}"
     implementation 'com.jakewharton:butterknife:9.0.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0'
     implementation 'me.zhouzhuo.zzweatherview:zz-weather-view:1.0.2'

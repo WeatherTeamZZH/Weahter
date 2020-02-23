@@ -346,6 +346,7 @@ public class MyCityActivity extends BaseActivity implements BaseQuickAdapter.OnI
                 //删除
                 if(cityGreenDaoBeanList.size()<=1){
                     Toast.makeText(MyCityActivity.this,"请您至少保留一个城市",Toast.LENGTH_SHORT).show();
+                    return;
                 }
                 deleteGreenDao(cityGreenDaoBeanList.get(position).getArea());
                 adapter.getData().remove(position);
